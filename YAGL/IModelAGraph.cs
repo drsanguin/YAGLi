@@ -38,7 +38,7 @@ namespace YAGL
         /// </summary>
         /// <param name="edge">The <see cref="Edge{TVertex}"/> object for which the adjacent edges will be searched.</param>
         /// <returns>The edges adjacent to <paramref name="edge"/>.</returns>
-        /// <remarks>The parameter <paramref name="edge"/> is expected to be contained in this instance.</remarks>
+        /// <remarks>The parameter <paramref name="edge"/> is expected to be contained in the set of edges of this instance.</remarks>
         IEnumerable<Edge<TVertex>> AdjacentEdgesOfEdge(Edge<TVertex> edge);
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace YAGL
         /// </summary>
         /// <param name="vertex">The vertex for which the adjacent vertices will be searched.</param>
         /// <returns>The vertices adjacent to the parameter <paramref name="vertex"/>.</returns>
-        /// <remarks>The parameter <paramref name="vertex"/> is expected to be contained in this instance.</remarks>
+        /// <remarks>The parameter <paramref name="vertex"/> is expected to be contained in the set of vertices of this instance.</remarks>
         IEnumerable<TVertex> AdjacentVerticesOfVertex(TVertex vertex);
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace YAGL
         /// </summary>
         /// <param name="edges">The set of edges to determine if they are adjacent.</param>
         /// <returns><see cref="true"/> if the set of edges <paramref name="edges"/> are adjacent in this instance, <see cref="false"/> otherwise.</returns>
-        /// <remarks>Each <see cref="Edge{TVertex}"/> object contained in <paramref name="edges"/> is expected to be contained in this instance.</remarks>
+        /// <remarks>Each <see cref="Edge{TVertex}"/> object contained in <paramref name="edges"/> is expected to be contained in the set of edges of this instance.</remarks>
         bool AreEdgesAdjacent(params Edge<TVertex>[] edges);
 
         /// <summary>
@@ -65,21 +65,21 @@ namespace YAGL
         /// </summary>
         /// <param name="vertices">The vertices to determine if they are adjacent in this instance.</param>
         /// <returns><see cref="true"/> if the vertices are adjacent in this instance, <see cref="false"/> otherwise.</returns>
-        /// <remarks>Each vertex contained in <paramref name="vertices"/> is expected to be contained in this instance.</remarks>
+        /// <remarks>Each vertex contained in <paramref name="vertices"/> is expected to be contained in the set of vertices of this instance.</remarks>
         bool AreVerticesAdjacent(params TVertex[] vertices);
 
         /// <summary>
         /// Determine whether this instance contains the edge <paramref name="edge"/>.
         /// </summary>
         /// <param name="edge">The edge to determine if it is contained in this instance.</param>
-        /// <returns><see cref="true"/> if the parameter <paramref name="edge"/> is contained in this instance, <see cref="false"/> otherwise.</returns>
+        /// <returns><see cref="true"/> if the parameter <paramref name="edge"/> is contained in the set of edges of this instance, <see cref="false"/> otherwise.</returns>
         bool ContainsEdge(Edge<TVertex> edge);
 
         /// <summary>
         /// Determine whether this instance contains the given set of edges.
         /// </summary>
         /// <param name="edges">The edges to determine if they are contained in this instance.</param>
-        /// <returns><see cref="true"/> if each <see cref="Edge{TVertex}"/> object of the parameter <paramref name="edges"/> is contained in this instance, <see cref="false"/> otherwise.</returns>
+        /// <returns><see cref="true"/> if each <see cref="Edge{TVertex}"/> object of the parameter <paramref name="edges"/> is contained in the set of edges of this instance, <see cref="false"/> otherwise.</returns>
         bool ContainsEdges(params Edge<TVertex>[] edges);
 
         /// <summary>
