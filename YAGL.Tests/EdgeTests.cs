@@ -22,9 +22,9 @@ namespace YAGL.Tests
         [Test]
         public void Edge_Ends_should_contains_the_two_Vertices_passed_in_the_constructor()
         {
-            Edge<string> edge = new Edge<string>("Hello", "Wordl!");
+            Edge<string> edge = new Edge<string>("Hello", "World!");
 
-            Check.That(edge.Ends).ContainsExactly("Hello", "Wordl!");
+            Check.That(edge.Ends).ContainsExactly("Hello", "World!");
         }
 
         [Test]
@@ -36,8 +36,8 @@ namespace YAGL.Tests
         [Test]
         public void Edge_Equals_with_EdgeComparison_should_throw_a_ArgumentException_if_the_EdgeComparison_value_is_not_one_of_the_valid_values()
         {
-            Edge<string> edge1 = new Edge<string>("Hello", "Wordl!");
-            Edge<string> edge2 = new Edge<string>("Wordl!", "Hello");
+            Edge<string> edge1 = new Edge<string>("Hello", "World!");
+            Edge<string> edge2 = new Edge<string>("World!", "Hello");
 
             Check.ThatCode(() => edge1.Equals(edge2, EdgeComparison.IgnoreDirection + 1)).Throws<ArgumentException>();
         }
@@ -45,8 +45,8 @@ namespace YAGL.Tests
         [Test]
         public void Edge_Equals_with_EdgeComparison_IgnoreDirection_should_return_true_if_the_other_Edge_Ends_contains_the_same_Vertices_even_if_their_are_not_in_the_same_fields_variables()
         {
-            Edge<string> edge1 = new Edge<string>("Hello", "Wordl!");
-            Edge<string> edge2 = new Edge<string>("Wordl!", "Hello");
+            Edge<string> edge1 = new Edge<string>("Hello", "World!");
+            Edge<string> edge2 = new Edge<string>("World!", "Hello");
 
             Check.That(edge1.Equals(edge2, EdgeComparison.IgnoreDirection)).IsTrue();
         }
@@ -54,8 +54,8 @@ namespace YAGL.Tests
         [Test]
         public void Edge_Equals_with_EdgeComparison_IgnoreDirection_should_return_true_if_the_other_Edge_Ends_contains_the_same_Vertices_even_in_the_same_fields_variables()
         {
-            Edge<string> edge1 = new Edge<string>("Hello", "Wordl!");
-            Edge<string> edge2 = new Edge<string>("Hello", "Wordl!");
+            Edge<string> edge1 = new Edge<string>("Hello", "World!");
+            Edge<string> edge2 = new Edge<string>("Hello", "World!");
 
             Check.That(edge1.Equals(edge2, EdgeComparison.IgnoreDirection)).IsTrue();
         }
@@ -63,8 +63,8 @@ namespace YAGL.Tests
         [Test]
         public void Edge_Equals_with_EdgeComparison_ConsiderDirection_should_return_false_if_the_other_Edge_Ends_does_not_contains_the_same_Vertices_even_in_the_same_fields_variables()
         {
-            Edge<string> edge1 = new Edge<string>("Hello", "Wordl!");
-            Edge<string> edge2 = new Edge<string>("Wordl!", "Hello");
+            Edge<string> edge1 = new Edge<string>("Hello", "World!");
+            Edge<string> edge2 = new Edge<string>("World!", "Hello");
 
             Check.That(edge1.Equals(edge2, EdgeComparison.ConsiderDirection)).IsFalse();
         }
@@ -72,8 +72,8 @@ namespace YAGL.Tests
         [Test]
         public void Edge_Equals_with_EdgeComparison_Considerirection_should_return_true_if_the_other_Edge_Ends_contains_the_same_Vertices_even_in_the_same_fields_variables()
         {
-            Edge<string> edge1 = new Edge<string>("Hello", "Wordl!");
-            Edge<string> edge2 = new Edge<string>("Hello", "Wordl!");
+            Edge<string> edge1 = new Edge<string>("Hello", "World!");
+            Edge<string> edge2 = new Edge<string>("Hello", "World!");
 
             Check.That(edge1.Equals(edge2, EdgeComparison.ConsiderDirection)).IsTrue();
         }
@@ -81,8 +81,8 @@ namespace YAGL.Tests
         [Test]
         public void Edge_Equals_should_return_true_if_the_other_Edge_Ends_contains_the_same_Vertices_in_the_same_fields_variables()
         {
-            Edge<string> edge1 = new Edge<string>("Hello", "Wordl!");
-            Edge<string> edge2 = new Edge<string>("Hello", "Wordl!");
+            Edge<string> edge1 = new Edge<string>("Hello", "World!");
+            Edge<string> edge2 = new Edge<string>("Hello", "World!");
 
             Check.That(edge1.Equals(edge2)).IsTrue();
         }
@@ -90,8 +90,8 @@ namespace YAGL.Tests
         [Test]
         public void Edge_Equals_should_return_false_if_the_other_Edge_Ends_does_not_contains_the_same_Vertices_in_the_same_fields_variables()
         {
-            Edge<string> edge1 = new Edge<string>("Hello", "Wordl!");
-            Edge<string> edge2 = new Edge<string>("Wordl!", "Hello");
+            Edge<string> edge1 = new Edge<string>("Hello", "World!");
+            Edge<string> edge2 = new Edge<string>("World!", "Hello");
 
             Check.That(edge1.Equals(edge2)).IsFalse();
         }
@@ -99,8 +99,8 @@ namespace YAGL.Tests
         [Test]
         public void Edge_GetHashCode_should_return_the_same_value_for_two_Edge_with_the_same_Vertices()
         {
-            Edge<string> edge1 = new Edge<string>("Hello", "Wordl!");
-            Edge<string> edge2 = new Edge<string>("Hello", "Wordl!");
+            Edge<string> edge1 = new Edge<string>("Hello", "World!");
+            Edge<string> edge2 = new Edge<string>("Hello", "World!");
 
             Check.That(edge1.GetHashCode()).IsEqualTo(edge2.GetHashCode());
         }
@@ -108,8 +108,8 @@ namespace YAGL.Tests
         [Test]
         public void Edge_GetHashCode_should_not_return_the_same_value_for_two_Edge_with_different_Vertices()
         {
-            Edge<string> edge1 = new Edge<string>("Hello", "Wordl!");
-            Edge<string> edge2 = new Edge<string>("Hello", "Wordl !");
+            Edge<string> edge1 = new Edge<string>("Hello", "World!");
+            Edge<string> edge2 = new Edge<string>("Hello", "World !");
 
             Check.That(edge1.GetHashCode()).IsNotEqualTo(edge2.GetHashCode());
         }
