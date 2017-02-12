@@ -39,7 +39,7 @@ namespace YAGL
         /// <param name="edge">The <see cref="Edge{TVertex}"/> object for which the adjacent edges will be searched.</param>
         /// <returns>The edges adjacent to <paramref name="edge"/>.</returns>
         /// <remarks>The parameter <paramref name="edge"/> is expected to be contained in the set of edges of this instance.</remarks>
-        IEnumerable<Edge<TVertex>> AdjacentEdgesOfEdge(Edge<TVertex> edge);
+        IEnumerable<Edge<TVertex>> AdjacentEdgesOf(Edge<TVertex> edge);
 
         /// <summary>
         /// Get the vertices contained in this instance that are adjacent to the parameter <paramref name="vertex"/>.
@@ -48,7 +48,7 @@ namespace YAGL
         /// <param name="vertex">The vertex for which the adjacent vertices will be searched.</param>
         /// <returns>The vertices adjacent to the parameter <paramref name="vertex"/>.</returns>
         /// <remarks>The parameter <paramref name="vertex"/> is expected to be contained in the set of vertices of this instance.</remarks>
-        IEnumerable<TVertex> AdjacentVerticesOfVertex(TVertex vertex);
+        IEnumerable<TVertex> AdjacentVerticesOf(TVertex vertex);
 
         /// <summary>
         /// Determine whether the given set of edges <paramref name="edges"/> are adjacent in this instance.
@@ -112,7 +112,7 @@ namespace YAGL
         /// <param name="vertex">The vertex for which to search the incident <see cref="Edge{TVertex}"/>(s).</param>
         /// <returns>The list of the <see cref="Edge{TVertex}"/> incident to the vertex <paramref name="vertex"/> that are contained in the set of edges of this instance.</returns>
         /// <remarks>The parameter <paramref name="vertex"/> is expected to be contained in the set of vertices of this instance.</remarks>
-        IEnumerable<Edge<TVertex>> IncidentEdgesOfVertex(TVertex vertex);
+        IEnumerable<Edge<TVertex>> IncidentEdgesOf(TVertex vertex);
 
         /// <summary>
         /// Get the incident vertices of the given edge <paramref name="edge"/>.
@@ -121,7 +121,7 @@ namespace YAGL
         /// <param name="edge">The <see cref="Edge{TVertex}"/> for which to search the incident vertices.</param>
         /// <returns>The vertices incident to this <see cref="Edge{TVertex}"/> that are contained in the set of vertices of this instance.</returns>
         /// <remarks>The parameter <paramref name="edge"/> is expected to be contained in the set of edges of this instance.</remarks>
-        IEnumerable<TVertex> IncidentVerticesOfEdge(Edge<TVertex> edge);
+        IEnumerable<TVertex> IncidentVerticesOf(Edge<TVertex> edge);
 
         /// <summary>
         /// Get the in-degree of the vertex <paramref name="vertex"/>.
