@@ -121,5 +121,23 @@ namespace YAGL.Tests
 
             Check.That(edge.ToString()).IsEqualTo("{ Hello, World! }");
         }
+
+        [Test]
+        public void Edge_IsAdjacentTo_should_return_false_if_the_two_edges_do_not_share_a_common_end_vertex()
+        {
+            Edge<string> edge1 = new Edge<string>("Hello", "World!");
+            Edge<string> edge2 = new Edge<string>("Hello, ", "World !");
+
+            Check.That(edge1.IsAdjacentTo(edge2)).IsFalse();
+        }
+
+        [Test]
+        public void Edge_IsAdjacentTo_should_return_true_if_the_two_edges_do_not_share_a_common_end_vertex()
+        {
+            Edge<string> edge1 = new Edge<string>("Hello", "World!");
+            Edge<string> edge2 = new Edge<string>("Hello", "World !");
+
+            Check.That(edge1.IsAdjacentTo(edge2)).IsTrue();
+        }
     }
 }

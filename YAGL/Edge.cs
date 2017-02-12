@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace YAGL
 {
@@ -122,6 +123,17 @@ namespace YAGL
         public override string ToString()
         {
             return string.Format("{{ {0}, {1} }}", _end1, _end2);
+        }
+
+        /// <summary>
+        /// The function <see cref="IsAdjacentTo(Edge{TVertex})"/> determine whether the parameter <paramref name="otherEdge"/> is adjacent to this instance.
+        /// Meaning if they share a common end vertex.
+        /// </summary>
+        /// <param name="otherEdge">The other <see cref="Edge{TVertex}"/> object to determine whether or not this instance is adjacent to.</param>
+        /// <returns><see cref="true"/> if this instance is adjacent to <paramref name="otherEdge"/>, <see cref="false"/> otherwise.</returns>
+        public bool IsAdjacentTo(Edge<TVertex> otherEdge)
+        {
+            return Ends.Intersect(otherEdge.Ends).Any();
         }
     }
 }
