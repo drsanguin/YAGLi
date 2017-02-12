@@ -7,7 +7,7 @@ namespace YAGL
     /// The class <see cref="Edge{TVertex}"/> models the fundamental unit of wich graphs are formed in Graph Theory.
     /// </summary>
     /// <typeparam name="TVertex">The type of the vertices.</typeparam>
-    public class Edge<TVertex>
+    public class Edge<TVertex> where TVertex : IEquatable<TVertex> 
     {
         /// <summary>
         /// The field that store the first of the two <see cref="Edge{TVertex}"/> ends.
