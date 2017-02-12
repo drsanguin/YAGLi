@@ -93,7 +93,7 @@ namespace YAGL
         /// Determine whether the given set of vertices is contained in the set of vertices of this instance.
         /// </summary>
         /// <param name="vertices">The set of vertices for which to check if they are contained in the set of vertices of this instance.</param>
-        /// <returns><see cref="true"/> if each vertex contained in <paramref name="vertices"/> is also contained in tje set of vertices of this instance.</returns>
+        /// <returns><see cref="true"/> if each vertex contained in <paramref name="vertices"/> is also contained in the set of vertices of this instance.</returns>
         bool ContainsVertices(params TVertex[] vertices);
 
         /// <summary>
