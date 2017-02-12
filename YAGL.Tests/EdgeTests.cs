@@ -113,5 +113,13 @@ namespace YAGL.Tests
 
             Check.That(edge1.GetHashCode()).IsNotEqualTo(edge2.GetHashCode());
         }
+
+        [Test]
+        public void Edge_ToString_should_return_the_expected_value()
+        {
+            Edge<string> edge = new Edge<string>("Hello", "World!");
+
+            Check.That(edge.ToString()).IsEqualTo("{ Hello, World! }");
+        }
     }
 }

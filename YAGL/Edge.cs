@@ -114,5 +114,10 @@ namespace YAGL
 
             return hash;
         }
+
+        public override string ToString()
+        {
+            return string.Format("{{ {0}, {1} }}", _end1, _end2);
+        }
     }
 }
