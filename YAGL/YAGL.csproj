@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Edge.cs" />
     <Compile Include="EdgeComparison.cs" />
+    <Compile Include="IModelAGraph.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
