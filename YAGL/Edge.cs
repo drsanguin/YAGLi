@@ -6,18 +6,18 @@ namespace YAGL
     /// <summary>
     /// The class <see cref="Edge{TData}"/> models the fundamental unit of wich graphs are formed in Graph Theory.
     /// </summary>
-    /// <typeparam name="TData">The type of the data that the <see cref="Vertex{TData}"/> store.</typeparam>
+    /// <typeparam name="TData">The type of the vertices.</typeparam>
     public class Edge<TData>
     {
         /// <summary>
         /// The field that store the first of the two <see cref="Edge{TData}"/> ends.
         /// </summary>
-        private Vertex<TData> _end1;
+        private TData _end1;
 
         /// <summary>
         /// The field that store the second of the two <see cref="Edge{TData}"/> ends.
         /// </summary>
-        private Vertex<TData> _end2;
+        private TData _end2;
 
         /// <summary>
         /// <see cref="Edge{TData}"/> class constructor that allow the client to assign the two ends of the <see cref="Edge{TData}"/> object.
@@ -27,7 +27,7 @@ namespace YAGL
         /// <exception cref="ArgumentNullException">
         /// Either if <paramref name="end1"/> or <paramref name="end2"/> is equal to <see cref="null"/>.
         /// </exception>
-        public Edge(Vertex<TData> end1, Vertex<TData> end2)
+        public Edge(TData end1, TData end2)
         {
             if (end1 == null)
             {
@@ -44,9 +44,9 @@ namespace YAGL
         }
 
         /// <summary>
-        /// The <see cref="Vertex{TData}"/> ends.
+        /// The vertices end of this instance.
         /// </summary>
-        public IEnumerable<Vertex<TData>> Ends { get { yield return _end1; yield return _end2; } }
+        public IEnumerable<TData> Ends { get { yield return _end1; yield return _end2; } }
 
         /// <summary>
         /// Determine if the paramter <paramref name="obj"/> is equal to this instance.
@@ -84,7 +84,7 @@ namespace YAGL
                     return haveTheSameFieldsReferences(other);
 
                 case EdgeComparison.IgnoreDirection:
-                    return haveTheSameFieldsReferences(other) || _end1 == other._end2 && _end2 == other._end1;
+                    return haveTheSameFieldsReferences(other) || _end1.Equals(other._end2) && _end2.Equals(other._end1);
 
                 default:
                     throw new ArgumentException(string.Format("Not supported {0} value.", typeof(EdgeComparison)), nameof(comparisonType));
@@ -98,7 +98,7 @@ namespace YAGL
         /// <returns><see cref="true"/> if the parameter <paramref name="other"/> is equal to this instance. <see cref="false"/> otherwise.</returns>
         private bool haveTheSameFieldsReferences(Edge<TData> other)
         {
-            return _end1 == other._end1 && _end2 == other._end2;
+            return _end1.Equals(other._end1) && _end2.Equals(other._end2);
         }
 
         /// <summary>
