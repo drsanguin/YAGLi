@@ -115,6 +115,10 @@ namespace YAGL
             return hash;
         }
 
+        /// <summary>
+        /// Return the <see cref="string"/> representation of the current <see cref="Edge{TVertex}"/>instance.
+        /// </summary>
+        /// <returns>The <see cref="string"/> representation of the current <see cref="Edge{TVertex}"/>instance.</returns>
         public override string ToString()
         {
             return string.Format("{{ {0}, {1} }}", _end1, _end2);
