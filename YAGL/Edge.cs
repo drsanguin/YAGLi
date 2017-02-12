@@ -135,5 +135,31 @@ namespace YAGL
         {
             return Ends.Intersect(otherEdge.Ends).Any();
         }
+
+        /// <summary>
+        /// The method <see cref="AreAdjacent(Edge{TVertex}[])"/> determine if the collection of <see cref="Edge{TVertex}"/> objects <paramref name="edges"/> are adjacent or not.
+        /// </summary>
+        /// <param name="edges">The collection of <see cref="Edge{TVertex}"/> objects to determine if they are adjacent or not.</param>
+        /// <returns><see cref="true"/> if the collection of <see cref="Edge{TVertex}"/> objects <paramref name="edges"/> are adjacent, <see cref="false"/> otherwise.</returns>
+        public static bool AreAdjacent(params Edge<TVertex>[] edges)
+        {
+            foreach (var edge1 in edges)
+            {
+                foreach (var edge2 in edges)
+                {
+                    if (ReferenceEquals(edge1, edge2))
+                    {
+                        continue;
+                    }
+
+                    if (!edge1.IsAdjacentTo(edge2))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
     }
 }
