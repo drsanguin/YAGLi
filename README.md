@@ -1,2 +1,2 @@
-# YAGL
+# YAGLi
 Yet Another Graph Library
