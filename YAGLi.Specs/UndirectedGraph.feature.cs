@@ -17,7 +17,8 @@ namespace YAGLi.Specs
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("UndirectedGraph", SourceFile="UndirectedGraph.feature", SourceLine=0)]
+    [NUnit.Framework.TestFixtureAttribute()]
+    [NUnit.Framework.DescriptionAttribute("UndirectedGraph")]
     public partial class UndirectedGraphFeature
     {
         
@@ -26,7 +27,7 @@ namespace YAGLi.Specs
 #line 1 "UndirectedGraph.feature"
 #line hidden
         
-        [TechTalk.SpecRun.FeatureInitialize()]
+        [NUnit.Framework.TestFixtureSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
@@ -34,18 +35,19 @@ namespace YAGLi.Specs
             testRunner.OnFeatureStart(featureInfo);
         }
         
-        [TechTalk.SpecRun.FeatureCleanup()]
+        [NUnit.Framework.TestFixtureTearDownAttribute()]
         public virtual void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
         
+        [NUnit.Framework.SetUpAttribute()]
         public virtual void TestInitialize()
         {
         }
         
-        [TechTalk.SpecRun.ScenarioCleanup()]
+        [NUnit.Framework.TearDownAttribute()]
         public virtual void ScenarioTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -61,7 +63,8 @@ namespace YAGLi.Specs
             testRunner.CollectScenarioErrors();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Create a undirected graph who disallow loops and parallel edges", SourceLine=2)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Create a undirected graph who disallow loops and parallel edges")]
         public virtual void CreateAUndirectedGraphWhoDisallowLoopsAndParallelEdges()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create a undirected graph who disallow loops and parallel edges", ((string[])(null)));
@@ -125,7 +128,8 @@ this.ScenarioSetup(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Create a undirected graph who disallow loops and allow parallel edges", SourceLine=25)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Create a undirected graph who disallow loops and allow parallel edges")]
         public virtual void CreateAUndirectedGraphWhoDisallowLoopsAndAllowParallelEdges()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create a undirected graph who disallow loops and allow parallel edges", ((string[])(null)));
@@ -191,7 +195,8 @@ this.ScenarioSetup(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Create a undirected graph who allow loops and disallow parallel edges", SourceLine=49)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Create a undirected graph who allow loops and disallow parallel edges")]
         public virtual void CreateAUndirectedGraphWhoAllowLoopsAndDisallowParallelEdges()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create a undirected graph who allow loops and disallow parallel edges", ((string[])(null)));
@@ -257,7 +262,8 @@ this.ScenarioSetup(scenarioInfo);
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Create a undirected graph who allow loops and parallel edges", SourceLine=73)]
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Create a undirected graph who allow loops and parallel edges")]
         public virtual void CreateAUndirectedGraphWhoAllowLoopsAndParallelEdges()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create a undirected graph who allow loops and parallel edges", ((string[])(null)));
@@ -323,12 +329,6 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.And("the edges", ((string)(null)), table16, "And ");
 #line hidden
             this.ScenarioCleanup();
-        }
-        
-        [TechTalk.SpecRun.TestRunCleanup()]
-        public virtual void TestRunCleanup()
-        {
-            TechTalk.SpecFlow.TestRunnerManager.GetTestRunner().OnTestRunEnd();
         }
     }
 }
