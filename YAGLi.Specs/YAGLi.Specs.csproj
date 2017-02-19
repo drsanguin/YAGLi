@@ -6,8 +6,8 @@
     <ProjectGuid>{4E422F4F-F67F-4FB6-9C5E-EAB895FDE2ED}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>YAGL.Specs</RootNamespace>
-    <AssemblyName>YAGL.Specs</AssemblyName>
+    <RootNamespace>YAGLi.Specs</RootNamespace>
+    <AssemblyName>YAGLi.Specs</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -91,9 +91,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\YAGL\YAGL.csproj">
+    <ProjectReference Include="..\YAGLi\YAGLi.csproj">
       <Project>{55700075-41D2-415B-9D3E-C9D76394243F}</Project>
-      <Name>YAGL</Name>
+      <Name>YAGLi</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

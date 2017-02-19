@@ -7,8 +7,8 @@
     <ProjectGuid>{55700075-41D2-415B-9D3E-C9D76394243F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>YAGL</RootNamespace>
-    <AssemblyName>YAGL</AssemblyName>
+    <RootNamespace>YAGLi</RootNamespace>
+    <AssemblyName>YAGLi</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

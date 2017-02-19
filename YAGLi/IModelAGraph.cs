@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace YAGL
+namespace YAGLi
 {
     /// <summary>
     /// The interface <see cref="IModelAGraph{TVertex}"/> represent a generic graph object from Graph Theory.

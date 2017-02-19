@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace YAGL
+namespace YAGLi
 {
     /// <summary>
     /// The class <see cref="Edge{TVertex}"/> models the fundamental unit of wich graphs are formed in Graph Theory.

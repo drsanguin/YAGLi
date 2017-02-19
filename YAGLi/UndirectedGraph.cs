@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace YAGL
+namespace YAGLi
 {
     /// <summary>
     /// The class <see cref="UndirectedGraph{TVertex}"/> models graph in which edges have no direction.

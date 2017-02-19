@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using TechTalk.SpecFlow;
 
-namespace YAGL.Specs
+namespace YAGLi.Specs
 {
     [Binding]
     public class UndirectedGraphSteps

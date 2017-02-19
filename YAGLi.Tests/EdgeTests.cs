@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using System;
 
-namespace YAGL.Tests
+namespace YAGLi.Tests
 {
     [TestFixture]
     public class EdgeTests

@@ -1,4 +1,4 @@
-﻿namespace YAGL
+﻿namespace YAGLi
 {
     public enum EdgeComparison
     {

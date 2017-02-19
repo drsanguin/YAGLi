@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace YAGL
+namespace YAGLi
 {
     public static class EdgeEqualityComparers<TVertex> where TVertex : IEquatable<TVertex>
     {

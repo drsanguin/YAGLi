@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YAGL.Tests
+namespace YAGLi.Tests
 {
     [TestFixture]
     public class UndirectedGraphTests
