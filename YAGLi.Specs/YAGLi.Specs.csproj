@@ -63,6 +63,13 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UndirectedGraphAnalysis.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UndirectedGraphAnalysis.feature</DependentUpon>
+    </Compile>
+    <Compile Include="UndirectedGraphAnalysisSteps.cs" />
+    <Compile Include="UndirectedGraphContext.cs" />
     <Compile Include="UndirectedGraphCreation.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -75,6 +82,10 @@
     <None Include="Default.srprofile" />
     <None Include="packages.config" />
     <None Include="runtests.cmd" />
+    <None Include="UndirectedGraphAnalysis.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>UndirectedGraphAnalysis.feature.cs</LastGenOutput>
+    </None>
     <None Include="UndirectedGraphCreation.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>UndirectedGraphCreation.feature.cs</LastGenOutput>

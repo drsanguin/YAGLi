@@ -7,62 +7,62 @@ namespace YAGLi.Specs
     [Binding]
     public class UndirectedGraphCreationSteps
     {
-        private bool _allowLoops;
-        private bool _allowParalleleEdges;
-        private List<string> _givenVertices;
-        private Dictionary<string, Edge<string>> _givenEdges;
+        private readonly UndirectedGraphContext _context;
 
-        UndirectedGraph<string> _graph;
+        public UndirectedGraphCreationSteps(UndirectedGraphContext context)
+        {
+            _context = context;
+        }
 
         [Given(@"the property disallow loops")]
         public void GivenThePropertyDisallowLoops()
         {
-            _allowLoops = false;
+            _context.AllowLoops = false;
         }
         
         [Given(@"the property disallow parallel edges")]
         public void GivenThePropertyDisallowParallelEdges()
         {
-            _allowParalleleEdges = false;
+            _context.AllowParallelEdges = false;
         }
         
         [Given(@"the vertices")]
         public void GivenTheVerticesAnd(Table table)
         {
-            _givenVertices = new List<string>(table.RowCount);
+            _context.GivenVertices = new List<string>(table.RowCount);
 
             foreach (var row in table.Rows)
             {
-                _givenVertices.Add(row[0]);
+                _context.GivenVertices.Add(row[0]);
             }
         }
         
         [Given(@"the edges")]
         public void GivenTheEdges(Table table)
         {
-            _givenEdges = new Dictionary<string, Edge<string>>(table.RowCount);
+            _context.GivenEdges = new Dictionary<string, Edge<string>>(table.RowCount);
             foreach (var row in table.Rows)
             {
-                _givenEdges.Add(row[0], new Edge<string>(row[1], row[2]));
+                _context.GivenEdges.Add(row[0], new Edge<string>(row[1], row[2]));
             }
         }
         
         [Given(@"the property allow parallel edges")]
         public void GivenThePropertyAllowParallelEdges()
         {
-            _allowParalleleEdges = true;
+            _context.AllowParallelEdges = true;
         }
 
         [Given(@"the property allow loops")]
         public void GivenThePropertyAllowLoops()
         {
-            _allowLoops = true;
+            _context.AllowLoops = true;
         }
         
         [When(@"I create a new undirected graph with them")]
         public void WhenICreateANewUndirectedGraphWithThem()
         {
-            _graph = new UndirectedGraph<string>(_allowLoops, _allowParalleleEdges, _givenEdges.Values, _givenVertices);
+            _context.Graph = new UndirectedGraph<string>(_context.AllowLoops, _context.AllowParallelEdges, _context.GivenEdges.Values, _context.GivenVertices);
         }
         
         [Then(@"he should contains the vertices")]
@@ -75,7 +75,7 @@ namespace YAGLi.Specs
                 expectedVertices.Add(row[0]);
             }
 
-            Check.That(_graph.Vertices).ContainsExactly(expectedVertices);
+            Check.That(_context.Graph.Vertices).ContainsExactly(expectedVertices);
         }
         
         [Then(@"the edges")]
@@ -85,10 +85,10 @@ namespace YAGLi.Specs
 
             foreach (var row in table.Rows)
             {
-                expectedEdges.Add(_givenEdges[row[0]]);
+                expectedEdges.Add(_context.GivenEdges[row[0]]);
             }
 
-            Check.That(_graph.Edges).ContainsExactly(expectedEdges);
+            Check.That(_context.Graph.Edges).ContainsExactly(expectedEdges);
         }
     }
 }

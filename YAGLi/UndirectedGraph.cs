@@ -137,9 +137,27 @@ namespace YAGLi
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// The method <see cref="AdjacentEdgesOf(Edge{TVertex})"/> get the edges contained in this instance that are adjacent to the parameter <paramref name="edge"/>.
+        /// First, the function will look if the parameter <paramref name="edge"/> is contained in this instance.
+        /// If the graph allow parallel edges, then the edges comparison will be by reference. If not, the edges will be compared using the method <see cref="Edge{TVertex}.Equals(Edge{TVertex}, EdgeComparison)"/> with the value <see cref="EdgeComparison.IgnoreDirection"/>.
+        /// </summary>
+        /// <param name="edge">The edge for which to search the adjacent edges contained in this instance.</param>
+        /// <returns>The edges contained in this instance that are adjacent to the parameter <paramref name="edge"/></returns>
         public IEnumerable<Edge<TVertex>> AdjacentEdgesOf(Edge<TVertex> edge)
         {
-            throw new NotImplementedException();
+            Func<Edge<TVertex>, Edge<TVertex>, bool> predicate = (AllowParallelEdges) ? 
+                new Func<Edge<TVertex>, Edge<TVertex>, bool>((x, y) => ReferenceEquals(x, y)) : 
+                (x, y) => x.Equals(y, EdgeComparison.IgnoreDirection);
+
+            if (!Edges.Any(x => predicate(x, edge)))
+            {
+                return Enumerable.Empty<Edge<TVertex>>();
+            }
+            else
+            {
+                return Edges.Where(x => !predicate(edge, x) && x.IsAdjacentTo(edge));
+            }
         }
 
         public IEnumerable<TVertex> AdjacentVerticesOf(TVertex vertex)
