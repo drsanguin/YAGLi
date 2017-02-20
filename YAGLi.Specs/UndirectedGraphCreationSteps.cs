@@ -5,7 +5,7 @@ using TechTalk.SpecFlow;
 namespace YAGLi.Specs
 {
     [Binding]
-    public class UndirectedGraphSteps
+    public class UndirectedGraphCreationSteps
     {
         private bool _allowLoops;
         private bool _allowParalleleEdges;
