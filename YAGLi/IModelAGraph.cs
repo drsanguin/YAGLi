@@ -57,7 +57,7 @@ namespace YAGLi
         /// <param name="edges">The set of edges to determine if they are adjacent.</param>
         /// <returns><see cref="true"/> if the set of edges <paramref name="edges"/> are adjacent in this instance, <see cref="false"/> otherwise.</returns>
         /// <remarks>Each <see cref="Edge{TVertex}"/> object contained in <paramref name="edges"/> is expected to be contained in the set of edges of this instance.</remarks>
-        bool AreEdgesAdjacent(params Edge<TVertex>[] edges);
+        bool AreEdgesAdjacent(IEnumerable<Edge<TVertex>> edges);
 
         /// <summary>
         /// Determine whether the given set of vertices <paramref name="vertices"/> are adjacent in this instance.
@@ -66,7 +66,7 @@ namespace YAGLi
         /// <param name="vertices">The vertices to determine if they are adjacent in this instance.</param>
         /// <returns><see cref="true"/> if the vertices are adjacent in this instance, <see cref="false"/> otherwise.</returns>
         /// <remarks>Each vertex contained in <paramref name="vertices"/> is expected to be contained in the set of vertices of this instance.</remarks>
-        bool AreVerticesAdjacent(params TVertex[] vertices);
+        bool AreVerticesAdjacent(IEnumerable<TVertex> vertices);
 
         /// <summary>
         /// Determine whether this instance contains the edge <paramref name="edge"/>.
@@ -80,7 +80,7 @@ namespace YAGLi
         /// </summary>
         /// <param name="edges">The edges to determine if they are contained in this instance.</param>
         /// <returns><see cref="true"/> if each <see cref="Edge{TVertex}"/> object of the parameter <paramref name="edges"/> is contained in the set of edges of this instance, <see cref="false"/> otherwise.</returns>
-        bool ContainsEdges(params Edge<TVertex>[] edges);
+        bool ContainsEdges(IEnumerable<Edge<TVertex>> edges);
 
         /// <summary>
         /// Determine whether this instance contains the given vertex.
@@ -94,7 +94,7 @@ namespace YAGLi
         /// </summary>
         /// <param name="vertices">The set of vertices for which to check if they are contained in the set of vertices of this instance.</param>
         /// <returns><see cref="true"/> if each vertex contained in <paramref name="vertices"/> is also contained in the set of vertices of this instance.</returns>
-        bool ContainsVertices(params TVertex[] vertices);
+        bool ContainsVertices(IEnumerable<TVertex> vertices);
 
         /// <summary>
         /// Get the degree of a given vertex.

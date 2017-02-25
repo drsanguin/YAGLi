@@ -122,7 +122,7 @@ namespace YAGLi
             throw new NotImplementedException();
         }
 
-        public UndirectedGraph<TVertex> AddEdges(params Edge<TVertex>[] edges)
+        public UndirectedGraph<TVertex> AddEdges(IEnumerable<Edge<TVertex>> edges)
         {
             throw new NotImplementedException();
         }
@@ -132,7 +132,7 @@ namespace YAGLi
             throw new NotImplementedException();
         }
 
-        public UndirectedGraph<TVertex> AddVertices(params TVertex[] vertices)
+        public UndirectedGraph<TVertex> AddVertices(IEnumerable<TVertex> vertices)
         {
             throw new NotImplementedException();
         }
@@ -165,12 +165,12 @@ namespace YAGLi
             return _incidentEdges[vertex].SelectMany(edge => edge.Ends).Where(v => !v.Equals(vertex));
         }
 
-        public bool AreEdgesAdjacent(params Edge<TVertex>[] edges)
+        public bool AreEdgesAdjacent(IEnumerable<Edge<TVertex>> edges)
         {
             throw new NotImplementedException();
         }
 
-        public bool AreVerticesAdjacent(params TVertex[] vertices)
+        public bool AreVerticesAdjacent(IEnumerable<TVertex> vertices)
         {
             throw new NotImplementedException();
         }
@@ -180,7 +180,7 @@ namespace YAGLi
             throw new NotImplementedException();
         }
 
-        public bool ContainsEdges(params Edge<TVertex>[] edges)
+        public bool ContainsEdges(IEnumerable<Edge<TVertex>> edges)
         {
             throw new NotImplementedException();
         }
@@ -190,7 +190,7 @@ namespace YAGLi
             throw new NotImplementedException();
         }
 
-        public bool ContainsVertices(params TVertex[] vertices)
+        public bool ContainsVertices(IEnumerable<TVertex> vertices)
         {
             throw new NotImplementedException();
         }
