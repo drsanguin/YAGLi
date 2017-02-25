@@ -1,5 +1,6 @@
 ﻿using NFluent;
 using System.Collections.Generic;
+using System.Linq;
 using TechTalk.SpecFlow;
 
 namespace YAGLi.Specs
@@ -50,6 +51,14 @@ namespace YAGLi.Specs
             List<Edge<string>> expectedEdges = extractExpectedEdges(table);
 
             Check.That(_context.Graph.AdjacentEdgesOf(edge)).ContainsExactly(expectedEdges);
+        }
+
+        [Then(@"the adjacent vertices of the vertex ""(.*)"" should be")]
+        public void TheAdjacentVerticesOfTheVertexShouldBe(string vertexId, Table table)
+        {
+            IEnumerable<string> expectedVertices = table.Rows.Select(row => row["Name"]);
+
+            Check.That(_context.Graph.AdjacentVerticesOf(vertexId)).ContainsExactly(expectedVertices);
         }
     }
 }

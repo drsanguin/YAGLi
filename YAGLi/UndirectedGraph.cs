@@ -162,7 +162,7 @@ namespace YAGLi
 
         public IEnumerable<TVertex> AdjacentVerticesOf(TVertex vertex)
         {
-            throw new NotImplementedException();
+            return _incidentEdges[vertex].SelectMany(edge => edge.Ends).Where(v => !v.Equals(vertex));
         }
 
         public bool AreEdgesAdjacent(params Edge<TVertex>[] edges)
