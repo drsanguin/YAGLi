@@ -390,6 +390,67 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Get the adjacent vertices of a vertex not contained in a UndirectedGraph")]
+        public virtual void GetTheAdjacentVerticesOfAVertexNotContainedInAUndirectedGraph()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the adjacent vertices of a vertex not contained in a UndirectedGraph", ((string[])(null)));
+#line 111
+this.ScenarioSetup(scenarioInfo);
+#line 112
+ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 113
+ testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name"});
+            table14.AddRow(new string[] {
+                        "v0"});
+            table14.AddRow(new string[] {
+                        "v1"});
+            table14.AddRow(new string[] {
+                        "v2"});
+            table14.AddRow(new string[] {
+                        "v3"});
+            table14.AddRow(new string[] {
+                        "v4"});
+#line 114
+ testRunner.And("the vertices", ((string)(null)), table14, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name",
+                        "End1",
+                        "End2"});
+            table15.AddRow(new string[] {
+                        "e0",
+                        "v0",
+                        "v1"});
+            table15.AddRow(new string[] {
+                        "e1",
+                        "v1",
+                        "v4"});
+            table15.AddRow(new string[] {
+                        "e2",
+                        "v4",
+                        "v4"});
+            table15.AddRow(new string[] {
+                        "e3",
+                        "v4",
+                        "v3"});
+            table15.AddRow(new string[] {
+                        "e4",
+                        "v4",
+                        "v3"});
+#line 121
+ testRunner.And("the edges", ((string)(null)), table15, "And ");
+#line 128
+ testRunner.When("I create a new undirected graph with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 129
+ testRunner.Then("the adjacent vertices of the vertex \"v5\" should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

@@ -60,5 +60,12 @@ namespace YAGLi.Specs
 
             Check.That(_context.Graph.AdjacentVerticesOf(vertexId)).ContainsExactly(expectedVertices);
         }
+
+        [Then(@"the adjacent vertices of the vertex ""(.*)"" should be empty")]
+        public void ThenTheAdjacentVerticesOfTheVertexShouldBeEmpty(string p0)
+        {
+            Check.That(_context.Graph.AdjacentVerticesOf(p0)).IsEmpty();
+        }
+
     }
 }
