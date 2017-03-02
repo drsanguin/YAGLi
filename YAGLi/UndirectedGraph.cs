@@ -160,6 +160,12 @@ namespace YAGLi
             }
         }
 
+        /// <summary>
+        /// The method <see cref="AdjacentVerticesOf(TVertex)"/> returns the vertices contained in this instance that are adjacent to the parameter <paramref name="vertex"/>.
+        /// If the parameter <paramref name="vertex"/> is not contained in this instance, a empty collection is returned.
+        /// </summary>
+        /// <param name="vertex">The vertex for wich to search the adjacent vertices that are contained in this instance.</param>
+        /// <returns>The vertices contained in this instance that are adjacent to the parameter <paramref name="vertex"/> if it is contained in this instance. Otherwise, a emtpy collection.</returns>
         public IEnumerable<TVertex> AdjacentVerticesOf(TVertex vertex)
         {
             if (!Vertices.Contains(vertex))
