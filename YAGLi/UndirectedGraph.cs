@@ -223,12 +223,22 @@ namespace YAGLi
 
         public IEnumerable<Edge<TVertex>> IncidentEdgesOf(TVertex vertex)
         {
-            throw new NotImplementedException();
+            if (!Vertices.Contains(vertex))
+            {
+                return Enumerable.Empty<Edge<TVertex>>();
+            }
+
+            return _incidentEdges[vertex];
         }
 
         public IEnumerable<TVertex> IncidentVerticesOf(Edge<TVertex> edge)
         {
-            throw new NotImplementedException();
+            if (!_incidentVertices.ContainsKey(edge))
+            {
+                return Enumerable.Empty<TVertex>();
+            }
+
+            return _incidentVertices[edge];
         }
 
         public int InDegreeOf(TVertex vertex)

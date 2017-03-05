@@ -72,5 +72,40 @@ namespace YAGLi.Specs
         {
             Check.That(_context.Graph.DegreeOf(vertex)).IsEqualTo(expectedDegree);
         }
+
+        [Then(@"the incident edges of the vertex ""(.*)"" should be")]
+        public void ThenTheIncidentEdgesOfTheVertexShouldBe(string vertex, Table table)
+        {
+            IEnumerable<Edge<string>> expectedEdges = table
+                .Rows
+                .Select(row => row["Name"])
+                .Select(edgeName => _context.GivenEdges[edgeName]);
+
+            Check.That(_context.Graph.IncidentEdgesOf(vertex)).ContainsExactly(expectedEdges);
+        }
+
+        [Then(@"the incident edges of the vertex ""(.*)"" should be empty")]
+        public void ThenTheIncidentEdgesOfTheVertexShouldBeEmpty(string vertex)
+        {
+            Check.That(_context.Graph.IncidentEdgesOf(vertex)).IsEmpty();
+        }
+
+        [Then(@"the incident vertices of the edge ""(.*)"" should be")]
+        public void ThenTheIncidentVerticesOfTheEdgeShouldBe(string edgeName, Table table)
+        {
+            Edge<string> edge = _context.GivenEdges[edgeName];
+
+            IEnumerable<string> expectedEdges = table.Rows.Select(row => row["Name"]);
+
+            Check.That(_context.Graph.IncidentVerticesOf(edge)).ContainsExactly(expectedEdges);
+        }
+
+        [Then(@"the incident vertices of the edge with the ends ""(.*)"" and ""(.*)"" should be empty")]
+        public void ThenTheIncidentVerticesOfTheEdgeWithTheEndsAndShouldBeEmpty(string end1, string end2)
+        {
+            Edge<string> edge = new Edge<string>(end1, end2);
+
+            Check.That(_context.Graph.IncidentVerticesOf(edge)).IsEmpty();
+        }
     }
 }
