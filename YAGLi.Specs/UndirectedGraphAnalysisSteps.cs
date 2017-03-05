@@ -95,9 +95,9 @@ namespace YAGLi.Specs
         {
             Edge<string> edge = _context.GivenEdges[edgeName];
 
-            IEnumerable<string> expectedEdges = table.Rows.Select(row => row["Name"]);
+            IEnumerable<string> expectedVertices = table.Rows.Select(row => row["Name"]);
 
-            Check.That(_context.Graph.IncidentVerticesOf(edge)).ContainsExactly(expectedEdges);
+            Check.That(_context.Graph.IncidentVerticesOf(edge)).ContainsExactly(expectedVertices);
         }
 
         [Then(@"the incident vertices of the edge with the ends ""(.*)"" and ""(.*)"" should be empty")]
