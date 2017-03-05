@@ -102,7 +102,10 @@ namespace YAGLi
         /// </summary>
         /// <param name="vertex">The vertex for wich the degree will be comput.</param>
         /// <returns>The degree of the parameter <paramref name="vertex"/>.</returns>
-        /// <remarks>The parameter <paramref name="vertex"/> is expected to be contained in this instance.</remarks>
+        /// <remarks>
+        /// The parameter <paramref name="vertex"/> is expected to be contained in this instance.
+        /// By convention the loops count twice.
+        /// </remarks>
         int DegreeOf(TVertex vertex);
 
         /// <summary>

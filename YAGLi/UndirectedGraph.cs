@@ -78,7 +78,12 @@ namespace YAGLi
                 }
 
                 incidentEdges[end1] = Enumerable.Concat(incidentEdges[end1], Enumerable.Repeat(edge, 1));
-                incidentEdges[end2] = Enumerable.Concat(incidentEdges[end2], Enumerable.Repeat(edge, 1));
+
+                if (!end1.Equals(end2))
+                {
+                    incidentEdges[end2] = Enumerable.Concat(incidentEdges[end2], Enumerable.Repeat(edge, 1));
+                }
+                
                 incidentVertices[edge] = new HashSet<TVertex>(edge.Ends);
             }
 
@@ -208,7 +213,12 @@ namespace YAGLi
 
         public int DegreeOf(TVertex vertex)
         {
-            throw new NotImplementedException();
+            if(!Vertices.Contains(vertex))
+            {
+                return -1;
+            }
+
+            return _incidentEdges[vertex].Sum(edge => (edge.Ends.First().Equals(edge.Ends.Last())) ? 2 : 1);
         }
 
         public IEnumerable<Edge<TVertex>> IncidentEdgesOf(TVertex vertex)

@@ -451,6 +451,128 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Get the degree of a vertex not contained in the graph")]
+        public virtual void GetTheDegreeOfAVertexNotContainedInTheGraph()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the degree of a vertex not contained in the graph", ((string[])(null)));
+#line 131
+this.ScenarioSetup(scenarioInfo);
+#line 132
+ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 133
+ testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name"});
+            table16.AddRow(new string[] {
+                        "v0"});
+            table16.AddRow(new string[] {
+                        "v1"});
+            table16.AddRow(new string[] {
+                        "v2"});
+            table16.AddRow(new string[] {
+                        "v3"});
+            table16.AddRow(new string[] {
+                        "v4"});
+#line 134
+ testRunner.And("the vertices", ((string)(null)), table16, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name",
+                        "End1",
+                        "End2"});
+            table17.AddRow(new string[] {
+                        "e0",
+                        "v0",
+                        "v1"});
+            table17.AddRow(new string[] {
+                        "e1",
+                        "v1",
+                        "v4"});
+            table17.AddRow(new string[] {
+                        "e2",
+                        "v4",
+                        "v4"});
+            table17.AddRow(new string[] {
+                        "e3",
+                        "v4",
+                        "v3"});
+            table17.AddRow(new string[] {
+                        "e4",
+                        "v4",
+                        "v3"});
+#line 141
+ testRunner.And("the edges", ((string)(null)), table17, "And ");
+#line 148
+ testRunner.When("I create a new undirected graph with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 149
+ testRunner.Then("the degree of the vertex \"v5\" should be -1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Get the degree of a vertex contained in the graph")]
+        public virtual void GetTheDegreeOfAVertexContainedInTheGraph()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the degree of a vertex contained in the graph", ((string[])(null)));
+#line 151
+this.ScenarioSetup(scenarioInfo);
+#line 152
+ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 153
+ testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name"});
+            table18.AddRow(new string[] {
+                        "v0"});
+            table18.AddRow(new string[] {
+                        "v1"});
+            table18.AddRow(new string[] {
+                        "v2"});
+            table18.AddRow(new string[] {
+                        "v3"});
+            table18.AddRow(new string[] {
+                        "v4"});
+#line 154
+ testRunner.And("the vertices", ((string)(null)), table18, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name",
+                        "End1",
+                        "End2"});
+            table19.AddRow(new string[] {
+                        "e0",
+                        "v0",
+                        "v1"});
+            table19.AddRow(new string[] {
+                        "e1",
+                        "v1",
+                        "v4"});
+            table19.AddRow(new string[] {
+                        "e2",
+                        "v4",
+                        "v4"});
+            table19.AddRow(new string[] {
+                        "e3",
+                        "v4",
+                        "v3"});
+            table19.AddRow(new string[] {
+                        "e4",
+                        "v4",
+                        "v3"});
+#line 161
+ testRunner.And("the edges", ((string)(null)), table19, "And ");
+#line 168
+ testRunner.When("I create a new undirected graph with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 169
+ testRunner.Then("the degree of the vertex \"v4\" should be 5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

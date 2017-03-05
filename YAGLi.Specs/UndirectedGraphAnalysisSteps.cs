@@ -67,5 +67,10 @@ namespace YAGLi.Specs
             Check.That(_context.Graph.AdjacentVerticesOf(p0)).IsEmpty();
         }
 
+        [Then(@"the degree of the vertex ""(.*)"" should be (.*)")]
+        public void ThenTheDegreeOfTheVertexShouldBe(string vertex, int expectedDegree)
+        {
+            Check.That(_context.Graph.DegreeOf(vertex)).IsEqualTo(expectedDegree);
+        }
     }
 }
