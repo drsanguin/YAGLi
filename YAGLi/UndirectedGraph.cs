@@ -32,16 +32,6 @@ namespace YAGLi
         public static readonly UndirectedGraph<TVertex> EmptyWhoDisallowLoopsAndParallelEdges = new UndirectedGraph<TVertex>(false, false);
 
         /// <summary>
-        /// Readonly field who store the piece of intelligence about whether this instance allow loops. 
-        /// </summary>
-        private readonly bool _allowLoops;
-
-        /// <summary>
-        /// Readonly field who store the piece of intelligence about whether this instance allow parallel edges.
-        /// </summary>
-        private readonly bool _allowParallelEdges;
-
-        /// <summary>
         /// Readonly field who store the incident edges of each vertex contained in this instance.
         /// </summary>
         private readonly IReadOnlyDictionary<TVertex, IEnumerable<Edge<TVertex>>> _incidentEdges;
@@ -55,14 +45,14 @@ namespace YAGLi
 
         public UndirectedGraph(bool allowLoops, bool allowParallelEdges, IEnumerable<Edge<TVertex>> edges, IEnumerable<TVertex> vertices)
         {
-            _allowLoops = allowLoops;
-            _allowParallelEdges = allowParallelEdges;
+            AllowLoops = allowLoops;
+            AllowParallelEdges = allowParallelEdges;
 
             Dictionary <TVertex, IEnumerable<Edge<TVertex>>> incidentEdges = new Dictionary<TVertex, IEnumerable<Edge<TVertex>>>();
             Dictionary<Edge<TVertex>, IEnumerable<TVertex>> incidentVertices = new Dictionary<Edge<TVertex>, IEnumerable<TVertex>>(
-                (_allowParallelEdges) ? EdgeEqualityComparers<TVertex>.IgnoreDirectionAndAllowParallelEdges : EdgeEqualityComparers<TVertex>.IgnoreDirectionAndDisallowParallelEdges);
+                (AllowParallelEdges) ? EdgeEqualityComparers<TVertex>.IgnoreDirectionAndAllowParallelEdges : EdgeEqualityComparers<TVertex>.IgnoreDirectionAndDisallowParallelEdges);
 
-            foreach (var edge in ((!_allowLoops)? edges.Where(edge => !edge.Ends.First().Equals(edge.Ends.Last())) : edges ))
+            foreach (var edge in ((!AllowLoops)? edges.Where(edge => !edge.Ends.First().Equals(edge.Ends.Last())) : edges ))
             {
                 TVertex end1 = edge.Ends.First();
                 TVertex end2 = edge.Ends.Last();
@@ -96,15 +86,15 @@ namespace YAGLi
             _incidentVertices = incidentVertices;
         }
 
-        public bool AllowLoops
-        {
-            get { return _allowLoops; }
-        }
+        /// <summary>
+        /// Piece of intelligence about whether this instance allow loops.
+        /// </summary>
+        public bool AllowLoops { get; }
 
-        public bool AllowParallelEdges
-        {
-            get { return _allowParallelEdges; }
-        }
+        /// <summary>
+        /// Piece of intelligence about whether this instance allow parallel edges.
+        /// </summary>
+        public bool AllowParallelEdges { get; }
 
         public IEnumerable<Edge<TVertex>> Edges
         {
