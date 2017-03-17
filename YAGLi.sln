@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YAGLi", "YAGLi\YAGLi.csproj", "{55700075-41D2-415B-9D3E-C9D76394243F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YAGLi", "src\YAGLi\YAGLi.csproj", "{55700075-41D2-415B-9D3E-C9D76394243F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YAGLi.Tests", "YAGLi.Tests\YAGLi.Tests.csproj", "{38056C7A-9B21-4280-8421-409F1A677B69}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YAGLi.Tests", "tests\YAGLi.Tests\YAGLi.Tests.csproj", "{38056C7A-9B21-4280-8421-409F1A677B69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YAGLi.Specs", "YAGLi.Specs\YAGLi.Specs.csproj", "{4E422F4F-F67F-4FB6-9C5E-EAB895FDE2ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YAGLi.Specs", "tests\YAGLi.Specs\YAGLi.Specs.csproj", "{4E422F4F-F67F-4FB6-9C5E-EAB895FDE2ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
