@@ -294,7 +294,7 @@ Scenario: Get the incident edges of a vertex not contained in a undirected graph
 	Then the incident edges of the vertex "v5" should be empty
 
 Scenario: Get the incident vertices of a edge contained in a undirected graph
-Given the property allow loops
+	Given the property allow loops
 	And the property allow parallel edges
 	And the vertices
 	| Name |
@@ -317,7 +317,7 @@ Given the property allow loops
 	| v4   |
 
 Scenario: Get the incident vertices of a edge not contained in a undirected graph
-Given the property allow loops
+	Given the property allow loops
 	And the property allow parallel edges
 	And the vertices
 	| Name |
@@ -337,7 +337,7 @@ Given the property allow loops
 	Then the incident vertices of the edge with the ends "v0" and "v4" should be empty
 
 Scenario: Get the incident vertices of a loop edge contained in a undirected graph
-Given the property allow loops
+	Given the property allow loops
 	And the property allow parallel edges
 	And the vertices
 	| Name |

@@ -959,7 +959,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 296
 this.ScenarioSetup(scenarioInfo);
 #line 297
-testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 298
  testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
@@ -1027,7 +1027,7 @@ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFl
 #line 319
 this.ScenarioSetup(scenarioInfo);
 #line 320
-testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 321
  testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
@@ -1088,7 +1088,7 @@ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFl
 #line 339
 this.ScenarioSetup(scenarioInfo);
 #line 340
-testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 341
  testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
