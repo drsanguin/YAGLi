@@ -32,6 +32,11 @@ namespace YAGLi
         public static readonly UndirectedGraph<TVertex> EmptyWhoDisallowLoopsAndParallelEdges = new UndirectedGraph<TVertex>(false, false);
 
         /// <summary>
+        /// Readonly field who hold the edge comparison logic specific of this instance.
+        /// </summary>
+        private readonly IEqualityComparer<Edge<TVertex>> _edgesComparer;
+
+        /// <summary>
         /// Readonly field who store the incident edges of each vertex contained in this instance.
         /// </summary>
         private readonly IReadOnlyDictionary<TVertex, IEnumerable<Edge<TVertex>>> _incidentEdges;
@@ -48,9 +53,10 @@ namespace YAGLi
             AllowLoops = allowLoops;
             AllowParallelEdges = allowParallelEdges;
 
+            _edgesComparer = (AllowParallelEdges) ? EdgeEqualityComparers<TVertex>.IgnoreDirectionAndAllowParallelEdges : EdgeEqualityComparers<TVertex>.IgnoreDirectionAndDisallowParallelEdges;
+
             Dictionary <TVertex, IList<Edge<TVertex>>> incidentEdges = new Dictionary<TVertex, IList<Edge<TVertex>>>();
-            Dictionary<Edge<TVertex>, IEnumerable<TVertex>> incidentVertices = new Dictionary<Edge<TVertex>, IEnumerable<TVertex>>(
-                (AllowParallelEdges) ? EdgeEqualityComparers<TVertex>.IgnoreDirectionAndAllowParallelEdges : EdgeEqualityComparers<TVertex>.IgnoreDirectionAndDisallowParallelEdges);
+            Dictionary<Edge<TVertex>, IEnumerable<TVertex>> incidentVertices = new Dictionary<Edge<TVertex>, IEnumerable<TVertex>>(_edgesComparer);
 
             foreach (var edge in ((!AllowLoops)? edges.Where(edge => !edge.Ends.First().Equals(edge.Ends.Last())) : edges ))
             {
@@ -141,17 +147,13 @@ namespace YAGLi
         /// <returns>The edges contained in this instance that are adjacent to the parameter <paramref name="edge"/></returns>
         public IEnumerable<Edge<TVertex>> AdjacentEdgesOf(Edge<TVertex> edge)
         {
-            Func<Edge<TVertex>, Edge<TVertex>, bool> predicate = (AllowParallelEdges) ? 
-                new Func<Edge<TVertex>, Edge<TVertex>, bool>((x, y) => ReferenceEquals(x, y)) : 
-                (x, y) => x.Equals(y, EdgeComparison.IgnoreDirection);
-
-            if (!Edges.Any(x => predicate(x, edge)))
+            if (!Edges.Any(x => _edgesComparer.Equals(x, edge)))
             {
                 return Enumerable.Empty<Edge<TVertex>>();
             }
             else
             {
-                return Edges.Where(x => !predicate(edge, x) && x.IsAdjacentTo(edge));
+                return Edges.Where(x => !_edgesComparer.Equals(edge, x) && x.IsAdjacentTo(edge));
             }
         }
 
