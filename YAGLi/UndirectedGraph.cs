@@ -48,7 +48,7 @@ namespace YAGLi
             AllowLoops = allowLoops;
             AllowParallelEdges = allowParallelEdges;
 
-            Dictionary <TVertex, IEnumerable<Edge<TVertex>>> incidentEdges = new Dictionary<TVertex, IEnumerable<Edge<TVertex>>>();
+            Dictionary <TVertex, IList<Edge<TVertex>>> incidentEdges = new Dictionary<TVertex, IList<Edge<TVertex>>>();
             Dictionary<Edge<TVertex>, IEnumerable<TVertex>> incidentVertices = new Dictionary<Edge<TVertex>, IEnumerable<TVertex>>(
                 (AllowParallelEdges) ? EdgeEqualityComparers<TVertex>.IgnoreDirectionAndAllowParallelEdges : EdgeEqualityComparers<TVertex>.IgnoreDirectionAndDisallowParallelEdges);
 
@@ -59,19 +59,19 @@ namespace YAGLi
 
                 if (!incidentEdges.ContainsKey(end1))
                 {
-                    incidentEdges[end1] = Enumerable.Empty<Edge<TVertex>>();
+                    incidentEdges[end1] = new List<Edge<TVertex>>();
                 }
 
                 if (!incidentEdges.ContainsKey(end2))
                 {
-                    incidentEdges[end2] = Enumerable.Empty<Edge<TVertex>>();
+                    incidentEdges[end2] = new List<Edge<TVertex>>();
                 }
 
-                incidentEdges[end1] = Enumerable.Concat(incidentEdges[end1], Enumerable.Repeat(edge, 1));
+                incidentEdges[end1].Add(edge);
 
                 if (!end1.Equals(end2))
                 {
-                    incidentEdges[end2] = Enumerable.Concat(incidentEdges[end2], Enumerable.Repeat(edge, 1));
+                    incidentEdges[end2].Add(edge);
                 }
                 
                 incidentVertices[edge] = new HashSet<TVertex>(edge.Ends);
@@ -79,10 +79,10 @@ namespace YAGLi
 
             foreach (var vertex in vertices.Where(vertex => !incidentEdges.Keys.Contains(vertex)))
             {
-                incidentEdges.Add(vertex, Enumerable.Empty<Edge<TVertex>>());
+                incidentEdges.Add(vertex, new List<Edge<TVertex>>(0));
             }
 
-            _incidentEdges = incidentEdges;
+            _incidentEdges = incidentEdges.ToDictionary(x => x.Key, x => x.Value.AsEnumerable());
             _incidentVertices = incidentVertices;
         }
 
@@ -233,12 +233,12 @@ namespace YAGLi
 
         public int InDegreeOf(TVertex vertex)
         {
-            throw new NotImplementedException();
+            return DegreeOf(vertex);
         }
 
         public int OutDegreeOf(TVertex vertex)
         {
-            throw new NotImplementedException();
+            return DegreeOf(vertex);
         }
     }
 }
