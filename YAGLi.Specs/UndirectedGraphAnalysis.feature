@@ -168,6 +168,86 @@ Scenario: Get the degree of a vertex contained in the graph
 	When I create a new undirected graph with them
 	Then the degree of the vertex "v4" should be 5
 
+Scenario: Get the in degree of a vertex not contained in the graph
+	Given the property allow loops
+	And the property allow parallel edges
+	And the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And the edges
+	| Name | End1 | End2 |
+	| e0   | v0   | v1   |
+	| e1   | v1   | v4   |
+	| e2   | v4   | v4   |
+	| e3   | v4   | v3   |
+	| e4   | v4   | v3   |
+	When I create a new undirected graph with them
+	Then the in degree of the vertex "v5" should be -1
+
+Scenario: Get the in degree of a vertex contained in the graph
+	Given the property allow loops
+	And the property allow parallel edges
+	And the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And the edges
+	| Name | End1 | End2 |
+	| e0   | v0   | v1   |
+	| e1   | v1   | v4   |
+	| e2   | v4   | v4   |
+	| e3   | v4   | v3   |
+	| e4   | v4   | v3   |
+	When I create a new undirected graph with them
+	Then the in degree of the vertex "v4" should be 5
+
+Scenario: Get the out degree of a vertex not contained in the graph
+	Given the property allow loops
+	And the property allow parallel edges
+	And the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And the edges
+	| Name | End1 | End2 |
+	| e0   | v0   | v1   |
+	| e1   | v1   | v4   |
+	| e2   | v4   | v4   |
+	| e3   | v4   | v3   |
+	| e4   | v4   | v3   |
+	When I create a new undirected graph with them
+	Then the out degree of the vertex "v5" should be -1
+
+Scenario: Get the out degree of a vertex contained in the graph
+	Given the property allow loops
+	And the property allow parallel edges
+	And the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And the edges
+	| Name | End1 | End2 |
+	| e0   | v0   | v1   |
+	| e1   | v1   | v4   |
+	| e2   | v4   | v4   |
+	| e3   | v4   | v3   |
+	| e4   | v4   | v3   |
+	When I create a new undirected graph with them
+	Then the out degree of the vertex "v4" should be 5
+
 Scenario: Get the incident edges of a vertex contained in a undirected graph
 	Given the property allow loops
 	And the property allow parallel edges

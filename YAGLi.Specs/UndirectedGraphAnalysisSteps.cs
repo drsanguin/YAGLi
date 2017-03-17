@@ -107,5 +107,17 @@ namespace YAGLi.Specs
 
             Check.That(_context.Graph.IncidentVerticesOf(edge)).IsEmpty();
         }
+
+        [Then(@"the in degree of the vertex ""(.*)"" should be (.*)")]
+        public void ThenTheInDegreeOfTheVertexShouldBe(string p0, int p1)
+        {
+            Check.That(_context.Graph.InDegreeOf(p0)).IsEqualTo(p1);
+        }
+
+        [Then(@"the out degree of the vertex ""(.*)"" should be (.*)")]
+        public void ThenTheOutDegreeOfTheVertexShouldBe(string p0, int p1)
+        {
+            Check.That(_context.Graph.OutDegreeOf(p0)).IsEqualTo(p1);
+        }
     }
 }
