@@ -72,8 +72,9 @@ namespace YAGLi
                     }
 
                     incidentEdges[end].Add(edge);
-                    incidentVertices[edge] = distinctEnds;
                 }
+
+                incidentVertices[edge] = distinctEnds;
             }
 
             foreach (var vertex in vertices.Where(vertex => !incidentEdges.Keys.Contains(vertex)))
