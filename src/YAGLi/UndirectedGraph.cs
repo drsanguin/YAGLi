@@ -58,29 +58,22 @@ namespace YAGLi
             Dictionary <TVertex, IList<Edge<TVertex>>> incidentEdges = new Dictionary<TVertex, IList<Edge<TVertex>>>();
             Dictionary<Edge<TVertex>, IEnumerable<TVertex>> incidentVertices = new Dictionary<Edge<TVertex>, IEnumerable<TVertex>>(_edgesComparer);
 
-            foreach (var edge in ((!AllowLoops)? edges.Where(edge => !edge.Ends.First().Equals(edge.Ends.Last())) : edges ))
+            IEnumerable<Edge<TVertex>> distinctEdges = edges.Distinct(_edgesComparer);
+
+            foreach (var edge in ((!AllowLoops)? distinctEdges.Where(edge => !edge.Ends.First().Equals(edge.Ends.Last())) : distinctEdges))
             {
-                TVertex end1 = edge.Ends.First();
-                TVertex end2 = edge.Ends.Last();
+                IEnumerable<TVertex> distinctEnds = edge.Ends.Distinct();
 
-                if (!incidentEdges.ContainsKey(end1))
+                foreach (var end in distinctEnds)
                 {
-                    incidentEdges[end1] = new List<Edge<TVertex>>();
-                }
+                    if (!incidentEdges.ContainsKey(end))
+                    {
+                        incidentEdges[end] = new List<Edge<TVertex>>();
+                    }
 
-                if (!incidentEdges.ContainsKey(end2))
-                {
-                    incidentEdges[end2] = new List<Edge<TVertex>>();
+                    incidentEdges[end].Add(edge);
+                    incidentVertices[edge] = distinctEnds;
                 }
-
-                incidentEdges[end1].Add(edge);
-
-                if (!end1.Equals(end2))
-                {
-                    incidentEdges[end2].Add(edge);
-                }
-                
-                incidentVertices[edge] = new HashSet<TVertex>(edge.Ends);
             }
 
             foreach (var vertex in vertices.Where(vertex => !incidentEdges.Keys.Contains(vertex)))
