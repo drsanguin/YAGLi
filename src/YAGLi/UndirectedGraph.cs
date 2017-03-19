@@ -58,7 +58,7 @@ namespace YAGLi
             Dictionary <TVertex, IList<Edge<TVertex>>> incidentEdges = new Dictionary<TVertex, IList<Edge<TVertex>>>();
             Dictionary<Edge<TVertex>, IEnumerable<TVertex>> incidentVertices = new Dictionary<Edge<TVertex>, IEnumerable<TVertex>>(_edgesComparer);
 
-            IEnumerable<Edge<TVertex>> distinctEdges = edges.Distinct(_edgesComparer);
+            IEnumerable<Edge<TVertex>> distinctEdges = (AllowParallelEdges) ? edges : edges.Distinct(_edgesComparer);
 
             foreach (var edge in ((!AllowLoops)? distinctEdges.Where(edge => !edge.Ends.First().Equals(edge.Ends.Last())) : distinctEdges))
             {
@@ -141,7 +141,7 @@ namespace YAGLi
         /// <returns>The edges contained in this instance that are adjacent to the parameter <paramref name="edge"/></returns>
         public IEnumerable<Edge<TVertex>> AdjacentEdgesOf(Edge<TVertex> edge)
         {
-            if (!Edges.Contains(edge, _edgesComparer))
+            if (!ContainsEdge(edge))
             {
                 return Enumerable.Empty<Edge<TVertex>>();
             }
@@ -159,7 +159,7 @@ namespace YAGLi
         /// <returns>The vertices contained in this instance that are adjacent to the parameter <paramref name="vertex"/> if it is contained in this instance. Otherwise, a emtpy collection.</returns>
         public IEnumerable<TVertex> AdjacentVerticesOf(TVertex vertex)
         {
-            if (!Vertices.Contains(vertex))
+            if (!ContainsVertex(vertex))
             {
                 return Enumerable.Empty<TVertex>();
             }
@@ -216,7 +216,7 @@ namespace YAGLi
 
         public int DegreeOf(TVertex vertex)
         {
-            if(!Vertices.Contains(vertex))
+            if(!ContainsVertex(vertex))
             {
                 return -1;
             }
@@ -226,7 +226,7 @@ namespace YAGLi
 
         public IEnumerable<Edge<TVertex>> IncidentEdgesOf(TVertex vertex)
         {
-            if (!Vertices.Contains(vertex))
+            if (!ContainsVertex(vertex))
             {
                 return Enumerable.Empty<Edge<TVertex>>();
             }
@@ -236,7 +236,7 @@ namespace YAGLi
 
         public IEnumerable<TVertex> IncidentVerticesOf(Edge<TVertex> edge)
         {
-            if (!_incidentVertices.ContainsKey(edge))
+            if (!ContainsEdge(edge))
             {
                 return Enumerable.Empty<TVertex>();
             }
