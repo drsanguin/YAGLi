@@ -573,7 +573,7 @@ Scenario: Check that a undirected graph who allow parallel edges does not contai
 	| e3   | v4   | v3   |
 	| e4   | v4   | v3   |
 	And the undirected graph created with them
-	When I check that the graph contains the edges with the ends "v0" and "v1" and the edge with the ends "v4" and "v3"
+	When I check that the graph contains the edges with the ends "v0" and "v1" and the ends "v4" and "v3"
 	Then I get the answer false
 
 Scenario: Check that a undirected graph who disallow parallel edges contains edges with the same ends
@@ -594,5 +594,5 @@ Scenario: Check that a undirected graph who disallow parallel edges contains edg
 	| e3   | v4   | v3   |
 	| e4   | v4   | v3   |
 	And the undirected graph created with them
-	When I check that the graph contains the edges with the ends "v0" and "v1" and the edge with the ends "v4" and "v3"
+	When I check that the graph contains the edges with the ends "v0" and "v1" and the ends "v4" and "v3"
 	Then I get the answer true

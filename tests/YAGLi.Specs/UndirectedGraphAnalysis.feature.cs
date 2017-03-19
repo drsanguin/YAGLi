@@ -1773,8 +1773,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 575
  testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 576
- testRunner.When("I check that the graph contains the edges with the ends \"v0\" and \"v1\" and the edg" +
-                    "e with the ends \"v4\" and \"v3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I check that the graph contains the edges with the ends \"v0\" and \"v1\" and the end" +
+                    "s \"v4\" and \"v3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 577
  testRunner.Then("I get the answer false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1839,8 +1839,8 @@ this.ScenarioSetup(scenarioInfo);
 #line 596
  testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 597
- testRunner.When("I check that the graph contains the edges with the ends \"v0\" and \"v1\" and the edg" +
-                    "e with the ends \"v4\" and \"v3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I check that the graph contains the edges with the ends \"v0\" and \"v1\" and the end" +
+                    "s \"v4\" and \"v3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 598
  testRunner.Then("I get the answer true", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
