@@ -174,7 +174,9 @@ namespace YAGLi
 
         public bool AreVerticesAdjacent(TVertex vertex1, TVertex vertex2)
         {
-            throw new NotImplementedException();
+            Edge<TVertex> referenceVertex = new Edge<TVertex>(vertex1, vertex2);
+
+            return Edges.Any(edge => edge.Equals(referenceVertex, EdgeComparison.IgnoreDirection));
         }
 
         public bool ContainsEdge(Edge<TVertex> edge)

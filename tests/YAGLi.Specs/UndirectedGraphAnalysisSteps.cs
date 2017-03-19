@@ -177,5 +177,11 @@ namespace YAGLi.Specs
 
             _context.BooleanResult = _context.Graph.ContainsEdges(edge1, edge2);
         }
+
+        [When(@"I check if the vertices ""(.*)"" and ""(.*)"" are adjacent")]
+        public void WhenICheckIfTheVerticesAndAreAdjacent(string vertex1, string vertex2)
+        {
+            _context.BooleanResult = _context.Graph.AreVerticesAdjacent(vertex1, vertex2);
+        }
     }
 }
