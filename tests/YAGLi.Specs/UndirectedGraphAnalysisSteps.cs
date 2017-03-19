@@ -183,5 +183,20 @@ namespace YAGLi.Specs
         {
             _context.BooleanResult = _context.Graph.AreVerticesAdjacent(vertex1, vertex2);
         }
+
+        [When(@"I check if the edges ""(.*)"" and ""(.*)"" are adjacent")]
+        public void WhenICheckIfTheEdgesAndAreAdjacent(string edgeName1, string edgeName2)
+        {
+            _context.BooleanResult = _context.Graph.AreEdgesAdjacent(_context.GivenEdges[edgeName1], _context.GivenEdges[edgeName2]);
+        }
+
+        [When(@"I check if the edge ""(.*)"" and the edge with the ends ""(.*)"" and ""(.*)"" are adjacent")]
+        public void WhenICheckIfTheEdgeAndTheEdgeWithTheEndsAndAreAdjacent(string edgeName, string end1, string end2)
+        {
+            Edge<string> edge1 = _context.GivenEdges[edgeName];
+            Edge<string> edge2 = new Edge<string>(end1, end2);
+
+            _context.BooleanResult = _context.Graph.AreEdgesAdjacent(edge1, edge2);
+        }
     }
 }

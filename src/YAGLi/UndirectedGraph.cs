@@ -169,7 +169,12 @@ namespace YAGLi
 
         public bool AreEdgesAdjacent(Edge<TVertex> edge1, Edge<TVertex> edge2)
         {
-            throw new NotImplementedException();
+            if (!ContainsEdges(edge1, edge2))
+            {
+                return false;
+            }
+
+            return edge1.Ends.Intersect(edge2.Ends).Any();
         }
 
         public bool AreVerticesAdjacent(TVertex vertex1, TVertex vertex2)
