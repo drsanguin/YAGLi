@@ -187,6 +187,11 @@ namespace YAGLi
             return !edges.Except(Edges, _edgesComparer).Any();
         }
 
+        public bool ContainsEdges(params Edge<TVertex>[] edges)
+        {
+            return ContainsEdges(edges.AsEnumerable());
+        }
+
         public bool ContainsVertex(TVertex vertex)
         {
             return Vertices.Contains(vertex);
@@ -195,6 +200,11 @@ namespace YAGLi
         public bool ContainsVertices(IEnumerable<TVertex> vertices)
         {
             return !vertices.Except(Vertices).Any();
+        }
+
+        public bool ContainsVertices(params TVertex[] vertices)
+        {
+            return ContainsVertices(vertices.AsEnumerable());
         }
 
         public int DegreeOf(TVertex vertex)

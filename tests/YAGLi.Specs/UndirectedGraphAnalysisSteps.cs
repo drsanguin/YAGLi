@@ -146,7 +146,7 @@ namespace YAGLi.Specs
         [When(@"I check that the graph contains the vertices")]
         public void WhenICheckThatTheGraphContainsTheVertices(Table table)
         {
-            _context.BooleanResult = _context.Graph.ContainsVertices(table.Rows.Select(row => row["Name"]));
+            _context.BooleanResult = _context.Graph.ContainsVertices(table.Rows.Select(row => row["Name"]).ToArray());
         }
 
         [When(@"I check that the graph contains the edge ""(.*)""")]
@@ -172,13 +172,10 @@ namespace YAGLi.Specs
         [When(@"I check that the graph contains the edges with the ends ""(.*)"" and ""(.*)"" and the ends ""(.*)"" and ""(.*)""")]
         public void A(string end1, string end2, string end3, string end4)
         {
-            Edge<string>[] edges = new Edge<string>[]
-            {
-                new Edge<string>(end1, end2),
-                new Edge<string>(end3, end4)
-            };
+            Edge<string> edge1 = new Edge<string>(end1, end2);
+            Edge<string> edge2 = new Edge<string>(end3, end4);
 
-            _context.BooleanResult = _context.Graph.ContainsEdges(edges);
+            _context.BooleanResult = _context.Graph.ContainsEdges(edge1, edge2);
         }
     }
 }
