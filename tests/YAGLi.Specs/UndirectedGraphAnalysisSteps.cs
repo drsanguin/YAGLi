@@ -15,18 +15,6 @@ namespace YAGLi.Specs
             _context = context;
         }
 
-        private List<Edge<string>> extractExpectedEdges(Table table)
-        {
-            List<Edge<string>> expectedEdges = new List<Edge<string>>(table.RowCount);
-
-            foreach (var row in table.Rows)
-            {
-                expectedEdges.Add(_context.GivenEdges[row["Name"]]);
-            }
-
-            return expectedEdges;
-        }
-
         [Given(@"the undirected graph created with them")]
         public void GivenTheUndirectedGraphCreatedWithThem()
         {
@@ -43,7 +31,7 @@ namespace YAGLi.Specs
         public void ThenTheResultShouldBeTheEdges(Table table)
         {
             IEnumerable<Edge<string>> actualEdges = _context.ResultingEdges;
-            List<Edge<string>> expectedEdges = extractExpectedEdges(table);
+            IEnumerable<Edge<string>> expectedEdges = table.Rows.Select(row => _context.GivenEdges[row["Name"]]);
 
             Check.That(actualEdges).ContainsExactly(expectedEdges);
         }
