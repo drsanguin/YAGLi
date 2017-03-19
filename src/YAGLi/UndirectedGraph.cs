@@ -167,7 +167,7 @@ namespace YAGLi
             return _incidentEdges[vertex].SelectMany(edge => edge.Ends).Where(v => !v.Equals(vertex));
         }
 
-        public bool AreEdgesAdjacent(IEnumerable<Edge<TVertex>> edges)
+        public bool AreEdgesAdjacent(Edge<TVertex> edge1, Edge<TVertex> edge2)
         {
             throw new NotImplementedException();
         }
