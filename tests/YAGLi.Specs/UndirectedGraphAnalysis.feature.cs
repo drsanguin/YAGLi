@@ -119,7 +119,9 @@ this.ScenarioSetup(scenarioInfo);
 #line 13
  testRunner.And("the edges", ((string)(null)), table2, "And ");
 #line 20
- testRunner.When("I create a new undirected graph with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 21
+ testRunner.When("I retrieve the adjacent edges of the edge \"e3\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
@@ -129,8 +131,8 @@ this.ScenarioSetup(scenarioInfo);
                         "e2"});
             table3.AddRow(new string[] {
                         "e4"});
-#line 21
- testRunner.Then("the adjacent edges of the edge \"e3\" should be", ((string)(null)), table3, "Then ");
+#line 22
+ testRunner.Then("I get the edges", ((string)(null)), table3, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -142,11 +144,11 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the adjacent edges of an edge not located into a undirected graph who allow l" +
                     "oops and parallel edges", ((string[])(null)));
-#line 27
-this.ScenarioSetup(scenarioInfo);
 #line 28
- testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 29
+ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 30
  testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -161,7 +163,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v3"});
             table4.AddRow(new string[] {
                         "v4"});
-#line 30
+#line 31
  testRunner.And("the vertices", ((string)(null)), table4, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -188,12 +190,14 @@ this.ScenarioSetup(scenarioInfo);
                         "e4",
                         "v3",
                         "v4"});
-#line 37
+#line 38
  testRunner.And("the edges", ((string)(null)), table5, "And ");
-#line 44
- testRunner.When("I create a new undirected graph with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 45
- testRunner.Then("the adjacent edges of the edge with the ends \"v0\" and \"v4\" should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 46
+ testRunner.When("I retrieve the adjacent edges of the edge with the ends \"v0\" and \"v4\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 47
+ testRunner.Then("I get a empty list of edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -205,11 +209,11 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the adjacent edges of an edge not located into a undirected graph who allow l" +
                     "oops and disallow parallel edges", ((string[])(null)));
-#line 47
-this.ScenarioSetup(scenarioInfo);
-#line 48
- testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 49
+this.ScenarioSetup(scenarioInfo);
+#line 50
+ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 51
  testRunner.And("the property disallow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -224,7 +228,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v3"});
             table6.AddRow(new string[] {
                         "v4"});
-#line 50
+#line 52
  testRunner.And("the vertices", ((string)(null)), table6, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -247,12 +251,14 @@ this.ScenarioSetup(scenarioInfo);
                         "e3",
                         "v4",
                         "v3"});
-#line 57
+#line 59
  testRunner.And("the edges", ((string)(null)), table7, "And ");
-#line 63
- testRunner.When("I create a new undirected graph with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 64
- testRunner.Then("the adjacent edges of the edge with the ends \"v0\" and \"v4\" should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 65
+ testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 66
+ testRunner.When("I retrieve the adjacent edges of the edge with the ends \"v0\" and \"v4\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 67
+ testRunner.Then("I get a empty list of edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -264,11 +270,11 @@ this.ScenarioSetup(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the adjacent edges of an edge equal to an edge located into a undirected grap" +
                     "h who allow loops and disallow parallel edges", ((string[])(null)));
-#line 66
+#line 69
 this.ScenarioSetup(scenarioInfo);
-#line 67
+#line 70
  testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 68
+#line 71
  testRunner.And("the property disallow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -283,7 +289,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v3"});
             table8.AddRow(new string[] {
                         "v4"});
-#line 69
+#line 72
  testRunner.And("the vertices", ((string)(null)), table8, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -306,10 +312,12 @@ this.ScenarioSetup(scenarioInfo);
                         "e3",
                         "v4",
                         "v3"});
-#line 76
+#line 79
  testRunner.And("the edges", ((string)(null)), table9, "And ");
-#line 82
- testRunner.When("I create a new undirected graph with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 85
+ testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 86
+ testRunner.When("I retrieve the adjacent edges of the edge with the ends \"v3\" and \"v4\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
@@ -317,8 +325,8 @@ this.ScenarioSetup(scenarioInfo);
                         "e1"});
             table10.AddRow(new string[] {
                         "e2"});
-#line 83
- testRunner.Then("the adjacent edges of the edge with the ends \"v3\" and \"v4\" should be", ((string)(null)), table10, "Then ");
+#line 87
+ testRunner.Then("I get the edges", ((string)(null)), table10, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -328,11 +336,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GetTheAdjacentVerticesOfAVertexContainedInAUndirectedGraph()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the adjacent vertices of a vertex contained in a UndirectedGraph", ((string[])(null)));
-#line 88
+#line 92
 this.ScenarioSetup(scenarioInfo);
-#line 89
+#line 93
  testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 90
+#line 94
  testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -347,7 +355,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v3"});
             table11.AddRow(new string[] {
                         "v4"});
-#line 91
+#line 95
  testRunner.And("the vertices", ((string)(null)), table11, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
@@ -374,10 +382,12 @@ this.ScenarioSetup(scenarioInfo);
                         "e4",
                         "v4",
                         "v3"});
-#line 98
+#line 102
  testRunner.And("the edges", ((string)(null)), table12, "And ");
-#line 105
- testRunner.When("I create a new undirected graph with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 109
+ testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 110
+ testRunner.When("I retrieve the adjacent vertices of the vertex \"v1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
@@ -385,8 +395,8 @@ this.ScenarioSetup(scenarioInfo);
                         "v0"});
             table13.AddRow(new string[] {
                         "v4"});
-#line 106
- testRunner.Then("the adjacent vertices of the vertex \"v1\" should be", ((string)(null)), table13, "Then ");
+#line 111
+ testRunner.Then("I get the vertices", ((string)(null)), table13, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -396,11 +406,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GetTheAdjacentVerticesOfAVertexNotContainedInAUndirectedGraph()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the adjacent vertices of a vertex not contained in a UndirectedGraph", ((string[])(null)));
-#line 111
+#line 116
 this.ScenarioSetup(scenarioInfo);
-#line 112
+#line 117
  testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 113
+#line 118
  testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
@@ -415,7 +425,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v3"});
             table14.AddRow(new string[] {
                         "v4"});
-#line 114
+#line 119
  testRunner.And("the vertices", ((string)(null)), table14, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -442,12 +452,14 @@ this.ScenarioSetup(scenarioInfo);
                         "e4",
                         "v4",
                         "v3"});
-#line 121
+#line 126
  testRunner.And("the edges", ((string)(null)), table15, "And ");
-#line 128
- testRunner.When("I create a new undirected graph with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 129
- testRunner.Then("the adjacent vertices of the vertex \"v5\" should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 133
+ testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 134
+ testRunner.When("I retrieve the adjacent vertices of the vertex \"v5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 135
+ testRunner.Then("I get a empty list of vertices", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -457,11 +469,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GetTheDegreeOfAVertexNotContainedInTheGraph()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the degree of a vertex not contained in the graph", ((string[])(null)));
-#line 131
+#line 137
 this.ScenarioSetup(scenarioInfo);
-#line 132
+#line 138
  testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 133
+#line 139
  testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
@@ -476,7 +488,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v3"});
             table16.AddRow(new string[] {
                         "v4"});
-#line 134
+#line 140
  testRunner.And("the vertices", ((string)(null)), table16, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
@@ -503,12 +515,14 @@ this.ScenarioSetup(scenarioInfo);
                         "e4",
                         "v4",
                         "v3"});
-#line 141
+#line 147
  testRunner.And("the edges", ((string)(null)), table17, "And ");
-#line 148
- testRunner.When("I create a new undirected graph with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 149
- testRunner.Then("the degree of the vertex \"v5\" should be -1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 154
+ testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 155
+ testRunner.When("I get the degree of the vertex \"v5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 156
+ testRunner.Then("I get the degree -1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -518,11 +532,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GetTheDegreeOfAVertexContainedInTheGraph()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the degree of a vertex contained in the graph", ((string[])(null)));
-#line 151
+#line 158
 this.ScenarioSetup(scenarioInfo);
-#line 152
+#line 159
  testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 153
+#line 160
  testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
@@ -537,7 +551,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v3"});
             table18.AddRow(new string[] {
                         "v4"});
-#line 154
+#line 161
  testRunner.And("the vertices", ((string)(null)), table18, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -564,12 +578,14 @@ this.ScenarioSetup(scenarioInfo);
                         "e4",
                         "v4",
                         "v3"});
-#line 161
- testRunner.And("the edges", ((string)(null)), table19, "And ");
 #line 168
- testRunner.When("I create a new undirected graph with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 169
- testRunner.Then("the degree of the vertex \"v4\" should be 5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("the edges", ((string)(null)), table19, "And ");
+#line 175
+ testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 176
+ testRunner.When("I get the degree of the vertex \"v4\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 177
+ testRunner.Then("I get the degree 5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -579,11 +595,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GetTheInDegreeOfAVertexNotContainedInTheGraph()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the in degree of a vertex not contained in the graph", ((string[])(null)));
-#line 171
+#line 179
 this.ScenarioSetup(scenarioInfo);
-#line 172
+#line 180
  testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 173
+#line 181
  testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
@@ -598,7 +614,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v3"});
             table20.AddRow(new string[] {
                         "v4"});
-#line 174
+#line 182
  testRunner.And("the vertices", ((string)(null)), table20, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
@@ -625,12 +641,14 @@ this.ScenarioSetup(scenarioInfo);
                         "e4",
                         "v4",
                         "v3"});
-#line 181
- testRunner.And("the edges", ((string)(null)), table21, "And ");
-#line 188
- testRunner.When("I create a new undirected graph with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 189
- testRunner.Then("the in degree of the vertex \"v5\" should be -1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("the edges", ((string)(null)), table21, "And ");
+#line 196
+ testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 197
+ testRunner.When("I get the in degree of the vertex \"v5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 198
+ testRunner.Then("I get the in degree -1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -640,11 +658,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GetTheInDegreeOfAVertexContainedInTheGraph()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the in degree of a vertex contained in the graph", ((string[])(null)));
-#line 191
+#line 200
 this.ScenarioSetup(scenarioInfo);
-#line 192
+#line 201
  testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 193
+#line 202
  testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
@@ -659,7 +677,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v3"});
             table22.AddRow(new string[] {
                         "v4"});
-#line 194
+#line 203
  testRunner.And("the vertices", ((string)(null)), table22, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
@@ -686,12 +704,14 @@ this.ScenarioSetup(scenarioInfo);
                         "e4",
                         "v4",
                         "v3"});
-#line 201
+#line 210
  testRunner.And("the edges", ((string)(null)), table23, "And ");
-#line 208
- testRunner.When("I create a new undirected graph with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 209
- testRunner.Then("the in degree of the vertex \"v4\" should be 5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 217
+ testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 218
+ testRunner.When("I get the in degree of the vertex \"v4\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 219
+ testRunner.Then("I get the in degree 5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -701,11 +721,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GetTheOutDegreeOfAVertexNotContainedInTheGraph()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the out degree of a vertex not contained in the graph", ((string[])(null)));
-#line 211
+#line 221
 this.ScenarioSetup(scenarioInfo);
-#line 212
+#line 222
  testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 213
+#line 223
  testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
@@ -720,7 +740,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v3"});
             table24.AddRow(new string[] {
                         "v4"});
-#line 214
+#line 224
  testRunner.And("the vertices", ((string)(null)), table24, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
@@ -747,12 +767,14 @@ this.ScenarioSetup(scenarioInfo);
                         "e4",
                         "v4",
                         "v3"});
-#line 221
+#line 231
  testRunner.And("the edges", ((string)(null)), table25, "And ");
-#line 228
- testRunner.When("I create a new undirected graph with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 229
- testRunner.Then("the out degree of the vertex \"v5\" should be -1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 238
+ testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 239
+ testRunner.When("I get the out degree of the vertex \"v5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 240
+ testRunner.Then("I get the out degree -1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -762,11 +784,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GetTheOutDegreeOfAVertexContainedInTheGraph()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the out degree of a vertex contained in the graph", ((string[])(null)));
-#line 231
+#line 242
 this.ScenarioSetup(scenarioInfo);
-#line 232
+#line 243
  testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 233
+#line 244
  testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
@@ -781,7 +803,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v3"});
             table26.AddRow(new string[] {
                         "v4"});
-#line 234
+#line 245
  testRunner.And("the vertices", ((string)(null)), table26, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
@@ -808,12 +830,14 @@ this.ScenarioSetup(scenarioInfo);
                         "e4",
                         "v4",
                         "v3"});
-#line 241
+#line 252
  testRunner.And("the edges", ((string)(null)), table27, "And ");
-#line 248
- testRunner.When("I create a new undirected graph with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 249
- testRunner.Then("the out degree of the vertex \"v4\" should be 5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 259
+ testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 260
+ testRunner.When("I get the out degree of the vertex \"v4\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 261
+ testRunner.Then("I get the out degree 5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -823,11 +847,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GetTheIncidentEdgesOfAVertexContainedInAUndirectedGraph()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the incident edges of a vertex contained in a undirected graph", ((string[])(null)));
-#line 251
+#line 263
 this.ScenarioSetup(scenarioInfo);
-#line 252
+#line 264
  testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 253
+#line 265
  testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
@@ -842,7 +866,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v3"});
             table28.AddRow(new string[] {
                         "v4"});
-#line 254
+#line 266
  testRunner.And("the vertices", ((string)(null)), table28, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
@@ -869,10 +893,12 @@ this.ScenarioSetup(scenarioInfo);
                         "e4",
                         "v4",
                         "v3"});
-#line 261
+#line 273
  testRunner.And("the edges", ((string)(null)), table29, "And ");
-#line 268
- testRunner.When("I create a new undirected graph with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 280
+ testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 281
+ testRunner.When("I retrieve the incident edges of the vertex \"v4\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
@@ -884,8 +910,8 @@ this.ScenarioSetup(scenarioInfo);
                         "e3"});
             table30.AddRow(new string[] {
                         "e4"});
-#line 269
- testRunner.Then("the incident edges of the vertex \"v4\" should be", ((string)(null)), table30, "Then ");
+#line 282
+ testRunner.Then("I get the edges", ((string)(null)), table30, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -895,11 +921,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GetTheIncidentEdgesOfAVertexNotContainedInAUndirectedGraph()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the incident edges of a vertex not contained in a undirected graph", ((string[])(null)));
-#line 276
+#line 289
 this.ScenarioSetup(scenarioInfo);
-#line 277
+#line 290
  testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 278
+#line 291
  testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
@@ -914,7 +940,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v3"});
             table31.AddRow(new string[] {
                         "v4"});
-#line 279
+#line 292
  testRunner.And("the vertices", ((string)(null)), table31, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
@@ -941,12 +967,14 @@ this.ScenarioSetup(scenarioInfo);
                         "e4",
                         "v4",
                         "v3"});
-#line 286
+#line 299
  testRunner.And("the edges", ((string)(null)), table32, "And ");
-#line 293
- testRunner.When("I create a new undirected graph with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 294
- testRunner.Then("the incident edges of the vertex \"v5\" should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 306
+ testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 307
+ testRunner.When("I retrieve the incident edges of the vertex \"v5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 308
+ testRunner.Then("I get a empty list of edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -956,11 +984,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GetTheIncidentVerticesOfAEdgeContainedInAUndirectedGraph()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the incident vertices of a edge contained in a undirected graph", ((string[])(null)));
-#line 296
+#line 310
 this.ScenarioSetup(scenarioInfo);
-#line 297
+#line 311
  testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 298
+#line 312
  testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
@@ -975,7 +1003,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v3"});
             table33.AddRow(new string[] {
                         "v4"});
-#line 299
+#line 313
  testRunner.And("the vertices", ((string)(null)), table33, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1002,10 +1030,12 @@ this.ScenarioSetup(scenarioInfo);
                         "e4",
                         "v4",
                         "v3"});
-#line 306
+#line 320
  testRunner.And("the edges", ((string)(null)), table34, "And ");
-#line 313
- testRunner.When("I create a new undirected graph with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 327
+ testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 328
+ testRunner.When("I get the incident vertices of the edge \"e1\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
@@ -1013,8 +1043,8 @@ this.ScenarioSetup(scenarioInfo);
                         "v1"});
             table35.AddRow(new string[] {
                         "v4"});
-#line 314
- testRunner.Then("the incident vertices of the edge \"e1\" should be", ((string)(null)), table35, "Then ");
+#line 329
+ testRunner.Then("I get the vertices", ((string)(null)), table35, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -1024,11 +1054,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GetTheIncidentVerticesOfAEdgeNotContainedInAUndirectedGraph()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the incident vertices of a edge not contained in a undirected graph", ((string[])(null)));
-#line 319
+#line 334
 this.ScenarioSetup(scenarioInfo);
-#line 320
+#line 335
  testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 321
+#line 336
  testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1043,7 +1073,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v3"});
             table36.AddRow(new string[] {
                         "v4"});
-#line 322
+#line 337
  testRunner.And("the vertices", ((string)(null)), table36, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1070,12 +1100,14 @@ this.ScenarioSetup(scenarioInfo);
                         "e4",
                         "v4",
                         "v3"});
-#line 329
+#line 344
  testRunner.And("the edges", ((string)(null)), table37, "And ");
-#line 336
- testRunner.When("I create a new undirected graph with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 337
- testRunner.Then("the incident vertices of the edge with the ends \"v0\" and \"v4\" should be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 351
+ testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 352
+ testRunner.When("I get the incident vertices of the edge with the ends \"v0\" and \"v4\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 353
+ testRunner.Then("I get a empty list of vertices", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -1085,11 +1117,11 @@ this.ScenarioSetup(scenarioInfo);
         public virtual void GetTheIncidentVerticesOfALoopEdgeContainedInAUndirectedGraph()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the incident vertices of a loop edge contained in a undirected graph", ((string[])(null)));
-#line 339
+#line 355
 this.ScenarioSetup(scenarioInfo);
-#line 340
+#line 356
  testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 341
+#line 357
  testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1104,7 +1136,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v3"});
             table38.AddRow(new string[] {
                         "v4"});
-#line 342
+#line 358
  testRunner.And("the vertices", ((string)(null)), table38, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
@@ -1131,17 +1163,19 @@ this.ScenarioSetup(scenarioInfo);
                         "e4",
                         "v4",
                         "v3"});
-#line 349
+#line 365
  testRunner.And("the edges", ((string)(null)), table39, "And ");
-#line 356
- testRunner.When("I create a new undirected graph with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 372
+ testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 373
+ testRunner.When("I get the incident vertices of the edge \"e2\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table40.AddRow(new string[] {
                         "v4"});
-#line 357
- testRunner.Then("the incident vertices of the edge \"e2\" should be", ((string)(null)), table40, "Then ");
+#line 374
+ testRunner.Then("I get the vertices", ((string)(null)), table40, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

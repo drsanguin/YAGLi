@@ -27,97 +27,114 @@ namespace YAGLi.Specs
             return expectedEdges;
         }
 
-        [Then(@"the adjacent edges of the edge ""(.*)"" should be")]
-        public void ThenIShouldgetTheEdges(string edgeId, Table table)
+        [Given(@"the undirected graph created with them")]
+        public void GivenTheUndirectedGraphCreatedWithThem()
         {
-            Edge<string> edge = _context.GivenEdges[edgeId];
+            _context.Graph = new UndirectedGraph<string>(_context.AllowLoops, _context.AllowParallelEdges, _context.GivenEdges.Values, _context.GivenVertices);
+        }
+
+        [When(@"I retrieve the adjacent edges of the edge ""(.*)""")]
+        public void WhenIRetrieveTheAdjacentEdgesOfTheEdge(string edgeName)
+        {
+            _context.ResultingEdges = _context.Graph.AdjacentEdgesOf(_context.GivenEdges[edgeName]);
+        }
+
+        [Then(@"I get the edges")]
+        public void ThenTheResultShouldBeTheEdges(Table table)
+        {
+            IEnumerable<Edge<string>> actualEdges = _context.ResultingEdges;
             List<Edge<string>> expectedEdges = extractExpectedEdges(table);
 
-            Check.That(_context.Graph.AdjacentEdgesOf(edge)).ContainsExactly(expectedEdges);
+            Check.That(actualEdges).ContainsExactly(expectedEdges);
         }
 
-        [Then(@"the adjacent edges of the edge with the ends ""(.*)"" and ""(.*)"" should be empty")]
-        public void ThenTheAdjacentEdgesOfTheEdgeWithTheEndsAndShouldBeEmpty(string end1, string end2)
+        [When(@"I retrieve the adjacent edges of the edge with the ends ""(.*)"" and ""(.*)""")]
+        public void WhenIRetrieveTheAdjacentEdgesOfTheEdgeWithTheEndsAnd(string end1, string end2)
         {
             Edge<string> edge = new Edge<string>(end1, end2);
-
-            Check.That(_context.Graph.AdjacentEdgesOf(edge)).IsEmpty();
+            _context.ResultingEdges = _context.Graph.AdjacentEdgesOf(edge);
         }
 
-        [Then(@"the adjacent edges of the edge with the ends ""(.*)"" and ""(.*)"" should be")]
-        public void ThenTheAdjacentEdgesOfTheEdgeWithTheEndsAndShouldBe(string end1, string end2, Table table)
+        [Then(@"I get a empty list of edges")]
+        public void ThenTheResultShouldBeAEmptyListOfEdge()
         {
-            Edge<string> edge = new Edge<string>(end1, end2);
-            List<Edge<string>> expectedEdges = extractExpectedEdges(table);
-
-            Check.That(_context.Graph.AdjacentEdgesOf(edge)).ContainsExactly(expectedEdges);
+            Check.That(_context.ResultingEdges).IsEmpty();
         }
 
-        [Then(@"the adjacent vertices of the vertex ""(.*)"" should be")]
-        public void TheAdjacentVerticesOfTheVertexShouldBe(string vertexId, Table table)
+        [When(@"I retrieve the adjacent vertices of the vertex ""(.*)""")]
+        public void WhenIRetrieveTheAdjacentVerticesOfTheVertex(string vertex)
+        {
+            _context.ResultingVertices = _context.Graph.AdjacentVerticesOf(vertex);
+        }
+
+        [Then(@"I get the vertices")]
+        public void ThenIGetTheVertices(Table table)
         {
             IEnumerable<string> expectedVertices = table.Rows.Select(row => row["Name"]);
 
-            Check.That(_context.Graph.AdjacentVerticesOf(vertexId)).ContainsExactly(expectedVertices);
+            Check.That(_context.ResultingVertices).ContainsExactly(expectedVertices);
         }
 
-        [Then(@"the adjacent vertices of the vertex ""(.*)"" should be empty")]
-        public void ThenTheAdjacentVerticesOfTheVertexShouldBeEmpty(string p0)
+        [Then(@"I get a empty list of vertices")]
+        public void ThenIGetAEmptyListOfVertices()
         {
-            Check.That(_context.Graph.AdjacentVerticesOf(p0)).IsEmpty();
+            Check.That(_context.ResultingVertices).IsEmpty();
         }
 
-        [Then(@"the degree of the vertex ""(.*)"" should be (.*)")]
-        public void ThenTheDegreeOfTheVertexShouldBe(string vertex, int expectedDegree)
+        [When(@"I get the degree of the vertex ""(.*)""")]
+        public void WhenIGetTheDegreeOfTheVertex(string vertex)
         {
-            Check.That(_context.Graph.DegreeOf(vertex)).IsEqualTo(expectedDegree);
+            _context.ResultingDegree = _context.Graph.DegreeOf(vertex);
         }
 
-        [Then(@"the incident edges of the vertex ""(.*)"" should be")]
-        public void ThenTheIncidentEdgesOfTheVertexShouldBe(string vertex, Table table)
+        [Then(@"I get the degree (.*)")]
+        public void ThenIGetTheDegree(int expectedDegree)
         {
-            IEnumerable<Edge<string>> expectedEdges = table
-                .Rows
-                .Select(row => row["Name"])
-                .Select(edgeName => _context.GivenEdges[edgeName]);
-
-            Check.That(_context.Graph.IncidentEdgesOf(vertex)).ContainsExactly(expectedEdges);
+            Check.That(_context.ResultingDegree).IsEqualTo(expectedDegree);
         }
 
-        [Then(@"the incident edges of the vertex ""(.*)"" should be empty")]
-        public void ThenTheIncidentEdgesOfTheVertexShouldBeEmpty(string vertex)
+        [When(@"I get the in degree of the vertex ""(.*)""")]
+        public void WhenIGetTheInDegreeOfTheVertex(string vertex)
         {
-            Check.That(_context.Graph.IncidentEdgesOf(vertex)).IsEmpty();
+            _context.ResultingInDegree = _context.Graph.InDegreeOf(vertex);
         }
 
-        [Then(@"the incident vertices of the edge ""(.*)"" should be")]
-        public void ThenTheIncidentVerticesOfTheEdgeShouldBe(string edgeName, Table table)
+        [Then(@"I get the in degree (.*)")]
+        public void ThenIGetTheInDegree(int expectedInDegree)
         {
-            Edge<string> edge = _context.GivenEdges[edgeName];
-
-            IEnumerable<string> expectedVertices = table.Rows.Select(row => row["Name"]);
-
-            Check.That(_context.Graph.IncidentVerticesOf(edge)).ContainsExactly(expectedVertices);
+            Check.That(_context.ResultingInDegree).IsEqualTo(expectedInDegree);
         }
 
-        [Then(@"the incident vertices of the edge with the ends ""(.*)"" and ""(.*)"" should be empty")]
-        public void ThenTheIncidentVerticesOfTheEdgeWithTheEndsAndShouldBeEmpty(string end1, string end2)
+        [When(@"I get the out degree of the vertex ""(.*)""")]
+        public void WhenIGetTheOutDegreeOfTheVertex(string vertex)
+        {
+            _context.ResultingOutDegree = _context.Graph.OutDegreeOf(vertex);
+        }
+
+        [Then(@"I get the out degree (.*)")]
+        public void ThenIGetTheOutDegree(int expectedOutDegree)
+        {
+            Check.That(_context.ResultingOutDegree).IsEqualTo(expectedOutDegree);
+        }
+
+        [When(@"I retrieve the incident edges of the vertex ""(.*)""")]
+        public void WhenIRetrieveTheIncidentEdgesOfTheVertex(string vertex)
+        {
+            _context.ResultingEdges = _context.Graph.IncidentEdgesOf(vertex);
+        }
+
+        [When(@"I get the incident vertices of the edge ""(.*)""")]
+        public void WhenIGetTheIncidentVerticesOfTheEdge(string edgeName)
+        {
+            _context.ResultingVertices = _context.Graph.IncidentVerticesOf(_context.GivenEdges[edgeName]);
+        }
+
+        [When(@"I get the incident vertices of the edge with the ends ""(.*)"" and ""(.*)""")]
+        public void WhenIGetTheIncidentVerticesOfTheEdgeWithTheEndsAnd(string end1, string end2)
         {
             Edge<string> edge = new Edge<string>(end1, end2);
 
-            Check.That(_context.Graph.IncidentVerticesOf(edge)).IsEmpty();
-        }
-
-        [Then(@"the in degree of the vertex ""(.*)"" should be (.*)")]
-        public void ThenTheInDegreeOfTheVertexShouldBe(string p0, int p1)
-        {
-            Check.That(_context.Graph.InDegreeOf(p0)).IsEqualTo(p1);
-        }
-
-        [Then(@"the out degree of the vertex ""(.*)"" should be (.*)")]
-        public void ThenTheOutDegreeOfTheVertexShouldBe(string p0, int p1)
-        {
-            Check.That(_context.Graph.OutDegreeOf(p0)).IsEqualTo(p1);
+            _context.ResultingVertices = _context.Graph.IncidentVerticesOf(edge);
         }
     }
 }
