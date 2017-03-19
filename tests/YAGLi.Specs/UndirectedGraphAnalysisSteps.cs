@@ -142,5 +142,11 @@ namespace YAGLi.Specs
         {
             Check.That(_context.BooleanResult).IsFalse();
         }
+
+        [When(@"I check that the graph contains the vertices")]
+        public void WhenICheckThatTheGraphContainsTheVertices(Table table)
+        {
+            _context.BooleanResult = _context.Graph.ContainsVertices(table.Rows.Select(row => row["Name"]));
+        }
     }
 }

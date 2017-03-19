@@ -194,7 +194,7 @@ namespace YAGLi
 
         public bool ContainsVertices(IEnumerable<TVertex> vertices)
         {
-            throw new NotImplementedException();
+            return !vertices.Except(Vertices).Any();
         }
 
         public int DegreeOf(TVertex vertex)
