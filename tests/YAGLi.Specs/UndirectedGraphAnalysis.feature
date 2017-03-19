@@ -530,3 +530,69 @@ Scenario: Check that a undirected graph who disallow parallel edges contains a e
 	And the undirected graph created with them
 	When I check that the graph contains the edge with the ends "v0" and "v1"
 	Then I get the answer true
+
+Scenario: Check that a undirected graph who allow parallel edges contains edges
+	Given the property allow loops
+	And the property allow parallel edges
+	And the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And the edges
+	| Name | End1 | End2 |
+	| e0   | v0   | v1   |
+	| e1   | v1   | v4   |
+	| e2   | v4   | v4   |
+	| e3   | v4   | v3   |
+	| e4   | v4   | v3   |
+	And the undirected graph created with them
+	When I check that the graph contains the edges
+	| Name |
+	| e0   |
+	| e4   |
+	Then I get the answer true
+
+Scenario: Check that a undirected graph who allow parallel edges does not contains edges with the same ends
+	Given the property allow loops
+	And the property allow parallel edges
+	And the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And the edges
+	| Name | End1 | End2 |
+	| e0   | v0   | v1   |
+	| e1   | v1   | v4   |
+	| e2   | v4   | v4   |
+	| e3   | v4   | v3   |
+	| e4   | v4   | v3   |
+	And the undirected graph created with them
+	When I check that the graph contains the edges with the ends "v0" and "v1" and the edge with the ends "v4" and "v3"
+	Then I get the answer false
+
+Scenario: Check that a undirected graph who disallow parallel edges contains edges with the same ends
+	Given the property allow loops
+	And the property disallow parallel edges
+	And the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And the edges
+	| Name | End1 | End2 |
+	| e0   | v0   | v1   |
+	| e1   | v1   | v4   |
+	| e2   | v4   | v4   |
+	| e3   | v4   | v3   |
+	| e4   | v4   | v3   |
+	And the undirected graph created with them
+	When I check that the graph contains the edges with the ends "v0" and "v1" and the edge with the ends "v4" and "v3"
+	Then I get the answer true

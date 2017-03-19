@@ -150,17 +150,35 @@ namespace YAGLi.Specs
         }
 
         [When(@"I check that the graph contains the edge ""(.*)""")]
-        public void WhenICheckThatTheGraphContainsTheEdge(string p0)
+        public void WhenICheckThatTheGraphContainsTheEdge(string edgeName)
         {
-            _context.BooleanResult = _context.Graph.ContainsEdge(_context.GivenEdges[p0]);
+            _context.BooleanResult = _context.Graph.ContainsEdge(_context.GivenEdges[edgeName]);
         }
 
         [When(@"I check that the graph contains the edge with the ends ""(.*)"" and ""(.*)""")]
-        public void WhenICheckThatTheGraphContainsTheEdgeWithTheEndsAnd(string p0, string p1)
+        public void WhenICheckThatTheGraphContainsTheEdgeWithTheEndsAnd(string end1, string end2)
         {
-            Edge<string> edge = new Edge<string>(p0, p1);
+            Edge<string> edge = new Edge<string>(end1, end2);
 
             _context.BooleanResult = _context.Graph.ContainsEdge(edge);
+        }
+
+        [When(@"I check that the graph contains the edges")]
+        public void WhenICheckThatTheGraphContainsTheEdges(Table table)
+        {
+            _context.BooleanResult = _context.Graph.ContainsEdges(table.Rows.Select(row => _context.GivenEdges[row["Name"]]));
+        }
+
+        [When(@"I check that the graph contains the edges with the ends ""(.*)"" and ""(.*)"" and the edge with the ends ""(.*)"" and ""(.*)""")]
+        public void A(string end1, string end2, string end3, string end4)
+        {
+            Edge<string>[] edges = new Edge<string>[]
+            {
+                new Edge<string>(end1, end2),
+                new Edge<string>(end3, end4)
+            };
+
+            _context.BooleanResult = _context.Graph.ContainsEdges(edges);
         }
     }
 }
