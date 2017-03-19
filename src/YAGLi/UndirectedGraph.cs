@@ -172,7 +172,7 @@ namespace YAGLi
             throw new NotImplementedException();
         }
 
-        public bool AreVerticesAdjacent(IEnumerable<TVertex> vertices)
+        public bool AreVerticesAdjacent(TVertex vertex1, TVertex vertex2)
         {
             throw new NotImplementedException();
         }

@@ -60,13 +60,14 @@ namespace YAGLi
         bool AreEdgesAdjacent(IEnumerable<Edge<TVertex>> edges);
 
         /// <summary>
-        /// Determine whether the given set of vertices <paramref name="vertices"/> are adjacent in this instance.
+        /// Determine whether the vertices <paramref name="vertex1"/> and <paramref name="vertex2"/> are adjacent in this instance.
         /// Two vertices are adjacent if they are connected by an <see cref="Edge{TVertex}"/> contained in this instance.
         /// </summary>
-        /// <param name="vertices">The vertices to determine if they are adjacent in this instance.</param>
+        /// <param name="vertex1">The first vertex.</param>
+        /// <param name="vertex2">The second vertex.</param>
         /// <returns><see cref="true"/> if the vertices are adjacent in this instance, <see cref="false"/> otherwise.</returns>
         /// <remarks>Each vertex contained in <paramref name="vertices"/> is expected to be contained in the set of vertices of this instance.</remarks>
-        bool AreVerticesAdjacent(IEnumerable<TVertex> vertices);
+        bool AreVerticesAdjacent(TVertex vertex1, TVertex vertex2);
 
         /// <summary>
         /// Determine whether this instance contains the edge <paramref name="edge"/>.
