@@ -141,7 +141,7 @@ namespace YAGLi
         /// <returns>The edges contained in this instance that are adjacent to the parameter <paramref name="edge"/></returns>
         public IEnumerable<Edge<TVertex>> AdjacentEdgesOf(Edge<TVertex> edge)
         {
-            if (!Edges.Any(x => _edgesComparer.Equals(x, edge)))
+            if (!Edges.Contains(edge, _edgesComparer))
             {
                 return Enumerable.Empty<Edge<TVertex>>();
             }
