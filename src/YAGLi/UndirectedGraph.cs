@@ -179,7 +179,7 @@ namespace YAGLi
 
         public bool ContainsEdge(Edge<TVertex> edge)
         {
-            throw new NotImplementedException();
+            return Edges.Contains(edge, _edgesComparer);
         }
 
         public bool ContainsEdges(IEnumerable<Edge<TVertex>> edges)

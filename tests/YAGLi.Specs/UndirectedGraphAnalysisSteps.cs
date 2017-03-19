@@ -148,5 +148,19 @@ namespace YAGLi.Specs
         {
             _context.BooleanResult = _context.Graph.ContainsVertices(table.Rows.Select(row => row["Name"]));
         }
+
+        [When(@"I check that the graph contains the edge ""(.*)""")]
+        public void WhenICheckThatTheGraphContainsTheEdge(string p0)
+        {
+            _context.BooleanResult = _context.Graph.ContainsEdge(_context.GivenEdges[p0]);
+        }
+
+        [When(@"I check that the graph contains the edge with the ends ""(.*)"" and ""(.*)""")]
+        public void WhenICheckThatTheGraphContainsTheEdgeWithTheEndsAnd(string p0, string p1)
+        {
+            Edge<string> edge = new Edge<string>(p0, p1);
+
+            _context.BooleanResult = _context.Graph.ContainsEdge(edge);
+        }
     }
 }
