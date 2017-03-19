@@ -6,7 +6,7 @@ namespace YAGLi
     public static class EdgeEqualityComparers<TVertex> where TVertex : IEquatable<TVertex>
     {
         public static readonly IEqualityComparer<Edge<TVertex>> IgnoreDirectionAndDisallowParallelEdges = new ComparerWhoIgnoreDirectionAndDisallowParallelEdges();
-        public static readonly IEqualityComparer<Edge<TVertex>> IgnoreDirectionAndAllowParallelEdges = new ComparerWhoIgnoreDirectionAndAlowParallelEdges();
+        public static readonly IEqualityComparer<Edge<TVertex>> IgnoreDirectionAndAllowParallelEdges = new ComparerWhoIgnoreDirectionAndAllowParallelEdges();
 
         private class ComparerWhoIgnoreDirectionAndDisallowParallelEdges : IEqualityComparer<Edge<TVertex>>
         {
@@ -21,7 +21,7 @@ namespace YAGLi
             }
         }
 
-        private class ComparerWhoIgnoreDirectionAndAlowParallelEdges : IEqualityComparer<Edge<TVertex>>
+        private class ComparerWhoIgnoreDirectionAndAllowParallelEdges : IEqualityComparer<Edge<TVertex>>
         {
             public bool Equals(Edge<TVertex> edge1, Edge<TVertex> edge2)
             {
