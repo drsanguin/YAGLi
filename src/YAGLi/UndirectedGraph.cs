@@ -189,7 +189,7 @@ namespace YAGLi
 
         public bool ContainsVertex(TVertex vertex)
         {
-            throw new NotImplementedException();
+            return Vertices.Contains(vertex);
         }
 
         public bool ContainsVertices(IEnumerable<TVertex> vertices)

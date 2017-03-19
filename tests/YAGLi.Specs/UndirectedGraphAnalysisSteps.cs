@@ -124,5 +124,23 @@ namespace YAGLi.Specs
 
             _context.ResultingVertices = _context.Graph.IncidentVerticesOf(edge);
         }
+
+        [When(@"I check that the graph contains the vertex ""(.*)""")]
+        public void WhenICheckThatTheGraphContainsTheVertex(string p0)
+        {
+            _context.BooleanResult = _context.Graph.ContainsVertex(p0);
+        }
+
+        [Then(@"I get the answer true")]
+        public void ThenIGetTheAnswerTrue()
+        {
+            Check.That(_context.BooleanResult).IsTrue();
+        }
+
+        [Then(@"I get the answer false")]
+        public void ThenIGetTheAnswerFalse()
+        {
+            Check.That(_context.BooleanResult).IsFalse();
+        }
     }
 }

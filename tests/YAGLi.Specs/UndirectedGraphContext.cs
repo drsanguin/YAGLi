@@ -14,5 +14,6 @@ namespace YAGLi.Specs
         public int ResultingOutDegree { get; set; }
         public IEnumerable<Edge<string>> ResultingEdges { get; set; }
         public IEnumerable<string> ResultingVertices { get; set; }
+        public bool BooleanResult { get; set; }
     }
 }

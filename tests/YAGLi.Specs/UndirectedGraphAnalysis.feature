@@ -374,3 +374,45 @@ Scenario: Get the incident vertices of a loop edge contained in a undirected gra
 	Then I get the vertices
 	| Name |
 	| v4   |
+
+Scenario: Check that a undirected graph contains the expected vertex
+	Given the property allow loops
+	And the property allow parallel edges
+	And the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And the edges
+	| Name | End1 | End2 |
+	| e0   | v0   | v1   |
+	| e1   | v1   | v4   |
+	| e2   | v4   | v4   |
+	| e3   | v4   | v3   |
+	| e4   | v4   | v3   |
+	And the undirected graph created with them
+	When I check that the graph contains the vertex "v0"
+	Then I get the answer true
+
+Scenario: Check that a undirected graph does not contains the expected vertex
+	Given the property allow loops
+	And the property allow parallel edges
+	And the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And the edges
+	| Name | End1 | End2 |
+	| e0   | v0   | v1   |
+	| e1   | v1   | v4   |
+	| e2   | v4   | v4   |
+	| e3   | v4   | v3   |
+	| e4   | v4   | v3   |
+	And the undirected graph created with them
+	When I check that the graph contains the vertex "v5"
+	Then I get the answer false
