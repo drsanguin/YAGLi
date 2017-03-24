@@ -1,6 +1,8 @@
 ﻿using NFluent;
 using System.Collections.Generic;
+using System.Linq;
 using TechTalk.SpecFlow;
+using YAGLi.Tests.Utils;
 
 namespace YAGLi.Specs
 {
@@ -29,21 +31,21 @@ namespace YAGLi.Specs
         [Given(@"the vertices")]
         public void GivenTheVerticesAnd(Table table)
         {
-            _context.GivenVertices = new List<string>(table.RowCount);
+            _context.GivenVertices = new Dictionary<string, Vertex>(table.RowCount);
 
             foreach (var row in table.Rows)
             {
-                _context.GivenVertices.Add(row[0]);
+                _context.GivenVertices.Add(row[0], row[0]);
             }
         }
         
         [Given(@"the edges")]
         public void GivenTheEdges(Table table)
         {
-            _context.GivenEdges = new Dictionary<string, Edge<string>>(table.RowCount);
+            _context.GivenEdges = new Dictionary<string, Edge<Vertex>>(table.RowCount);
             foreach (var row in table.Rows)
             {
-                _context.GivenEdges.Add(row[0], new Edge<string>(row[1], row[2]));
+                _context.GivenEdges.Add(row[0], new Edge<Vertex>(_context.GivenVertices[row[1]], _context.GivenVertices[row[2]]));
             }
         }
         
@@ -62,17 +64,17 @@ namespace YAGLi.Specs
         [When(@"I create a new undirected graph with them")]
         public void WhenICreateANewUndirectedGraphWithThem()
         {
-            _context.Graph = new UndirectedGraph<string>(_context.AllowLoops, _context.AllowParallelEdges, _context.GivenEdges.Values, _context.GivenVertices);
+            _context.Graph = new UndirectedGraph<Vertex>(_context.AllowLoops, _context.AllowParallelEdges, _context.GivenEdges.Values, _context.GivenVertices.Values, new VertexEqualityComparer());
         }
         
         [Then(@"he should contains the vertices")]
         public void ThenHeShouldContainsTheVerticesAnd(Table table)
         {
-            List<string> expectedVertices = new List<string>(table.RowCount);
+            List<Vertex> expectedVertices = new List<Vertex>(table.RowCount);
 
             foreach (var row in table.Rows)
             {
-                expectedVertices.Add(row[0]);
+                expectedVertices.Add(_context.GivenVertices[row[0]]);
             }
 
             Check.That(_context.Graph.Vertices).ContainsExactly(expectedVertices);
@@ -81,7 +83,7 @@ namespace YAGLi.Specs
         [Then(@"the edges")]
         public void ThenTheEdges(Table table)
         {
-            List<Edge<string>> expectedEdges = new List<Edge<string>>(table.RowCount);
+            List<Edge<Vertex>> expectedEdges = new List<Edge<Vertex>>(table.RowCount);
 
             foreach (var row in table.Rows)
             {

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace YAGLi
+namespace YAGLi.Interfaces
 {
     /// <summary>
     /// The interface <see cref="IModelAGraph{TVertex}"/> represent a generic graph object from Graph Theory.
     /// </summary>
     /// <typeparam name="TVertex">The type of the graph's vertices.</typeparam>
-    public interface IModelAGraph<TVertex> where TVertex : IEquatable<TVertex>
+    public interface IModelAGraph<TVertex> : IComparable, IEquatable<IModelAGraph<TVertex>>
     {
         #region Properties
         /// <summary>
@@ -141,24 +141,6 @@ namespace YAGLi
         /// <returns>The vertices incident to this <see cref="Edge{TVertex}"/> that are contained in the set of vertices of this instance.</returns>
         /// <remarks>The parameter <paramref name="edge"/> is expected to be contained in the set of edges of this instance.</remarks>
         IEnumerable<TVertex> IncidentVerticesOf(Edge<TVertex> edge);
-
-        /// <summary>
-        /// Get the in-degree of the vertex <paramref name="vertex"/>.
-        /// The in-degree of a vertex is the number of <see cref="Edge{TVertex}"/> going into it.
-        /// </summary>
-        /// <param name="vertex">The vertex for which to compute the in-degree.</param>
-        /// <returns>The in-degree of the vertex.</returns>
-        /// <remarks>The parameter <paramref name="vertex"/> is expected to be contained in the set of vertices of this instance.</remarks>
-        int InDegreeOf(TVertex vertex);
-
-        /// <summary>
-        /// Get the out-degree of the vertex <paramref name="vertex"/>.
-        /// The out-degree of a vertex is the number of <see cref="Edge{TVertex}"/> going out of it.
-        /// </summary>
-        /// <param name="vertex">The vertex for which to compute the out-degree.</param>
-        /// <returns>The out-degree of the vertex.</returns>
-        /// <remarks>The parameter <paramref name="vertex"/> is expected to be contained in the set of vertices of this instance.</remarks>
-        int OutDegreeOf(TVertex vertex); 
         #endregion
     }
 }

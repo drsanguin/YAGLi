@@ -41,12 +41,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Edge.cs" />
-    <Compile Include="EdgeComparison.cs" />
-    <Compile Include="EdgeEqualityComparers.cs" />
-    <Compile Include="IModelAGraph.cs" />
+    <Compile Include="EdgeComparers\ConsiderDirectionAndAllowParallelEdges.cs" />
+    <Compile Include="EdgeComparers\ConsiderDirectionAndDisallowParallelEdges.cs" />
+    <Compile Include="EdgeComparers\IgnoreDirectionAndAllowParallelEdges.cs" />
+    <Compile Include="EdgeComparers\IgnoreDirectionAndDisallowParallelEdges.cs" />
+    <Compile Include="EquivalentExtensions.cs" />
+    <Compile Include="Interfaces\IModelADirectedGraph.cs" />
+    <Compile Include="Interfaces\IModelAGraph.cs" />
+    <Compile Include="Interfaces\IModelAUndirectedGraph.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UndirectedGraph.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using YAGLi.Tests.Utils;
 
 namespace YAGLi.Specs
 {
@@ -6,14 +7,14 @@ namespace YAGLi.Specs
     {
         public bool AllowLoops { get; set; }
         public bool AllowParallelEdges { get; set; }
-        public Dictionary<string, Edge<string>> GivenEdges { get; set; }
-        public List<string> GivenVertices { get; set; }
-        public UndirectedGraph<string> Graph { get; set; }
+        public Dictionary<string, Edge<Vertex>> GivenEdges { get; set; }
+        public Dictionary<string, Vertex> GivenVertices { get; set; }
+        public UndirectedGraph<Vertex> Graph { get; set; }
         public int ResultingDegree { get; set; }
         public int ResultingInDegree { get; set; }
         public int ResultingOutDegree { get; set; }
-        public IEnumerable<Edge<string>> ResultingEdges { get; set; }
-        public IEnumerable<string> ResultingVertices { get; set; }
+        public IEnumerable<Edge<Vertex>> ResultingEdges { get; set; }
+        public IEnumerable<Vertex> ResultingVertices { get; set; }
         public bool BooleanResult { get; set; }
     }
 }

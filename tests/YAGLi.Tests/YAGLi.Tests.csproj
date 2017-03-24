@@ -58,9 +58,16 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ConsiderDirectionAndAllowParallelEdgesTests.cs" />
+    <Compile Include="ConsiderDirectionAndDisallowParallelEdgesTests.cs" />
     <Compile Include="EdgeTests.cs" />
+    <Compile Include="IgnoreDirectionAndAllowParallelEdgesTests.cs" />
+    <Compile Include="EquivalentExtensionsTests.cs" />
+    <Compile Include="IgnoreDirectionAndDisallowParallelEdgesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UndirectedGraphTests.cs" />
+    <Compile Include="Utils\Vertex.cs" />
+    <Compile Include="Utils\VertexEqualityComparer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

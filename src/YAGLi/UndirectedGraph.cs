@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using YAGLi.EdgeComparers;
+using YAGLi.Interfaces;
 
 namespace YAGLi
 {
@@ -9,33 +11,9 @@ namespace YAGLi
     /// The edge (x -- y) is equal to the edge (y -- x).
     /// </summary>
     /// <typeparam name="TVertex">The type of the vertex that the graph store.</typeparam>
-    public class UndirectedGraph<TVertex> : IModelAGraph<TVertex> where TVertex : IEquatable<TVertex>
+    public class UndirectedGraph<TVertex> : IModelAUndirectedGraph<TVertex>
     {
-        /// <summary>
-        /// Models a empty undirected graph who allow loops but disallow parallel edges. This field is readonly.
-        /// </summary>
-        public static readonly UndirectedGraph<TVertex> EmptyWhoAllowLoops = new UndirectedGraph<TVertex>(true, false);
-
-        /// <summary>
-        /// Models a empty undirected graph who allow parallel edges but disallow loops. This field is readonly.
-        /// </summary>
-        public static readonly UndirectedGraph<TVertex> EmptyWhoAllowParallelEdges = new UndirectedGraph<TVertex>(false, true);
-
-        /// <summary>
-        /// Models a empty undirected graph who allow loops and parallel edges. This field is readonly.
-        /// </summary>
-        public static readonly UndirectedGraph<TVertex> EmptyWhoAllowLoopsAndParallelEdges = new UndirectedGraph<TVertex>(true, true);
-
-        /// <summary>
-        /// Models a empty undirected graph who disallow loops and parallel edges. This field is readonly.
-        /// </summary>
-        public static readonly UndirectedGraph<TVertex> EmptyWhoDisallowLoopsAndParallelEdges = new UndirectedGraph<TVertex>(false, false);
-
-        /// <summary>
-        /// Readonly field who hold the edge comparison logic specific of this instance.
-        /// </summary>
-        private readonly IEqualityComparer<Edge<TVertex>> _edgesComparer;
-
+        #region Instance fields
         /// <summary>
         /// Readonly field who store the incident edges of each vertex contained in this instance.
         /// </summary>
@@ -46,23 +24,48 @@ namespace YAGLi
         /// </summary>
         private readonly IReadOnlyDictionary<Edge<TVertex>, IEnumerable<TVertex>> _incidentVertices;
 
-        public UndirectedGraph(bool allowLoops, bool allowParallelEdges) : this(allowLoops, allowParallelEdges, Enumerable.Empty<Edge<TVertex>>(), Enumerable.Empty<TVertex>()) { }
+        /// <summary>
+        /// Readonly field who hold the edge comparison logic specific of this instance.
+        /// </summary>
+        private readonly IEqualityComparer<Edge<TVertex>> _edgesComparer;
 
-        public UndirectedGraph(bool allowLoops, bool allowParallelEdges, IEnumerable<Edge<TVertex>> edges, IEnumerable<TVertex> vertices)
+        /// <summary>
+        /// Readonly field who store the object who hold the comparison logic for the vertices.
+        /// </summary>
+        private readonly IEqualityComparer<TVertex> _verticesComparer;
+        #endregion
+
+        #region Constructors
+        public UndirectedGraph(bool allowLoops, bool allowParallelEdges) : this(allowLoops, allowParallelEdges, EqualityComparer< TVertex>.Default) { }
+
+        public UndirectedGraph(bool allowLoops, bool allowParallelEdges, IEqualityComparer<TVertex> verticesComparer) : this(allowLoops, allowParallelEdges, Enumerable.Empty<Edge<TVertex>>(), Enumerable.Empty<TVertex>(), verticesComparer) { }
+
+        public UndirectedGraph(bool allowLoops, bool allowParallelEdges, IEnumerable<Edge<TVertex>> edges, IEnumerable<TVertex> vertices) : this(allowLoops, allowParallelEdges, edges, vertices, EqualityComparer<TVertex>.Default) { }
+
+        public UndirectedGraph(bool allowLoops, bool allowParallelEdges, IEnumerable<Edge<TVertex>> edges, IEnumerable<TVertex> vertices, IEqualityComparer<TVertex> verticesComparer)
         {
             AllowLoops = allowLoops;
             AllowParallelEdges = allowParallelEdges;
 
-            _edgesComparer = (AllowParallelEdges) ? EdgeEqualityComparers<TVertex>.IgnoreDirectionAndAllowParallelEdges : EdgeEqualityComparers<TVertex>.IgnoreDirectionAndDisallowParallelEdges;
+            if (AllowParallelEdges)
+            {
+                _edgesComparer = new IgnoreDirectionAndAllowParallelEdges<TVertex>(verticesComparer);
+            }
+            else
+            {
+                _edgesComparer = new IgnoreDirectionAndDisallowParallelEdges<TVertex>(verticesComparer);
+            }
 
-            Dictionary <TVertex, IList<Edge<TVertex>>> incidentEdges = new Dictionary<TVertex, IList<Edge<TVertex>>>();
+            _verticesComparer = verticesComparer;
+
+            Dictionary<TVertex, IList<Edge<TVertex>>> incidentEdges = new Dictionary<TVertex, IList<Edge<TVertex>>>(_verticesComparer);
             Dictionary<Edge<TVertex>, IEnumerable<TVertex>> incidentVertices = new Dictionary<Edge<TVertex>, IEnumerable<TVertex>>(_edgesComparer);
 
             IEnumerable<Edge<TVertex>> distinctEdges = (AllowParallelEdges) ? edges : edges.Distinct(_edgesComparer);
 
-            foreach (var edge in ((!AllowLoops)? distinctEdges.Where(edge => !edge.Ends.First().Equals(edge.Ends.Last())) : distinctEdges))
+            foreach (var edge in ((!AllowLoops) ? distinctEdges.Where(edge => !_verticesComparer.Equals(edge.End1, edge.End2)) : distinctEdges))
             {
-                IEnumerable<TVertex> distinctEnds = edge.Ends.Distinct();
+                IEnumerable<TVertex> distinctEnds = new TVertex[] { edge.End1, edge.End2 }.Distinct();
 
                 foreach (var end in distinctEnds)
                 {
@@ -77,25 +80,23 @@ namespace YAGLi
                 incidentVertices[edge] = distinctEnds;
             }
 
-            foreach (var vertex in vertices.Where(vertex => !incidentEdges.Keys.Contains(vertex)))
+            foreach (var vertex in vertices.Where(vertex => !incidentEdges.ContainsKey(vertex)))
             {
                 incidentEdges.Add(vertex, new List<Edge<TVertex>>(0));
             }
 
-            _incidentEdges = incidentEdges.ToDictionary(x => x.Key, x => x.Value.AsEnumerable());
-            _incidentVertices = incidentVertices;
+            _incidentEdges = incidentEdges.ToDictionary(x => x.Key, x => x.Value.AsEnumerable(), _verticesComparer);
+            _incidentVertices = incidentVertices.ToDictionary(x => x.Key, x => x.Value.AsEnumerable(), _edgesComparer);
         }
+        #endregion
 
-        /// <summary>
-        /// Piece of intelligence about whether this instance allow loops.
-        /// </summary>
+        #region Properties
         public bool AllowLoops { get; }
 
-        /// <summary>
-        /// Piece of intelligence about whether this instance allow parallel edges.
-        /// </summary>
         public bool AllowParallelEdges { get; }
+        #endregion
 
+        #region Methods
         public IEnumerable<Edge<TVertex>> Edges
         {
             get
@@ -110,6 +111,26 @@ namespace YAGLi
             {
                 return _incidentEdges.Keys;
             }
+        }
+
+        public IEnumerable<Edge<TVertex>> AdjacentEdgesOf(Edge<TVertex> edge)
+        {
+            if (!ContainsEdge(edge))
+            {
+                return Enumerable.Empty<Edge<TVertex>>();
+            }
+
+            return Edges.Where(x => !_edgesComparer.Equals(edge, x) && Edge<TVertex>.AreAdjacent(x, edge, _verticesComparer));
+        }
+
+        public IEnumerable<TVertex> AdjacentVerticesOf(TVertex vertex)
+        {
+            if (!ContainsVertex(vertex))
+            {
+                return Enumerable.Empty<TVertex>();
+            }
+
+            return _incidentEdges[vertex].SelectMany(edge => new TVertex[] { edge.End1, edge.End2 }).Where(v => !_verticesComparer.Equals(v, vertex));
         }
 
         public UndirectedGraph<TVertex> AddEdge(Edge<TVertex> edge)
@@ -132,41 +153,6 @@ namespace YAGLi
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// The method <see cref="AdjacentEdgesOf(Edge{TVertex})"/> get the edges contained in this instance that are adjacent to the parameter <paramref name="edge"/>.
-        /// First, the function will look if the parameter <paramref name="edge"/> is contained in this instance.
-        /// If the graph allow parallel edges, then the edges comparison will be by reference. If not, the edges will be compared using the method <see cref="Edge{TVertex}.Equals(Edge{TVertex}, EdgeComparison)"/> with the value <see cref="EdgeComparison.IgnoreDirection"/>.
-        /// </summary>
-        /// <param name="edge">The edge for which to search the adjacent edges contained in this instance.</param>
-        /// <returns>The edges contained in this instance that are adjacent to the parameter <paramref name="edge"/></returns>
-        public IEnumerable<Edge<TVertex>> AdjacentEdgesOf(Edge<TVertex> edge)
-        {
-            if (!ContainsEdge(edge))
-            {
-                return Enumerable.Empty<Edge<TVertex>>();
-            }
-            else
-            {
-                return Edges.Where(x => !_edgesComparer.Equals(edge, x) && x.IsAdjacentTo(edge));
-            }
-        }
-
-        /// <summary>
-        /// The method <see cref="AdjacentVerticesOf(TVertex)"/> returns the vertices contained in this instance that are adjacent to the parameter <paramref name="vertex"/>.
-        /// If the parameter <paramref name="vertex"/> is not contained in this instance, a empty collection is returned.
-        /// </summary>
-        /// <param name="vertex">The vertex for wich to search the adjacent vertices that are contained in this instance.</param>
-        /// <returns>The vertices contained in this instance that are adjacent to the parameter <paramref name="vertex"/> if it is contained in this instance. Otherwise, a emtpy collection.</returns>
-        public IEnumerable<TVertex> AdjacentVerticesOf(TVertex vertex)
-        {
-            if (!ContainsVertex(vertex))
-            {
-                return Enumerable.Empty<TVertex>();
-            }
-
-            return _incidentEdges[vertex].SelectMany(edge => edge.Ends).Where(v => !v.Equals(vertex));
-        }
-
         public bool AreEdgesAdjacent(Edge<TVertex> edge1, Edge<TVertex> edge2)
         {
             if (!ContainsEdges(edge1, edge2))
@@ -174,24 +160,29 @@ namespace YAGLi
                 return false;
             }
 
-            return edge1.Ends.Intersect(edge2.Ends).Any();
+            return Edge<TVertex>.AreAdjacent(edge1, edge2, _verticesComparer);
         }
 
         public bool AreVerticesAdjacent(TVertex vertex1, TVertex vertex2)
         {
             Edge<TVertex> referenceVertex = new Edge<TVertex>(vertex1, vertex2);
 
-            return Edges.Any(edge => edge.Equals(referenceVertex, EdgeComparison.IgnoreDirection));
+            return Edges.Contains(referenceVertex, new IgnoreDirectionAndDisallowParallelEdges<TVertex>(_verticesComparer));
+        }
+
+        public int CompareTo(IModelAUndirectedGraph<TVertex> other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int CompareTo(object other)
+        {
+            throw new NotImplementedException();
         }
 
         public bool ContainsEdge(Edge<TVertex> edge)
         {
-            return Edges.Contains(edge, _edgesComparer);
-        }
-
-        public bool ContainsEdges(IEnumerable<Edge<TVertex>> edges)
-        {
-            return !edges.Except(Edges, _edgesComparer).Any();
+            return _incidentVertices.ContainsKey(edge);
         }
 
         public bool ContainsEdges(params Edge<TVertex>[] edges)
@@ -199,14 +190,14 @@ namespace YAGLi
             return ContainsEdges(edges.AsEnumerable());
         }
 
-        public bool ContainsVertex(TVertex vertex)
+        public bool ContainsEdges(IEnumerable<Edge<TVertex>> edges)
         {
-            return Vertices.Contains(vertex);
+            return edges.All(ContainsEdge);
         }
 
-        public bool ContainsVertices(IEnumerable<TVertex> vertices)
+        public bool ContainsVertex(TVertex vertex)
         {
-            return !vertices.Except(Vertices).Any();
+            return _incidentEdges.ContainsKey(vertex);
         }
 
         public bool ContainsVertices(params TVertex[] vertices)
@@ -214,14 +205,72 @@ namespace YAGLi
             return ContainsVertices(vertices.AsEnumerable());
         }
 
+        public bool ContainsVertices(IEnumerable<TVertex> vertices)
+        {
+            return vertices.All(ContainsVertex);
+        }
+
         public int DegreeOf(TVertex vertex)
         {
-            if(!ContainsVertex(vertex))
+            if (!ContainsVertex(vertex))
             {
                 return -1;
             }
 
-            return _incidentEdges[vertex].Sum(edge => (edge.Ends.First().Equals(edge.Ends.Last())) ? 2 : 1);
+            return _incidentEdges[vertex].Sum(edge => _verticesComparer.Equals(edge.End1, edge.End2) ? 2 : 1);
+        }
+
+        public bool Equals(IModelAUndirectedGraph<TVertex> other)
+        {
+            if (ReferenceEquals(other, null))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (AllowLoops != other.AllowLoops
+                || AllowParallelEdges != other.AllowParallelEdges
+                || !Edges.IsEquivalent(other.Edges, new IgnoreDirectionAndDisallowParallelEdges<TVertex>(_verticesComparer))
+                || !Vertices.IsEquivalent(other.Vertices, _verticesComparer))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public bool Equals(IModelAGraph<TVertex> other)
+        {
+            return Equals(other as IModelAUndirectedGraph<TVertex>);
+        }
+
+        public override bool Equals(object other)
+        {
+            return Equals(other as IModelAUndirectedGraph<TVertex>);
+        }
+
+        public override int GetHashCode()
+        {
+            int hash = 101;
+
+            hash = hash * 107 + AllowLoops.GetHashCode();
+            hash = hash * 107 + AllowParallelEdges.GetHashCode();
+
+            foreach (var edgeHashing in Edges.Select(edge => _edgesComparer.GetHashCode(edge)).OrderBy(x => x))
+            {
+                hash = hash * 107 + edgeHashing;
+            }
+
+            foreach (var vertexHashing in Vertices.Select(vertex => _verticesComparer.GetHashCode(vertex)).OrderBy(x => x))
+            {
+                hash = hash * 107 + vertexHashing;
+            }
+
+            return hash;
         }
 
         public IEnumerable<Edge<TVertex>> IncidentEdgesOf(TVertex vertex)
@@ -244,14 +293,10 @@ namespace YAGLi
             return _incidentVertices[edge];
         }
 
-        public int InDegreeOf(TVertex vertex)
+        public override string ToString()
         {
-            return DegreeOf(vertex);
+            throw new NotImplementedException();
         }
-
-        public int OutDegreeOf(TVertex vertex)
-        {
-            return DegreeOf(vertex);
-        }
+        #endregion
     }
 }
