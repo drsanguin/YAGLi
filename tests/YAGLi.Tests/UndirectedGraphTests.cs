@@ -361,16 +361,16 @@ namespace YAGLi.Tests
                 },
                 new Vertex[] { "v0", "v1", "v2", "v3", "v4" }, new VertexEqualityComparer());
 
-            Check.That(graph.ToString()).IsEqualTo(@"{
-    Vertices = [v0, v1, v4, v3, v2]
-    Edges = [
-        (v0 - v1),
-        (v1 - v4),
-        (v4 - v4),
-        (v3 - v4),
-        (v3 - v4)
-    ]
-}");
+            Check.That(graph.ToString()).IsEqualTo(string.Format("{{{0}    Vertices = [v0, v1, v4, v3, v2]{1}    Edges = [{2}        (v0 - v1),{3}        (v1 - v4),{4}        (v4 - v4),{5}        (v3 - v4),{6}        (v3 - v4){7}    ]{8}}}",
+                Environment.NewLine,
+                Environment.NewLine,
+                Environment.NewLine,
+                Environment.NewLine,
+                Environment.NewLine,
+                Environment.NewLine,
+                Environment.NewLine,
+                Environment.NewLine,
+                Environment.NewLine));
         }
     }
 }
