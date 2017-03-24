@@ -62,9 +62,9 @@ namespace YAGLi
             Dictionary<TVertex, IList<Edge<TVertex>>> incidentEdges = new Dictionary<TVertex, IList<Edge<TVertex>>>(_verticesComparer);
             Dictionary<Edge<TVertex>, IEnumerable<TVertex>> incidentVertices = new Dictionary<Edge<TVertex>, IEnumerable<TVertex>>(_edgesComparer);
 
-            IEnumerable<Edge<TVertex>> distinctEdges = (AllowParallelEdges) ? edges : edges.Distinct(_edgesComparer);
+            IEnumerable<Edge<TVertex>> distinctEdges = AllowParallelEdges ? edges : edges.Distinct(_edgesComparer);
 
-            foreach (var edge in ((!AllowLoops) ? distinctEdges.Where(edge => !_verticesComparer.Equals(edge.End1, edge.End2)) : distinctEdges))
+            foreach (var edge in (!AllowLoops ? distinctEdges.Where(edge => !_verticesComparer.Equals(edge.End1, edge.End2)) : distinctEdges))
             {
                 IEnumerable<TVertex> distinctEnds = new TVertex[] { edge.End1, edge.End2 }.Distinct();
 
