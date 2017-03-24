@@ -171,16 +171,6 @@ namespace YAGLi
             return Edges.Contains(referenceVertex, new IgnoreDirectionAndDisallowParallelEdges<TVertex>(_verticesComparer));
         }
 
-        public int CompareTo(IModelAUndirectedGraph<TVertex> other)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int CompareTo(object other)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool ContainsEdge(Edge<TVertex> edge)
         {
             return _incidentVertices.ContainsKey(edge);

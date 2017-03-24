@@ -7,7 +7,7 @@ namespace YAGLi.Interfaces
     /// The interface <see cref="IModelAGraph{TVertex}"/> represent a generic graph object from Graph Theory.
     /// </summary>
     /// <typeparam name="TVertex">The type of the graph's vertices.</typeparam>
-    public interface IModelAGraph<TVertex> : IComparable, IEquatable<IModelAGraph<TVertex>>
+    public interface IModelAGraph<TVertex> : IEquatable<IModelAGraph<TVertex>>
     {
         #region Properties
         /// <summary>

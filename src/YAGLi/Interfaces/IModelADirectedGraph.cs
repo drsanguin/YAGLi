@@ -7,7 +7,7 @@ namespace YAGLi.Interfaces
     /// In graph theory, a undirected graph is a graph where edges have direction. Meaning the edges (x -- y) and (x -- y) are equal whereas the edges (x -- y) and (y -- x) are not.
     /// </summary>
     /// <typeparam name="TVertex"></typeparam>
-    public interface IModelADirectedGraph<TVertex> : IModelAGraph<TVertex>, IComparable<IModelADirectedGraph<TVertex>>, IEquatable<IModelAUndirectedGraph<TVertex>>
+    public interface IModelADirectedGraph<TVertex> : IModelAGraph<TVertex>, IEquatable<IModelAUndirectedGraph<TVertex>>
     {
         #region Methods
         /// <summary>
