@@ -344,5 +344,33 @@ namespace YAGLi.Tests
 
             Check.That(graph1.GetHashCode()).IsNotEqualTo(graph2.GetHashCode());
         }
+
+        [Test]
+        public void UndirectedGraph_ToString_should_return_the_expected_string()
+        {
+            UndirectedGraph<Vertex> graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v3", "v4")
+                },
+                new Vertex[] { "v0", "v1", "v2", "v3", "v4" }, new VertexEqualityComparer());
+
+            Check.That(graph.ToString()).IsEqualTo(@"{
+    Vertices = [v0, v1, v4, v3, v2]
+    Edges = [
+        (v0 - v1),
+        (v1 - v4),
+        (v4 - v4),
+        (v3 - v4),
+        (v3 - v4)
+    ]
+}");
+        }
     }
 }

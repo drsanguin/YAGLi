@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using YAGLi.EdgeComparers;
 using YAGLi.Interfaces;
 
@@ -295,7 +296,16 @@ namespace YAGLi
 
         public override string ToString()
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("{");
+            sb.AppendLine(string.Format("    {0} = [{1}]", nameof(Vertices), string.Join(", ", Vertices)));
+            sb.AppendLine(string.Format("    {0} = [", nameof(Edges)));
+            sb.AppendLine(string.Join(string.Format(",{0}", Environment.NewLine), Edges.Select(edge => string.Format("        ({0} - {1})", edge.End1, edge.End2))));
+            sb.AppendLine("    ]");
+            sb.Append("}");
+
+            return sb.ToString();
         }
         #endregion
     }
