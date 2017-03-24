@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YAGLi.Interfaces;
 using YAGLi.Tests.Utils;
 
 namespace YAGLi.Tests
@@ -236,6 +237,38 @@ namespace YAGLi.Tests
                 new Vertex[] { "v0", "v1", "v3", "v4" }, new VertexEqualityComparer());
 
             UndirectedGraph<Vertex> graph2 = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v0", "v1")
+                },
+                new Vertex[] { "v4", "v3", "v1", "v0" }, new VertexEqualityComparer());
+
+            Check.That(graph1.Equals(graph2)).IsTrue();
+        }
+
+        [Test]
+        public void UndirectedGraph_Equals_with_a_IModelAGraph_object_should_work()
+        {
+            UndirectedGraph<Vertex> graph1 = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v3", "v4")
+                },
+                new Vertex[] { "v0", "v1", "v3", "v4" }, new VertexEqualityComparer());
+
+            IModelAGraph<Vertex> graph2 = new UndirectedGraph<Vertex>(
                 true,
                 true,
                 new Edge<Vertex>[]
