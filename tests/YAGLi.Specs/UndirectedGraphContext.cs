@@ -11,8 +11,6 @@ namespace YAGLi.Specs
         public Dictionary<string, Vertex> GivenVertices { get; set; }
         public UndirectedGraph<Vertex> Graph { get; set; }
         public int ResultingDegree { get; set; }
-        public int ResultingInDegree { get; set; }
-        public int ResultingOutDegree { get; set; }
         public IEnumerable<Edge<Vertex>> ResultingEdges { get; set; }
         public IEnumerable<Vertex> ResultingVertices { get; set; }
         public bool BooleanResult { get; set; }
