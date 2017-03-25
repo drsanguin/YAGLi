@@ -1,6 +1,5 @@
 ﻿using NFluent;
 using System.Collections.Generic;
-using System.Linq;
 using TechTalk.SpecFlow;
 using YAGLi.Tests.Utils;
 

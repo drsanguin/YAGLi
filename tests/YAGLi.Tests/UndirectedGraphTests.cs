@@ -1,10 +1,6 @@
 ﻿using NFluent;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using YAGLi.Interfaces;
 using YAGLi.Tests.Utils;
 
