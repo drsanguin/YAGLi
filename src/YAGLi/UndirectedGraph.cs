@@ -289,6 +289,8 @@ namespace YAGLi
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine("{");
+            sb.AppendLine(string.Format("    {0} = {1}", nameof(AllowLoops), AllowLoops));
+            sb.AppendLine(string.Format("    {0} = {1}", nameof(AllowParallelEdges), AllowParallelEdges));
             sb.AppendLine(string.Format("    {0} = [{1}]", nameof(Vertices), string.Join(", ", Vertices)));
             sb.AppendLine(string.Format("    {0} = [", nameof(Edges)));
             sb.AppendLine(string.Join(string.Format(",{0}", Environment.NewLine), Edges.Select(edge => string.Format("        ({0} - {1})", edge.End1, edge.End2))));
