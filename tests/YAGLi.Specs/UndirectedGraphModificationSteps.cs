@@ -1,5 +1,4 @@
 ﻿using NFluent;
-using System;
 using System.Collections.Generic;
 using TechTalk.SpecFlow;
 using YAGLi.Tests.Utils;
@@ -19,7 +18,7 @@ namespace YAGLi.Specs
         [When(@"I add the edges")]
         public void WhenIAddTheEdges(Table table)
         {
-            List<Edge<Vertex>> edges = new List<Edge<Vertex>>(table.RowCount);
+            var edges = new List<Edge<Vertex>>(table.RowCount);
 
             foreach (var row in table.Rows)
             {
@@ -41,7 +40,7 @@ namespace YAGLi.Specs
         [Then(@"this new undirected graph should contains the vertices")]
         public void ThenThisNewUndirectedGraphShouldContainsTheVertices(Table table)
         {
-            List<Vertex> expectedVertices = new List<Vertex>(table.RowCount);
+            var expectedVertices = new List<Vertex>(table.RowCount);
 
             foreach (var row in table.Rows)
             {
@@ -54,7 +53,7 @@ namespace YAGLi.Specs
         [Then(@"this new undirected graph should contains the edges")]
         public void ThenThisNewUndirectedGraphShouldContainsTheEdges(Table table)
         {
-            List<Edge<Vertex>> expectedEdges = new List<Edge<Vertex>>(table.RowCount);
+            var expectedEdges = new List<Edge<Vertex>>(table.RowCount);
 
             foreach (var row in table.Rows)
             {

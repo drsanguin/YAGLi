@@ -69,7 +69,7 @@ namespace YAGLi.Specs
         [Then(@"he should contains the vertices")]
         public void ThenHeShouldContainsTheVerticesAnd(Table table)
         {
-            List<Vertex> expectedVertices = new List<Vertex>(table.RowCount);
+            var expectedVertices = new List<Vertex>(table.RowCount);
 
             foreach (var row in table.Rows)
             {
@@ -82,7 +82,7 @@ namespace YAGLi.Specs
         [Then(@"the edges")]
         public void ThenTheEdges(Table table)
         {
-            List<Edge<Vertex>> expectedEdges = new List<Edge<Vertex>>(table.RowCount);
+            var expectedEdges = new List<Edge<Vertex>>(table.RowCount);
 
             foreach (var row in table.Rows)
             {

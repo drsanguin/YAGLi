@@ -12,7 +12,7 @@ namespace YAGLi.Tests
         [Test]
         public void UndirectedGraph_AllowLoops_should_return_the_value_passed_in_the_constructor()
         {
-            UndirectedGraph<Vertex> graph = new UndirectedGraph<Vertex>(true, true);
+            var graph = new UndirectedGraph<Vertex>(true, true);
 
             Check.That(graph.AllowLoops).IsTrue();
         }
@@ -20,7 +20,7 @@ namespace YAGLi.Tests
         [Test]
         public void UndirectedGraph_AllowParallelEdges_should_return_the_value_passed_in_the_constructor()
         {
-            UndirectedGraph<Vertex> graph = new UndirectedGraph<Vertex>(true, true);
+            var graph = new UndirectedGraph<Vertex>(true, true);
 
             Check.That(graph.AllowParallelEdges).IsTrue();
         }
@@ -28,7 +28,7 @@ namespace YAGLi.Tests
         [Test]
         public void UndirectedGraph_Equals_with_null_should_return_false()
         {
-            UndirectedGraph<Vertex> graph = new UndirectedGraph<Vertex>(true, true);
+            var graph = new UndirectedGraph<Vertex>(true, true);
 
             Check.That(graph.Equals(null)).IsFalse();
         }
@@ -36,7 +36,7 @@ namespace YAGLi.Tests
         [Test]
         public void UndirectedGraph_Equals_with_another_object_who_is_not_a_UndirectedGraph_should_return_false()
         {
-            UndirectedGraph<Vertex> graph = new UndirectedGraph<Vertex>(true, true);
+            var graph = new UndirectedGraph<Vertex>(true, true);
 
             Check.That(graph.Equals(new object())).IsFalse();
         }
@@ -44,7 +44,7 @@ namespace YAGLi.Tests
         [Test]
         public void UndirectedGraph_Equals_with_the_same_reference_should_return_true()
         {
-            UndirectedGraph<Vertex> graph = new UndirectedGraph<Vertex>(true, true);
+            var graph = new UndirectedGraph<Vertex>(true, true);
 
             Check.That(graph.Equals(graph)).IsTrue();
         }
@@ -52,8 +52,8 @@ namespace YAGLi.Tests
         [Test]
         public void UndirectedGraph_Equals_with_another_Undirectedgraph_who_has_a_different_value_for_property_AllowLoops_should_return_false()
         {
-            UndirectedGraph<Vertex> graph1 = new UndirectedGraph<Vertex>(true, true);
-            UndirectedGraph<Vertex> graph2 = new UndirectedGraph<Vertex>(false, true);
+            var graph1 = new UndirectedGraph<Vertex>(true, true);
+            var graph2 = new UndirectedGraph<Vertex>(false, true);
 
             Check.That(graph1.Equals(graph2)).IsFalse();
         }
@@ -61,8 +61,8 @@ namespace YAGLi.Tests
         [Test]
         public void UndirectedGraph_Equals_with_another_Undirectedgraph_who_has_a_different_value_for_property_AllowParallelEdges_should_return_false()
         {
-            UndirectedGraph<Vertex> graph1 = new UndirectedGraph<Vertex>(true, true);
-            UndirectedGraph<Vertex> graph2 = new UndirectedGraph<Vertex>(true, false);
+            var graph1 = new UndirectedGraph<Vertex>(true, true);
+            var graph2 = new UndirectedGraph<Vertex>(true, false);
 
             Check.That(graph1.Equals(graph2)).IsFalse();
         }
@@ -70,7 +70,7 @@ namespace YAGLi.Tests
         [Test]
         public void UndirectedGraph_Equals_with_another_Undirectedgraph_who_has_a_different_number_of_edges_should_return_false()
         {
-            UndirectedGraph<Vertex> graph1 = new UndirectedGraph<Vertex>(
+            var graph1 = new UndirectedGraph<Vertex>(
                 true,
                 true,
                 new Edge<Vertex>[]
@@ -82,7 +82,7 @@ namespace YAGLi.Tests
                 },
                 new Vertex[] { "v0", "v1", "v3", "v4" }, new VertexEqualityComparer());
 
-            UndirectedGraph<Vertex> graph2 = new UndirectedGraph<Vertex>(
+            var graph2 = new UndirectedGraph<Vertex>(
                 true,
                 true,
                 new Edge<Vertex>[]
@@ -99,7 +99,7 @@ namespace YAGLi.Tests
         [Test]
         public void UndirectedGraph_Equals_with_another_Undirectedgraph_who_has_different_edges_should_return_false()
         {
-            UndirectedGraph<Vertex> graph1 = new UndirectedGraph<Vertex>(
+            var graph1 = new UndirectedGraph<Vertex>(
                 true,
                 true,
                 new Edge<Vertex>[]
@@ -111,7 +111,7 @@ namespace YAGLi.Tests
                 },
                 new Vertex[] { "v0", "v1", "v3", "v4" }, new VertexEqualityComparer());
 
-            UndirectedGraph<Vertex> graph2 = new UndirectedGraph<Vertex>(
+            var graph2 = new UndirectedGraph<Vertex>(
                 true,
                 true,
                 new Edge<Vertex>[]
@@ -129,7 +129,7 @@ namespace YAGLi.Tests
         [Test]
         public void UndirectedGraph_Equals_with_another_Undirectedgraph_who_has_a_different_number_of_vertices_should_return_false()
         {
-            UndirectedGraph<Vertex> graph1 = new UndirectedGraph<Vertex>(
+            var graph1 = new UndirectedGraph<Vertex>(
                 true,
                 true,
                 new Edge<Vertex>[]
@@ -141,7 +141,7 @@ namespace YAGLi.Tests
                 },
                 new Vertex[] { "v0", "v1", "v3", "v4" }, new VertexEqualityComparer());
 
-            UndirectedGraph<Vertex> graph2 = new UndirectedGraph<Vertex>(
+            var graph2 = new UndirectedGraph<Vertex>(
                 true,
                 true,
                 new Edge<Vertex>[]
@@ -159,7 +159,7 @@ namespace YAGLi.Tests
         [Test]
         public void UndirectedGraph_Equals_with_another_Undirectedgraph_who_has_different_vertices_should_return_false()
         {
-            UndirectedGraph<Vertex> graph1 = new UndirectedGraph<Vertex>(
+            var graph1 = new UndirectedGraph<Vertex>(
                 true,
                 true,
                 new Edge<Vertex>[]
@@ -171,7 +171,7 @@ namespace YAGLi.Tests
                 },
                 new Vertex[] { "v0", "v1", "v3", "v4" }, new VertexEqualityComparer());
 
-            UndirectedGraph<Vertex> graph2 = new UndirectedGraph<Vertex>(
+            var graph2 = new UndirectedGraph<Vertex>(
                 true,
                 true,
                 new Edge<Vertex>[]
@@ -189,7 +189,7 @@ namespace YAGLi.Tests
         [Test]
         public void UndirectedGraph_Equals_with_another_Undirectedgraph_equal_to_the_first_should_return_true()
         {
-            UndirectedGraph<Vertex> graph1 = new UndirectedGraph<Vertex>(
+            var graph1 = new UndirectedGraph<Vertex>(
                 true,
                 false,
                 new Edge<Vertex>[]
@@ -201,7 +201,7 @@ namespace YAGLi.Tests
                 },
                 new Vertex[] { "v0", "v1", "v3", "v4" }, new VertexEqualityComparer());
 
-            UndirectedGraph<Vertex> graph2 = new UndirectedGraph<Vertex>(
+            var graph2 = new UndirectedGraph<Vertex>(
                 true,
                 false,
                 new Edge<Vertex>[]
@@ -219,7 +219,7 @@ namespace YAGLi.Tests
         [Test]
         public void UndirectedGraph_Equals_with_another_Undirectedgraph_equal_to_the_first_with_the_two_who_allow_parallel_edges_should_return_true()
         {
-            UndirectedGraph<Vertex> graph1 = new UndirectedGraph<Vertex>(
+            var graph1 = new UndirectedGraph<Vertex>(
                 true,
                 true,
                 new Edge<Vertex>[]
@@ -232,7 +232,7 @@ namespace YAGLi.Tests
                 },
                 new Vertex[] { "v0", "v1", "v3", "v4" }, new VertexEqualityComparer());
 
-            UndirectedGraph<Vertex> graph2 = new UndirectedGraph<Vertex>(
+            var graph2 = new UndirectedGraph<Vertex>(
                 true,
                 true,
                 new Edge<Vertex>[]
@@ -251,7 +251,7 @@ namespace YAGLi.Tests
         [Test]
         public void UndirectedGraph_Equals_with_a_IModelAGraph_object_should_work()
         {
-            UndirectedGraph<Vertex> graph1 = new UndirectedGraph<Vertex>(
+            var graph1 = new UndirectedGraph<Vertex>(
                 true,
                 true,
                 new Edge<Vertex>[]
@@ -283,7 +283,7 @@ namespace YAGLi.Tests
         [Test]
         public void UndirectedGraph_GetHashCode_should_return_the_same_result_for_two_UndirectedGraph_who_are_equal()
         {
-            UndirectedGraph<Vertex> graph1 = new UndirectedGraph<Vertex>(
+            var graph1 = new UndirectedGraph<Vertex>(
                 true,
                 true,
                 new Edge<Vertex>[]
@@ -296,7 +296,7 @@ namespace YAGLi.Tests
                 },
                 new Vertex[] { "v0", "v1", "v3", "v4" }, new VertexEqualityComparer());
 
-            UndirectedGraph<Vertex> graph2 = new UndirectedGraph<Vertex>(
+            var graph2 = new UndirectedGraph<Vertex>(
                 true,
                 true,
                 new Edge<Vertex>[]
@@ -315,7 +315,7 @@ namespace YAGLi.Tests
         [Test]
         public void UndirectedGraph_GetHashCode_should_return_a_different_result_for_two_UndirectedGraph_who_are_not_equal()
         {
-            UndirectedGraph<Vertex> graph1 = new UndirectedGraph<Vertex>(
+            var graph1 = new UndirectedGraph<Vertex>(
                 true,
                 true,
                 new Edge<Vertex>[]
@@ -328,7 +328,7 @@ namespace YAGLi.Tests
                 },
                 new Vertex[] { "v0", "v1", "v3", "v4" }, new VertexEqualityComparer());
 
-            UndirectedGraph<Vertex> graph2 = new UndirectedGraph<Vertex>(
+            var graph2 = new UndirectedGraph<Vertex>(
                 true,
                 true,
                 new Edge<Vertex>[]
@@ -344,7 +344,7 @@ namespace YAGLi.Tests
         [Test]
         public void UndirectedGraph_ToString_should_return_the_expected_string()
         {
-            UndirectedGraph<Vertex> graph = new UndirectedGraph<Vertex>(
+            var graph = new UndirectedGraph<Vertex>(
                 true,
                 true,
                 new Edge<Vertex>[]

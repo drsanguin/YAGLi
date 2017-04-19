@@ -23,7 +23,7 @@ namespace YAGLi.Tests
         [Test]
         public void Edge_End1_should_be_equal_to_the_parameter_end1_of_the_constructor()
         {
-            Edge<string> edge = new Edge<string>("Hello", "World!");
+            var edge = new Edge<string>("Hello", "World!");
 
             Check.That(edge.End1).IsEqualTo("Hello");
         }
@@ -31,7 +31,7 @@ namespace YAGLi.Tests
         [Test]
         public void Edge_End2_should_be_equal_to_the_parameter_end2_of_the_constructor()
         {
-            Edge<string> edge = new Edge<string>("Hello", "World!");
+            var edge = new Edge<string>("Hello", "World!");
 
             Check.That(edge.End2).IsEqualTo("World!");
         }
@@ -39,8 +39,8 @@ namespace YAGLi.Tests
         [Test]
         public void Edge_AreAdjacent_should_return_false_if_the_edges_does_not_share_a_common_vertex()
         {
-            Edge<Vertex> edge1 = new Edge<Vertex>("Hello, ", "World!");
-            Edge<Vertex> edge2 = new Edge<Vertex>("Hello", ", World!");
+            var edge1 = new Edge<Vertex>("Hello, ", "World!");
+            var edge2 = new Edge<Vertex>("Hello", ", World!");
 
             Check.That(Edge<Vertex>.AreAdjacent(edge1, edge2, new VertexEqualityComparer())).IsFalse();
         }
@@ -48,8 +48,8 @@ namespace YAGLi.Tests
         [Test]
         public void Edge_AreAdjacent_should_return_true_if_the_edges_does_share_a_common_vertex()
         {
-            Edge<Vertex> edge1 = new Edge<Vertex>("Hello, ", "World!");
-            Edge<Vertex> edge2 = new Edge<Vertex>("Hello, ", "World!");
+            var edge1 = new Edge<Vertex>("Hello, ", "World!");
+            var edge2 = new Edge<Vertex>("Hello, ", "World!");
 
             Check.That(Edge<Vertex>.AreAdjacent(edge1, edge2, new VertexEqualityComparer())).IsTrue();
         }

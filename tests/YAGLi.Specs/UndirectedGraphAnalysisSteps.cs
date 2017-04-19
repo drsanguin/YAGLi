@@ -1,5 +1,4 @@
 ﻿using NFluent;
-using System.Collections.Generic;
 using System.Linq;
 using TechTalk.SpecFlow;
 using YAGLi.Tests.Utils;
@@ -31,8 +30,8 @@ namespace YAGLi.Specs
         [Then(@"I get the edges")]
         public void ThenTheResultShouldBeTheEdges(Table table)
         {
-            IEnumerable<Edge<Vertex>> actualEdges = _context.ResultingEdges;
-            IEnumerable<Edge<Vertex>> expectedEdges = table.Rows.Select(row => _context.GivenEdges[row["Name"]]);
+            var actualEdges = _context.ResultingEdges;
+            var expectedEdges = table.Rows.Select(row => _context.GivenEdges[row["Name"]]);
 
             Check.That(actualEdges).ContainsExactly(expectedEdges);
         }
@@ -40,7 +39,7 @@ namespace YAGLi.Specs
         [When(@"I retrieve the adjacent edges of the edge with the ends ""(.*)"" and ""(.*)""")]
         public void WhenIRetrieveTheAdjacentEdgesOfTheEdgeWithTheEndsAnd(string end1, string end2)
         {
-            Edge<Vertex> edge = new Edge<Vertex>(end1, end2);
+            var edge = new Edge<Vertex>(end1, end2);
             _context.ResultingEdges = _context.Graph.AdjacentEdgesOf(edge);
         }
 
@@ -59,7 +58,7 @@ namespace YAGLi.Specs
         [Then(@"I get the vertices")]
         public void ThenIGetTheVertices(Table table)
         {
-            IEnumerable<Vertex> expectedVertices = table.Rows.Select(row => _context.GivenVertices[row["Name"]]);
+            var expectedVertices = table.Rows.Select(row => _context.GivenVertices[row["Name"]]);
 
             Check.That(_context.ResultingVertices).ContainsExactly(expectedVertices);
         }
@@ -97,7 +96,7 @@ namespace YAGLi.Specs
         [When(@"I get the incident vertices of the edge with the ends ""(.*)"" and ""(.*)""")]
         public void WhenIGetTheIncidentVerticesOfTheEdgeWithTheEndsAnd(string end1, string end2)
         {
-            Edge<Vertex> edge = new Edge<Vertex>(end1, end2);
+            var edge = new Edge<Vertex>(end1, end2);
 
             _context.ResultingVertices = _context.Graph.IncidentVerticesOf(edge);
         }
@@ -135,7 +134,7 @@ namespace YAGLi.Specs
         [When(@"I check that the graph contains the edge with the ends ""(.*)"" and ""(.*)""")]
         public void WhenICheckThatTheGraphContainsTheEdgeWithTheEndsAnd(string end1, string end2)
         {
-            Edge<Vertex> edge = new Edge<Vertex>(end1, end2);
+            var edge = new Edge<Vertex>(end1, end2);
 
             _context.BooleanResult = _context.Graph.ContainsEdge(edge);
         }
@@ -149,8 +148,8 @@ namespace YAGLi.Specs
         [When(@"I check that the graph contains the edges with the ends ""(.*)"" and ""(.*)"" and the ends ""(.*)"" and ""(.*)""")]
         public void A(string end1, string end2, string end3, string end4)
         {
-            Edge<Vertex> edge1 = new Edge<Vertex>(end1, end2);
-            Edge<Vertex> edge2 = new Edge<Vertex>(end3, end4);
+            var edge1 = new Edge<Vertex>(end1, end2);
+            var edge2 = new Edge<Vertex>(end3, end4);
 
             _context.BooleanResult = _context.Graph.ContainsEdges(edge1, edge2);
         }
@@ -170,8 +169,8 @@ namespace YAGLi.Specs
         [When(@"I check if the edge ""(.*)"" and the edge with the ends ""(.*)"" and ""(.*)"" are adjacent")]
         public void WhenICheckIfTheEdgeAndTheEdgeWithTheEndsAndAreAdjacent(string edgeName, string end1, string end2)
         {
-            Edge<Vertex> edge1 = _context.GivenEdges[edgeName];
-            Edge<Vertex> edge2 = new Edge<Vertex>(end1, end2);
+            var edge1 = _context.GivenEdges[edgeName];
+            var edge2 = new Edge<Vertex>(end1, end2);
 
             _context.BooleanResult = _context.Graph.AreEdgesAdjacent(edge1, edge2);
         }

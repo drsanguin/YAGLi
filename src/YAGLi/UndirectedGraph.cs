@@ -59,14 +59,14 @@ namespace YAGLi
 
             _verticesComparer = verticesComparer;
 
-            Dictionary<TVertex, IList<Edge<TVertex>>> incidentEdges = new Dictionary<TVertex, IList<Edge<TVertex>>>(_verticesComparer);
-            Dictionary<Edge<TVertex>, IEnumerable<TVertex>> incidentVertices = new Dictionary<Edge<TVertex>, IEnumerable<TVertex>>(_edgesComparer);
+            var incidentEdges = new Dictionary<TVertex, IList<Edge<TVertex>>>(_verticesComparer);
+            var incidentVertices = new Dictionary<Edge<TVertex>, IEnumerable<TVertex>>(_edgesComparer);
 
-            IEnumerable<Edge<TVertex>> distinctEdges = AllowParallelEdges ? edges : edges.Distinct(_edgesComparer);
+            var distinctEdges = AllowParallelEdges ? edges : edges.Distinct(_edgesComparer);
 
             foreach (var edge in (!AllowLoops ? distinctEdges.Where(edge => !_verticesComparer.Equals(edge.End1, edge.End2)) : distinctEdges))
             {
-                IEnumerable<TVertex> distinctEnds = new TVertex[] { edge.End1, edge.End2 }.Distinct();
+                var distinctEnds = new TVertex[] { edge.End1, edge.End2 }.Distinct();
 
                 foreach (var end in distinctEnds)
                 {
@@ -166,7 +166,7 @@ namespace YAGLi
 
         public bool AreVerticesAdjacent(TVertex vertex1, TVertex vertex2)
         {
-            Edge<TVertex> referenceVertex = new Edge<TVertex>(vertex1, vertex2);
+            var referenceVertex = new Edge<TVertex>(vertex1, vertex2);
 
             return Edges.Contains(referenceVertex, new IgnoreDirectionAndDisallowParallelEdges<TVertex>(_verticesComparer));
         }
@@ -218,7 +218,7 @@ namespace YAGLi
                 return false;
             }
 
-            if (ReferenceEquals(this, other))
+            if (ReferenceEquals(other, this))
             {
                 return true;
             }
@@ -246,7 +246,7 @@ namespace YAGLi
 
         public override int GetHashCode()
         {
-            int hash = 101;
+            var hash = 101;
 
             hash = hash * 107 + AllowLoops.GetHashCode();
             hash = hash * 107 + AllowParallelEdges.GetHashCode();
@@ -286,7 +286,7 @@ namespace YAGLi
 
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             sb.AppendLine("{");
             sb.AppendLine(string.Format("    {0} = {1}", nameof(AllowLoops), AllowLoops));
