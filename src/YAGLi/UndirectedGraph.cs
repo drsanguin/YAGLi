@@ -136,22 +136,22 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex> AddEdge(Edge<TVertex> edge)
         {
-            throw new NotImplementedException();
+            return AddEdges(Enumerable.Repeat(edge, 1));
         }
 
         public UndirectedGraph<TVertex> AddEdges(IEnumerable<Edge<TVertex>> edges)
         {
-            throw new NotImplementedException();
+            return new UndirectedGraph<TVertex>(AllowLoops, AllowParallelEdges, Edges.Concat(edges), Vertices, _verticesComparer);
         }
 
         public UndirectedGraph<TVertex> AddVertex(TVertex vertex)
         {
-            throw new NotImplementedException();
+            return AddVertices(Enumerable.Repeat(vertex, 1));
         }
 
         public UndirectedGraph<TVertex> AddVertices(IEnumerable<TVertex> vertices)
         {
-            throw new NotImplementedException();
+            return new UndirectedGraph<TVertex>(AllowLoops, AllowParallelEdges, Edges, Vertices.Concat(vertices), _verticesComparer);
         }
 
         public bool AreEdgesAdjacent(Edge<TVertex> edge1, Edge<TVertex> edge2)

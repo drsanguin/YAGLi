@@ -14,5 +14,6 @@ namespace YAGLi.Specs
         public IEnumerable<Edge<Vertex>> ResultingEdges { get; set; }
         public IEnumerable<Vertex> ResultingVertices { get; set; }
         public bool BooleanResult { get; set; }
+        public UndirectedGraph<Vertex> NewGraph { get; set; }
     }
 }

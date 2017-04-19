@@ -76,6 +76,12 @@
       <DependentUpon>UndirectedGraphCreation.feature</DependentUpon>
     </Compile>
     <Compile Include="UndirectedGraphCreationSteps.cs" />
+    <Compile Include="UndirectedGraphModification.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UndirectedGraphModification.feature</DependentUpon>
+    </Compile>
+    <Compile Include="UndirectedGraphModificationSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -89,6 +95,10 @@
     <None Include="UndirectedGraphCreation.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>UndirectedGraphCreation.feature.cs</LastGenOutput>
+    </None>
+    <None Include="UndirectedGraphModification.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>UndirectedGraphModification.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
