@@ -37,7 +37,7 @@ namespace YAGLi
         #endregion
 
         #region Constructors
-        public UndirectedGraph(bool allowLoops, bool allowParallelEdges) : this(allowLoops, allowParallelEdges, EqualityComparer< TVertex>.Default) { }
+        public UndirectedGraph(bool allowLoops, bool allowParallelEdges) : this(allowLoops, allowParallelEdges, EqualityComparer<TVertex>.Default) { }
 
         public UndirectedGraph(bool allowLoops, bool allowParallelEdges, IEqualityComparer<TVertex> verticesComparer) : this(allowLoops, allowParallelEdges, Enumerable.Empty<Edge<TVertex>>(), Enumerable.Empty<TVertex>(), verticesComparer) { }
 
@@ -139,9 +139,19 @@ namespace YAGLi
             return AddEdges(Enumerable.Repeat(edge, 1));
         }
 
+        public UndirectedGraph<TVertex> AddEdgeAndVertices(Edge<TVertex> edge)
+        {
+            throw new NotImplementedException();
+        }
+
         public UndirectedGraph<TVertex> AddEdges(IEnumerable<Edge<TVertex>> edges)
         {
             return new UndirectedGraph<TVertex>(AllowLoops, AllowParallelEdges, Edges.Concat(edges), Vertices, _verticesComparer);
+        }
+
+        public UndirectedGraph<TVertex> AddEdges(params Edge<TVertex>[] edges)
+        {
+            throw new NotImplementedException();
         }
 
         public UndirectedGraph<TVertex> AddVertex(TVertex vertex)
@@ -149,9 +159,24 @@ namespace YAGLi
             return AddVertices(Enumerable.Repeat(vertex, 1));
         }
 
+        public UndirectedGraph<TVertex> AddEdgesAndVertices(IEnumerable<Edge<TVertex>> edges)
+        {
+            throw new NotImplementedException();
+        }
+
+        public UndirectedGraph<TVertex> AddEdgesAndVertices(params Edge<TVertex>[] edges)
+        {
+            throw new NotImplementedException();
+        }
+
         public UndirectedGraph<TVertex> AddVertices(IEnumerable<TVertex> vertices)
         {
             return new UndirectedGraph<TVertex>(AllowLoops, AllowParallelEdges, Edges, Vertices.Concat(vertices), _verticesComparer);
+        }
+
+        public UndirectedGraph<TVertex> AddVertices(params TVertex[] vertices)
+        {
+            throw new NotImplementedException();
         }
 
         public bool AreEdgesAdjacent(Edge<TVertex> edge1, Edge<TVertex> edge2)
