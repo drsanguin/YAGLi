@@ -14,6 +14,11 @@ namespace YAGLi
     /// <typeparam name="TVertex">The type of the vertex that the graph store.</typeparam>
     public class UndirectedGraph<TVertex> : IModelAUndirectedGraph<TVertex>
     {
+        #region Constants
+        private const int UNDIRECTED_GRAPHS_HASH_BASE = 101;
+        private const int UNDIRECTED_GRAPHS_HASH_FACTOR = 107;
+        #endregion
+
         #region Instance fields
         /// <summary>
         /// Readonly field who store the incident edges of each vertex contained in this instance.
@@ -48,14 +53,7 @@ namespace YAGLi
             AllowLoops = allowLoops;
             AllowParallelEdges = allowParallelEdges;
 
-            if (AllowParallelEdges)
-            {
-                _edgesComparer = new IgnoreDirectionAndAllowParallelEdges<TVertex>(verticesComparer);
-            }
-            else
-            {
-                _edgesComparer = new IgnoreDirectionAndDisallowParallelEdges<TVertex>(verticesComparer);
-            }
+            _edgesComparer = AllowParallelEdges ? new IgnoreDirectionAndAllowParallelEdges<TVertex>(verticesComparer) as IEqualityComparer<Edge<TVertex>> : new IgnoreDirectionAndDisallowParallelEdges<TVertex>(verticesComparer);
 
             _verticesComparer = verticesComparer;
 
@@ -271,22 +269,12 @@ namespace YAGLi
 
         public override int GetHashCode()
         {
-            var hash = 101;
+            var hash = UNDIRECTED_GRAPHS_HASH_BASE;
 
-            hash = hash * 107 + AllowLoops.GetHashCode();
-            hash = hash * 107 + AllowParallelEdges.GetHashCode();
-
-            foreach (var edgeHashing in Edges.Select(edge => _edgesComparer.GetHashCode(edge)).OrderBy(x => x))
-            {
-                hash = hash * 107 + edgeHashing;
-            }
-
-            foreach (var vertexHashing in Vertices.Select(vertex => _verticesComparer.GetHashCode(vertex)).OrderBy(x => x))
-            {
-                hash = hash * 107 + vertexHashing;
-            }
-
-            return hash;
+            hash = hash * UNDIRECTED_GRAPHS_HASH_FACTOR + AllowLoops.GetHashCode();
+            hash = hash * UNDIRECTED_GRAPHS_HASH_FACTOR + AllowParallelEdges.GetHashCode();
+            hash = Edges.Select(_edgesComparer.GetHashCode).OrderBy(x => x).Aggregate(hash, (x, y) => x * UNDIRECTED_GRAPHS_HASH_FACTOR + y);
+            return Vertices.Select(_verticesComparer.GetHashCode).OrderBy(x => x).Aggregate(hash, (x, y) => x * UNDIRECTED_GRAPHS_HASH_FACTOR + y);
         }
 
         public IEnumerable<Edge<TVertex>> IncidentEdgesOf(TVertex vertex)
