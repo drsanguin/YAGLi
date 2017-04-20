@@ -151,7 +151,7 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex> AddEdges(params Edge<TVertex>[] edges)
         {
-            throw new NotImplementedException();
+            return AddEdges(edges.AsEnumerable());
         }
 
         public UndirectedGraph<TVertex> AddVertex(TVertex vertex)
@@ -176,7 +176,7 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex> AddVertices(params TVertex[] vertices)
         {
-            throw new NotImplementedException();
+            return AddVertices(vertices.AsEnumerable());
         }
 
         public bool AreEdgesAdjacent(Edge<TVertex> edge1, Edge<TVertex> edge2)

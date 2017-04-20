@@ -18,13 +18,14 @@ namespace YAGLi.Specs
         [When(@"I add the edges")]
         public void WhenIAddTheEdges(Table table)
         {
-            var edges = new List<Edge<Vertex>>(table.RowCount);
+            var edges = new Edge<Vertex>[table.RowCount];
 
-            foreach (var row in table.Rows)
+            for (var i = 0; i < table.RowCount; i++)
             {
+                var row = table.Rows[i];
                 var newEdge = new Edge<Vertex>(_context.GivenVertices[row[1]], _context.GivenVertices[row[2]]);
 
-                edges.Add(newEdge);
+                edges[i] = newEdge;
                 _context.GivenEdges.Add(row[0], newEdge);
             }
 
@@ -66,13 +67,14 @@ namespace YAGLi.Specs
         [When(@"I add the vertices")]
         public void WhenIAddTheVertices(Table table)
         {
-            var verticesToAdd = new List<Vertex>(table.RowCount);
+            var verticesToAdd = new Vertex[table.RowCount];
 
-            foreach (var row in table.Rows)
+            for (var i = 0; i < table.RowCount; i++)
             {
+                var row = table.Rows[i];
                 var vertexToAdd = new Vertex(row[0]);
 
-                verticesToAdd.Add(vertexToAdd);
+                verticesToAdd[i] = vertexToAdd;
                 _context.GivenVertices.Add(vertexToAdd.Name, vertexToAdd);
             }
 
