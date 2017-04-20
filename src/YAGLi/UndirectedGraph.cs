@@ -141,12 +141,12 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex> AddEdgeAndVertices(Edge<TVertex> edge)
         {
-            throw new NotImplementedException();
+            return new UndirectedGraph<TVertex>(AllowLoops, AllowParallelEdges, Edges.Concat(Enumerable.Repeat(edge, 1)), Vertices, _verticesComparer);
         }
 
         public UndirectedGraph<TVertex> AddEdges(IEnumerable<Edge<TVertex>> edges)
         {
-            return new UndirectedGraph<TVertex>(AllowLoops, AllowParallelEdges, Edges.Concat(edges), Vertices, _verticesComparer);
+            return new UndirectedGraph<TVertex>(AllowLoops, AllowParallelEdges, Edges.Concat(edges.Where(edge => ContainsVertices(edge.End1, edge.End2))), Vertices, _verticesComparer);
         }
 
         public UndirectedGraph<TVertex> AddEdges(params Edge<TVertex>[] edges)
@@ -161,12 +161,12 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex> AddEdgesAndVertices(IEnumerable<Edge<TVertex>> edges)
         {
-            throw new NotImplementedException();
+            return new UndirectedGraph<TVertex>(AllowLoops, AllowParallelEdges, Edges.Concat(edges), Vertices, _verticesComparer);
         }
 
         public UndirectedGraph<TVertex> AddEdgesAndVertices(params Edge<TVertex>[] edges)
         {
-            throw new NotImplementedException();
+            return AddEdgesAndVertices(edges.AsEnumerable());
         }
 
         public UndirectedGraph<TVertex> AddVertices(IEnumerable<TVertex> vertices)

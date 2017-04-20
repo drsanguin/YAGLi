@@ -48,7 +48,10 @@ namespace YAGLi.Specs
                 expectedVertices.Add(_context.GivenVertices[row[0]]);
             }
 
-            Check.That(_context.NewGraph.Vertices).IsOnlyMadeOf(expectedVertices);
+            Check.That(_context.NewGraph.Vertices)
+                .IsOnlyMadeOf(expectedVertices)
+                .And
+                .HasSize(expectedVertices.Count);
         }
 
         [Then(@"this new undirected graph should contains the edges")]
@@ -61,7 +64,10 @@ namespace YAGLi.Specs
                 expectedEdges.Add(_context.GivenEdges[row[0]]);
             }
 
-            Check.That(_context.NewGraph.Edges).IsOnlyMadeOf(expectedEdges);
+            Check.That(_context.NewGraph.Edges)
+                .IsOnlyMadeOf(expectedEdges)
+                .And
+                .HasSize(expectedEdges.Count);
         }
 
         [When(@"I add the vertices")]
@@ -82,10 +88,13 @@ namespace YAGLi.Specs
         }
 
         [When(@"I add the edge ""(.*)"" with the ends ""(.*)"" and ""(.*)""")]
-        public void WhenIAddTheEdgeWithTheEndsAnd(string edgeName, string edgeEnd1, string edgeEnd2)
+        public void WhenIAddTheEdgeWithTheEndsAnd(string newEdgeName, string endName1, string endName2)
         {
-            var newEdge = new Edge<Vertex>(_context.GivenVertices[edgeEnd1], _context.GivenVertices[edgeEnd2]);
-            _context.GivenEdges.Add(edgeName, newEdge);
+            var end1 = _context.GivenVertices.ContainsKey(endName1) ? _context.GivenVertices[endName1] : new Vertex(endName1);
+            var end2 = _context.GivenVertices.ContainsKey(endName2) ? _context.GivenVertices[endName2] : new Vertex(endName2);
+
+            var newEdge = new Edge<Vertex>(end1, end2);
+            _context.GivenEdges.Add(newEdgeName, newEdge);
 
             _context.NewGraph = _context.Graph.AddEdge(newEdge);
         }
@@ -97,6 +106,50 @@ namespace YAGLi.Specs
             _context.GivenVertices.Add(newVertex.Name, newVertex);
 
             _context.NewGraph = _context.Graph.AddVertex(newVertex);
+        }
+
+        [When(@"I add the edge ""(.*)"" with the vertices ""(.*)"" and ""(.*)""")]
+        public void WhenIAddTheEdgeWithTheVerticesAnd(string edgeName, string endName1, string endName2)
+        {
+            var end1 = new Vertex(endName1);
+            var end2 = new Vertex(endName2);
+            var newEdge = new Edge<Vertex>(end1, end2);
+
+            _context.GivenVertices.Add(endName1, end1);
+            _context.GivenVertices.Add(endName2, end2);
+            _context.GivenEdges.Add(edgeName, newEdge);
+
+            _context.NewGraph = _context.Graph.AddEdgeAndVertices(newEdge);
+        }
+
+        [When(@"I add the edges and vertices")]
+        public void WhenIAddTheEdgesAndVertices(Table table)
+        {
+            var edgesToAdd = new Edge<Vertex>[table.RowCount];
+
+            for (var i = 0; i < edgesToAdd.Length; i++)
+            {
+                var row = table.Rows[i];
+                var end1 = _context.GivenVertices.ContainsKey(row[1]) ? _context.GivenVertices[row[1]] : row[1];
+                var end2 = _context.GivenVertices.ContainsKey(row[2]) ? _context.GivenVertices[row[2]] : row[2];
+                var edgeToAdd = new Edge<Vertex>(end1, end2);
+
+                _context.GivenEdges.Add(row[0], edgeToAdd);
+
+                if (!_context.GivenVertices.ContainsKey(row[1]))
+                {
+                    _context.GivenVertices.Add(row[1], end1);
+                }
+
+                if (!_context.GivenVertices.ContainsKey(row[2]))
+                {
+                    _context.GivenVertices.Add(row[2], end2);
+                }
+
+                edgesToAdd[i] = edgeToAdd;
+            }
+
+            _context.NewGraph = _context.Graph.AddEdgesAndVertices(edgesToAdd);
         }
     }
 }
