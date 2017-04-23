@@ -324,6 +324,51 @@ namespace YAGLi
             return _incidentVertices[edge];
         }
 
+        public UndirectedGraph<TVertex> RemoveEdge(Edge<TVertex> edge)
+        {
+            return RemoveEdges(Enumerable.Repeat(edge, 1));
+        }
+
+        public UndirectedGraph<TVertex> RemoveEdgeAndVertices(Edge<TVertex> edge)
+        {
+            return RemoveEdgesAndVertices(Enumerable.Repeat(edge, 1));
+        }
+
+        public UndirectedGraph<TVertex> RemoveEdges(IEnumerable<Edge<TVertex>> edges)
+        {
+            throw new NotImplementedException();
+        }
+
+        public UndirectedGraph<TVertex> RemoveEdges(params Edge<TVertex>[] edges)
+        {
+            return RemoveEdges(edges.AsEnumerable());
+        }
+
+        public UndirectedGraph<TVertex> RemoveVertex(TVertex vertex)
+        {
+            return RemoveVertices(Enumerable.Repeat(vertex, 1));
+        }
+
+        public UndirectedGraph<TVertex> RemoveEdgesAndVertices(IEnumerable<Edge<TVertex>> edges)
+        {
+            throw new NotImplementedException();
+        }
+
+        public UndirectedGraph<TVertex> RemoveEdgesAndVertices(params Edge<TVertex>[] edges)
+        {
+            return RemoveEdgesAndVertices(edges.AsEnumerable());
+        }
+
+        public UndirectedGraph<TVertex> RemoveVertices(IEnumerable<TVertex> vertices)
+        {
+            throw new NotImplementedException();
+        }
+
+        public UndirectedGraph<TVertex> RemoveVertices(params TVertex[] vertices)
+        {
+            return RemoveVertices(vertices.AsEnumerable());
+        }
+
         public override string ToString()
         {
             var sb = new StringBuilder();
