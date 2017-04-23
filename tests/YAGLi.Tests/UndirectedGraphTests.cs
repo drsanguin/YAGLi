@@ -370,5 +370,161 @@ namespace YAGLi.Tests
                 Environment.NewLine,
                 Environment.NewLine));
         }
+
+        [Test]
+        public void UndirectedGraph_AddEdge_with_a_loop_on_a_graph_who_disallow_loops_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                false,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v3", "v4")
+                },
+                new Vertex[] { "v0", "v1", "v2", "v3", "v4" }, new VertexEqualityComparer());
+
+            var newGraph = graph.AddEdge(new Edge<Vertex>("v4", "v4"));
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_AddEdge_with_a_parallel_edge_on_a_graph_who_disallow_parallel_edges_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                false,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v3", "v4")
+                },
+                new Vertex[] { "v0", "v1", "v2", "v3", "v4" }, new VertexEqualityComparer());
+
+            var newGraph = graph.AddEdge(new Edge<Vertex>("v3", "v4"));
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_AddEdges_with_loops_on_a_graph_who_disallow_loops_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                false,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v3", "v4")
+                },
+                new Vertex[] { "v0", "v1", "v2", "v3", "v4" }, new VertexEqualityComparer());
+
+            var newGraph = graph.AddEdges(new Edge<Vertex>("v4", "v4"), new Edge<Vertex>("v0", "v0"));
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_AddEdges_with_parallel_edges_on_a_graph_who_disallow_parallel_edges_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                false,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v3", "v4")
+                },
+                new Vertex[] { "v0", "v1", "v2", "v3", "v4" }, new VertexEqualityComparer());
+
+            var newGraph = graph.AddEdges(new Edge<Vertex>("v3", "v4"), new Edge<Vertex>("v0", "v1"));
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_AndVertices_with_a_loop_on_a_graph_who_disallow_loops_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                false,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v3", "v4")
+                },
+                new Vertex[] { "v0", "v1", "v2", "v3", "v4" }, new VertexEqualityComparer());
+
+            var newGraph = graph.AddEdgeAndVertices(new Edge<Vertex>("v5", "v5"));
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_AddEdgeAndVertices_with_a_parallel_edge_on_a_graph_who_disallow_parallel_edges_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                false,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v3", "v4")
+                },
+                new Vertex[] { "v0", "v1", "v2", "v3", "v4" }, new VertexEqualityComparer());
+
+            var newGraph = graph.AddEdgeAndVertices(new Edge<Vertex>("v3", "v4"));
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_AddEdgesAndVertices_with_loops_on_a_graph_who_disallow_loops_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                false,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v3", "v4")
+                },
+                new Vertex[] { "v0", "v1", "v2", "v3", "v4" }, new VertexEqualityComparer());
+
+            var newGraph = graph.AddEdgesAndVertices(new Edge<Vertex>("v4", "v4"), new Edge<Vertex>("v0", "v0"));
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_AddEdgesAndVertices_with_parallel_edges_on_a_graph_who_disallow_parallel_edges_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                false,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v3", "v4")
+                },
+                new Vertex[] { "v0", "v1", "v2", "v3", "v4" }, new VertexEqualityComparer());
+
+            var newGraph = graph.AddEdgesAndVertices(new Edge<Vertex>("v3", "v4"), new Edge<Vertex>("v0", "v1"));
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
     }
 }

@@ -139,12 +139,32 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex> AddEdgeAndVertices(Edge<TVertex> edge)
         {
-            return new UndirectedGraph<TVertex>(AllowLoops, AllowParallelEdges, Edges.Concat(Enumerable.Repeat(edge, 1)), Vertices, _verticesComparer);
+            return AddEdgesAndVertices(Enumerable.Repeat(edge, 1));
+        }
+
+        private IEnumerable<Edge<TVertex>> filterEdgesWhosVerticesAreNotContainedInThisInstance(IEnumerable<Edge<TVertex>> edges)
+        {
+            return edges.Where(edge => ContainsVertices(edge.End1, edge.End2));
+        }
+
+        private IEnumerable<Edge<TVertex>> filterEdgesWhoViolatesThisInstanceProperties(IEnumerable<Edge<TVertex>> edges)
+        {
+            return edges
+                .Where(edge => !AllowLoops ? !_verticesComparer.Equals(edge.End1, edge.End2) : true)
+                .Where(edge => !AllowParallelEdges ? !Edges.Contains(edge, _edgesComparer) : true);
         }
 
         public UndirectedGraph<TVertex> AddEdges(IEnumerable<Edge<TVertex>> edges)
         {
-            return new UndirectedGraph<TVertex>(AllowLoops, AllowParallelEdges, Edges.Concat(edges.Where(edge => ContainsVertices(edge.End1, edge.End2))), Vertices, _verticesComparer);
+            var filteredEdges = filterEdgesWhosVerticesAreNotContainedInThisInstance(edges);
+            filteredEdges = filterEdgesWhoViolatesThisInstanceProperties(filteredEdges);
+
+            if (!filteredEdges.Any())
+            {
+                return this;
+            }
+
+            return new UndirectedGraph<TVertex>(AllowLoops, AllowParallelEdges, Edges.Concat(filteredEdges), Vertices, _verticesComparer);
         }
 
         public UndirectedGraph<TVertex> AddEdges(params Edge<TVertex>[] edges)
@@ -159,7 +179,14 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex> AddEdgesAndVertices(IEnumerable<Edge<TVertex>> edges)
         {
-            return new UndirectedGraph<TVertex>(AllowLoops, AllowParallelEdges, Edges.Concat(edges), Vertices, _verticesComparer);
+            var filteredEdges = filterEdgesWhoViolatesThisInstanceProperties(edges);
+
+            if (!filteredEdges.Any())
+            {
+                return this;
+            }
+
+            return new UndirectedGraph<TVertex>(AllowLoops, AllowParallelEdges, Edges.Concat(filteredEdges), Vertices, _verticesComparer);
         }
 
         public UndirectedGraph<TVertex> AddEdgesAndVertices(params Edge<TVertex>[] edges)
