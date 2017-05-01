@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using YAGLi.EdgeComparers;
+using YAGLi.Extensions;
 using YAGLi.Interfaces;
 
 namespace YAGLi
@@ -134,12 +135,12 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex> AddEdge(Edge<TVertex> edge)
         {
-            return AddEdges(Enumerable.Repeat(edge, 1));
+            return AddEdges(edge.Yield());
         }
 
         public UndirectedGraph<TVertex> AddEdgeAndVertices(Edge<TVertex> edge)
         {
-            return AddEdgesAndVertices(Enumerable.Repeat(edge, 1));
+            return AddEdgesAndVertices(edge.Yield());
         }
 
         private IEnumerable<Edge<TVertex>> filterEdgesWhosVerticesAreNotContainedInThisInstance(IEnumerable<Edge<TVertex>> edges)
@@ -183,7 +184,7 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex> AddVertex(TVertex vertex)
         {
-            return AddVertices(Enumerable.Repeat(vertex, 1));
+            return AddVertices(vertex.Yield());
         }
 
         public UndirectedGraph<TVertex> AddEdgesAndVertices(IEnumerable<Edge<TVertex>> edges)
@@ -328,12 +329,12 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex> RemoveEdge(Edge<TVertex> edge)
         {
-            return RemoveEdges(Enumerable.Repeat(edge, 1));
+            return RemoveEdges(edge.Yield());
         }
 
         public UndirectedGraph<TVertex> RemoveEdgeAndVertices(Edge<TVertex> edge)
         {
-            return RemoveEdgesAndVertices(Enumerable.Repeat(edge, 1));
+            return RemoveEdgesAndVertices(edge.Yield());
         }
 
         public UndirectedGraph<TVertex> RemoveEdges(IEnumerable<Edge<TVertex>> edges)
@@ -348,7 +349,7 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex> RemoveVertex(TVertex vertex)
         {
-            return RemoveVertices(Enumerable.Repeat(vertex, 1));
+            return RemoveVertices(vertex.Yield());
         }
 
         public UndirectedGraph<TVertex> RemoveEdgesAndVertices(IEnumerable<Edge<TVertex>> edges)
