@@ -490,40 +490,49 @@ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFl
  testRunner.And("the edges", ((string)(null)), table22, "And ");
 #line 157
  testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 158
- testRunner.When("I add the edge \"e5\" with the ends \"v0\" and \"v2\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 159
- testRunner.Then("I should get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name"});
+                        "Name",
+                        "End1",
+                        "End2"});
             table23.AddRow(new string[] {
-                        "v0"});
-            table23.AddRow(new string[] {
-                        "v1"});
-            table23.AddRow(new string[] {
+                        "e5",
+                        "v0",
                         "v2"});
-            table23.AddRow(new string[] {
-                        "v3"});
-            table23.AddRow(new string[] {
-                        "v4"});
-#line 160
- testRunner.And("this new undirected graph should contains the vertices", ((string)(null)), table23, "And ");
+#line 158
+ testRunner.When("I add the edge", ((string)(null)), table23, "When ");
+#line 161
+ testRunner.Then("I should get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table24.AddRow(new string[] {
+                        "v0"});
+            table24.AddRow(new string[] {
+                        "v1"});
+            table24.AddRow(new string[] {
+                        "v2"});
+            table24.AddRow(new string[] {
+                        "v3"});
+            table24.AddRow(new string[] {
+                        "v4"});
+#line 162
+ testRunner.And("this new undirected graph should contains the vertices", ((string)(null)), table24, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name"});
+            table25.AddRow(new string[] {
                         "e0"});
-            table24.AddRow(new string[] {
+            table25.AddRow(new string[] {
                         "e1"});
-            table24.AddRow(new string[] {
+            table25.AddRow(new string[] {
                         "e3"});
-            table24.AddRow(new string[] {
+            table25.AddRow(new string[] {
                         "e4"});
-            table24.AddRow(new string[] {
+            table25.AddRow(new string[] {
                         "e5"});
-#line 167
- testRunner.And("this new undirected graph should contains the edges", ((string)(null)), table24, "And ");
+#line 169
+ testRunner.And("this new undirected graph should contains the edges", ((string)(null)), table25, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -533,101 +542,101 @@ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFl
         public virtual void AddEdgesToAUndirectedGraph()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add edges to a undirected graph", ((string[])(null)));
-#line 175
-this.ScenarioSetup(scenarioInfo);
-#line 176
-testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 177
+this.ScenarioSetup(scenarioInfo);
+#line 178
+testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 179
  testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name"});
-            table25.AddRow(new string[] {
-                        "v0"});
-            table25.AddRow(new string[] {
-                        "v1"});
-            table25.AddRow(new string[] {
-                        "v2"});
-            table25.AddRow(new string[] {
-                        "v3"});
-            table25.AddRow(new string[] {
-                        "v4"});
-#line 178
- testRunner.And("the vertices", ((string)(null)), table25, "And ");
-#line hidden
             TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name",
-                        "End1",
-                        "End2"});
+                        "Name"});
             table26.AddRow(new string[] {
-                        "e0",
-                        "v0",
+                        "v0"});
+            table26.AddRow(new string[] {
                         "v1"});
             table26.AddRow(new string[] {
-                        "e1",
-                        "v1",
-                        "v4"});
+                        "v2"});
             table26.AddRow(new string[] {
-                        "e3",
-                        "v4",
                         "v3"});
             table26.AddRow(new string[] {
-                        "e4",
-                        "v3",
                         "v4"});
-#line 185
- testRunner.And("the edges", ((string)(null)), table26, "And ");
-#line 191
- testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 180
+ testRunner.And("the vertices", ((string)(null)), table26, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
                         "End1",
                         "End2"});
             table27.AddRow(new string[] {
+                        "e0",
+                        "v0",
+                        "v1"});
+            table27.AddRow(new string[] {
+                        "e1",
+                        "v1",
+                        "v4"});
+            table27.AddRow(new string[] {
+                        "e3",
+                        "v4",
+                        "v3"});
+            table27.AddRow(new string[] {
+                        "e4",
+                        "v3",
+                        "v4"});
+#line 187
+ testRunner.And("the edges", ((string)(null)), table27, "And ");
+#line 193
+ testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name",
+                        "End1",
+                        "End2"});
+            table28.AddRow(new string[] {
                         "e5",
                         "v0",
                         "v2"});
-            table27.AddRow(new string[] {
+            table28.AddRow(new string[] {
                         "e6",
                         "v1",
                         "v2"});
-#line 192
- testRunner.When("I add the edges", ((string)(null)), table27, "When ");
-#line 196
+#line 194
+ testRunner.When("I add the edges", ((string)(null)), table28, "When ");
+#line 198
  testRunner.Then("I should get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name"});
-            table28.AddRow(new string[] {
-                        "v0"});
-            table28.AddRow(new string[] {
-                        "v1"});
-            table28.AddRow(new string[] {
-                        "v2"});
-            table28.AddRow(new string[] {
-                        "v3"});
-            table28.AddRow(new string[] {
-                        "v4"});
-#line 197
- testRunner.And("this new undirected graph should contains the vertices", ((string)(null)), table28, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
             table29.AddRow(new string[] {
+                        "v0"});
+            table29.AddRow(new string[] {
+                        "v1"});
+            table29.AddRow(new string[] {
+                        "v2"});
+            table29.AddRow(new string[] {
+                        "v3"});
+            table29.AddRow(new string[] {
+                        "v4"});
+#line 199
+ testRunner.And("this new undirected graph should contains the vertices", ((string)(null)), table29, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name"});
+            table30.AddRow(new string[] {
                         "e0"});
-            table29.AddRow(new string[] {
+            table30.AddRow(new string[] {
                         "e1"});
-            table29.AddRow(new string[] {
+            table30.AddRow(new string[] {
                         "e3"});
-            table29.AddRow(new string[] {
+            table30.AddRow(new string[] {
                         "e4"});
-            table29.AddRow(new string[] {
+            table30.AddRow(new string[] {
                         "e5"});
-            table29.AddRow(new string[] {
+            table30.AddRow(new string[] {
                         "e6"});
-#line 204
- testRunner.And("this new undirected graph should contains the edges", ((string)(null)), table29, "And ");
+#line 206
+ testRunner.And("this new undirected graph should contains the edges", ((string)(null)), table30, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -637,99 +646,65 @@ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFl
         public virtual void AddAEdgeWithVerticesWhoAreNotAlreadyContainedInAUndirectedGraph()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add a edge with vertices who are not already contained in a undirected graph", ((string[])(null)));
-#line 213
-this.ScenarioSetup(scenarioInfo);
-#line 214
-testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 215
+this.ScenarioSetup(scenarioInfo);
+#line 216
+testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 217
  testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name"});
-            table30.AddRow(new string[] {
-                        "v0"});
-            table30.AddRow(new string[] {
-                        "v1"});
-            table30.AddRow(new string[] {
-                        "v2"});
-            table30.AddRow(new string[] {
-                        "v3"});
-            table30.AddRow(new string[] {
-                        "v4"});
-#line 216
- testRunner.And("the vertices", ((string)(null)), table30, "And ");
-#line hidden
             TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name"});
+            table31.AddRow(new string[] {
+                        "v0"});
+            table31.AddRow(new string[] {
+                        "v1"});
+            table31.AddRow(new string[] {
+                        "v2"});
+            table31.AddRow(new string[] {
+                        "v3"});
+            table31.AddRow(new string[] {
+                        "v4"});
+#line 218
+ testRunner.And("the vertices", ((string)(null)), table31, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
                         "End1",
                         "End2"});
-            table31.AddRow(new string[] {
+            table32.AddRow(new string[] {
                         "e0",
                         "v0",
                         "v1"});
-            table31.AddRow(new string[] {
+            table32.AddRow(new string[] {
                         "e1",
                         "v1",
                         "v4"});
-            table31.AddRow(new string[] {
+            table32.AddRow(new string[] {
                         "e3",
                         "v4",
                         "v3"});
-            table31.AddRow(new string[] {
+            table32.AddRow(new string[] {
                         "e4",
                         "v3",
                         "v4"});
-#line 223
- testRunner.And("the edges", ((string)(null)), table31, "And ");
-#line 229
- testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 230
- testRunner.When("I add the edge \"e5\" with the ends \"v5\" and \"v6\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 225
+ testRunner.And("the edges", ((string)(null)), table32, "And ");
 #line 231
- testRunner.Then("I should get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name"});
-            table32.AddRow(new string[] {
-                        "v0"});
-            table32.AddRow(new string[] {
-                        "v1"});
-            table32.AddRow(new string[] {
-                        "v2"});
-            table32.AddRow(new string[] {
-                        "v3"});
-            table32.AddRow(new string[] {
-                        "v4"});
-#line 232
- testRunner.And("this new undirected graph should contains the vertices", ((string)(null)), table32, "And ");
+ testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name"});
+                        "Name",
+                        "End1",
+                        "End2"});
             table33.AddRow(new string[] {
-                        "e0"});
-            table33.AddRow(new string[] {
-                        "e1"});
-            table33.AddRow(new string[] {
-                        "e3"});
-            table33.AddRow(new string[] {
-                        "e4"});
-#line 239
- testRunner.And("this new undirected graph should contains the edges", ((string)(null)), table33, "And ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add a vertex to a undirected graph")]
-        public virtual void AddAVertexToAUndirectedGraph()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add a vertex to a undirected graph", ((string[])(null)));
-#line 246
-this.ScenarioSetup(scenarioInfo);
-#line 247
-testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 248
- testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                        "e5",
+                        "v5",
+                        "v6"});
+#line 232
+ testRunner.When("I add the edge", ((string)(null)), table33, "When ");
+#line 235
+ testRunner.Then("I should get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
@@ -743,37 +718,36 @@ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFl
                         "v3"});
             table34.AddRow(new string[] {
                         "v4"});
-#line 249
- testRunner.And("the vertices", ((string)(null)), table34, "And ");
+#line 236
+ testRunner.And("this new undirected graph should contains the vertices", ((string)(null)), table34, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name",
-                        "End1",
-                        "End2"});
+                        "Name"});
             table35.AddRow(new string[] {
-                        "e0",
-                        "v0",
-                        "v1"});
+                        "e0"});
             table35.AddRow(new string[] {
-                        "e1",
-                        "v1",
-                        "v4"});
+                        "e1"});
             table35.AddRow(new string[] {
-                        "e3",
-                        "v4",
-                        "v3"});
+                        "e3"});
             table35.AddRow(new string[] {
-                        "e4",
-                        "v3",
-                        "v4"});
-#line 256
- testRunner.And("the edges", ((string)(null)), table35, "And ");
-#line 262
- testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 263
- testRunner.When("I add the vertex \"v5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 264
- testRunner.Then("I should get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+                        "e4"});
+#line 243
+ testRunner.And("this new undirected graph should contains the edges", ((string)(null)), table35, "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Add a vertex to a undirected graph")]
+        public virtual void AddAVertexToAUndirectedGraph()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add a vertex to a undirected graph", ((string[])(null)));
+#line 250
+this.ScenarioSetup(scenarioInfo);
+#line 251
+testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 252
+ testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
@@ -787,38 +761,37 @@ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFl
                         "v3"});
             table36.AddRow(new string[] {
                         "v4"});
-            table36.AddRow(new string[] {
-                        "v5"});
-#line 265
- testRunner.And("this new undirected graph should contains the vertices", ((string)(null)), table36, "And ");
+#line 253
+ testRunner.And("the vertices", ((string)(null)), table36, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name"});
+                        "Name",
+                        "End1",
+                        "End2"});
             table37.AddRow(new string[] {
-                        "e0"});
+                        "e0",
+                        "v0",
+                        "v1"});
             table37.AddRow(new string[] {
-                        "e1"});
+                        "e1",
+                        "v1",
+                        "v4"});
             table37.AddRow(new string[] {
-                        "e3"});
+                        "e3",
+                        "v4",
+                        "v3"});
             table37.AddRow(new string[] {
-                        "e4"});
-#line 273
- testRunner.And("this new undirected graph should contains the edges", ((string)(null)), table37, "And ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add vertices to a undirected graph")]
-        public virtual void AddVerticesToAUndirectedGraph()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add vertices to a undirected graph", ((string[])(null)));
-#line 280
-this.ScenarioSetup(scenarioInfo);
-#line 281
- testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 282
- testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                        "e4",
+                        "v3",
+                        "v4"});
+#line 260
+ testRunner.And("the edges", ((string)(null)), table37, "And ");
+#line 266
+ testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 267
+ testRunner.When("I add the vertex \"v5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 268
+ testRunner.Then("I should get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
@@ -832,91 +805,89 @@ this.ScenarioSetup(scenarioInfo);
                         "v3"});
             table38.AddRow(new string[] {
                         "v4"});
-#line 283
- testRunner.And("the vertices", ((string)(null)), table38, "And ");
+            table38.AddRow(new string[] {
+                        "v5"});
+#line 269
+ testRunner.And("this new undirected graph should contains the vertices", ((string)(null)), table38, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name",
-                        "End1",
-                        "End2"});
-            table39.AddRow(new string[] {
-                        "e0",
-                        "v0",
-                        "v1"});
-            table39.AddRow(new string[] {
-                        "e1",
-                        "v1",
-                        "v4"});
-            table39.AddRow(new string[] {
-                        "e3",
-                        "v4",
-                        "v3"});
-            table39.AddRow(new string[] {
-                        "e4",
-                        "v3",
-                        "v4"});
-#line 290
- testRunner.And("the edges", ((string)(null)), table39, "And ");
-#line 296
- testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-            TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
-            table40.AddRow(new string[] {
-                        "v5"});
-            table40.AddRow(new string[] {
-                        "v6"});
-#line 297
- testRunner.When("I add the vertices", ((string)(null)), table40, "When ");
-#line 301
- testRunner.Then("I should get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name"});
-            table41.AddRow(new string[] {
-                        "v0"});
-            table41.AddRow(new string[] {
-                        "v1"});
-            table41.AddRow(new string[] {
-                        "v2"});
-            table41.AddRow(new string[] {
-                        "v3"});
-            table41.AddRow(new string[] {
-                        "v4"});
-            table41.AddRow(new string[] {
-                        "v5"});
-            table41.AddRow(new string[] {
-                        "v6"});
-#line 302
- testRunner.And("this new undirected graph should contains the vertices", ((string)(null)), table41, "And ");
-#line hidden
-            TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name"});
-            table42.AddRow(new string[] {
+            table39.AddRow(new string[] {
                         "e0"});
-            table42.AddRow(new string[] {
+            table39.AddRow(new string[] {
                         "e1"});
-            table42.AddRow(new string[] {
+            table39.AddRow(new string[] {
                         "e3"});
-            table42.AddRow(new string[] {
+            table39.AddRow(new string[] {
                         "e4"});
-#line 311
- testRunner.And("this new undirected graph should contains the edges", ((string)(null)), table42, "And ");
+#line 277
+ testRunner.And("this new undirected graph should contains the edges", ((string)(null)), table39, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add edge and vertices to a undirected graph")]
-        public virtual void AddEdgeAndVerticesToAUndirectedGraph()
+        [NUnit.Framework.DescriptionAttribute("Add vertices to a undirected graph")]
+        public virtual void AddVerticesToAUndirectedGraph()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add edge and vertices to a undirected graph", ((string[])(null)));
-#line 318
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add vertices to a undirected graph", ((string[])(null)));
+#line 284
 this.ScenarioSetup(scenarioInfo);
-#line 319
+#line 285
  testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 320
+#line 286
  testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name"});
+            table40.AddRow(new string[] {
+                        "v0"});
+            table40.AddRow(new string[] {
+                        "v1"});
+            table40.AddRow(new string[] {
+                        "v2"});
+            table40.AddRow(new string[] {
+                        "v3"});
+            table40.AddRow(new string[] {
+                        "v4"});
+#line 287
+ testRunner.And("the vertices", ((string)(null)), table40, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name",
+                        "End1",
+                        "End2"});
+            table41.AddRow(new string[] {
+                        "e0",
+                        "v0",
+                        "v1"});
+            table41.AddRow(new string[] {
+                        "e1",
+                        "v1",
+                        "v4"});
+            table41.AddRow(new string[] {
+                        "e3",
+                        "v4",
+                        "v3"});
+            table41.AddRow(new string[] {
+                        "e4",
+                        "v3",
+                        "v4"});
+#line 294
+ testRunner.And("the edges", ((string)(null)), table41, "And ");
+#line 300
+ testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name"});
+            table42.AddRow(new string[] {
+                        "v5"});
+            table42.AddRow(new string[] {
+                        "v6"});
+#line 301
+ testRunner.When("I add the vertices", ((string)(null)), table42, "When ");
+#line 305
+ testRunner.Then("I should get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table43 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
@@ -930,37 +901,40 @@ this.ScenarioSetup(scenarioInfo);
                         "v3"});
             table43.AddRow(new string[] {
                         "v4"});
-#line 321
- testRunner.And("the vertices", ((string)(null)), table43, "And ");
+            table43.AddRow(new string[] {
+                        "v5"});
+            table43.AddRow(new string[] {
+                        "v6"});
+#line 306
+ testRunner.And("this new undirected graph should contains the vertices", ((string)(null)), table43, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table44 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name",
-                        "End1",
-                        "End2"});
+                        "Name"});
             table44.AddRow(new string[] {
-                        "e0",
-                        "v0",
-                        "v1"});
+                        "e0"});
             table44.AddRow(new string[] {
-                        "e1",
-                        "v1",
-                        "v4"});
+                        "e1"});
             table44.AddRow(new string[] {
-                        "e3",
-                        "v4",
-                        "v3"});
+                        "e3"});
             table44.AddRow(new string[] {
-                        "e4",
-                        "v3",
-                        "v4"});
-#line 328
- testRunner.And("the edges", ((string)(null)), table44, "And ");
-#line 334
- testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 335
- testRunner.When("I add the edge \"e5\" with the vertices \"v5\" and \"v6\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 336
- testRunner.Then("I should get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+                        "e4"});
+#line 315
+ testRunner.And("this new undirected graph should contains the edges", ((string)(null)), table44, "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Add edge and vertices to a undirected graph")]
+        public virtual void AddEdgeAndVerticesToAUndirectedGraph()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add edge and vertices to a undirected graph", ((string[])(null)));
+#line 322
+this.ScenarioSetup(scenarioInfo);
+#line 323
+ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 324
+ testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table45 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
@@ -974,42 +948,37 @@ this.ScenarioSetup(scenarioInfo);
                         "v3"});
             table45.AddRow(new string[] {
                         "v4"});
-            table45.AddRow(new string[] {
-                        "v5"});
-            table45.AddRow(new string[] {
-                        "v6"});
-#line 337
- testRunner.And("this new undirected graph should contains the vertices", ((string)(null)), table45, "And ");
+#line 325
+ testRunner.And("the vertices", ((string)(null)), table45, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table46 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name"});
+                        "Name",
+                        "End1",
+                        "End2"});
             table46.AddRow(new string[] {
-                        "e0"});
+                        "e0",
+                        "v0",
+                        "v1"});
             table46.AddRow(new string[] {
-                        "e1"});
+                        "e1",
+                        "v1",
+                        "v4"});
             table46.AddRow(new string[] {
-                        "e3"});
+                        "e3",
+                        "v4",
+                        "v3"});
             table46.AddRow(new string[] {
-                        "e4"});
-            table46.AddRow(new string[] {
-                        "e5"});
-#line 346
- testRunner.And("this new undirected graph should contains the edges", ((string)(null)), table46, "And ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add edges and vertices to a undirected graph")]
-        public virtual void AddEdgesAndVerticesToAUndirectedGraph()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add edges and vertices to a undirected graph", ((string[])(null)));
-#line 354
-this.ScenarioSetup(scenarioInfo);
-#line 355
- testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 356
- testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                        "e4",
+                        "v3",
+                        "v4"});
+#line 332
+ testRunner.And("the edges", ((string)(null)), table46, "And ");
+#line 338
+ testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 339
+ testRunner.When("I add the edge \"e5\" and the vertices \"v5\" and \"v6\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 340
+ testRunner.Then("I should get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table47 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
@@ -1023,88 +992,137 @@ this.ScenarioSetup(scenarioInfo);
                         "v3"});
             table47.AddRow(new string[] {
                         "v4"});
-#line 357
- testRunner.And("the vertices", ((string)(null)), table47, "And ");
+            table47.AddRow(new string[] {
+                        "v5"});
+            table47.AddRow(new string[] {
+                        "v6"});
+#line 341
+ testRunner.And("this new undirected graph should contains the vertices", ((string)(null)), table47, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table48 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name"});
+            table48.AddRow(new string[] {
+                        "e0"});
+            table48.AddRow(new string[] {
+                        "e1"});
+            table48.AddRow(new string[] {
+                        "e3"});
+            table48.AddRow(new string[] {
+                        "e4"});
+            table48.AddRow(new string[] {
+                        "e5"});
+#line 350
+ testRunner.And("this new undirected graph should contains the edges", ((string)(null)), table48, "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Add edges and vertices to a undirected graph")]
+        public virtual void AddEdgesAndVerticesToAUndirectedGraph()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add edges and vertices to a undirected graph", ((string[])(null)));
+#line 358
+this.ScenarioSetup(scenarioInfo);
+#line 359
+ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 360
+ testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table49 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name"});
+            table49.AddRow(new string[] {
+                        "v0"});
+            table49.AddRow(new string[] {
+                        "v1"});
+            table49.AddRow(new string[] {
+                        "v2"});
+            table49.AddRow(new string[] {
+                        "v3"});
+            table49.AddRow(new string[] {
+                        "v4"});
+#line 361
+ testRunner.And("the vertices", ((string)(null)), table49, "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table50 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
                         "End1",
                         "End2"});
-            table48.AddRow(new string[] {
+            table50.AddRow(new string[] {
                         "e0",
                         "v0",
                         "v1"});
-            table48.AddRow(new string[] {
+            table50.AddRow(new string[] {
                         "e1",
                         "v1",
                         "v4"});
-            table48.AddRow(new string[] {
+            table50.AddRow(new string[] {
                         "e3",
                         "v4",
                         "v3"});
-            table48.AddRow(new string[] {
+            table50.AddRow(new string[] {
                         "e4",
                         "v3",
                         "v4"});
-#line 364
- testRunner.And("the edges", ((string)(null)), table48, "And ");
-#line 370
+#line 368
+ testRunner.And("the edges", ((string)(null)), table50, "And ");
+#line 374
  testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table49 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table51 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
                         "End1",
                         "End2"});
-            table49.AddRow(new string[] {
+            table51.AddRow(new string[] {
                         "e5",
                         "v5",
                         "v6"});
-            table49.AddRow(new string[] {
+            table51.AddRow(new string[] {
                         "e6",
                         "v0",
                         "v7"});
-#line 371
- testRunner.When("I add the edges and vertices", ((string)(null)), table49, "When ");
 #line 375
+ testRunner.When("I add the edges and vertices", ((string)(null)), table51, "When ");
+#line 379
  testRunner.Then("I should get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-            TechTalk.SpecFlow.Table table50 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table52 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
-            table50.AddRow(new string[] {
+            table52.AddRow(new string[] {
                         "v0"});
-            table50.AddRow(new string[] {
+            table52.AddRow(new string[] {
                         "v1"});
-            table50.AddRow(new string[] {
+            table52.AddRow(new string[] {
                         "v2"});
-            table50.AddRow(new string[] {
+            table52.AddRow(new string[] {
                         "v3"});
-            table50.AddRow(new string[] {
+            table52.AddRow(new string[] {
                         "v4"});
-            table50.AddRow(new string[] {
+            table52.AddRow(new string[] {
                         "v5"});
-            table50.AddRow(new string[] {
+            table52.AddRow(new string[] {
                         "v6"});
-            table50.AddRow(new string[] {
+            table52.AddRow(new string[] {
                         "v7"});
-#line 376
- testRunner.And("this new undirected graph should contains the vertices", ((string)(null)), table50, "And ");
+#line 380
+ testRunner.And("this new undirected graph should contains the vertices", ((string)(null)), table52, "And ");
 #line hidden
-            TechTalk.SpecFlow.Table table51 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table53 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
-            table51.AddRow(new string[] {
+            table53.AddRow(new string[] {
                         "e0"});
-            table51.AddRow(new string[] {
+            table53.AddRow(new string[] {
                         "e1"});
-            table51.AddRow(new string[] {
+            table53.AddRow(new string[] {
                         "e3"});
-            table51.AddRow(new string[] {
+            table53.AddRow(new string[] {
                         "e4"});
-            table51.AddRow(new string[] {
+            table53.AddRow(new string[] {
                         "e5"});
-            table51.AddRow(new string[] {
+            table53.AddRow(new string[] {
                         "e6"});
-#line 386
- testRunner.And("this new undirected graph should contains the edges", ((string)(null)), table51, "And ");
+#line 390
+ testRunner.And("this new undirected graph should contains the edges", ((string)(null)), table53, "And ");
 #line hidden
             this.ScenarioCleanup();
         }

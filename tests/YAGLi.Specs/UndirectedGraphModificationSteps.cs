@@ -87,9 +87,13 @@ namespace YAGLi.Specs
             _context.NewGraph = _context.Graph.AddVertices(verticesToAdd);
         }
 
-        [When(@"I add the edge ""(.*)"" with the ends ""(.*)"" and ""(.*)""")]
-        public void WhenIAddTheEdgeWithTheEndsAnd(string newEdgeName, string endName1, string endName2)
+        [When(@"I add the edge")]
+        public void WhenIAddTheEdge(Table table)
         {
+            string newEdgeName = table.Rows[0][0];
+            string endName1 = table.Rows[0][1];
+            string endName2 = table.Rows[0][2];
+
             var end1 = _context.GivenVertices.ContainsKey(endName1) ? _context.GivenVertices[endName1] : new Vertex(endName1);
             var end2 = _context.GivenVertices.ContainsKey(endName2) ? _context.GivenVertices[endName2] : new Vertex(endName2);
 
@@ -108,7 +112,7 @@ namespace YAGLi.Specs
             _context.NewGraph = _context.Graph.AddVertex(newVertex);
         }
 
-        [When(@"I add the edge ""(.*)"" with the vertices ""(.*)"" and ""(.*)""")]
+        [When(@"I add the edge ""(.*)"" and the vertices ""(.*)"" and ""(.*)""")]
         public void WhenIAddTheEdgeWithTheVerticesAnd(string edgeName, string endName1, string endName2)
         {
             var end1 = new Vertex(endName1);

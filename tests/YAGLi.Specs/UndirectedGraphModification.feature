@@ -155,7 +155,9 @@ Given the property allow loops
 	| e3   | v4   | v3   |
 	| e4   | v3   | v4   |
 	And the undirected graph created with them
-	When I add the edge "e5" with the ends "v0" and "v2"
+	When I add the edge
+    | Name | End1 | End2 |
+	| e5   | v0   | v2   |
 	Then I should get a new undirected graph
 	And this new undirected graph should contains the vertices
 	| Name |
@@ -227,7 +229,9 @@ Given the property allow loops
 	| e3   | v4   | v3   |
 	| e4   | v3   | v4   |
 	And the undirected graph created with them
-	When I add the edge "e5" with the ends "v5" and "v6"
+	When I add the edge
+    | Name | End1 | End2 |
+	| e5   | v5   | v6   |
 	Then I should get a new undirected graph
 	And this new undirected graph should contains the vertices
 	| Name |
@@ -332,7 +336,7 @@ Scenario: Add edge and vertices to a undirected graph
 	| e3   | v4   | v3   |
 	| e4   | v3   | v4   |
 	And the undirected graph created with them
-	When I add the edge "e5" with the vertices "v5" and "v6"
+	When I add the edge "e5" and the vertices "v5" and "v6"
 	Then I should get a new undirected graph
 	And this new undirected graph should contains the vertices
 	| Name |
