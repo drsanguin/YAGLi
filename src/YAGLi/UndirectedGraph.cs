@@ -303,8 +303,16 @@ namespace YAGLi
 
             hash = hash * UNDIRECTED_GRAPHS_HASH_FACTOR + AllowLoops.GetHashCode();
             hash = hash * UNDIRECTED_GRAPHS_HASH_FACTOR + AllowParallelEdges.GetHashCode();
-            hash = Edges.Select(_edgesComparer.GetHashCode).OrderBy(x => x).Aggregate(hash, (x, y) => x * UNDIRECTED_GRAPHS_HASH_FACTOR + y);
-            return Vertices.Select(_verticesComparer.GetHashCode).OrderBy(x => x).Aggregate(hash, (x, y) => x * UNDIRECTED_GRAPHS_HASH_FACTOR + y);
+            hash = Edges
+                .Select(_edgesComparer.GetHashCode)
+                .OrderBy(x => x)
+                .Aggregate(hash, (x, y) => x * UNDIRECTED_GRAPHS_HASH_FACTOR + y);
+            hash = Vertices
+                .Select(_verticesComparer.GetHashCode)
+                .OrderBy(x => x)
+                .Aggregate(hash, (x, y) => x * UNDIRECTED_GRAPHS_HASH_FACTOR + y);
+
+            return hash;
         }
 
         public IEnumerable<Edge<TVertex>> IncidentEdgesOf(TVertex vertex)
