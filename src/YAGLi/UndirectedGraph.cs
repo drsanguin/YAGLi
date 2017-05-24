@@ -94,9 +94,7 @@ namespace YAGLi
         public bool AllowLoops { get; }
 
         public bool AllowParallelEdges { get; }
-        #endregion
 
-        #region Methods
         public IEnumerable<Edge<TVertex>> Edges
         {
             get
@@ -112,7 +110,9 @@ namespace YAGLi
                 return _incidentEdges.Keys;
             }
         }
+        #endregion
 
+        #region Methods
         public IEnumerable<Edge<TVertex>> AdjacentEdgesOf(Edge<TVertex> edge)
         {
             if (!ContainsEdge(edge))
