@@ -3,7 +3,7 @@ using System.Linq;
 using TechTalk.SpecFlow;
 using YAGLi.Tests.Utils;
 
-namespace YAGLi.Specs
+namespace YAGLi.Specs.UndirectedGraph.Analysis
 {
     [Binding]
     public class UndirectedGraphAnalysisSteps

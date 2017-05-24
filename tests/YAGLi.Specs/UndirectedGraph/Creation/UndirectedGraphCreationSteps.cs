@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TechTalk.SpecFlow;
 using YAGLi.Tests.Utils;
 
-namespace YAGLi.Specs
+namespace YAGLi.Specs.UndirectedGraph.Creation
 {
     [Binding]
     public class UndirectedGraphCreationSteps

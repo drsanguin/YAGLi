@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using YAGLi.Tests.Utils;
 
-namespace YAGLi.Specs
+namespace YAGLi.Specs.UndirectedGraph
 {
     public class UndirectedGraphContext
     {

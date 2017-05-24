@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace YAGLi.Specs
+namespace YAGLi.Specs.UndirectedGraph.Modification
 {
     using TechTalk.SpecFlow;
     
