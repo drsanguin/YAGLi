@@ -27,11 +27,6 @@ namespace YAGLi
         private readonly IReadOnlyDictionary<TVertex, IEnumerable<Edge<TVertex>>> _incidentEdges;
 
         /// <summary>
-        /// Readonly field who store the incident vertices of each vertex contained in this instance.
-        /// </summary>
-        private readonly IReadOnlyDictionary<Edge<TVertex>, IEnumerable<TVertex>> _incidentVertices;
-
-        /// <summary>
         /// Readonly field who hold the edge comparison logic specific of this instance.
         /// </summary>
         private readonly IEqualityComparer<Edge<TVertex>> _edgesComparer;
@@ -86,7 +81,6 @@ namespace YAGLi
             }
 
             _incidentEdges = incidentEdges.ToDictionary(x => x.Key, x => x.Value.AsEnumerable(), _verticesComparer);
-            _incidentVertices = incidentVertices.ToDictionary(x => x.Key, x => x.Value.AsEnumerable(), _edgesComparer);
         }
         #endregion
 
@@ -99,7 +93,10 @@ namespace YAGLi
         {
             get
             {
-                return _incidentVertices.Keys;
+                return _incidentEdges
+                    .Values
+                    .SelectMany(x => x)
+                    .Distinct(_edgesComparer);
             }
         }
 
@@ -226,7 +223,7 @@ namespace YAGLi
 
         public bool ContainsEdge(Edge<TVertex> edge)
         {
-            return _incidentVertices.ContainsKey(edge);
+            return Edges.Contains(edge, _edgesComparer);
         }
 
         public bool ContainsEdges(params Edge<TVertex>[] edges)
@@ -332,7 +329,7 @@ namespace YAGLi
                 return Enumerable.Empty<TVertex>();
             }
 
-            return _incidentVertices[edge];
+            return new TVertex[] { edge.End1, edge.End2 }.Distinct(_verticesComparer);
         }
 
         public UndirectedGraph<TVertex> RemoveEdge(Edge<TVertex> edge)
