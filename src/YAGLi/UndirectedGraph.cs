@@ -50,11 +50,9 @@ namespace YAGLi
             AllowParallelEdges = allowParallelEdges;
 
             _edgesComparer = AllowParallelEdges ? new IgnoreDirectionAndAllowParallelEdges<TVertex>(verticesComparer) as IEqualityComparer<Edge<TVertex>> : new IgnoreDirectionAndDisallowParallelEdges<TVertex>(verticesComparer);
-
             _verticesComparer = verticesComparer;
 
             var incidentEdges = new Dictionary<TVertex, IList<Edge<TVertex>>>(_verticesComparer);
-
             var distinctEdges = AllowParallelEdges ? edges : edges.Distinct(_edgesComparer);
 
             foreach (var edge in (!AllowLoops ? distinctEdges.Where(edge => !_verticesComparer.Equals(edge.End1, edge.End2)) : distinctEdges))
