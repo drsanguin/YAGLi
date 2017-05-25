@@ -32,6 +32,12 @@ namespace YAGLi.Extensions
         /// <returns><see cref="true"/> if <paramref name="first"/> and <paramref name="second"/> are of equal length and contains the same elements in any order.</returns>
         public static bool IsEquivalent<TSource>(this IEnumerable<TSource> first, IEnumerable<TSource> second, IEqualityComparer<TSource> comparer)
         {
+            if (ReferenceEquals(first, second)
+                || first.SequenceEqual(second, comparer))
+            {
+                return true;
+            }
+
             if (first.Count() != second.Count())
             {
                 return false;
