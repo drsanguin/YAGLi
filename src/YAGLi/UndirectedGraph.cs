@@ -54,7 +54,6 @@ namespace YAGLi
             _verticesComparer = verticesComparer;
 
             var incidentEdges = new Dictionary<TVertex, IList<Edge<TVertex>>>(_verticesComparer);
-            var incidentVertices = new Dictionary<Edge<TVertex>, IEnumerable<TVertex>>(_edgesComparer);
 
             var distinctEdges = AllowParallelEdges ? edges : edges.Distinct(_edgesComparer);
 
@@ -71,8 +70,6 @@ namespace YAGLi
 
                     incidentEdges[end].Add(edge);
                 }
-
-                incidentVertices[edge] = distinctEnds;
             }
 
             foreach (var vertex in vertices.Where(vertex => !incidentEdges.ContainsKey(vertex)))
