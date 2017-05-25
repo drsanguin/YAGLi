@@ -395,3 +395,280 @@ Scenario: Add edges and vertices to a undirected graph
     | e4   |
     | e5   |
 	| e6   |
+
+Scenario: Remove an edge from a undirected graph
+	Given the property allow loops
+	And the property allow parallel edges
+	And the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And the edges
+    | Name | End1 | End2 |
+	| e0   | v0   | v1   |
+	| e1   | v1   | v4   |
+	| e2   | v4   | v4   |
+	| e3   | v4   | v3   |
+	| e4   | v3   | v4   |
+	And the undirected graph created with them
+	When I remove the edge
+    | Name | End1 | End2 |
+	| e0   | v0   | v1   |
+	Then I should get a new undirected graph
+	And this new undirected graph should contains the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And this new undirected graph should contains the edges
+    | Name |
+    | e1   |
+    | e2   |
+    | e3   |
+    | e4   |
+
+Scenario: Remove a parallel edge from a undirected graph
+	Given the property allow loops
+	And the property allow parallel edges
+	And the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And the edges
+    | Name | End1 | End2 |
+	| e0   | v0   | v1   |
+	| e1   | v1   | v4   |
+	| e2   | v4   | v4   |
+	| e3   | v4   | v3   |
+	| e4   | v3   | v4   |
+	And the undirected graph created with them
+	When I remove the edge
+    | Name | End1 | End2 |
+	| e4   | v3   | v4   |
+	Then I should get a new undirected graph
+	And this new undirected graph should contains the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And this new undirected graph should contains the edges
+    | Name |
+    | e0   |
+    | e1   |
+    | e2   |
+    | e3   |
+
+Scenario: Remove an edge and her vertices from a undirected graph
+	Given the property allow loops
+	And the property allow parallel edges
+	And the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And the edges
+    | Name | End1 | End2 |
+	| e0   | v0   | v1   |
+	| e1   | v1   | v4   |
+	| e2   | v4   | v4   |
+	| e3   | v4   | v3   |
+	| e4   | v3   | v4   |
+	And the undirected graph created with them
+	When I remove the edge and her vertices
+    | Name | End1 | End2 |
+	| e0   | v0   | v1   |
+	Then I should get a new undirected graph
+	And this new undirected graph should contains the vertices
+	| Name |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And this new undirected graph should contains the edges
+    | Name |
+    | e1   |
+    | e2   |
+    | e3   |
+    | e4   |
+
+Scenario: Remove a parallel edge her vertices from a undirected graph
+	Given the property allow loops
+	And the property allow parallel edges
+	And the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And the edges
+    | Name | End1 | End2 |
+	| e0   | v0   | v1   |
+	| e1   | v1   | v4   |
+	| e2   | v4   | v4   |
+	| e3   | v4   | v3   |
+	| e4   | v3   | v4   |
+	And the undirected graph created with them
+	When I remove the edge and her vertices
+    | Name | End1 | End2 |
+	| e4   | v3   | v4   |
+	Then I should get a new undirected graph
+	And this new undirected graph should contains the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And this new undirected graph should contains the edges
+    | Name |
+    | e0   |
+    | e1   |
+    | e2   |
+    | e3   |
+
+Scenario: Remove edges from a undirected graph
+	Given the property allow loops
+	And the property allow parallel edges
+	And the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And the edges
+    | Name | End1 | End2 |
+	| e0   | v0   | v1   |
+	| e1   | v1   | v4   |
+	| e2   | v4   | v4   |
+	| e3   | v4   | v3   |
+	| e4   | v3   | v4   |
+	And the undirected graph created with them
+	When I remove the edges
+    | Name | End1 | End2 |
+	| e0   | v0   | v1   |
+	| e1   | v1   | v4   |
+	Then I should get a new undirected graph
+	And this new undirected graph should contains the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And this new undirected graph should contains the edges
+    | Name |
+    | e2   |
+    | e3   |
+	| e4   |
+
+Scenario: Remove edges and their vertices from a undirected graph
+	Given the property allow loops
+	And the property allow parallel edges
+	And the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And the edges
+    | Name | End1 | End2 |
+	| e0   | v0   | v1   |
+	| e1   | v1   | v4   |
+	| e2   | v4   | v4   |
+	| e3   | v4   | v3   |
+	| e4   | v3   | v4   |
+	And the undirected graph created with them
+	When I remove the edges and their vertices
+    | Name | End1 | End2 |
+	| e0   | v0   | v1   |
+	| e1   | v1   | v4   |
+	Then I should get a new undirected graph
+	And this new undirected graph should contains the vertices
+	| Name |
+	| v2   |
+	| v3   |
+	| v4   |
+	And this new undirected graph should contains the edges
+    | Name |
+    | e2   |
+    | e3   |
+	| e4   |
+
+Scenario: Remove a vertex from a undirected graph
+	Given the property allow loops
+	And the property allow parallel edges
+	And the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And the edges
+    | Name | End1 | End2 |
+	| e0   | v0   | v1   |
+	| e1   | v1   | v4   |
+	| e2   | v4   | v4   |
+	| e3   | v4   | v3   |
+	| e4   | v3   | v4   |
+	And the undirected graph created with them
+	When I remove the vertex "v4"
+	Then I should get a new undirected graph
+	And this new undirected graph should contains the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	And this new undirected graph should contains the edges
+    | Name |
+    | e0   |
+
+Scenario: Remove vertices from a undirected graph
+	Given the property allow loops
+	And the property allow parallel edges
+	And the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And the edges
+    | Name | End1 | End2 |
+	| e0   | v0   | v1   |
+	| e1   | v1   | v4   |
+	| e2   | v4   | v4   |
+	| e3   | v4   | v3   |
+	| e4   | v3   | v4   |
+	And the undirected graph created with them
+	When I remove the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	Then I should get a new undirected graph
+	And this new undirected graph should contains the vertices
+	| Name |
+	| v2   |
+	| v3   |
+	| v4   |
+	And this new undirected graph should contains the edges
+    | Name |
+	| e2   |
+	| e3   |
+	| e4   |

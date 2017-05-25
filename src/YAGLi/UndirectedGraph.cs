@@ -341,7 +341,7 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex> RemoveEdges(IEnumerable<Edge<TVertex>> edges)
         {
-            throw new NotImplementedException();
+            return new UndirectedGraph<TVertex>(AllowLoops, AllowParallelEdges, Edges.Except(edges, _edgesComparer), Vertices, _verticesComparer);
         }
 
         public UndirectedGraph<TVertex> RemoveEdges(params Edge<TVertex>[] edges)
@@ -349,14 +349,15 @@ namespace YAGLi
             return RemoveEdges(edges.AsEnumerable());
         }
 
-        public UndirectedGraph<TVertex> RemoveVertex(TVertex vertex)
-        {
-            return RemoveVertices(vertex.Yield());
-        }
-
         public UndirectedGraph<TVertex> RemoveEdgesAndVertices(IEnumerable<Edge<TVertex>> edges)
         {
-            throw new NotImplementedException();
+            var remainingEdges = Edges.Except(edges, _edgesComparer);
+            var remainingVertices = Vertices
+                .Where(vertex => !_incidentEdges[vertex]
+                    .Except(remainingEdges, _edgesComparer)
+                    .Any());
+
+            return new UndirectedGraph<TVertex>(AllowLoops, AllowParallelEdges, remainingEdges, remainingVertices, _verticesComparer);
         }
 
         public UndirectedGraph<TVertex> RemoveEdgesAndVertices(params Edge<TVertex>[] edges)
@@ -364,9 +365,17 @@ namespace YAGLi
             return RemoveEdgesAndVertices(edges.AsEnumerable());
         }
 
+        public UndirectedGraph<TVertex> RemoveVertex(TVertex vertex)
+        {
+            return RemoveVertices(vertex.Yield());
+        }
+
         public UndirectedGraph<TVertex> RemoveVertices(IEnumerable<TVertex> vertices)
         {
-            throw new NotImplementedException();
+            var remainingVertices = Vertices.Except(vertices, _verticesComparer);
+            var remainingEdges = Edges.Where(edge => remainingVertices.Contains(edge.End1, _verticesComparer) && remainingVertices.Contains(edge.End2, _verticesComparer));
+
+            return new UndirectedGraph<TVertex>(AllowLoops, AllowParallelEdges, remainingEdges, remainingVertices, _verticesComparer);
         }
 
         public UndirectedGraph<TVertex> RemoveVertices(params TVertex[] vertices)

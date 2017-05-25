@@ -155,5 +155,90 @@ namespace YAGLi.Specs.UndirectedGraph.Modification
 
             _context.NewGraph = _context.Graph.AddEdgesAndVertices(edgesToAdd);
         }
+
+        [When(@"I remove the edge")]
+        public void WhenIRemoveTheEdge(Table table)
+        {
+            var edgeName = table.Rows[0][0];
+            var end1Name = table.Rows[0][1];
+            var end2Name = table.Rows[0][2];
+
+            var edge = _context.GivenEdges.ContainsKey(edgeName) ? _context.GivenEdges[edgeName] : new Edge<Vertex>(end1Name, end2Name);
+
+            _context.NewGraph = _context.Graph.RemoveEdge(edge);
+        }
+
+        [When(@"I remove the edge and her vertices")]
+        public void WhenIRemoveTheEdgeAndHerVertices(Table table)
+        {
+            var edgeName = table.Rows[0][0];
+            var end1Name = table.Rows[0][1];
+            var end2Name = table.Rows[0][2];
+
+            var edge = _context.GivenEdges.ContainsKey(edgeName) ? _context.GivenEdges[edgeName] : new Edge<Vertex>(end1Name, end2Name);
+
+            _context.NewGraph = _context.Graph.RemoveEdgeAndVertices(edge);
+        }
+
+        [When(@"I remove the edges")]
+        public void WhenIRemoveTheEdges(Table table)
+        {
+            var edgesToRemove = new Edge<Vertex>[table.RowCount];
+
+            for (var i = 0; i < table.RowCount; i++)
+            {
+                var row = table.Rows[i];
+
+                var edgeName = row[0];
+                var end1Name = row[1];
+                var end2Name = row[2];
+
+                edgesToRemove[i] = _context.GivenEdges.ContainsKey(edgeName) ? _context.GivenEdges[edgeName] : new Edge<Vertex>(end1Name, end2Name);
+            }
+
+            _context.NewGraph = _context.Graph.RemoveEdges(edgesToRemove);
+        }
+
+        [When(@"I remove the edges and their vertices")]
+        public void WhenIRemoveTheEdgesAndTheirVertices(Table table)
+        {
+            var edgesToRemove = new Edge<Vertex>[table.RowCount];
+
+            for (var i = 0; i < table.RowCount; i++)
+            {
+                var row = table.Rows[i];
+
+                var edgeName = row[0];
+                var end1Name = row[1];
+                var end2Name = row[2];
+
+                edgesToRemove[i] = _context.GivenEdges.ContainsKey(edgeName) ? _context.GivenEdges[edgeName] : new Edge<Vertex>(end1Name, end2Name);
+            }
+
+            _context.NewGraph = _context.Graph.RemoveEdgesAndVertices(edgesToRemove);
+        }
+
+        [When(@"I remove the vertex ""(.*)""")]
+        public void WhenIRemoveTheVertex(string p0)
+        {
+            var vertexToRemove = _context.GivenVertices[p0];
+
+            _context.NewGraph = _context.Graph.RemoveVertex(vertexToRemove);
+        }
+
+        [When(@"I remove the vertices")]
+        public void WhenIRemoveTheVertices(Table table)
+        {
+            var verticesToRemove = new Vertex[table.RowCount];
+
+            for (var i = 0; i < table.RowCount; i++)
+            {
+                var vertexToRemove = _context.GivenVertices[table.Rows[i][0]];
+
+                verticesToRemove[i] = vertexToRemove;
+            }
+
+            _context.NewGraph = _context.Graph.RemoveVertices(verticesToRemove);
+        }
     }
 }
