@@ -1,5 +1,6 @@
 ﻿using NFluent;
 using NUnit.Framework;
+using System.Collections.Generic;
 using YAGLi.Extensions;
 using YAGLi.Tests.Utils;
 
@@ -53,6 +54,33 @@ namespace YAGLi.Tests
         }
 
         [Test]
+        public void EquivalentExtensions_IsEquivalent_should_return_true_if_both_parameters_are_null()
+        {
+            IEnumerable<Vertex> vertices1 = null;
+            IEnumerable<Vertex> vertices2 = null;
+
+            Check.That(vertices1.IsEquivalent(vertices2, new VertexEqualityComparer())).IsTrue();
+        }
+
+        [Test]
+        public void EquivalentExtensions_IsEquivalent_should_return_false_if_parameter_first_is_null_but_paramter_second_is_not()
+        {
+            IEnumerable<Vertex> vertices1 = null;
+            IEnumerable<Vertex> vertices2 = new Vertex[] { "Hello", ", World!" };
+
+            Check.That(vertices1.IsEquivalent(vertices2, new VertexEqualityComparer())).IsFalse();
+        }
+
+        [Test]
+        public void EquivalentExtensions_IsEquivalent_should_return_false_if_parameter_second_is_null_but_paramter_first_is_not()
+        {
+            IEnumerable<Vertex> vertices1 = new Vertex[] { "Hello", ", World!" };
+            IEnumerable<Vertex> vertices2 = null;
+
+            Check.That(vertices1.IsEquivalent(vertices2, new VertexEqualityComparer())).IsFalse();
+        }
+
+        [Test]
         public void EquivalentExtensions_IsEquivalent_with_default_IEqualityComparer_should_return_false_if_the_two_IEnumerable_have_different_sizes()
         {
             var vertices1 = new string[] { "42" };
@@ -94,6 +122,33 @@ namespace YAGLi.Tests
             var vertices2 = new string[] { "Hello", ", World!" };
 
             Check.That(vertices1.IsEquivalent(vertices2)).IsTrue();
+        }
+
+        [Test]
+        public void EquivalentExtensions_IsEquivalent_with_default_IEqualityComparer_should_return_true_if_both_parameters_are_null()
+        {
+            IEnumerable<string> vertices1 = null;
+            IEnumerable<string> vertices2 = null;
+
+            Check.That(vertices1.IsEquivalent(vertices2)).IsTrue();
+        }
+
+        [Test]
+        public void EquivalentExtensions_IsEquivalent_with_default_IEqualityComparer_should_return_false_if_parameter_first_is_null_but_paramter_second_is_not()
+        {
+            IEnumerable<string> vertices1 = null;
+            IEnumerable<string> vertices2 = new string[] { "Hello", ", World!" };
+
+            Check.That(vertices1.IsEquivalent(vertices2)).IsFalse();
+        }
+
+        [Test]
+        public void EquivalentExtensions_IsEquivalent_with_default_IEqualityComparer_should_return_false_if_parameter_second_is_null_but_paramter_first_is_not()
+        {
+            IEnumerable<string> vertices1 = new string[] { "Hello", ", World!" };
+            IEnumerable<string> vertices2 = null;
+
+            Check.That(vertices1.IsEquivalent(vertices2)).IsFalse();
         }
     }
 }
