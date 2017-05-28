@@ -57,7 +57,7 @@ namespace YAGLi
 
             foreach (var edge in (!AllowLoops ? distinctEdges.Where(edge => !_verticesComparer.Equals(edge.End1, edge.End2)) : distinctEdges))
             {
-                var distinctEnds = new TVertex[] { edge.End1, edge.End2 }.Distinct();
+                var distinctEnds = _verticesComparer.Equals(edge.End1, edge.End2) ? edge.End1.Yield() : new TVertex[] { edge.End1, edge.End2 };
 
                 foreach (var end in distinctEnds)
                 {
@@ -324,7 +324,12 @@ namespace YAGLi
                 return Enumerable.Empty<TVertex>();
             }
 
-            return new TVertex[] { edge.End1, edge.End2 }.Distinct(_verticesComparer);
+            if (_verticesComparer.Equals(edge.End1, edge.End2))
+            {
+                return edge.End1.Yield();
+            }
+
+            return new TVertex[] { edge.End1, edge.End2 };
         }
 
         public UndirectedGraph<TVertex> RemoveEdge(Edge<TVertex> edge)

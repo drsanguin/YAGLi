@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace YAGLi
 {
@@ -63,9 +62,10 @@ namespace YAGLi
         /// <returns><see cref="true"/> if if the two edges <paramref name="edge1"/> and <paramref name="edge2"/> share a common vertex, <see cref="false"/> otherwise.</returns>
         public static bool AreAdjacent(Edge<TVertex> edge1, Edge<TVertex> edge2, IEqualityComparer<TVertex> vertexComparer)
         {
-            return new TVertex[] { edge1.End1, edge1.End2 }
-            .Intersect(new TVertex[] { edge2.End1, edge2.End2 }, vertexComparer)
-            .Any();
+            return vertexComparer.Equals(edge1.End1, edge2.End1)
+                || vertexComparer.Equals(edge1.End1, edge2.End2)
+                || vertexComparer.Equals(edge1.End2, edge2.End1)
+                || vertexComparer.Equals(edge1.End2, edge2.End2);
         }
     }
 }
