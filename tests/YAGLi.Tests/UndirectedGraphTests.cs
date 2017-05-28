@@ -526,5 +526,179 @@ namespace YAGLi.Tests
 
             Check.That(newGraph).IsSameReferenceThan(graph);
         }
+
+        [Test]
+        public void UndirectedGraph_RemoveEdge_with_a_Edge_not_contained_in_the_graph_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                },
+                new VertexEqualityComparer());
+
+            var newGraph = graph.RemoveEdge(new Edge<Vertex>("v1", "v2"));
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_RemoveEdgeAndVertices_with_a_Edge_not_contained_in_the_graph_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                },
+                new VertexEqualityComparer());
+
+            var newGraph = graph.RemoveEdgeAndVertices(new Edge<Vertex>("v1", "v2"));
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_RemoveEdges_with_edges_who_are_not_contained_in_the_graph_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                },
+                new VertexEqualityComparer());
+
+            var newGraph = graph.RemoveEdges(new Edge<Vertex>("v1", "v2"), new Edge<Vertex>("v1", "v3"));
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_RemoveEdgesAndVertices_with_edges_who_are_not_contained_in_the_graph_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                },
+                new VertexEqualityComparer());
+
+            var newGraph = graph.RemoveEdgesAndVertices(new Edge<Vertex>("v1", "v2"), new Edge<Vertex>("v1", "v3"));
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_RemoveVertex_with_a_vertex_not_contained_in_the_graph_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                },
+                new VertexEqualityComparer());
+
+            var newGraph = graph.RemoveVertex("v5");
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_RemoveVertices_with_vertices_who_are_not_contained_in_the_graph_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                },
+                new VertexEqualityComparer());
+
+            var newGraph = graph.RemoveVertices("v5", "v6");
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
     }
 }
