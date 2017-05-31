@@ -49,7 +49,7 @@ namespace YAGLi
         /// <returns>The <see cref="string"/> representation of the current <see cref="Edge{TVertex}"/>instance.</returns>
         public override string ToString()
         {
-            return string.Format("{{ {0}, {1} }}", End1, End2);
+            return $"{{ {End1}, {End2} }}";
         }
 
         /// <summary>

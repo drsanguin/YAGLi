@@ -412,11 +412,11 @@ namespace YAGLi
             var sb = new StringBuilder();
 
             sb.AppendLine("{");
-            sb.AppendLine(string.Format("    {0} = {1}", nameof(AllowLoops), AllowLoops));
-            sb.AppendLine(string.Format("    {0} = {1}", nameof(AllowParallelEdges), AllowParallelEdges));
-            sb.AppendLine(string.Format("    {0} = [{1}]", nameof(Vertices), string.Join(", ", Vertices)));
-            sb.AppendLine(string.Format("    {0} = [", nameof(Edges)));
-            sb.AppendLine(string.Join(string.Format(",{0}", Environment.NewLine), Edges.Select(edge => string.Format("        ({0} - {1})", edge.End1, edge.End2))));
+            sb.AppendLine($"    {nameof(AllowLoops)} = {AllowLoops}");
+            sb.AppendLine($"    {nameof(AllowParallelEdges)} = {AllowParallelEdges}");
+            sb.AppendLine($"    {nameof(Vertices)} = [{string.Join(", ", Vertices)}]");
+            sb.AppendLine($"    {nameof(Edges)} = [");
+            sb.AppendLine(string.Join($",{Environment.NewLine}", Edges.Select(edge => $"        ({edge.End1} - {edge.End2})")));
             sb.AppendLine("    ]");
             sb.Append("}");
 
