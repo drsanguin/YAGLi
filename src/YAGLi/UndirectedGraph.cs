@@ -369,12 +369,12 @@ namespace YAGLi
             }
 
             var edgesToKeep = Edges.Except(edgesToRemove, _edgesComparer);
-            var remainingVertices = Vertices
+            var verticesToKeep = Vertices
                 .Where(vertex => !_incidentEdges[vertex]
                     .Except(edgesToKeep, _edgesComparer)
                     .Any());
 
-            return new UndirectedGraph<TVertex>(AllowLoops, AllowParallelEdges, edgesToKeep, remainingVertices, _verticesComparer);
+            return new UndirectedGraph<TVertex>(AllowLoops, AllowParallelEdges, edgesToKeep, verticesToKeep, _verticesComparer);
         }
 
         public UndirectedGraph<TVertex> RemoveEdgesAndVertices(params Edge<TVertex>[] edges)
