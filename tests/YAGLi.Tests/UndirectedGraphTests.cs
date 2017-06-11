@@ -1,6 +1,7 @@
 ﻿using NFluent;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using YAGLi.Interfaces;
 using YAGLi.Tests.Utils;
 
@@ -9,6 +10,112 @@ namespace YAGLi.Tests
     [TestFixture]
     public class UndirectedGraphTests
     {
+        [Test]
+        public void UndirectedGraph_ctor_should_not_throw_if_the_edges_are_null()
+        {
+            Check.ThatCode(() => new UndirectedGraph<Vertex>(
+                true,
+                true,
+                null,
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                })).DoesNotThrow();
+        }
+
+        [Test]
+        public void UndirectedGraph_ctor_should_not_throw_if_the_vertices_are_null()
+        {
+            Check.ThatCode(() => new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                null)).DoesNotThrow();
+        }
+
+        [Test]
+        public void UndirectedGraph_ctor_should_not_throw_if_the_edges_contains_a_null()
+        {
+            Check.ThatCode(() => new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    null,
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                })).DoesNotThrow();
+        }
+
+        [Test]
+        public void UndirectedGraph_ctor_should_not_throw_if_the_vertices_contains_a_null()
+        {
+            Check.ThatCode(() => new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    null,
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                })).DoesNotThrow();
+        }
+
+        [Test]
+        public void UndirectedGraph_ctor_should_not_throw_if_the_vertex_comparer_is_null()
+        {
+            Check.ThatCode(() => new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                }, null)).DoesNotThrow();
+        }
+
         [Test]
         public void UndirectedGraph_AllowLoops_should_return_the_value_passed_in_the_constructor()
         {
@@ -411,6 +518,267 @@ namespace YAGLi.Tests
         }
 
         [Test]
+        public void UndirectedGraph_AddEdges_when_the_array_is_null_should_not_throw()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                }, new VertexEqualityComparer());
+
+            Edge<Vertex>[] edges = null;
+
+            Check.ThatCode(() => graph.AddEdges(edges)).DoesNotThrow();
+        }
+
+        [Test]
+        public void UndirectedGraph_AddEdges_when_the_collection_is_null_should_not_throw()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                }, new VertexEqualityComparer());
+
+            IEnumerable<Edge<Vertex>> edges = null;
+
+            Check.ThatCode(() => graph.AddEdges(edges)).DoesNotThrow();
+        }
+
+        [Test]
+        public void UndirectedGraph_AddEdges_should_filter_edges_equal_to_null()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                }, new VertexEqualityComparer());
+
+            Edge<Vertex>[] edges = new Edge<Vertex>[]
+            {
+                null
+            };
+
+            Check.ThatCode(() => graph.AddEdges(edges)).DoesNotThrow();
+        }
+
+        [Test]
+        public void UndirectedGraph_AddEdgesAndVertices_when_the_array_is_null_should_not_throw()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                }, new VertexEqualityComparer());
+
+            Edge<Vertex>[] edges = null;
+
+            Check.ThatCode(() => graph.AddEdgesAndVertices(edges)).DoesNotThrow();
+        }
+
+        [Test]
+        public void UndirectedGraph_AddEdgesAndVertices_when_the_collection_is_null_should_not_throw()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                }, new VertexEqualityComparer());
+
+            IEnumerable<Edge<Vertex>> edges = null;
+
+            Check.ThatCode(() => graph.AddEdgesAndVertices(edges)).DoesNotThrow();
+        }
+
+        [Test]
+        public void UndirectedGraph_AddEdgesAndVertices_should_filter_null_edges()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                }, new VertexEqualityComparer());
+
+            Edge<Vertex>[] edges = new Edge<Vertex>[]
+            {
+                null
+            };
+
+            Check.ThatCode(() => graph.AddEdgesAndVertices(edges)).DoesNotThrow();
+        }
+
+        [Test]
+        public void UndirectedGraph_AddVertices_when_the_array_is_null_should_not_throw()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                }, new VertexEqualityComparer());
+
+            Vertex[] vertices = null;
+
+            Check.ThatCode(() => graph.AddVertices(vertices)).DoesNotThrow();
+        }
+
+        [Test]
+        public void UndirectedGraph_AddVertices_when_the_collection_is_null_should_not_throw()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                }, new VertexEqualityComparer());
+
+            IEnumerable<Vertex> vertices = null;
+
+            Check.ThatCode(() => graph.AddVertices(vertices)).DoesNotThrow();
+        }
+
+        [Test]
+        public void UndirectedGraph_AddVertices_should_filter_the_null_vertices()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                }, new VertexEqualityComparer());
+
+            Vertex[] vertices = new Vertex[]
+            {
+                null
+            };
+
+            Check.ThatCode(() => graph.AddVertices(vertices)).DoesNotThrow();
+        }
+
+        [Test]
         public void UndirectedGraph_AddEdges_with_loops_on_a_graph_who_disallow_loops_should_return_the_same_instance()
         {
             var graph = new UndirectedGraph<Vertex>(
@@ -557,6 +925,35 @@ namespace YAGLi.Tests
         }
 
         [Test]
+        public void UndirectedGraph_RemoveEdge_with_null_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                },
+                new VertexEqualityComparer());
+
+            var newGraph = graph.RemoveEdge(null);
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
         public void UndirectedGraph_RemoveEdgeAndVertices_with_a_Edge_not_contained_in_the_graph_should_return_the_same_instance()
         {
             var graph = new UndirectedGraph<Vertex>(
@@ -581,6 +978,35 @@ namespace YAGLi.Tests
                 new VertexEqualityComparer());
 
             var newGraph = graph.RemoveEdgeAndVertices(new Edge<Vertex>("v1", "v2"));
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_RemoveEdgeAndVertices_with_null_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                },
+                new VertexEqualityComparer());
+
+            var newGraph = graph.RemoveEdgeAndVertices(null);
 
             Check.That(newGraph).IsSameReferenceThan(graph);
         }
@@ -615,6 +1041,136 @@ namespace YAGLi.Tests
         }
 
         [Test]
+        public void UndirectedGraph_RemoveEdges_with_null_IEnumerable_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                },
+                new VertexEqualityComparer());
+
+            IEnumerable<Edge<Vertex>> edges = null;
+
+            var newGraph = graph.RemoveEdges(edges);
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_RemoveEdges_with_null_Array_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                },
+                new VertexEqualityComparer());
+
+            Edge<Vertex>[] edges = null;
+
+            var newGraph = graph.RemoveEdges(edges);
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_RemoveEdges_with_IEnumerable_should_filter_null_edges()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                },
+                new VertexEqualityComparer());
+
+            IEnumerable<Edge<Vertex>> edges = new Edge<Vertex>[]
+            {
+                null
+            };
+
+            var newGraph = graph.RemoveEdges(edges);
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_RemoveEdges_with_Array_should_filter_null_edges()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                },
+                new VertexEqualityComparer());
+
+            Edge<Vertex>[] edges = new Edge<Vertex>[]
+            {
+                null
+            };
+
+            var newGraph = graph.RemoveEdges(edges);
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
         public void UndirectedGraph_RemoveEdgesAndVertices_with_edges_who_are_not_contained_in_the_graph_should_return_the_same_instance()
         {
             var graph = new UndirectedGraph<Vertex>(
@@ -639,6 +1195,136 @@ namespace YAGLi.Tests
                 new VertexEqualityComparer());
 
             var newGraph = graph.RemoveEdgesAndVertices(new Edge<Vertex>("v1", "v2"), new Edge<Vertex>("v1", "v3"));
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_RemoveEdgesAndVertices_with_null_IEnumerable_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                },
+                new VertexEqualityComparer());
+
+            IEnumerable<Edge<Vertex>> edges = null;
+
+            var newGraph = graph.RemoveEdgesAndVertices(edges);
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_RemoveEdgesAndVertices_with_null_Array_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                },
+                new VertexEqualityComparer());
+
+            Edge<Vertex>[] edges = null;
+
+            var newGraph = graph.RemoveEdgesAndVertices(edges);
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_RemoveEdgesAndVertices_IEnumerable_should_filter_null_edges()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                },
+                new VertexEqualityComparer());
+
+            IEnumerable<Edge<Vertex>> edges = new Edge<Vertex>[]
+            {
+                null
+            };
+
+            var newGraph = graph.RemoveEdgesAndVertices(edges);
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_RemoveEdgesAndVertices_with_Array_should_filter_null_edges()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                },
+                new VertexEqualityComparer());
+
+            Edge<Vertex>[] edges = new Edge<Vertex>[]
+            {
+                null
+            };
+
+            var newGraph = graph.RemoveEdgesAndVertices(edges);
 
             Check.That(newGraph).IsSameReferenceThan(graph);
         }
@@ -673,6 +1359,35 @@ namespace YAGLi.Tests
         }
 
         [Test]
+        public void UndirectedGraph_RemoveVertex_with_null_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                },
+                new VertexEqualityComparer());
+
+            var newGraph = graph.RemoveVertex(null);
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
         public void UndirectedGraph_RemoveVertices_with_vertices_who_are_not_contained_in_the_graph_should_return_the_same_instance()
         {
             var graph = new UndirectedGraph<Vertex>(
@@ -697,6 +1412,136 @@ namespace YAGLi.Tests
                 new VertexEqualityComparer());
 
             var newGraph = graph.RemoveVertices("v5", "v6");
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_RemoveVertices_with_null_IEnumerable_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                },
+                new VertexEqualityComparer());
+
+            IEnumerable<Vertex> vertices = null;
+
+            var newGraph = graph.RemoveVertices(vertices);
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_RemoveVertices_with_null_Array_should_return_the_same_instance()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                },
+                new VertexEqualityComparer());
+
+            Vertex[] vertices = null;
+
+            var newGraph = graph.RemoveVertices(vertices);
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_RemoveVertices_with_IEnumerable_should_filter_null_vertices()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                },
+                new VertexEqualityComparer());
+
+            IEnumerable<Vertex> vertices = new Vertex[]
+            {
+                null
+            };
+
+            var newGraph = graph.RemoveVertices(vertices);
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
+        }
+
+        [Test]
+        public void UndirectedGraph_RemoveVertices_with_Array_should_filter_null_vertices()
+        {
+            var graph = new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                },
+                new VertexEqualityComparer());
+
+            Vertex[] vertices = new Vertex[]
+            {
+                null
+            };
+
+            var newGraph = graph.RemoveVertices(vertices);
 
             Check.That(newGraph).IsSameReferenceThan(graph);
         }

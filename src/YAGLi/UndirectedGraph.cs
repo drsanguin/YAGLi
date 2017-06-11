@@ -49,8 +49,15 @@ namespace YAGLi
             AllowLoops = allowLoops;
             AllowParallelEdges = allowParallelEdges;
 
+            verticesComparer = verticesComparer ?? EqualityComparer<TVertex>.Default;
+            edges = edges ?? Enumerable.Empty<Edge<TVertex>>();
+            vertices = vertices ?? Enumerable.Empty<TVertex>();
+
             _edgesComparer = AllowParallelEdges ? new IgnoreDirectionAndAllowParallelEdges<TVertex>(verticesComparer) as IEqualityComparer<Edge<TVertex>> : new IgnoreDirectionAndDisallowParallelEdges<TVertex>(verticesComparer);
             _verticesComparer = verticesComparer;
+
+            edges = edges.Where(edge => !ReferenceEquals(edge, null));
+            vertices = vertices.Where(vertex => !ReferenceEquals(vertex, null));
 
             var incidentEdges = new Dictionary<TVertex, IList<Edge<TVertex>>>(_verticesComparer);
             var distinctEdges = AllowParallelEdges ? edges : edges.Distinct(_edgesComparer);
@@ -112,7 +119,9 @@ namespace YAGLi
                 return Enumerable.Empty<Edge<TVertex>>();
             }
 
-            return Edges.Where(x => !_edgesComparer.Equals(edge, x) && Edge<TVertex>.AreAdjacent(x, edge, _verticesComparer));
+            return Edges
+                .Except(edge.Yield(), _edgesComparer)
+                .Where(x => Edge<TVertex>.AreAdjacent(x, edge, _verticesComparer));
         }
 
         public IEnumerable<TVertex> AdjacentVerticesOf(TVertex vertex)
@@ -122,7 +131,9 @@ namespace YAGLi
                 return Enumerable.Empty<TVertex>();
             }
 
-            return _incidentEdges[vertex].SelectMany(edge => new TVertex[] { edge.End1, edge.End2 }).Where(v => !_verticesComparer.Equals(v, vertex));
+            return _incidentEdges[vertex]
+                .SelectMany(edge => new TVertex[] { edge.End1, edge.End2 })
+                .Where(v => !_verticesComparer.Equals(v, vertex));
         }
 
         public UndirectedGraph<TVertex> AddEdge(Edge<TVertex> edge)
@@ -133,6 +144,11 @@ namespace YAGLi
         public UndirectedGraph<TVertex> AddEdgeAndVertices(Edge<TVertex> edge)
         {
             return AddEdgesAndVertices(edge.Yield());
+        }
+
+        private IEnumerable<Edge<TVertex>> filterNullEdges(IEnumerable<Edge<TVertex>> edges)
+        {
+            return edges.Where(edge => !ReferenceEquals(edge, null));
         }
 
         private IEnumerable<Edge<TVertex>> filterEdgesWhosVerticesAreNotContainedInThisInstance(IEnumerable<Edge<TVertex>> edges)
@@ -166,12 +182,12 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex> AddEdges(IEnumerable<Edge<TVertex>> edges)
         {
-            return filterEdgesAndCreateGraph(edges, filterEdgesWhosVerticesAreNotContainedInThisInstance, filterEdgesWhoViolatesThisInstanceProperties);
+            return filterEdgesAndCreateGraph(edges ?? Enumerable.Empty<Edge<TVertex>>(), filterNullEdges, filterEdgesWhosVerticesAreNotContainedInThisInstance, filterEdgesWhoViolatesThisInstanceProperties);
         }
 
         public UndirectedGraph<TVertex> AddEdges(params Edge<TVertex>[] edges)
         {
-            return AddEdges(edges.AsEnumerable());
+            return AddEdges(edges ?? Enumerable.Empty<Edge<TVertex>>());
         }
 
         public UndirectedGraph<TVertex> AddVertex(TVertex vertex)
@@ -181,21 +197,25 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex> AddEdgesAndVertices(IEnumerable<Edge<TVertex>> edges)
         {
-            return filterEdgesAndCreateGraph(edges, filterEdgesWhoViolatesThisInstanceProperties);
+            return filterEdgesAndCreateGraph(edges ?? Enumerable.Empty<Edge<TVertex>>(), filterNullEdges, filterEdgesWhoViolatesThisInstanceProperties);
         }
 
         public UndirectedGraph<TVertex> AddEdgesAndVertices(params Edge<TVertex>[] edges)
         {
+            edges = edges ?? Enumerable.Empty<Edge<TVertex>>().ToArray();
+
             return AddEdgesAndVertices(edges.AsEnumerable());
         }
 
         public UndirectedGraph<TVertex> AddVertices(IEnumerable<TVertex> vertices)
         {
-            return new UndirectedGraph<TVertex>(AllowLoops, AllowParallelEdges, Edges, Vertices.Concat(vertices), _verticesComparer);
+            return new UndirectedGraph<TVertex>(AllowLoops, AllowParallelEdges, Edges, Vertices.Concat(vertices ?? Enumerable.Empty<TVertex>()), _verticesComparer);
         }
 
         public UndirectedGraph<TVertex> AddVertices(params TVertex[] vertices)
         {
+            vertices = vertices ?? Enumerable.Empty<TVertex>().ToArray();
+
             return AddVertices(vertices.AsEnumerable());
         }
 
@@ -344,6 +364,11 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex> RemoveEdges(IEnumerable<Edge<TVertex>> edges)
         {
+            if (ReferenceEquals(edges, null))
+            {
+                return this;
+            }
+
             var edgesToRemove = edges.Where(edge => ContainsEdge(edge));
 
             if (!edgesToRemove.Any())
@@ -361,6 +386,11 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex> RemoveEdgesAndVertices(IEnumerable<Edge<TVertex>> edges)
         {
+            if (ReferenceEquals(edges, null))
+            {
+                return this;
+            }
+
             var edgesToRemove = edges.Where(edge => ContainsEdge(edge));
 
             if (!edgesToRemove.Any())
@@ -389,7 +419,14 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex> RemoveVertices(IEnumerable<TVertex> vertices)
         {
-            var verticesToRemove = vertices.Where(vertex => Vertices.Contains(vertex));
+            if (ReferenceEquals(vertices, null))
+            {
+                return this;
+            }
+
+            var verticesToRemove = vertices
+                .Where(vertex => !ReferenceEquals(vertex, null))
+                .Where(vertex => Vertices.Contains(vertex));
 
             if (!verticesToRemove.Any())
             {
