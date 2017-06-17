@@ -61,6 +61,8 @@
     <Compile Include="ConsiderDirectionAndAllowParallelEdgesTests.cs" />
     <Compile Include="ConsiderDirectionAndDisallowParallelEdgesTests.cs" />
     <Compile Include="EdgeTests.cs" />
+    <Compile Include="FilterNullsExtensionTests.cs" />
+    <Compile Include="ReplaceByEmptyIfNullExtensionTests.cs" />
     <Compile Include="YieldExtensionTests.cs" />
     <Compile Include="IgnoreDirectionAndAllowParallelEdgesTests.cs" />
     <Compile Include="EquivalentExtensionsTests.cs" />

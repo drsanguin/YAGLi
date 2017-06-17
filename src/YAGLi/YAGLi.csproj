@@ -45,6 +45,8 @@
     <Compile Include="EdgeComparers\ConsiderDirectionAndDisallowParallelEdges.cs" />
     <Compile Include="EdgeComparers\IgnoreDirectionAndAllowParallelEdges.cs" />
     <Compile Include="EdgeComparers\IgnoreDirectionAndDisallowParallelEdges.cs" />
+    <Compile Include="Extensions\FilterNullsExtension.cs" />
+    <Compile Include="Extensions\ReplaceByEmptyIfNullExtension.cs" />
     <Compile Include="Extensions\YieldExtension.cs" />
     <Compile Include="Extensions\EquivalentExtensions.cs" />
     <Compile Include="Interfaces\IModelADirectedGraph.cs" />
