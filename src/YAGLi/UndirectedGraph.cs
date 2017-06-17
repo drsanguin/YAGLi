@@ -202,12 +202,23 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex> AddVertices(IEnumerable<TVertex> vertices)
         {
-            return new UndirectedGraph<TVertex>(AllowLoops, AllowParallelEdges, Edges, Vertices.Concat(vertices.ReplaceByEmptyIfNull()), _verticesComparer);
+            var filteredVertices = vertices
+                .ReplaceByEmptyIfNull()
+                .FilterNulls();
+
+            if (!filteredVertices.Any())
+            {
+                return this;
+            }
+
+            return new UndirectedGraph<TVertex>(AllowLoops, AllowParallelEdges, Edges, Vertices.Concat(filteredVertices), _verticesComparer);
         }
 
         public UndirectedGraph<TVertex> AddVertices(params TVertex[] vertices)
         {
-            return AddVertices(vertices.ReplaceByEmptyIfNull());
+            return AddVertices(vertices
+                .ReplaceByEmptyIfNull()
+                .FilterNulls());
         }
 
         public bool AreEdgesAdjacent(Edge<TVertex> edge1, Edge<TVertex> edge2)

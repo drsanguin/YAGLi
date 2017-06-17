@@ -518,7 +518,7 @@ namespace YAGLi.Tests
         }
 
         [Test]
-        public void UndirectedGraph_AddEdges_when_the_array_is_null_should_not_throw()
+        public void UndirectedGraph_AddEdges_when_the_array_is_null_should_return_the_same_instance()
         {
             var graph = new UndirectedGraph<Vertex>(
                 true,
@@ -542,11 +542,13 @@ namespace YAGLi.Tests
 
             Edge<Vertex>[] edges = null;
 
-            Check.ThatCode(() => graph.AddEdges(edges)).DoesNotThrow();
+            var newGraph = graph.AddEdges(edges);
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
         }
 
         [Test]
-        public void UndirectedGraph_AddEdges_when_the_collection_is_null_should_not_throw()
+        public void UndirectedGraph_AddEdges_when_the_collection_is_null_should_return_the_same_instance()
         {
             var graph = new UndirectedGraph<Vertex>(
                 true,
@@ -570,7 +572,9 @@ namespace YAGLi.Tests
 
             IEnumerable<Edge<Vertex>> edges = null;
 
-            Check.ThatCode(() => graph.AddEdges(edges)).DoesNotThrow();
+            var newGraph = graph.AddEdges(edges);
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
         }
 
         [Test]
@@ -601,11 +605,13 @@ namespace YAGLi.Tests
                 null
             };
 
-            Check.ThatCode(() => graph.AddEdges(edges)).DoesNotThrow();
+            var newGraph = graph.AddEdges(edges);
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
         }
 
         [Test]
-        public void UndirectedGraph_AddEdgesAndVertices_when_the_array_is_null_should_not_throw()
+        public void UndirectedGraph_AddEdgesAndVertices_when_the_array_is_null_should_return_the_same_instance()
         {
             var graph = new UndirectedGraph<Vertex>(
                 true,
@@ -629,11 +635,13 @@ namespace YAGLi.Tests
 
             Edge<Vertex>[] edges = null;
 
-            Check.ThatCode(() => graph.AddEdgesAndVertices(edges)).DoesNotThrow();
+            var newGraph = graph.AddEdgesAndVertices(edges);
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
         }
 
         [Test]
-        public void UndirectedGraph_AddEdgesAndVertices_when_the_collection_is_null_should_not_throw()
+        public void UndirectedGraph_AddEdgesAndVertices_when_the_collection_is_null_should_return_the_same_instance()
         {
             var graph = new UndirectedGraph<Vertex>(
                 true,
@@ -657,7 +665,9 @@ namespace YAGLi.Tests
 
             IEnumerable<Edge<Vertex>> edges = null;
 
-            Check.ThatCode(() => graph.AddEdgesAndVertices(edges)).DoesNotThrow();
+            var newGraph = graph.AddEdgesAndVertices(edges);
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
         }
 
         [Test]
@@ -688,11 +698,13 @@ namespace YAGLi.Tests
                 null
             };
 
-            Check.ThatCode(() => graph.AddEdgesAndVertices(edges)).DoesNotThrow();
+            var newGraph = graph.AddEdgesAndVertices(edges);
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
         }
 
         [Test]
-        public void UndirectedGraph_AddVertices_when_the_array_is_null_should_not_throw()
+        public void UndirectedGraph_AddVertices_when_the_array_is_null_should_return_the_same_instance()
         {
             var graph = new UndirectedGraph<Vertex>(
                 true,
@@ -716,11 +728,13 @@ namespace YAGLi.Tests
 
             Vertex[] vertices = null;
 
-            Check.ThatCode(() => graph.AddVertices(vertices)).DoesNotThrow();
+            var newGraph = graph.AddVertices(vertices);
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
         }
 
         [Test]
-        public void UndirectedGraph_AddVertices_when_the_collection_is_null_should_not_throw()
+        public void UndirectedGraph_AddVertices_when_the_collection_is_null_should_return_the_same_instance()
         {
             var graph = new UndirectedGraph<Vertex>(
                 true,
@@ -744,7 +758,9 @@ namespace YAGLi.Tests
 
             IEnumerable<Vertex> vertices = null;
 
-            Check.ThatCode(() => graph.AddVertices(vertices)).DoesNotThrow();
+            var newGraph = graph.AddVertices(vertices);
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
         }
 
         [Test]
@@ -775,7 +791,9 @@ namespace YAGLi.Tests
                 null
             };
 
-            Check.ThatCode(() => graph.AddVertices(vertices)).DoesNotThrow();
+            var newGraph = graph.AddVertices(vertices);
+
+            Check.That(newGraph).IsSameReferenceThan(graph);
         }
 
         [Test]
