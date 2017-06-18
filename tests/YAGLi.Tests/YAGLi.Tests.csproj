@@ -64,6 +64,7 @@
     <Compile Include="FilterNullsExtensionTests.cs" />
     <Compile Include="ReplaceByEmptyIfNullExtensionTests.cs" />
     <Compile Include="UndirectedGraph\UndirectedGraphDefensiveCodeTests.cs" />
+    <Compile Include="UndirectedGraph\UndirectedGraphOptimizationsTests.cs" />
     <Compile Include="YieldExtensionTests.cs" />
     <Compile Include="IgnoreDirectionAndAllowParallelEdgesTests.cs" />
     <Compile Include="EquivalentExtensionsTests.cs" />
