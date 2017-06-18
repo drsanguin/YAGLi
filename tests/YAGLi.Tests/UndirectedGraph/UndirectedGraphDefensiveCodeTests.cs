@@ -58,9 +58,20 @@ namespace YAGLi.Tests.UndirectedGraph
         }
 
         [Test]
-        public void UndirectedGraph_AddEdges_should_filter_edges_equal_to_null()
+        public void UndirectedGraph_AddEdges_with_Array_should_filter_edges_equal_to_null()
         {
             Edge<Vertex>[] edges = new Edge<Vertex>[]
+            {
+                null
+            };
+
+            _newGraph = _originalGraph.AddEdges(edges);
+        }
+
+        [Test]
+        public void UndirectedGraph_AddEdges_with_IEnumerable_should_filter_edges_equal_to_null()
+        {
+            IEnumerable<Edge<Vertex>> edges = new Edge<Vertex>[]
             {
                 null
             };
@@ -85,9 +96,20 @@ namespace YAGLi.Tests.UndirectedGraph
         }
 
         [Test]
-        public void UndirectedGraph_AddEdgesAndVertices_should_filter_null_edges()
+        public void UndirectedGraph_AddEdgesAndVertices_with_Array_should_filter_null_edges()
         {
             Edge<Vertex>[] edges = new Edge<Vertex>[]
+            {
+                null
+            };
+
+            _newGraph = _originalGraph.AddEdgesAndVertices(edges);
+        }
+
+        [Test]
+        public void UndirectedGraph_AddEdgesAndVertices_with_IEnumerable_should_filter_null_edges()
+        {
+            IEnumerable<Edge<Vertex>> edges = new Edge<Vertex>[]
             {
                 null
             };
@@ -112,9 +134,20 @@ namespace YAGLi.Tests.UndirectedGraph
         }
 
         [Test]
-        public void UndirectedGraph_AddVertices_should_filter_the_null_vertices()
+        public void UndirectedGraph_AddVertices_with_Array_should_filter_the_null_vertices()
         {
             Vertex[] vertices = new Vertex[]
+            {
+                null
+            };
+
+            _newGraph = _originalGraph.AddVertices(vertices);
+        }
+
+        [Test]
+        public void UndirectedGraph_AddVertices_with_IEnumerable_should_filter_the_null_vertices()
+        {
+            IEnumerable<Vertex> vertices = new Vertex[]
             {
                 null
             };
