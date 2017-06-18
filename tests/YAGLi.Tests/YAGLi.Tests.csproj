@@ -63,12 +63,13 @@
     <Compile Include="EdgeTests.cs" />
     <Compile Include="FilterNullsExtensionTests.cs" />
     <Compile Include="ReplaceByEmptyIfNullExtensionTests.cs" />
+    <Compile Include="UndirectedGraph\UndirectedGraphDefensiveCodeTests.cs" />
     <Compile Include="YieldExtensionTests.cs" />
     <Compile Include="IgnoreDirectionAndAllowParallelEdgesTests.cs" />
     <Compile Include="EquivalentExtensionsTests.cs" />
     <Compile Include="IgnoreDirectionAndDisallowParallelEdgesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UndirectedGraphTests.cs" />
+    <Compile Include="UndirectedGraph\UndirectedGraphTests.cs" />
     <Compile Include="Utils\Vertex.cs" />
     <Compile Include="Utils\VertexEqualityComparer.cs" />
   </ItemGroup>
