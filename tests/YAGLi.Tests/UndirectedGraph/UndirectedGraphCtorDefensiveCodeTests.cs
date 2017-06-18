@@ -1,0 +1,129 @@
+﻿using NFluent;
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using YAGLi.Tests.Utils;
+
+namespace YAGLi.Tests.UndirectedGraph
+{
+    [TestFixture]
+    public class UndirectedGraphCtorDefensiveCodeTests
+    {
+        private Action _ctor;
+
+        [TearDown]
+        public void TearDown()
+        {
+            Check.ThatCode(_ctor).DoesNotThrow();
+        }
+
+        [Test]
+        public void UndirectedGraph_ctor_should_not_throw_if_the_edges_are_null()
+        {
+            _ctor = () => new UndirectedGraph<Vertex>(
+                true,
+                true,
+                null,
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                });
+        }
+
+        [Test]
+        public void UndirectedGraph_ctor_should_not_throw_if_the_vertices_are_null()
+        {
+            _ctor = () => new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                null);
+        }
+
+        [Test]
+        public void UndirectedGraph_ctor_should_not_throw_if_the_edges_contains_a_null()
+        {
+            _ctor = () => new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    null,
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                });
+        }
+
+        [Test]
+        public void UndirectedGraph_ctor_should_not_throw_if_the_vertices_contains_a_null()
+        {
+            _ctor = () => new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    null,
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                });
+        }
+
+        [Test]
+        public void UndirectedGraph_ctor_should_not_throw_if_the_vertex_comparer_is_null()
+        {
+            _ctor = () => new UndirectedGraph<Vertex>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                }, null);
+        }
+    }
+}
