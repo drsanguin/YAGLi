@@ -146,11 +146,6 @@ namespace YAGLi
             return AddEdgesAndVertices(edge.Yield());
         }
 
-        private IEnumerable<Edge<TVertex>> filterEdgesWhosVerticesAreNotContainedInThisInstance(IEnumerable<Edge<TVertex>> edges)
-        {
-            return edges.Where(edge => ContainsVertices(edge.End1, edge.End2));
-        }
-
         private IEnumerable<Edge<TVertex>> filterEdgesWhoViolatesThisInstanceProperties(IEnumerable<Edge<TVertex>> edges)
         {
             return edges
@@ -177,7 +172,7 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex> AddEdges(IEnumerable<Edge<TVertex>> edges)
         {
-            return filterEdgesAndCreateGraph(edges.ReplaceByEmptyIfNull().FilterNulls(), filterEdgesWhosVerticesAreNotContainedInThisInstance, filterEdgesWhoViolatesThisInstanceProperties);
+            return filterEdgesAndCreateGraph(edges.ReplaceByEmptyIfNull().FilterNulls().FilterEdgesWhosVerticesAreNotContainedInThisGraph(this), filterEdgesWhoViolatesThisInstanceProperties);
         }
 
         public UndirectedGraph<TVertex> AddEdges(params Edge<TVertex>[] edges)
