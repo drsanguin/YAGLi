@@ -33,7 +33,6 @@ namespace YAGLi.Tests
 
             var mockedGraph = new Mock<IModelAGraph<int>>();
             mockedGraph.Setup(x => x.AllowLoops).Returns(false);
-            mockedGraph.Setup(x => x.AllowParallelEdges).Returns(true);
 
             var graph = mockedGraph.Object;
 
@@ -82,7 +81,6 @@ namespace YAGLi.Tests
 
             var mockedGraph = new Mock<IModelAGraph<int>>();
             mockedGraph.Setup(x => x.AllowLoops).Returns(false);
-            mockedGraph.Setup(x => x.AllowParallelEdges).Returns(true);
 
             var graph = mockedGraph.Object;
 
