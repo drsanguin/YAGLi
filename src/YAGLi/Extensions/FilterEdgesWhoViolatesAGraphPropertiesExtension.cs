@@ -1,0 +1,25 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using YAGLi.Interfaces;
+
+namespace YAGLi.Extensions
+{
+    public static class FilterEdgesWhoViolatesAGraphPropertiesExtension
+    {
+        /// <summary>
+        /// Filter a collection of edges so that only remains edges who doesn't violate the input graph properties.
+        /// </summary>
+        /// <typeparam name="TVertex">The type of the vertices.</typeparam>
+        /// <param name="edges">The input edges collection.</param>
+        /// <param name="graph">The input graph.</param>
+        /// <param name="verticesComparer">The <see cref="IEqualityComparer{T}"/> implementation to use to compare vertices, or <see cref="null"/> to use the default <see cref="EqualityComparer{T}"/> for the type of the vertices.</param>
+        /// <returns></returns>
+        public static IEnumerable<Edge<TVertex>> FilterEdgesWhoViolatesThisInstanceProperties<TVertex>(this IEnumerable<Edge<TVertex>> edges, IModelAGraph<TVertex> graph, IEqualityComparer<TVertex> verticesComparer)
+        {
+            return edges
+                .ReplaceByEmptyIfNull()
+                .Where(edge => graph.AllowLoops ? true : !(verticesComparer ?? EqualityComparer<TVertex>.Default).Equals(edge.End1, edge.End2))
+                .Where(edge => graph.AllowParallelEdges ? true : !graph.ContainsEdge(edge));
+        }
+    }
+}

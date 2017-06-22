@@ -146,21 +146,11 @@ namespace YAGLi
             return AddEdgesAndVertices(edge.Yield());
         }
 
-        private IEnumerable<Edge<TVertex>> filterEdgesWhoViolatesThisInstanceProperties(IEnumerable<Edge<TVertex>> edges)
+        private UndirectedGraph<TVertex> addEdges(IEnumerable<Edge<TVertex>> edges)
         {
-            return edges
-                .Where(edge => !AllowLoops ? !_verticesComparer.Equals(edge.End1, edge.End2) : true)
-                .Where(edge => !AllowParallelEdges ? !Edges.Contains(edge, _edgesComparer) : true);
-        }
-
-        private UndirectedGraph<TVertex> filterEdgesAndCreateGraph(IEnumerable<Edge<TVertex>> edges, params Func<IEnumerable<Edge<TVertex>>, IEnumerable<Edge<TVertex>>>[] predicates)
-        {
-            var filteredEdges = edges;
-
-            foreach (var predicate in predicates)
-            {
-                filteredEdges = predicate(filteredEdges);
-            }
+            var filteredEdges = edges
+                .FilterNulls()
+                .FilterEdgesWhoViolatesThisInstanceProperties(this, _verticesComparer);
 
             if (!filteredEdges.Any())
             {
@@ -172,7 +162,7 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex> AddEdges(IEnumerable<Edge<TVertex>> edges)
         {
-            return filterEdgesAndCreateGraph(edges.ReplaceByEmptyIfNull().FilterNulls().FilterEdgesWhosVerticesAreNotContainedInThisGraph(this), filterEdgesWhoViolatesThisInstanceProperties);
+            return addEdges(edges.FilterEdgesWhosVerticesAreNotContainedInThisGraph(this));
         }
 
         public UndirectedGraph<TVertex> AddEdges(params Edge<TVertex>[] edges)
@@ -187,7 +177,7 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex> AddEdgesAndVertices(IEnumerable<Edge<TVertex>> edges)
         {
-            return filterEdgesAndCreateGraph(edges.ReplaceByEmptyIfNull().FilterNulls(), filterEdgesWhoViolatesThisInstanceProperties);
+            return addEdges(edges);
         }
 
         public UndirectedGraph<TVertex> AddEdgesAndVertices(params Edge<TVertex>[] edges)

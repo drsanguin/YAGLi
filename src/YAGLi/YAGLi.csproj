@@ -46,6 +46,7 @@
     <Compile Include="EdgeComparers\IgnoreDirectionAndAllowParallelEdges.cs" />
     <Compile Include="EdgeComparers\IgnoreDirectionAndDisallowParallelEdges.cs" />
     <Compile Include="Extensions\FilterEdgesNotContainedExtension.cs" />
+    <Compile Include="Extensions\FilterEdgesWhoViolatesAGraphPropertiesExtension.cs" />
     <Compile Include="Extensions\FilterNullsExtension.cs" />
     <Compile Include="Extensions\ReplaceByEmptyIfNullExtension.cs" />
     <Compile Include="Extensions\YieldExtension.cs" />
