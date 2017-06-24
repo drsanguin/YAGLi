@@ -18,7 +18,7 @@ namespace YAGLi.Specs.UndirectedGraph.Analysis
         [Given(@"the undirected graph created with them")]
         public void GivenTheUndirectedGraphCreatedWithThem()
         {
-            _context.Graph = new UndirectedGraph<Vertex>(_context.AllowLoops, _context.AllowParallelEdges, _context.GivenEdges.Values, _context.GivenVertices.Values, new VertexEqualityComparer());
+            _context.Graph = new UndirectedGraph<Vertex, Edge<Vertex>>(_context.AllowLoops, _context.AllowParallelEdges, _context.GivenEdges.Values, _context.GivenVertices.Values, new VertexEqualityComparer());
         }
 
         [When(@"I retrieve the adjacent edges of the edge ""(.*)""")]

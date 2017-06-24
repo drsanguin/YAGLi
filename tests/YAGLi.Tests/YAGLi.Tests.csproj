@@ -70,7 +70,6 @@
   <ItemGroup>
     <Compile Include="ConsiderDirectionAndAllowParallelEdgesTests.cs" />
     <Compile Include="ConsiderDirectionAndDisallowParallelEdgesTests.cs" />
-    <Compile Include="EdgeTests.cs" />
     <Compile Include="FilterEdgesNotContainedExtensionTests.cs" />
     <Compile Include="FilterEdgesWhoViolatesAGraphPropertiesExtensionTests.cs" />
     <Compile Include="FilterNullsExtensionTests.cs" />
@@ -78,6 +77,7 @@
     <Compile Include="UndirectedGraph\UndirectedGraphCtorDefensiveCodeTests.cs" />
     <Compile Include="UndirectedGraph\UndirectedGraphDefensiveCodeTests.cs" />
     <Compile Include="UndirectedGraph\UndirectedGraphOptimizationsTests.cs" />
+    <Compile Include="Utils\Edge.cs" />
     <Compile Include="YieldExtensionTests.cs" />
     <Compile Include="IgnoreDirectionAndAllowParallelEdgesTests.cs" />
     <Compile Include="EquivalentExtensionsTests.cs" />

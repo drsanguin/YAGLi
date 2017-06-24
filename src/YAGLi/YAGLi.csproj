@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Edge.cs" />
     <Compile Include="EdgeComparers\ConsiderDirectionAndAllowParallelEdges.cs" />
     <Compile Include="EdgeComparers\ConsiderDirectionAndDisallowParallelEdges.cs" />
     <Compile Include="EdgeComparers\IgnoreDirectionAndAllowParallelEdges.cs" />
@@ -53,6 +52,7 @@
     <Compile Include="Extensions\EquivalentExtensions.cs" />
     <Compile Include="Interfaces\IModelADirectedGraph.cs" />
     <Compile Include="Interfaces\IModelAGraph.cs" />
+    <Compile Include="Interfaces\IModelAnEdge.cs" />
     <Compile Include="Interfaces\IModelAUndirectedGraph.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UndirectedGraph.cs" />

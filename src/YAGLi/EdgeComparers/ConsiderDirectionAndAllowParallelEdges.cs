@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using YAGLi.Interfaces;
 
 namespace YAGLi.EdgeComparers
 {
-    public class ConsiderDirectionAndAllowParallelEdges<TVertex> : IEqualityComparer<Edge<TVertex>>
+    public class ConsiderDirectionAndAllowParallelEdges<TVertex, TEdge> : IEqualityComparer<TEdge> where TEdge : IModelAnEdge<TVertex>
     {
         private readonly IEqualityComparer<TVertex> _vertexComparer;
 
@@ -19,12 +20,12 @@ namespace YAGLi.EdgeComparers
             _vertexComparer = vertexComparer;
         }
 
-        public bool Equals(Edge<TVertex> edge1, Edge<TVertex> edge2)
+        public bool Equals(TEdge edge1, TEdge edge2)
         {
             return ReferenceEquals(edge1, edge2);
         }
 
-        public int GetHashCode(Edge<TVertex> edge)
+        public int GetHashCode(TEdge edge)
         {
             int hash = 17;
 

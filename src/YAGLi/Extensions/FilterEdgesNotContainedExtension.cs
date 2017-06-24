@@ -13,7 +13,7 @@ namespace YAGLi.Extensions
         /// <param name="edges">The collection to filter.</param>
         /// <param name="graph">The graph.</param>
         /// <returns>The filtered collection.</returns>
-        public static IEnumerable<Edge<TVertex>> FilterEdgesWhosVerticesAreNotContainedInThisGraph<TVertex>(this IEnumerable<Edge<TVertex>> edges, IModelAGraph<TVertex> graph)
+        public static IEnumerable<TEdge> FilterEdgesWhosVerticesAreNotContainedInThisGraph<TVertex, TEdge>(this IEnumerable<TEdge> edges, IModelAGraph<TVertex, TEdge> graph) where TEdge : IModelAnEdge<TVertex>
         {
             return edges
                 .FilterNulls()

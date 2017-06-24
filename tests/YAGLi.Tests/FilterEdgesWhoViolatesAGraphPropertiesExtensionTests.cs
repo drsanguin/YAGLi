@@ -4,6 +4,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using YAGLi.Extensions;
 using YAGLi.Interfaces;
+using YAGLi.Tests.Utils;
 
 namespace YAGLi.Tests
 {
@@ -14,7 +15,7 @@ namespace YAGLi.Tests
         public void FilterEdgesWhoViolatesAGraphPropertiesExtension_with_a_null_collection_of_edges_should_return_a_empty_IEnumerable()
         {
             IEnumerable<Edge<int>> edges = null;
-            var graph = new Mock<IModelAGraph<int>>().Object;
+            var graph = new Mock<IModelAGraph<int, Edge<int>>>().Object;
 
             Check.That(edges.FilterEdgesWhoViolatesThisInstanceProperties(graph, EqualityComparer<int>.Default)).IsEmpty();
         }
@@ -31,7 +32,7 @@ namespace YAGLi.Tests
                 new Edge<int>(5, 6)
             };
 
-            var mockedGraph = new Mock<IModelAGraph<int>>();
+            var mockedGraph = new Mock<IModelAGraph<int, Edge<int>>>();
             mockedGraph.Setup(x => x.AllowLoops).Returns(false);
 
             var graph = mockedGraph.Object;
@@ -54,7 +55,7 @@ namespace YAGLi.Tests
                 new Edge<int>(5, 6)
             };
 
-            var mockedGraph = new Mock<IModelAGraph<int>>();
+            var mockedGraph = new Mock<IModelAGraph<int, Edge<int>>>();
             mockedGraph.Setup(x => x.AllowParallelEdges).Returns(false);
             mockedGraph.Setup(x => x.ContainsEdge(edges[0])).Returns(true);
             mockedGraph.Setup(x => x.ContainsEdge(edges[3])).Returns(true);
@@ -79,7 +80,7 @@ namespace YAGLi.Tests
                 new Edge<int>(5, 6)
             };
 
-            var mockedGraph = new Mock<IModelAGraph<int>>();
+            var mockedGraph = new Mock<IModelAGraph<int, Edge<int>>>();
             mockedGraph.Setup(x => x.AllowLoops).Returns(false);
 
             var graph = mockedGraph.Object;

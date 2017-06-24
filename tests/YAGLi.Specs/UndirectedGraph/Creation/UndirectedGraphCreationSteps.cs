@@ -63,7 +63,7 @@ namespace YAGLi.Specs.UndirectedGraph.Creation
         [When(@"I create a new undirected graph with them")]
         public void WhenICreateANewUndirectedGraphWithThem()
         {
-            _context.Graph = new UndirectedGraph<Vertex>(_context.AllowLoops, _context.AllowParallelEdges, _context.GivenEdges.Values, _context.GivenVertices.Values, new VertexEqualityComparer());
+            _context.Graph = new UndirectedGraph<Vertex, Edge<Vertex>>(_context.AllowLoops, _context.AllowParallelEdges, _context.GivenEdges.Values, _context.GivenVertices.Values, new VertexEqualityComparer());
         }
         
         [Then(@"he should contains the vertices")]

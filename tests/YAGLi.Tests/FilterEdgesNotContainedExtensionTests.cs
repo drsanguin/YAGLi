@@ -5,18 +5,19 @@ using System.Collections.Generic;
 using System.Linq;
 using YAGLi.Extensions;
 using YAGLi.Interfaces;
+using YAGLi.Tests.Utils;
 
 namespace YAGLi.Tests
 {
     [TestFixture]
     public class FilterEdgesNotContainedExtensionTests
     {
-        private IModelAGraph<int> _graph;
+        private IModelAGraph<int, Edge<int>> _graph;
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            Mock<IModelAGraph<int>> mockedGraph = new Mock<IModelAGraph<int>>();
+            Mock<IModelAGraph<int, Edge<int>>> mockedGraph = new Mock<IModelAGraph<int, Edge<int>>>();
             mockedGraph.Setup(x => x.ContainsVertices(It.IsAny<int[]>())).Returns<int[]>(vertices => vertices.All(vertex => vertex % 2 == 0));
 
             _graph = mockedGraph.Object;

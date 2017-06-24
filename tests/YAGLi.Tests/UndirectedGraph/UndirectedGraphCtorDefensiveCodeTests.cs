@@ -23,7 +23,7 @@ namespace YAGLi.Tests.UndirectedGraph
         [Test]
         public void UndirectedGraph_ctor_should_not_throw_if_the_edges_are_null()
         {
-            _ctor = () => new UndirectedGraph<Vertex>(
+            _ctor = () => new UndirectedGraph<Vertex, Edge<Vertex>>(
                 true,
                 true,
                 null,
@@ -40,7 +40,7 @@ namespace YAGLi.Tests.UndirectedGraph
         [Test]
         public void UndirectedGraph_ctor_should_not_throw_if_the_vertices_are_null()
         {
-            _ctor = () => new UndirectedGraph<Vertex>(
+            _ctor = () => new UndirectedGraph<Vertex, Edge<Vertex>>(
                 true,
                 true,
                 new Edge<Vertex>[]
@@ -57,7 +57,7 @@ namespace YAGLi.Tests.UndirectedGraph
         [Test]
         public void UndirectedGraph_ctor_should_not_throw_if_the_edges_contains_a_null()
         {
-            _ctor = () => new UndirectedGraph<Vertex>(
+            _ctor = () => new UndirectedGraph<Vertex, Edge<Vertex>>(
                 true,
                 true,
                 new Edge<Vertex>[]
@@ -81,7 +81,7 @@ namespace YAGLi.Tests.UndirectedGraph
         [Test]
         public void UndirectedGraph_ctor_should_not_throw_if_the_vertices_contains_a_null()
         {
-            _ctor = () => new UndirectedGraph<Vertex>(
+            _ctor = () => new UndirectedGraph<Vertex, Edge<Vertex>>(
                 true,
                 true,
                 new Edge<Vertex>[]
@@ -105,7 +105,7 @@ namespace YAGLi.Tests.UndirectedGraph
         [Test]
         public void UndirectedGraph_ctor_should_not_throw_if_the_vertex_comparer_is_null()
         {
-            _ctor = () => new UndirectedGraph<Vertex>(
+            _ctor = () => new UndirectedGraph<Vertex, Edge<Vertex>>(
                 true,
                 true,
                 new Edge<Vertex>[]

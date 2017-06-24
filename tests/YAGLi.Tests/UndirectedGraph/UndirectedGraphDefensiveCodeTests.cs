@@ -8,13 +8,13 @@ namespace YAGLi.Tests.UndirectedGraph
     [TestFixture]
     public class UndirectedGraphDefensiveCodeTests
     {
-        private UndirectedGraph<Vertex> _originalGraph;
-        private UndirectedGraph<Vertex> _newGraph;
+        private UndirectedGraph<Vertex, Edge<Vertex>> _originalGraph;
+        private UndirectedGraph<Vertex, Edge<Vertex>> _newGraph;
 
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            _originalGraph = new UndirectedGraph<Vertex>(
+            _originalGraph = new UndirectedGraph<Vertex, Edge<Vertex>>(
                 true,
                 true,
                 new Edge<Vertex>[]

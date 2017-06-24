@@ -20,7 +20,7 @@ namespace YAGLi.Tests
         [Test]
         public void IgnoreDirectionAndDisallowParallelEdges_constructor_should_throw_a_ArgumentnullExeception_if_the_parameter_vertexComparer_is_null()
         {
-            Check.ThatCode(() => new IgnoreDirectionAndDisallowParallelEdges<Vertex>(null)).Throws<ArgumentNullException>();
+            Check.ThatCode(() => new IgnoreDirectionAndDisallowParallelEdges<Vertex, Edge<Vertex>>(null)).Throws<ArgumentNullException>();
         }
 
         [Test]
@@ -29,7 +29,7 @@ namespace YAGLi.Tests
             var edge1 = new Edge<Vertex>("Hello, ", "World!");
             var edge2 = new Edge<Vertex>("Hello, ", "World!");
 
-            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<Vertex>(_vertexComparer);
+            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<Vertex, Edge<Vertex>>(_vertexComparer);
 
             Check.That(edgeComparer.GetHashCode(edge1)).IsEqualTo(edgeComparer.GetHashCode(edge2));
         }
@@ -40,7 +40,7 @@ namespace YAGLi.Tests
             var edge1 = new Edge<Vertex>("Hello, ", "World!");
             var edge2 = new Edge<Vertex>("Hello", ", World!");
 
-            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<Vertex>(_vertexComparer);
+            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<Vertex, Edge<Vertex>>(_vertexComparer);
 
             Check.That(edgeComparer.GetHashCode(edge1)).IsNotEqualTo(edgeComparer.GetHashCode(edge2));
         }
@@ -50,7 +50,7 @@ namespace YAGLi.Tests
         {
             var edge1 = new Edge<Vertex>("Hello, ", "World!");
 
-            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<Vertex>(_vertexComparer);
+            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<Vertex, Edge<Vertex>>(_vertexComparer);
 
             Check.That(edgeComparer.Equals(edge1, edge1)).IsTrue();
         }
@@ -61,7 +61,7 @@ namespace YAGLi.Tests
             var edge1 = new Edge<Vertex>("Hello, ", "World!");
             var edge2 = new Edge<Vertex>("Hello, ", "World!");
 
-            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<Vertex>(_vertexComparer);
+            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<Vertex, Edge<Vertex>>(_vertexComparer);
 
             Check.That(edgeComparer.Equals(edge1, edge2)).IsTrue();
         }
@@ -72,7 +72,7 @@ namespace YAGLi.Tests
             var edge1 = new Edge<Vertex>("Hello, ", "World!");
             var edge2 = new Edge<Vertex>("World!", "Hello, ");
 
-            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<Vertex>(_vertexComparer);
+            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<Vertex, Edge<Vertex>>(_vertexComparer);
 
             Check.That(edgeComparer.Equals(edge1, edge2)).IsTrue();
         }
@@ -83,7 +83,7 @@ namespace YAGLi.Tests
             var edge1 = new Edge<Vertex>("Hello, ", "World!");
             var edge2 = new Edge<Vertex>("Hello", ", World!");
 
-            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<Vertex>(_vertexComparer);
+            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<Vertex, Edge<Vertex>>(_vertexComparer);
 
             Check.That(edgeComparer.Equals(edge1, edge2)).IsFalse();
         }
@@ -94,7 +94,7 @@ namespace YAGLi.Tests
             var edge1 = new Edge<string>("Hello, ", "World!");
             var edge2 = new Edge<string>("Hello, ", "World!");
 
-            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<string>();
+            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<string, Edge<string>>();
 
             Check.That(edgeComparer.GetHashCode(edge1)).IsEqualTo(edgeComparer.GetHashCode(edge2));
         }
@@ -105,7 +105,7 @@ namespace YAGLi.Tests
             var edge1 = new Edge<string>("Hello, ", "World!");
             var edge2 = new Edge<string>("Hello", ", World!");
 
-            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<string>();
+            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<string, Edge<string>>();
 
             Check.That(edgeComparer.GetHashCode(edge1)).IsNotEqualTo(edgeComparer.GetHashCode(edge2));
         }
@@ -115,7 +115,7 @@ namespace YAGLi.Tests
         {
             var edge1 = new Edge<string>("Hello, ", "World!");
 
-            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<string>();
+            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<string, Edge<string>>();
 
             Check.That(edgeComparer.Equals(edge1, edge1)).IsTrue();
         }
@@ -126,7 +126,7 @@ namespace YAGLi.Tests
             var edge1 = new Edge<string>("Hello, ", "World!");
             var edge2 = new Edge<string>("Hello, ", "World!");
 
-            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<string>();
+            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<string, Edge<string>>();
 
             Check.That(edgeComparer.Equals(edge1, edge2)).IsTrue();
         }
@@ -137,7 +137,7 @@ namespace YAGLi.Tests
             var edge1 = new Edge<string>("Hello, ", "World!");
             var edge2 = new Edge<string>("World!", "Hello, ");
 
-            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<string>();
+            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<string, Edge<string>>();
 
             Check.That(edgeComparer.Equals(edge1, edge2)).IsTrue();
         }
@@ -148,7 +148,7 @@ namespace YAGLi.Tests
             var edge1 = new Edge<string>("Hello, ", "World!");
             var edge2 = new Edge<string>("Hello", ", World!");
 
-            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<string>();
+            var edgeComparer = new IgnoreDirectionAndDisallowParallelEdges<string, Edge<string>>();
 
             Check.That(edgeComparer.Equals(edge1, edge2)).IsFalse();
         }

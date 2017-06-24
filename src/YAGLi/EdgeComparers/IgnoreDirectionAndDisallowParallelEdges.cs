@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using YAGLi.Interfaces;
 
 namespace YAGLi.EdgeComparers
 {
-    public class IgnoreDirectionAndDisallowParallelEdges<TVertex> : IEqualityComparer<Edge<TVertex>>
+    public class IgnoreDirectionAndDisallowParallelEdges<TVertex, TEdge> : IEqualityComparer<TEdge> where TEdge : IModelAnEdge<TVertex>
     {
         private readonly IEqualityComparer<TVertex> _vertexComparer;
-        private readonly IgnoreDirectionAndAllowParallelEdges<TVertex> _innerComparer;
+        private readonly IgnoreDirectionAndAllowParallelEdges<TVertex, TEdge> _innerComparer;
 
         public IgnoreDirectionAndDisallowParallelEdges() : this(EqualityComparer<TVertex>.Default) { }
 
@@ -18,10 +19,10 @@ namespace YAGLi.EdgeComparers
             }
 
             _vertexComparer = vertexComparer;
-            _innerComparer = new IgnoreDirectionAndAllowParallelEdges<TVertex>(vertexComparer);
+            _innerComparer = new IgnoreDirectionAndAllowParallelEdges<TVertex, TEdge>(vertexComparer);
         }
 
-        public bool Equals(Edge<TVertex> edge1, Edge<TVertex> edge2)
+        public bool Equals(TEdge edge1, TEdge edge2)
         {
             return _innerComparer.Equals(edge1, edge2)
                 || (_vertexComparer.Equals(edge1.End1, edge2.End1)
@@ -30,7 +31,7 @@ namespace YAGLi.EdgeComparers
                 && _vertexComparer.Equals(edge1.End2, edge2.End1));
         }
 
-        public int GetHashCode(Edge<TVertex> edge)
+        public int GetHashCode(TEdge edge)
         {
             return _innerComparer.GetHashCode(edge);
         }

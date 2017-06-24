@@ -9,11 +9,11 @@ namespace YAGLi.Specs.UndirectedGraph
         public bool AllowParallelEdges { get; set; }
         public Dictionary<string, Edge<Vertex>> GivenEdges { get; set; }
         public Dictionary<string, Vertex> GivenVertices { get; set; }
-        public UndirectedGraph<Vertex> Graph { get; set; }
+        public UndirectedGraph<Vertex, Edge<Vertex>> Graph { get; set; }
         public int ResultingDegree { get; set; }
         public IEnumerable<Edge<Vertex>> ResultingEdges { get; set; }
         public IEnumerable<Vertex> ResultingVertices { get; set; }
         public bool BooleanResult { get; set; }
-        public UndirectedGraph<Vertex> NewGraph { get; set; }
+        public UndirectedGraph<Vertex, Edge<Vertex>> NewGraph { get; set; }
     }
 }
