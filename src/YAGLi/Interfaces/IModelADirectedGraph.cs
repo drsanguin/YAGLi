@@ -8,7 +8,7 @@ namespace YAGLi.Interfaces
     /// </summary>
     /// <typeparam name="TVertex"></typeparam>
     /// <typeparam name="TEdge"></typeparam>
-    public interface IModelADirectedGraph<TVertex, TEdge> : IModelAGraph<TVertex, TEdge>, IEquatable<IModelAUndirectedGraph<TVertex, TEdge>> where TEdge : IModelAnEdge<TVertex>
+    public interface IModelADirectedGraph<TVertex, TEdge> : IModelAGraph<TVertex, TEdge>, IEquatable<IModelADirectedGraph<TVertex, TEdge>> where TEdge : IModelAnEdge<TVertex>
     {
         #region Methods
         /// <summary>
