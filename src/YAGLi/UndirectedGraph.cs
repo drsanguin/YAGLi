@@ -133,7 +133,7 @@ namespace YAGLi
 
             return _incidentEdges[vertex]
                 .SelectMany(edge => new TVertex[] { edge.End1, edge.End2 })
-                .Where(v => !_verticesComparer.Equals(v, vertex));
+                .Except(vertex.Yield(), _verticesComparer);
         }
 
         public UndirectedGraph<TVertex, TEdge> AddEdge(TEdge edge)
