@@ -4,6 +4,7 @@ before_build:
   - cmd: nuget restore
 
 build:
+  project: YAGLi.sln
   verbosity: detailed
 
 environment:
