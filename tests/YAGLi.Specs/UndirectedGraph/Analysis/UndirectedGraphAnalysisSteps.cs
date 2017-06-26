@@ -146,7 +146,7 @@ namespace YAGLi.Specs.UndirectedGraph.Analysis
         }
 
         [When(@"I check that the graph contains the edges with the ends ""(.*)"" and ""(.*)"" and the ends ""(.*)"" and ""(.*)""")]
-        public void A(string end1, string end2, string end3, string end4)
+        public void WhenICheckThatTheGraphContainsTheEdgesWithTheEndsAndAndTheEndsAnd(string end1, string end2, string end3, string end4)
         {
             var edge1 = new Edge<Vertex>(end1, end2);
             var edge2 = new Edge<Vertex>(end3, end4);
