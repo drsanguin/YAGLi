@@ -38,7 +38,7 @@ namespace YAGLi.Tests.UndirectedGraph
         [TearDown]
         public void TearDown()
         {
-            Check.That(_newGraph).IsSameReferenceThan(_originalGraph);
+            Check.That(_newGraph).IsSameReferenceAs(_originalGraph);
         }
 
         [Test]
