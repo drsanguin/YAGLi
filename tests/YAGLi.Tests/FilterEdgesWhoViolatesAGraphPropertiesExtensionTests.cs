@@ -49,10 +49,10 @@ namespace YAGLi.Tests
             Edge<int>[] edges = new Edge<int>[]
             {
                 new Edge<int>(0, 1),
-                new Edge<int>(0, 1),
                 new Edge<int>(2, 3),
-                new Edge<int>(5, 6),
-                new Edge<int>(5, 6)
+                new Edge<int>(4, 5),
+                new Edge<int>(6, 7),
+                new Edge<int>(8, 9)
             };
 
             var mockedGraph = new Mock<IModelAGraph<int, Edge<int>>>();
