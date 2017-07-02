@@ -67,6 +67,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transforms\EdgeTransforms.cs" />
+    <Compile Include="Transforms\VertexTransforms.cs" />
     <Compile Include="UndirectedGraph\Analysis\UndirectedGraphAnalysis.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
