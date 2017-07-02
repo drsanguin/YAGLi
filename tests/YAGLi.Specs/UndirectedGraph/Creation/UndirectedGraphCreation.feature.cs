@@ -121,7 +121,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v0",
                         "v1"});
 #line 22
- testRunner.And("the edges", ((string)(null)), table4, "And ");
+ testRunner.And("he should contains the edges", ((string)(null)), table4, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -187,7 +187,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v0",
                         "v1"});
 #line 45
- testRunner.And("the edges", ((string)(null)), table8, "And ");
+ testRunner.And("he should contains the edges", ((string)(null)), table8, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -253,7 +253,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v1",
                         "v1"});
 #line 69
- testRunner.And("the edges", ((string)(null)), table12, "And ");
+ testRunner.And("he should contains the edges", ((string)(null)), table12, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -322,7 +322,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v1",
                         "v1"});
 #line 93
- testRunner.And("the edges", ((string)(null)), table16, "And ");
+ testRunner.And("he should contains the edges", ((string)(null)), table16, "And ");
 #line hidden
             this.ScenarioCleanup();
         }

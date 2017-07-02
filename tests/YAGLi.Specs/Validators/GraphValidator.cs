@@ -17,19 +17,19 @@ namespace YAGLi.Specs.Validators
             Check.That(Subject.Vertices).ContainsExactly(vertices);
         }
 
-        [Then(@"the edges")]
+        [Then(@"he should contains the edges")]
         public void ThenTheEdges(IEnumerable<Edge<Vertex>> edges)
         {
             Check.That(Subject.Edges).ContainsExactly(edges);
         }
 
-        [Then(@"I should get a new undirected graph")]
+        [Then(@"I get a new undirected graph")]
         public void ThenIShouldGetANewUndirectedGraph()
         {
             Check.That(Subject).IsInstanceOf<UndirectedGraph<Vertex, Edge<Vertex>>>();
         }
 
-        [Then(@"this new undirected graph should contains the vertices")]
+        [Then(@"he contains the vertices")]
         public void ThenThisNewUndirectedGraphShouldContainsTheVertices(IEnumerable<Vertex> vertices)
         {
             Check.That(Subject.Vertices)
@@ -38,7 +38,7 @@ namespace YAGLi.Specs.Validators
                 .HasSize(vertices.Count());
         }
 
-        [Then(@"this new undirected graph should contains the edges")]
+        [Then(@"he contains the edges")]
         public void ThenThisNewUndirectedGraphShouldContainsTheEdges(IEnumerable<Edge<Vertex>> edges)
         {
             Check.That(Subject.Edges)

@@ -19,7 +19,7 @@ Scenario: Create a undirected graph who disallow loops and parallel edges
 	| v0   |
 	| v1   |
 	| v2   |
-	And the edges
+	And he should contains the edges
 	| End1 | End2 |
 	| v0   | v1   |
 
@@ -42,7 +42,7 @@ Scenario: Create a undirected graph who disallow loops and allow parallel edges
 	| v0   |
 	| v1   |
 	| v2   |
-	And the edges
+	And he should contains the edges
 	| End1 | End2 |
 	| v0   | v1   |
 	| v0   | v1   |
@@ -66,7 +66,7 @@ Scenario: Create a undirected graph who allow loops and disallow parallel edges
 	| v0   |
 	| v1   |
 	| v2   |
-	And the edges
+	And he should contains the edges
 	| End1 | End2 |
 	| v0   | v1   |
 	| v1   | v1   |
@@ -90,7 +90,7 @@ Scenario: Create a undirected graph who allow loops and parallel edges
 	| v0   |
 	| v1   |
 	| v2   |
-	And the edges
+	And he should contains the edges
 	| End1 | End2 |
 	| v0   | v1   |
 	| v0   | v1   |
