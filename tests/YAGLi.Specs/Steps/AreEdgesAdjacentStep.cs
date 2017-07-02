@@ -8,12 +8,12 @@ using YAGLi.Tests.Utils;
 namespace YAGLi.Specs.Steps
 {
     [Binding]
-    public class AreEdgesAdjacentSteps
+    public class AreEdgesAdjacentStep
     {
         private UndirectedGraphBuilder _builder;
         private BooleanValidator _validator;
 
-        public AreEdgesAdjacentSteps(UndirectedGraphBuilder builder, BooleanValidator validator)
+        public AreEdgesAdjacentStep(UndirectedGraphBuilder builder, BooleanValidator validator)
         {
             _builder = builder;
             _validator = validator;

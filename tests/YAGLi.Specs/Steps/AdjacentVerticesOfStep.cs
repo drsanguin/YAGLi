@@ -5,12 +5,12 @@ using YAGLi.Specs.Validators;
 namespace YAGLi.Specs.Steps
 {
     [Binding]
-    public class GetAdjacentVerticesSteps
+    public class AdjacentVerticesOfStep
     {
         UndirectedGraphBuilder _builder;
         VertexCollectionValidator _validator;
 
-        public GetAdjacentVerticesSteps(UndirectedGraphBuilder builder, VertexCollectionValidator validator)
+        public AdjacentVerticesOfStep(UndirectedGraphBuilder builder, VertexCollectionValidator validator)
         {
             _builder = builder;
             _validator = validator;

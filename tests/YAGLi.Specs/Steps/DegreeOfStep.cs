@@ -5,12 +5,12 @@ using YAGLi.Specs.Validators;
 namespace YAGLi.Specs.Steps
 {
     [Binding]
-    public class DegreeOfSteps
+    public class DegreeOfStep
     {
         UndirectedGraphBuilder _builder;
         DegreeValidator _validator;
 
-        DegreeOfSteps(UndirectedGraphBuilder builder, DegreeValidator validator)
+        DegreeOfStep(UndirectedGraphBuilder builder, DegreeValidator validator)
         {
             _builder = builder;
             _validator = validator;

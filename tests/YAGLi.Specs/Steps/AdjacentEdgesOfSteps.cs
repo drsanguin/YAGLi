@@ -6,12 +6,12 @@ using YAGLi.Tests.Utils;
 namespace YAGLi.Specs.Steps
 {
     [Binding]
-    public class GetAdjacentEdgesSteps
+    public class AdjacentEdgesOfSteps
     {
         private UndirectedGraphBuilder _builder;
         private EdgeCollectionValidator _validator;
 
-        public GetAdjacentEdgesSteps(UndirectedGraphBuilder builder, EdgeCollectionValidator validator)
+        public AdjacentEdgesOfSteps(UndirectedGraphBuilder builder, EdgeCollectionValidator validator)
         {
             _builder = builder;
             _validator = validator;
