@@ -9,10 +9,10 @@ Scenario: Create a undirected graph who disallow loops and parallel edges
 	| v1   |
 	| v2   |
 	And the edges
-	| Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v0   | v1   |
-	| e2   | v1   | v1   |
+	| End1 | End2 |
+	| v0   | v1   |
+	| v0   | v1   |
+	| v1   | v1   |
 	When I create a new undirected graph with them
 	Then he should contains the vertices
 	| Name |
@@ -20,8 +20,8 @@ Scenario: Create a undirected graph who disallow loops and parallel edges
 	| v1   |
 	| v2   |
 	And the edges
-	| Name |
-	| e0   |
+	| End1 | End2 |
+	| v0   | v1   |
 
 Scenario: Create a undirected graph who disallow loops and allow parallel edges
 	Given the property disallow loops
@@ -32,10 +32,10 @@ Scenario: Create a undirected graph who disallow loops and allow parallel edges
 	| v1   |
 	| v2   |
 	And the edges
-	| Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v0   | v1   |
-	| e2   | v1   | v1   |
+	| End1 | End2 |
+	| v0   | v1   |
+	| v0   | v1   |
+	| v1   | v1   |
 	When I create a new undirected graph with them
 	Then he should contains the vertices
 	| Name |
@@ -43,9 +43,9 @@ Scenario: Create a undirected graph who disallow loops and allow parallel edges
 	| v1   |
 	| v2   |
 	And the edges
-	| Name |
-	| e0   |
-	| e1   |
+	| End1 | End2 |
+	| v0   | v1   |
+	| v0   | v1   |
 
 Scenario: Create a undirected graph who allow loops and disallow parallel edges
 	Given the property allow loops
@@ -56,10 +56,10 @@ Scenario: Create a undirected graph who allow loops and disallow parallel edges
 	| v1   |
 	| v2   |
 	And the edges
-	| Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v0   | v1   |
-	| e2   | v1   | v1   |
+	| End1 | End2 |
+	| v0   | v1   |
+	| v0   | v1   |
+	| v1   | v1   |
 	When I create a new undirected graph with them
 	Then he should contains the vertices
 	| Name |
@@ -67,9 +67,9 @@ Scenario: Create a undirected graph who allow loops and disallow parallel edges
 	| v1   |
 	| v2   |
 	And the edges
-	| Name |
-	| e0   |
-	| e2   |
+	| End1 | End2 |
+	| v0   | v1   |
+	| v1   | v1   |
 
 Scenario: Create a undirected graph who allow loops and parallel edges
 	Given the property allow loops
@@ -80,10 +80,10 @@ Scenario: Create a undirected graph who allow loops and parallel edges
 	| v1   |
 	| v2   |
 	And the edges
-	| Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v0   | v1   |
-	| e2   | v1   | v1   |
+	| End1 | End2 |
+	| v0   | v1   |
+	| v0   | v1   |
+	| v1   | v1   |
 	When I create a new undirected graph with them
 	Then he should contains the vertices
 	| Name |
@@ -91,7 +91,7 @@ Scenario: Create a undirected graph who allow loops and parallel edges
 	| v1   |
 	| v2   |
 	And the edges
-	| Name |
-	| e0   |
-	| e1   |
-	| e2   |
+	| End1 | End2 |
+	| v0   | v1   |
+	| v0   | v1   |
+	| v1   | v1   |

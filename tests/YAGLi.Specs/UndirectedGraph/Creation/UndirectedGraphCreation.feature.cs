@@ -87,19 +87,15 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.And("the vertices", ((string)(null)), table1, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name",
                         "End1",
                         "End2"});
             table2.AddRow(new string[] {
-                        "e0",
                         "v0",
                         "v1"});
             table2.AddRow(new string[] {
-                        "e1",
                         "v0",
                         "v1"});
             table2.AddRow(new string[] {
-                        "e2",
                         "v1",
                         "v1"});
 #line 11
@@ -119,9 +115,11 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.Then("he should contains the vertices", ((string)(null)), table3, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name"});
+                        "End1",
+                        "End2"});
             table4.AddRow(new string[] {
-                        "e0"});
+                        "v0",
+                        "v1"});
 #line 22
  testRunner.And("the edges", ((string)(null)), table4, "And ");
 #line hidden
@@ -152,19 +150,15 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.And("the vertices", ((string)(null)), table5, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name",
                         "End1",
                         "End2"});
             table6.AddRow(new string[] {
-                        "e0",
                         "v0",
                         "v1"});
             table6.AddRow(new string[] {
-                        "e1",
                         "v0",
                         "v1"});
             table6.AddRow(new string[] {
-                        "e2",
                         "v1",
                         "v1"});
 #line 34
@@ -184,11 +178,14 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.Then("he should contains the vertices", ((string)(null)), table7, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name"});
+                        "End1",
+                        "End2"});
             table8.AddRow(new string[] {
-                        "e0"});
+                        "v0",
+                        "v1"});
             table8.AddRow(new string[] {
-                        "e1"});
+                        "v0",
+                        "v1"});
 #line 45
  testRunner.And("the edges", ((string)(null)), table8, "And ");
 #line hidden
@@ -219,19 +216,15 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.And("the vertices", ((string)(null)), table9, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name",
                         "End1",
                         "End2"});
             table10.AddRow(new string[] {
-                        "e0",
                         "v0",
                         "v1"});
             table10.AddRow(new string[] {
-                        "e1",
                         "v0",
                         "v1"});
             table10.AddRow(new string[] {
-                        "e2",
                         "v1",
                         "v1"});
 #line 58
@@ -251,11 +244,14 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.Then("he should contains the vertices", ((string)(null)), table11, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name"});
+                        "End1",
+                        "End2"});
             table12.AddRow(new string[] {
-                        "e0"});
+                        "v0",
+                        "v1"});
             table12.AddRow(new string[] {
-                        "e2"});
+                        "v1",
+                        "v1"});
 #line 69
  testRunner.And("the edges", ((string)(null)), table12, "And ");
 #line hidden
@@ -286,19 +282,15 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.And("the vertices", ((string)(null)), table13, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name",
                         "End1",
                         "End2"});
             table14.AddRow(new string[] {
-                        "e0",
                         "v0",
                         "v1"});
             table14.AddRow(new string[] {
-                        "e1",
                         "v0",
                         "v1"});
             table14.AddRow(new string[] {
-                        "e2",
                         "v1",
                         "v1"});
 #line 82
@@ -318,13 +310,17 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.Then("he should contains the vertices", ((string)(null)), table15, "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name"});
+                        "End1",
+                        "End2"});
             table16.AddRow(new string[] {
-                        "e0"});
+                        "v0",
+                        "v1"});
             table16.AddRow(new string[] {
-                        "e1"});
+                        "v0",
+                        "v1"});
             table16.AddRow(new string[] {
-                        "e2"});
+                        "v1",
+                        "v1"});
 #line 93
  testRunner.And("the edges", ((string)(null)), table16, "And ");
 #line hidden

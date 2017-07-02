@@ -11,15 +11,15 @@ Scenario: Add a loop to a undirected graph who disallow loops
 	| v3   |
 	| v4   |
 	And the edges
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v1   | v4   |
-	| e3   | v4   | v3   |
-	| e4   | v3   | v4   |
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 	And the undirected graph created with them
 	When I add the edges
-    | Name | End1 | End2 |
-	| e5   | v0   | v0   |
+    | End1 | End2 |
+	| v0   | v0   |
 	Then I should get a new undirected graph
 	And this new undirected graph should contains the vertices
 	| Name |
@@ -29,11 +29,11 @@ Scenario: Add a loop to a undirected graph who disallow loops
 	| v3   |
 	| v4   |
 	And this new undirected graph should contains the edges
-    | Name |
-	| e0   |
-	| e1   |
-	| e3   |
-	| e4   |
+	| End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 
 Scenario: Add a parallel edge to a undirected graph who disallow parallel edges
 	Given the property allow loops
@@ -46,14 +46,14 @@ Scenario: Add a parallel edge to a undirected graph who disallow parallel edges
 	| v3   |
 	| v4   |
 	And the edges
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v1   | v4   |
-	| e3   | v4   | v3   |
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
 	And the undirected graph created with them
 	When I add the edges
-    | Name | End1 | End2 |
-	| e4   | v3   | v4   |
+    | End1 | End2 |
+	| v3   | v4   |
 	Then I should get a new undirected graph
 	And this new undirected graph should contains the vertices
 	| Name |
@@ -63,10 +63,10 @@ Scenario: Add a parallel edge to a undirected graph who disallow parallel edges
 	| v3   |
 	| v4   |
 	And this new undirected graph should contains the edges
-    | Name |
-	| e0   |
-	| e1   |
-	| e3   |
+	| End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
 
 Scenario: Add a loop to a undirected graph
 	Given the property allow loops
@@ -79,15 +79,15 @@ Scenario: Add a loop to a undirected graph
 	| v3   |
 	| v4   |
 	And the edges
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v1   | v4   |
-	| e3   | v4   | v3   |
-	| e4   | v3   | v4   |
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 	And the undirected graph created with them
 	When I add the edges
-    | Name | End1 | End2 |
-	| e5   | v0   | v0   |
+    | End1 | End2 |
+	| v0   | v0   |
 	Then I should get a new undirected graph
 	And this new undirected graph should contains the vertices
 	| Name |
@@ -97,12 +97,12 @@ Scenario: Add a loop to a undirected graph
 	| v3   |
 	| v4   |
 	And this new undirected graph should contains the edges
-    | Name |
-	| e0   |
-	| e1   |
-	| e3   |
-	| e4   |
-	| e5   |
+	| End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
+	| v0   | v0   |
 
 Scenario: Add a parallel edge to a undirected graph
 	Given the property allow loops
@@ -115,14 +115,14 @@ Scenario: Add a parallel edge to a undirected graph
 	| v3   |
 	| v4   |
 	And the edges
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v1   | v4   |
-	| e3   | v4   | v3   |
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
 	And the undirected graph created with them
 	When I add the edges
-    | Name | End1 | End2 |
-	| e4   | v3   | v4   |
+    | End1 | End2 |
+	| v3   | v4   |
 	Then I should get a new undirected graph
 	And this new undirected graph should contains the vertices
 	| Name |
@@ -132,11 +132,11 @@ Scenario: Add a parallel edge to a undirected graph
 	| v3   |
 	| v4   |
 	And this new undirected graph should contains the edges
-    | Name |
-	| e0   |
-	| e1   |
-	| e3   |
-	| e4   |
+	| End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 
 Scenario: Add a edge to a undirected graph
 Given the property allow loops
@@ -149,15 +149,15 @@ Given the property allow loops
 	| v3   |
 	| v4   |
 	And the edges
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v1   | v4   |
-	| e3   | v4   | v3   |
-	| e4   | v3   | v4   |
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 	And the undirected graph created with them
 	When I add the edge
-    | Name | End1 | End2 |
-	| e5   | v0   | v2   |
+    | End1 | End2 |
+	| v0   | v2   |
 	Then I should get a new undirected graph
 	And this new undirected graph should contains the vertices
 	| Name |
@@ -167,12 +167,12 @@ Given the property allow loops
 	| v3   |
 	| v4   |
 	And this new undirected graph should contains the edges
-    | Name |
-	| e0   |
-	| e1   |
-	| e3   |
-	| e4   |
-	| e5   |
+	| End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
+	| v0   | v2   |
 
 Scenario: Add edges to a undirected graph
 Given the property allow loops
@@ -185,16 +185,16 @@ Given the property allow loops
 	| v3   |
 	| v4   |
 	And the edges
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v1   | v4   |
-	| e3   | v4   | v3   |
-	| e4   | v3   | v4   |
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 	And the undirected graph created with them
 	When I add the edges
-	| Name | End1 | End2 |
-	| e5   | v0   | v2   |
-	| e6   | v1   | v2   |
+	| End1 | End2 |
+	| v0   | v2   |
+	| v1   | v2   |
 	Then I should get a new undirected graph
 	And this new undirected graph should contains the vertices
 	| Name |
@@ -204,13 +204,13 @@ Given the property allow loops
 	| v3   |
 	| v4   |
 	And this new undirected graph should contains the edges
-    | Name |
-	| e0   |
-	| e1   |
-	| e3   |
-	| e4   |
-	| e5   |
-	| e6   |
+	| End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
+	| v0   | v2   |
+	| v1   | v2   |
 
 Scenario: Add a edge with vertices who are not already contained in a undirected graph
 Given the property allow loops
@@ -223,15 +223,15 @@ Given the property allow loops
 	| v3   |
 	| v4   |
 	And the edges
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v1   | v4   |
-	| e3   | v4   | v3   |
-	| e4   | v3   | v4   |
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 	And the undirected graph created with them
 	When I add the edge
-    | Name | End1 | End2 |
-	| e5   | v5   | v6   |
+    | End1 | End2 |
+	| v5   | v6   |
 	Then I should get a new undirected graph
 	And this new undirected graph should contains the vertices
 	| Name |
@@ -241,11 +241,11 @@ Given the property allow loops
 	| v3   |
 	| v4   |
 	And this new undirected graph should contains the edges
-    | Name |
-	| e0   |
-	| e1   |
-	| e3   |
-	| e4   |
+	| End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 
 Scenario: Add a vertex to a undirected graph
 Given the property allow loops
@@ -258,11 +258,11 @@ Given the property allow loops
 	| v3   |
 	| v4   |
 	And the edges
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v1   | v4   |
-	| e3   | v4   | v3   |
-	| e4   | v3   | v4   |
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 	And the undirected graph created with them
 	When I add the vertex "v5"
 	Then I should get a new undirected graph
@@ -275,11 +275,11 @@ Given the property allow loops
 	| v4   |
 	| v5   |
 	And this new undirected graph should contains the edges
-    | Name |
-	| e0   |
-	| e1   |
-	| e3   |
-	| e4   |
+	| End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 
 Scenario: Add vertices to a undirected graph
 	Given the property allow loops
@@ -292,11 +292,11 @@ Scenario: Add vertices to a undirected graph
 	| v3   |
 	| v4   |
 	And the edges
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v1   | v4   |
-	| e3   | v4   | v3   |
-	| e4   | v3   | v4   |
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 	And the undirected graph created with them
 	When I add the vertices
     | Name |
@@ -313,11 +313,11 @@ Scenario: Add vertices to a undirected graph
 	| v5   |
 	| v6   |
 	And this new undirected graph should contains the edges
-    | Name |
-	| e0   |
-	| e1   |
-	| e3   |
-	| e4   |
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 
 Scenario: Add edge and vertices to a undirected graph
 	Given the property allow loops
@@ -330,13 +330,15 @@ Scenario: Add edge and vertices to a undirected graph
 	| v3   |
 	| v4   |
 	And the edges
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v1   | v4   |
-	| e3   | v4   | v3   |
-	| e4   | v3   | v4   |
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 	And the undirected graph created with them
-	When I add the edge "e5" and the vertices "v5" and "v6"
+	When I add the following edge with their vertices
+	| End1 | End2 |
+	| v5   | v6   |
 	Then I should get a new undirected graph
 	And this new undirected graph should contains the vertices
 	| Name |
@@ -348,12 +350,12 @@ Scenario: Add edge and vertices to a undirected graph
 	| v5   |
 	| v6   |
 	And this new undirected graph should contains the edges
-    | Name |
-    | e0   |
-    | e1   |
-    | e3   |
-    | e4   |
-    | e5   |
+	| End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
+	| v5   | v6   |
 
 Scenario: Add edges and vertices to a undirected graph
 	Given the property allow loops
@@ -366,16 +368,16 @@ Scenario: Add edges and vertices to a undirected graph
 	| v3   |
 	| v4   |
 	And the edges
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v1   | v4   |
-	| e3   | v4   | v3   |
-	| e4   | v3   | v4   |
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 	And the undirected graph created with them
 	When I add the edges and vertices
-    | Name | End1 | End2 |
-	| e5   | v5   | v6   |
-	| e6   | v0   | v7   |
+    | End1 | End2 |
+	| v5   | v6   |
+	| v0   | v7   |
 	Then I should get a new undirected graph
 	And this new undirected graph should contains the vertices
 	| Name |
@@ -388,13 +390,13 @@ Scenario: Add edges and vertices to a undirected graph
 	| v6   |
 	| v7   |
 	And this new undirected graph should contains the edges
-    | Name |
-    | e0   |
-    | e1   |
-    | e3   |
-    | e4   |
-    | e5   |
-	| e6   |
+	| End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
+	| v5   | v6   |
+	| v0   | v7   |
 
 Scenario: Remove an edge from a undirected graph
 	Given the property allow loops
@@ -407,16 +409,16 @@ Scenario: Remove an edge from a undirected graph
 	| v3   |
 	| v4   |
 	And the edges
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v1   | v4   |
-	| e2   | v4   | v4   |
-	| e3   | v4   | v3   |
-	| e4   | v3   | v4   |
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 	And the undirected graph created with them
 	When I remove the edge
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
+    | End1 | End2 |
+	| v0   | v1   |
 	Then I should get a new undirected graph
 	And this new undirected graph should contains the vertices
 	| Name |
@@ -426,11 +428,11 @@ Scenario: Remove an edge from a undirected graph
 	| v3   |
 	| v4   |
 	And this new undirected graph should contains the edges
-    | Name |
-    | e1   |
-    | e2   |
-    | e3   |
-    | e4   |
+	| End1 | End2 |
+	| v1   | v4   |
+	| v4   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 
 Scenario: Remove a parallel edge from a undirected graph
 	Given the property allow loops
@@ -443,16 +445,16 @@ Scenario: Remove a parallel edge from a undirected graph
 	| v3   |
 	| v4   |
 	And the edges
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v1   | v4   |
-	| e2   | v4   | v4   |
-	| e3   | v4   | v3   |
-	| e4   | v3   | v4   |
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 	And the undirected graph created with them
 	When I remove the edge
-    | Name | End1 | End2 |
-	| e4   | v3   | v4   |
+    | End1 | End2 |
+	| v3   | v4   |
 	Then I should get a new undirected graph
 	And this new undirected graph should contains the vertices
 	| Name |
@@ -462,11 +464,11 @@ Scenario: Remove a parallel edge from a undirected graph
 	| v3   |
 	| v4   |
 	And this new undirected graph should contains the edges
-    | Name |
-    | e0   |
-    | e1   |
-    | e2   |
-    | e3   |
+	| End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v4   |
+	| v4   | v3   |
 
 Scenario: Remove an edge and her vertices from a undirected graph
 	Given the property allow loops
@@ -479,16 +481,16 @@ Scenario: Remove an edge and her vertices from a undirected graph
 	| v3   |
 	| v4   |
 	And the edges
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v1   | v4   |
-	| e2   | v4   | v4   |
-	| e3   | v4   | v3   |
-	| e4   | v3   | v4   |
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 	And the undirected graph created with them
 	When I remove the edge and her vertices
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
+    | End1 | End2 |
+	| v0   | v1   |
 	Then I should get a new undirected graph
 	And this new undirected graph should contains the vertices
 	| Name |
@@ -497,11 +499,11 @@ Scenario: Remove an edge and her vertices from a undirected graph
 	| v3   |
 	| v4   |
 	And this new undirected graph should contains the edges
-    | Name |
-    | e1   |
-    | e2   |
-    | e3   |
-    | e4   |
+	| End1 | End2 |
+	| v1   | v4   |
+	| v4   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 
 Scenario: Remove a parallel edge her vertices from a undirected graph
 	Given the property allow loops
@@ -514,16 +516,16 @@ Scenario: Remove a parallel edge her vertices from a undirected graph
 	| v3   |
 	| v4   |
 	And the edges
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v1   | v4   |
-	| e2   | v4   | v4   |
-	| e3   | v4   | v3   |
-	| e4   | v3   | v4   |
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 	And the undirected graph created with them
 	When I remove the edge and her vertices
-    | Name | End1 | End2 |
-	| e4   | v3   | v4   |
+    | End1 | End2 |
+	| v3   | v4   |
 	Then I should get a new undirected graph
 	And this new undirected graph should contains the vertices
 	| Name |
@@ -533,11 +535,11 @@ Scenario: Remove a parallel edge her vertices from a undirected graph
 	| v3   |
 	| v4   |
 	And this new undirected graph should contains the edges
-    | Name |
-    | e0   |
-    | e1   |
-    | e2   |
-    | e3   |
+	| End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v4   |
+	| v4   | v3   |
 
 Scenario: Remove edges from a undirected graph
 	Given the property allow loops
@@ -550,17 +552,17 @@ Scenario: Remove edges from a undirected graph
 	| v3   |
 	| v4   |
 	And the edges
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v1   | v4   |
-	| e2   | v4   | v4   |
-	| e3   | v4   | v3   |
-	| e4   | v3   | v4   |
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 	And the undirected graph created with them
 	When I remove the edges
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v1   | v4   |
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
 	Then I should get a new undirected graph
 	And this new undirected graph should contains the vertices
 	| Name |
@@ -570,10 +572,10 @@ Scenario: Remove edges from a undirected graph
 	| v3   |
 	| v4   |
 	And this new undirected graph should contains the edges
-    | Name |
-    | e2   |
-    | e3   |
-	| e4   |
+	| End1 | End2 |
+	| v4   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 
 Scenario: Remove edges and their vertices from a undirected graph
 	Given the property allow loops
@@ -586,17 +588,17 @@ Scenario: Remove edges and their vertices from a undirected graph
 	| v3   |
 	| v4   |
 	And the edges
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v1   | v4   |
-	| e2   | v4   | v4   |
-	| e3   | v4   | v3   |
-	| e4   | v3   | v4   |
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 	And the undirected graph created with them
 	When I remove the edges and their vertices
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v1   | v4   |
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
 	Then I should get a new undirected graph
 	And this new undirected graph should contains the vertices
 	| Name |
@@ -604,10 +606,10 @@ Scenario: Remove edges and their vertices from a undirected graph
 	| v3   |
 	| v4   |
 	And this new undirected graph should contains the edges
-    | Name |
-    | e2   |
-    | e3   |
-	| e4   |
+	| End1 | End2 |
+	| v4   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 
 Scenario: Remove a vertex from a undirected graph
 	Given the property allow loops
@@ -620,12 +622,12 @@ Scenario: Remove a vertex from a undirected graph
 	| v3   |
 	| v4   |
 	And the edges
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v1   | v4   |
-	| e2   | v4   | v4   |
-	| e3   | v4   | v3   |
-	| e4   | v3   | v4   |
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 	And the undirected graph created with them
 	When I remove the vertex "v4"
 	Then I should get a new undirected graph
@@ -636,8 +638,8 @@ Scenario: Remove a vertex from a undirected graph
 	| v2   |
 	| v3   |
 	And this new undirected graph should contains the edges
-    | Name |
-    | e0   |
+    | End1 | End2 |
+    | v0   | v1   |
 
 Scenario: Remove vertices from a undirected graph
 	Given the property allow loops
@@ -650,12 +652,12 @@ Scenario: Remove vertices from a undirected graph
 	| v3   |
 	| v4   |
 	And the edges
-    | Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v1   | v4   |
-	| e2   | v4   | v4   |
-	| e3   | v4   | v3   |
-	| e4   | v3   | v4   |
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
 	And the undirected graph created with them
 	When I remove the vertices
 	| Name |
@@ -668,7 +670,7 @@ Scenario: Remove vertices from a undirected graph
 	| v3   |
 	| v4   |
 	And this new undirected graph should contains the edges
-    | Name |
-	| e2   |
-	| e3   |
-	| e4   |
+	| End1 | End2 |
+	| v4   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
