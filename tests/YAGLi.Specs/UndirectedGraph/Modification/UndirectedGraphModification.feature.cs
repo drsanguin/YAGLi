@@ -968,7 +968,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v5",
                         "v6"});
 #line 339
- testRunner.When("I add the following edge with their vertices", ((string)(null)), table47, "When ");
+ testRunner.When("I add the following edge with her vertices", ((string)(null)), table47, "When ");
 #line 342
  testRunner.Then("I should get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -1072,7 +1072,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v0",
                         "v7"});
 #line 377
- testRunner.When("I add the edges and vertices", ((string)(null)), table52, "When ");
+ testRunner.When("I add the edges and vertices with their vertices", ((string)(null)), table52, "When ");
 #line 381
  testRunner.Then("I should get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden

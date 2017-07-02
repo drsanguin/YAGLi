@@ -45,8 +45,10 @@ Scenario: Get the adjacent edges of an edge not located into a undirected graph 
 	| v4   | v3   |
 	| v3   | v4   |
 	And the undirected graph created with them
-	When I retrieve the adjacent edges of the edge with the ends "v0" and "v4"
-	Then I get a empty list of edges
+	When I retrieve the adjacent edges of the edge
+	| End1 | End2 |
+	| v0   | v4   |
+	Then I get an empty list of edges
 
 Scenario: Get the adjacent edges of an edge not located into a undirected graph who allow loops and disallow parallel edges
 	Given the property allow loops
@@ -65,8 +67,10 @@ Scenario: Get the adjacent edges of an edge not located into a undirected graph 
 	| v4   | v4   |
 	| v4   | v3   |
 	And the undirected graph created with them
-	When I retrieve the adjacent edges of the edge with the ends "v0" and "v4"
-	Then I get a empty list of edges
+	When I retrieve the adjacent edges of the edge
+	| End1 | End2 |
+	| v0   | v4   |
+	Then I get an empty list of edges
 
 Scenario: Get the adjacent edges of an edge equal to an edge located into a undirected graph who allow loops and disallow parallel edges
 	Given the property allow loops
@@ -85,7 +89,9 @@ Scenario: Get the adjacent edges of an edge equal to an edge located into a undi
 	| v4   | v4   |
 	| v4   | v3   |
 	And the undirected graph created with them
-	When I retrieve the adjacent edges of the edge with the ends "v3" and "v4"
+	When I retrieve the adjacent edges of the edge
+	| End1 | End2 |
+	| v3   | v4   |
 	Then I get the edges
 	| End1 | End2 |
 	| v1   | v4   |
@@ -134,7 +140,7 @@ Scenario: Get the adjacent vertices of a vertex not contained in a UndirectedGra
 	| v4   | v3   |
 	And the undirected graph created with them
 	When I retrieve the adjacent vertices of the vertex "v5"
-	Then I get a empty list of vertices
+	Then I get an empty list of vertices
 
 Scenario: Get the degree of a vertex not contained in the graph
 	Given the property allow loops
@@ -189,12 +195,12 @@ Scenario: Get the incident edges of a vertex contained in a undirected graph
 	| v3   |
 	| v4   |
 	And the edges
-	| Name | End1 | End2 |
-	| e0   | v0   | v1   |
-	| e1   | v1   | v4   |
-	| e2   | v4   | v4   |
-	| e3   | v4   | v3   |
-	| e4   | v4   | v3   |
+	| End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v4   |
+	| v4   | v3   |
+	| v4   | v3   |
 	And the undirected graph created with them
 	When I retrieve the incident edges of the vertex "v4"
 	Then I get the edges
@@ -223,7 +229,7 @@ Scenario: Get the incident edges of a vertex not contained in a undirected graph
 	| v4   | v3   |
 	And the undirected graph created with them
 	When I retrieve the incident edges of the vertex "v5"
-	Then I get a empty list of edges
+	Then I get an empty list of edges
 
 Scenario: Get the incident vertices of a edge contained in a undirected graph
 	Given the property allow loops
@@ -269,8 +275,10 @@ Scenario: Get the incident vertices of a edge not contained in a undirected grap
 	| v4   | v3   |
 	| v4   | v3   |
 	And the undirected graph created with them
-	When I get the incident vertices of the edge with the ends "v0" and "v4"
-	Then I get a empty list of vertices
+	When I get the incident vertices of the edge
+	| End1 | End2 |
+	| v0   | v4   |
+	Then I get an empty list of vertices
 
 Scenario: Get the incident vertices of a loop edge contained in a undirected graph
 	Given the property allow loops
@@ -431,7 +439,9 @@ Scenario: Check that a undirected graph who allow parallel edges contains a edge
 	| v4   | v3   |
 	| v4   | v3   |
 	And the undirected graph created with them
-	When I check that the graph contains the edge with the ends "v0" and "v1"
+	When I check that the graph contains the edge
+	| End1 | End2 |
+	| v0   | v1   |
 	Then I get the answer false
 
 Scenario: Check that a undirected graph who disallow parallel edges contains a edge with the same ends
@@ -452,7 +462,9 @@ Scenario: Check that a undirected graph who disallow parallel edges contains a e
 	| v4   | v3   |
 	| v4   | v3   |
 	And the undirected graph created with them
-	When I check that the graph contains the edge with the ends "v0" and "v1"
+	When I check that the graph contains the edge
+	| End1 | End2 |
+	| v0   | v1   |
 	Then I get the answer true
 
 Scenario: Check that a undirected graph who allow parallel edges contains edges

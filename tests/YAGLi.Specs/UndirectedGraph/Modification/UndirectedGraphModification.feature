@@ -336,7 +336,7 @@ Scenario: Add edge and vertices to a undirected graph
 	| v4   | v3   |
 	| v3   | v4   |
 	And the undirected graph created with them
-	When I add the following edge with their vertices
+	When I add the following edge with her vertices
 	| End1 | End2 |
 	| v5   | v6   |
 	Then I should get a new undirected graph
@@ -374,7 +374,7 @@ Scenario: Add edges and vertices to a undirected graph
 	| v4   | v3   |
 	| v3   | v4   |
 	And the undirected graph created with them
-	When I add the edges and vertices
+	When I add the edges and vertices with their vertices
     | End1 | End2 |
 	| v5   | v6   |
 	| v0   | v7   |

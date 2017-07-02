@@ -11,6 +11,12 @@ namespace YAGLi.Specs.Transforms
         private const string VERTEX_NAME_PROPERTY_NAME = nameof(Vertex.Name);
 
         [StepArgumentTransformation]
+        public Vertex VertexTransform(string name)
+        {
+            return name;
+        }
+
+        [StepArgumentTransformation]
         public Vertex VertexTransform(Table table)
         {
             var firstRow = table.Rows[0];
