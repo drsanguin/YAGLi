@@ -23,12 +23,6 @@ namespace YAGLi.Specs.Validators
             Check.That(Subject.Edges).ContainsExactly(edges);
         }
 
-        [Then(@"I get a new undirected graph")]
-        public void ThenIShouldGetANewUndirectedGraph()
-        {
-            Check.That(Subject).IsInstanceOf<UndirectedGraph<Vertex, Edge<Vertex>>>();
-        }
-
         [Then(@"he contains the vertices")]
         public void ThenThisNewUndirectedGraphShouldContainsTheVertices(IEnumerable<Vertex> vertices)
         {

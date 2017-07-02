@@ -3,7 +3,7 @@ using YAGLi.Specs.Builders;
 using YAGLi.Specs.Validators;
 using YAGLi.Tests.Utils;
 
-namespace YAGLi.Specs.UndirectedGraph.Creation
+namespace YAGLi.Specs.Steps
 {
     [Binding]
     public class UndirectedGraphCreationSteps

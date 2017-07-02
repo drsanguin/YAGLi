@@ -84,19 +84,18 @@
     <Compile Include="Steps\RemoveVertexSteps.cs" />
     <Compile Include="Transforms\EdgeTransforms.cs" />
     <Compile Include="Transforms\VertexTransforms.cs" />
-    <Compile Include="UndirectedGraph\Analysis\UndirectedGraphAnalysis.feature.cs">
+    <Compile Include="Features\UndirectedGraph\UndirectedGraphAnalysis.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UndirectedGraphAnalysis.feature</DependentUpon>
     </Compile>
-    <Compile Include="UndirectedGraph\UndirectedGraphContext.cs" />
-    <Compile Include="UndirectedGraph\Creation\UndirectedGraphCreation.feature.cs">
+    <Compile Include="Features\UndirectedGraph\UndirectedGraphCreation.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UndirectedGraphCreation.feature</DependentUpon>
     </Compile>
-    <Compile Include="UndirectedGraph\Creation\UndirectedGraphCreationSteps.cs" />
-    <Compile Include="UndirectedGraph\Modification\UndirectedGraphModification.feature.cs">
+    <Compile Include="Steps\InstantiateUndirectedGraphStep.cs" />
+    <Compile Include="Features\UndirectedGraph\UndirectedGraphModification.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UndirectedGraphModification.feature</DependentUpon>
@@ -105,6 +104,7 @@
     <Compile Include="Validators\DegreeValidator.cs" />
     <Compile Include="Validators\EdgeCollectionValidator.cs" />
     <Compile Include="Validators\GraphValidator.cs" />
+    <Compile Include="Validators\UndirectedGraphValidator.cs" />
     <Compile Include="Validators\VertexCollectionValidator.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -112,15 +112,15 @@
     <None Include="Default.srprofile" />
     <None Include="packages.config" />
     <None Include="runtests.cmd" />
-    <None Include="UndirectedGraph\Analysis\UndirectedGraphAnalysis.feature">
+    <None Include="Features\UndirectedGraph\UndirectedGraphAnalysis.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>UndirectedGraphAnalysis.feature.cs</LastGenOutput>
     </None>
-    <None Include="UndirectedGraph\Creation\UndirectedGraphCreation.feature">
+    <None Include="Features\UndirectedGraph\UndirectedGraphCreation.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>UndirectedGraphCreation.feature.cs</LastGenOutput>
     </None>
-    <None Include="UndirectedGraph\Modification\UndirectedGraphModification.feature">
+    <None Include="Features\UndirectedGraph\UndirectedGraphModification.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>UndirectedGraphModification.feature.cs</LastGenOutput>
     </None>
