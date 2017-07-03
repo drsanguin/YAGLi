@@ -138,7 +138,7 @@ Scenario: Add a parallel edge to a undirected graph
 	| v4   | v3   |
 	| v3   | v4   |
 
-Scenario: Add a edge to a undirected graph
+Scenario: Add an edge to a undirected graph who allow parallel edges
 Given the property allow loops
 	And the property allow parallel edges
 	And the vertices
@@ -174,7 +174,41 @@ Given the property allow loops
 	| v3   | v4   |
 	| v0   | v2   |
 
-Scenario: Add edges to a undirected graph
+Scenario: Add an edge to a undirected graph who disallow parallel edges
+Given the property allow loops
+	And the property disallow parallel edges
+	And the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And the edges
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	And the undirected graph created with them
+	When I add the edge
+    | End1 | End2 |
+	| v0   | v2   |
+	Then I get a new undirected graph
+	And he contains the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And he contains the edges
+	| End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	| v0   | v2   |
+
+Scenario: Add edges to a undirected graph who allow parallel edges
 Given the property allow loops
 	And the property allow parallel edges
 	And the vertices
@@ -212,7 +246,43 @@ Given the property allow loops
 	| v0   | v2   |
 	| v1   | v2   |
 
-Scenario: Add a edge with vertices who are not already contained in a undirected graph
+Scenario: Add edges to a undirected graph who disallow parallel edges
+Given the property allow loops
+	And the property disallow parallel edges
+	And the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And the edges
+    | End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	And the undirected graph created with them
+	When I add the edges
+	| End1 | End2 |
+	| v0   | v2   |
+	| v1   | v2   |
+	Then I get a new undirected graph
+	And he contains the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And he contains the edges
+	| End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v3   |
+	| v0   | v2   |
+	| v1   | v2   |
+
+Scenario: Add an edge whose vertices who are not already contained in a undirected graph
 Given the property allow loops
 	And the property allow parallel edges
 	And the vertices
