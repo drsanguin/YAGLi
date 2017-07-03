@@ -1,4 +1,4 @@
-﻿Feature: UndirectedGraphCreation
+﻿Feature: Instantiate a undirected graph
 
 Scenario: Create a undirected graph who disallow loops and parallel edges
 	Given the property disallow loops 

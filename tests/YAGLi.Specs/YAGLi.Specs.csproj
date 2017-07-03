@@ -66,63 +66,180 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Builders\GraphBuilder.cs" />
-    <Compile Include="Builders\UndirectedGraphBuilder.cs" />
+    <Compile Include="Common\Builders\GraphBuilder.cs" />
+    <Compile Include="UndirectedGraph\Features\AddEdge.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AddEdge.feature</DependentUpon>
+    </Compile>
+    <Compile Include="UndirectedGraph\Features\AddEdgeAndVertices.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AddEdgeAndVertices.feature</DependentUpon>
+    </Compile>
+    <Compile Include="UndirectedGraph\Features\AddVertex.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AddVertex.feature</DependentUpon>
+    </Compile>
+    <Compile Include="UndirectedGraph\Features\AdjacentEdgesOf.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdjacentEdgesOf.feature</DependentUpon>
+    </Compile>
+    <Compile Include="UndirectedGraph\Features\AdjacentVerticesOf.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdjacentVerticesOf.feature</DependentUpon>
+    </Compile>
+    <Compile Include="UndirectedGraph\Features\AreEdgesAdjacent.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AreEdgesAdjacent.feature</DependentUpon>
+    </Compile>
+    <Compile Include="UndirectedGraph\Features\AreVerticesAdjacent.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AreVerticesAdjacent.feature</DependentUpon>
+    </Compile>
+    <Compile Include="UndirectedGraph\Features\ContainsEdge.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContainsEdge.feature</DependentUpon>
+    </Compile>
+    <Compile Include="UndirectedGraph\Features\ContainsVertex.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContainsVertex.feature</DependentUpon>
+    </Compile>
+    <Compile Include="UndirectedGraph\Features\DegreeOf.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DegreeOf.feature</DependentUpon>
+    </Compile>
+    <Compile Include="UndirectedGraph\Features\IncidentEdgesOf.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IncidentEdgesOf.feature</DependentUpon>
+    </Compile>
+    <Compile Include="UndirectedGraph\Features\IncidentVerticesOf.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IncidentVerticesOf.feature</DependentUpon>
+    </Compile>
+    <Compile Include="UndirectedGraph\Features\RemoveEdge.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RemoveEdge.feature</DependentUpon>
+    </Compile>
+    <Compile Include="UndirectedGraph\Features\RemoveEdgeAndVertices.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RemoveEdgeAndVertices.feature</DependentUpon>
+    </Compile>
+    <Compile Include="UndirectedGraph\Features\RemoveVertex.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RemoveVertex.feature</DependentUpon>
+    </Compile>
+    <Compile Include="UndirectedGraph\UndirectedGraphBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Steps\AddEdgeSteps.cs" />
-    <Compile Include="Steps\AddVertexSteps.cs" />
-    <Compile Include="Steps\AreEdgesAdjacentStep.cs" />
-    <Compile Include="Steps\AreVerticesAdjacentStep.cs" />
-    <Compile Include="Steps\ContainsEdgeSteps.cs" />
-    <Compile Include="Steps\ContainsVerticesSteps.cs" />
-    <Compile Include="Steps\DegreeOfStep.cs" />
-    <Compile Include="Steps\AdjacentEdgesOfSteps.cs" />
-    <Compile Include="Steps\AdjacentVerticesOfStep.cs" />
-    <Compile Include="Steps\IncidentEdgesOfStep.cs" />
-    <Compile Include="Steps\IncidentVerticesOfStep.cs" />
-    <Compile Include="Steps\RemoveEdgeSteps.cs" />
-    <Compile Include="Steps\RemoveVertexSteps.cs" />
-    <Compile Include="Transforms\EdgeTransforms.cs" />
-    <Compile Include="Transforms\VertexTransforms.cs" />
-    <Compile Include="Features\UndirectedGraph\UndirectedGraphAnalysis.feature.cs">
+    <Compile Include="Common\Steps\AddEdgeSteps.cs" />
+    <Compile Include="Common\Steps\AddVertexSteps.cs" />
+    <Compile Include="Common\Steps\AreEdgesAdjacentStep.cs" />
+    <Compile Include="Common\Steps\AreVerticesAdjacentStep.cs" />
+    <Compile Include="Common\Steps\ContainsEdgeSteps.cs" />
+    <Compile Include="Common\Steps\ContainsVerticesSteps.cs" />
+    <Compile Include="Common\Steps\DegreeOfStep.cs" />
+    <Compile Include="Common\Steps\AdjacentEdgesOfSteps.cs" />
+    <Compile Include="Common\Steps\AdjacentVerticesOfStep.cs" />
+    <Compile Include="Common\Steps\IncidentEdgesOfStep.cs" />
+    <Compile Include="Common\Steps\IncidentVerticesOfStep.cs" />
+    <Compile Include="Common\Steps\RemoveEdgeSteps.cs" />
+    <Compile Include="Common\Steps\RemoveVertexSteps.cs" />
+    <Compile Include="Common\Transforms\EdgeTransforms.cs" />
+    <Compile Include="Common\Transforms\VertexTransforms.cs" />
+    <Compile Include="UndirectedGraph\Features\Instantiation.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UndirectedGraphAnalysis.feature</DependentUpon>
+      <DependentUpon>Instantiation.feature</DependentUpon>
     </Compile>
-    <Compile Include="Features\UndirectedGraph\UndirectedGraphCreation.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UndirectedGraphCreation.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Steps\InstantiateUndirectedGraphStep.cs" />
-    <Compile Include="Features\UndirectedGraph\UndirectedGraphModification.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UndirectedGraphModification.feature</DependentUpon>
-    </Compile>
-    <Compile Include="Validators\BooleanValidator.cs" />
-    <Compile Include="Validators\DegreeValidator.cs" />
-    <Compile Include="Validators\EdgeCollectionValidator.cs" />
-    <Compile Include="Validators\GraphValidator.cs" />
-    <Compile Include="Validators\UndirectedGraphValidator.cs" />
-    <Compile Include="Validators\VertexCollectionValidator.cs" />
+    <Compile Include="UndirectedGraph\InstantiateUndirectedGraphStep.cs" />
+    <Compile Include="Common\Validators\BooleanValidator.cs" />
+    <Compile Include="Common\Validators\DegreeValidator.cs" />
+    <Compile Include="Common\Validators\EdgeCollectionValidator.cs" />
+    <Compile Include="Common\Validators\GraphValidator.cs" />
+    <Compile Include="UndirectedGraph\UndirectedGraphValidator.cs" />
+    <Compile Include="Common\Validators\VertexCollectionValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Default.srprofile" />
     <None Include="packages.config" />
     <None Include="runtests.cmd" />
-    <None Include="Features\UndirectedGraph\UndirectedGraphAnalysis.feature">
+    <None Include="UndirectedGraph\Features\AddEdge.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>UndirectedGraphAnalysis.feature.cs</LastGenOutput>
+      <LastGenOutput>AddEdge.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\UndirectedGraph\UndirectedGraphCreation.feature">
+    <None Include="UndirectedGraph\Features\AddEdgeAndVertices.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>UndirectedGraphCreation.feature.cs</LastGenOutput>
+      <LastGenOutput>AddEdgeAndVertices.feature.cs</LastGenOutput>
     </None>
-    <None Include="Features\UndirectedGraph\UndirectedGraphModification.feature">
+    <None Include="UndirectedGraph\Features\AddVertex.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>UndirectedGraphModification.feature.cs</LastGenOutput>
+      <LastGenOutput>AddVertex.feature.cs</LastGenOutput>
+    </None>
+    <None Include="UndirectedGraph\Features\AdjacentEdgesOf.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AdjacentEdgesOf.feature.cs</LastGenOutput>
+    </None>
+    <None Include="UndirectedGraph\Features\AdjacentVerticesOf.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AdjacentVerticesOf.feature.cs</LastGenOutput>
+    </None>
+    <None Include="UndirectedGraph\Features\AreEdgesAdjacent.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AreEdgesAdjacent.feature.cs</LastGenOutput>
+    </None>
+    <None Include="UndirectedGraph\Features\AreVerticesAdjacent.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AreVerticesAdjacent.feature.cs</LastGenOutput>
+    </None>
+    <None Include="UndirectedGraph\Features\ContainsEdge.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ContainsEdge.feature.cs</LastGenOutput>
+    </None>
+    <None Include="UndirectedGraph\Features\ContainsVertex.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ContainsVertex.feature.cs</LastGenOutput>
+    </None>
+    <None Include="UndirectedGraph\Features\DegreeOf.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DegreeOf.feature.cs</LastGenOutput>
+    </None>
+    <None Include="UndirectedGraph\Features\IncidentEdgesOf.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>IncidentEdgesOf.feature.cs</LastGenOutput>
+    </None>
+    <None Include="UndirectedGraph\Features\IncidentVerticesOf.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>IncidentVerticesOf.feature.cs</LastGenOutput>
+    </None>
+    <None Include="UndirectedGraph\Features\Instantiation.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Instantiation.feature.cs</LastGenOutput>
+    </None>
+    <None Include="UndirectedGraph\Features\RemoveEdge.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>RemoveEdge.feature.cs</LastGenOutput>
+    </None>
+    <None Include="UndirectedGraph\Features\RemoveEdgeAndVertices.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>RemoveEdgeAndVertices.feature.cs</LastGenOutput>
+    </None>
+    <None Include="UndirectedGraph\Features\RemoveVertex.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>RemoveVertex.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
