@@ -8,7 +8,7 @@ namespace YAGLi.Specs.UndirectedGraph
     [Binding]
     public class UndirectedGraphValidator
     {
-        private GraphValidator _graphValidator;
+        private readonly GraphValidator _graphValidator;
 
         public UndirectedGraphValidator(GraphValidator graphValidator)
         {
