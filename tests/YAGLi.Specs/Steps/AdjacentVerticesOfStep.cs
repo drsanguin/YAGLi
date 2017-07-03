@@ -7,8 +7,8 @@ namespace YAGLi.Specs.Steps
     [Binding]
     public class AdjacentVerticesOfStep
     {
-        UndirectedGraphBuilder _builder;
-        VertexCollectionValidator _validator;
+        private readonly UndirectedGraphBuilder _builder;
+        private readonly VertexCollectionValidator _validator;
 
         public AdjacentVerticesOfStep(UndirectedGraphBuilder builder, VertexCollectionValidator validator)
         {

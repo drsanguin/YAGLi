@@ -9,8 +9,8 @@ namespace YAGLi.Specs.Steps
     [Binding]
     public class ContainsVerticesSteps
     {
-        UndirectedGraphBuilder _builder;
-        BooleanValidator _validator;
+        private readonly UndirectedGraphBuilder _builder;
+        private readonly BooleanValidator _validator;
 
         public ContainsVerticesSteps(UndirectedGraphBuilder builder, BooleanValidator validator)
         {

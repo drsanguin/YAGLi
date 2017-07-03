@@ -7,8 +7,8 @@ namespace YAGLi.Specs.Steps
     [Binding]
     public class DegreeOfStep
     {
-        UndirectedGraphBuilder _builder;
-        DegreeValidator _validator;
+        private readonly UndirectedGraphBuilder _builder;
+        private readonly DegreeValidator _validator;
 
         DegreeOfStep(UndirectedGraphBuilder builder, DegreeValidator validator)
         {

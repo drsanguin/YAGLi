@@ -6,7 +6,7 @@ namespace YAGLi.Specs.Builders
     [Binding]
     public class UndirectedGraphBuilder
     {
-        private GraphBuilder _graphBuilder;
+        private readonly GraphBuilder _graphBuilder;
 
         public UndirectedGraphBuilder(GraphBuilder graphBuilder)
         {

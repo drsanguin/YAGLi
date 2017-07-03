@@ -9,8 +9,8 @@ namespace YAGLi.Specs.Steps
     [Binding]
     public class AddEdgeSteps
     {
-        UndirectedGraphBuilder _builder;
-        GraphValidator _validator;
+        private readonly UndirectedGraphBuilder _builder;
+        private readonly GraphValidator _validator;
 
         public AddEdgeSteps(UndirectedGraphBuilder builder, GraphValidator validator)
         {

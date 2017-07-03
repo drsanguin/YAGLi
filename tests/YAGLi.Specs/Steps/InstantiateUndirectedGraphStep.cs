@@ -8,8 +8,8 @@ namespace YAGLi.Specs.Steps
     [Binding]
     public class UndirectedGraphCreationSteps
     {
-        private GraphBuilder _builder;
-        private GraphValidator _validator;
+        private readonly GraphBuilder _builder;
+        private readonly GraphValidator _validator;
 
         public UndirectedGraphCreationSteps(GraphBuilder builder, GraphValidator validator)
         {

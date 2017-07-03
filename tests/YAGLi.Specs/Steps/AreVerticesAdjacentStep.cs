@@ -7,8 +7,8 @@ namespace YAGLi.Specs.Steps
     [Binding]
     public class AreVerticesAdjacentStep
     {
-        UndirectedGraphBuilder _builder;
-        BooleanValidator _validator;
+        private readonly UndirectedGraphBuilder _builder;
+        private readonly BooleanValidator _validator;
 
         public AreVerticesAdjacentStep(UndirectedGraphBuilder builder, BooleanValidator validator)
         {

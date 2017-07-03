@@ -8,8 +8,8 @@ namespace YAGLi.Specs.Steps
     [Binding]
     public class AdjacentEdgesOfSteps
     {
-        private UndirectedGraphBuilder _builder;
-        private EdgeCollectionValidator _validator;
+        private readonly UndirectedGraphBuilder _builder;
+        private readonly EdgeCollectionValidator _validator;
 
         public AdjacentEdgesOfSteps(UndirectedGraphBuilder builder, EdgeCollectionValidator validator)
         {

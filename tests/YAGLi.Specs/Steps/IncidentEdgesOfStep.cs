@@ -8,8 +8,8 @@ namespace YAGLi.Specs.Steps
     [Binding]
     public class IncidentEdgesOfStep
     {
-        UndirectedGraphBuilder _builder;
-        EdgeCollectionValidator _validator;
+        private readonly UndirectedGraphBuilder _builder;
+        private readonly EdgeCollectionValidator _validator;
 
         public IncidentEdgesOfStep(UndirectedGraphBuilder builder, EdgeCollectionValidator validator)
         {
