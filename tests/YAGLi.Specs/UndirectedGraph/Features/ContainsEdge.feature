@@ -90,7 +90,7 @@ Scenario: Check that a undirected graph who disallow parallel edges does not con
 	When I check that the graph contains the edge
 	| End1 | End2 |
 	| v0   | v4   |
-	Then I get the answer true
+	Then I get the answer false
 
 Scenario: Check that a undirected graph who allow parallel edges contains edges
 	Given the property allow loops

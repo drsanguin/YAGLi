@@ -316,7 +316,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 90
  testRunner.When("I check that the graph contains the edge", ((string)(null)), table12, "When ");
 #line 93
- testRunner.Then("I get the answer true", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I get the answer false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
