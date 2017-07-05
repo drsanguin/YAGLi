@@ -233,7 +233,13 @@ namespace YAGLi
 
         public bool ContainsEdge(TEdge edge)
         {
-            return Edges.Contains(edge, _edgesComparer);
+            if (!AllowParallelEdges)
+            {
+                return Edges.Contains(edge, _edgesComparer);
+            }
+
+            return Edges.Contains(edge, _edgesComparer)
+                || Edges.Contains(edge, new IgnoreDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer));
         }
 
         public bool ContainsEdges(params TEdge[] edges)
@@ -364,7 +370,9 @@ namespace YAGLi
                 return this;
             }
 
-            var edgesToRemove = edges.Where(edge => ContainsEdge(edge));
+            var edgesToRemove = edges
+                .FilterNulls()
+                .Where(edge => ContainsEdge(edge));
 
             if (!edgesToRemove.Any())
             {
@@ -386,7 +394,9 @@ namespace YAGLi
                 return this;
             }
 
-            var edgesToRemove = edges.Where(edge => ContainsEdge(edge));
+            var edgesToRemove = edges
+                .FilterNulls()
+                .Where(edge => ContainsEdge(edge));
 
             if (!edgesToRemove.Any())
             {
