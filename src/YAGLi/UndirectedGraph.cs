@@ -191,7 +191,9 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex, TEdge> AddEdges(IEnumerable<TEdge> edges)
         {
-            return addEdges(edges.FilterEdgesWhosVerticesAreNotContainedInThisGraph(this));
+            return addEdges(edges
+                .FilterEdgesWithNullVertices<TVertex, TEdge>()
+                .FilterEdgesWhosVerticesAreNotContainedInThisGraph(this));
         }
 
         public UndirectedGraph<TVertex, TEdge> AddEdges(params TEdge[] edges)
@@ -206,7 +208,7 @@ namespace YAGLi
 
         public UndirectedGraph<TVertex, TEdge> AddEdgesAndVertices(IEnumerable<TEdge> edges)
         {
-            return addEdges(edges);
+            return addEdges(edges.FilterEdgesWithNullVertices<TVertex, TEdge>());
         }
 
         public UndirectedGraph<TVertex, TEdge> AddEdgesAndVertices(params TEdge[] edges)
@@ -397,6 +399,7 @@ namespace YAGLi
             var edgesToRemove = edges
                 .ReplaceByEmptyIfNull()
                 .FilterNulls()
+                .FilterEdgesWithNullVertices<TVertex, TEdge>()
                 .Distinct(_edgesComparer)
                 .Where(edge => ContainsEdge(edge));
 
@@ -461,6 +464,7 @@ namespace YAGLi
             var edgesToRemove = edges
                 .ReplaceByEmptyIfNull()
                 .FilterNulls()
+                .FilterEdgesWithNullVertices<TVertex, TEdge>()
                 .Where(edge => ContainsEdge(edge));
 
             if (!edgesToRemove.Any())
