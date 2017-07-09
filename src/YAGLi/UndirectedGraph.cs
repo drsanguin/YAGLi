@@ -99,7 +99,7 @@ namespace YAGLi
             {
                 return _incidentEdges
                     .Values
-                    .SelectMany(x => x)
+                    .SelectMany(edge => edge)
                     .Distinct(_edgesComparer);
             }
         }
@@ -351,11 +351,11 @@ namespace YAGLi
             hash = hash * UNDIRECTED_GRAPHS_HASH_FACTOR + AllowParallelEdges.GetHashCode();
             hash = Edges
                 .Select(_edgesComparer.GetHashCode)
-                .OrderBy(x => x)
+                .OrderBy(edgeHashCode => edgeHashCode)
                 .Aggregate(hash, (x, y) => x * UNDIRECTED_GRAPHS_HASH_FACTOR + y);
             hash = Vertices
                 .Select(_verticesComparer.GetHashCode)
-                .OrderBy(x => x)
+                .OrderBy(vertexHashCode => vertexHashCode)
                 .Aggregate(hash, (x, y) => x * UNDIRECTED_GRAPHS_HASH_FACTOR + y);
 
             return hash;
@@ -435,7 +435,7 @@ namespace YAGLi
                         continue;
                     }
 
-                    var firstReferenceToMatch = referenceEdges.First(x => comparer.Equals(inputEdges[i], x));
+                    var firstReferenceToMatch = referenceEdges.First(edge => comparer.Equals(inputEdges[i], edge));
 
                     mappedEdges.Add(firstReferenceToMatch);
                     referenceEdges.Remove(firstReferenceToMatch);
@@ -475,11 +475,11 @@ namespace YAGLi
             }
 
             var verticesToRemove = edgesToRemove
-                .Select(x => new[] { x.End1, x.End2 })
-                .SelectMany(x => x)
+                .Select(edge => new[] { edge.End1, edge.End2 })
+                .SelectMany(vertexArray => vertexArray)
                 .Distinct(_verticesComparer);
 
-            return new UndirectedGraph<TVertex, TEdge>(AllowLoops, AllowParallelEdges, Edges.Where(x => !verticesToRemove.Contains(x.End1, _verticesComparer) && !verticesToRemove.Contains(x.End2, _verticesComparer)), Vertices.Except(verticesToRemove, _verticesComparer), _verticesComparer);
+            return new UndirectedGraph<TVertex, TEdge>(AllowLoops, AllowParallelEdges, Edges.Where(edge => !verticesToRemove.Contains(edge.End1, _verticesComparer) && !verticesToRemove.Contains(edge.End2, _verticesComparer)), Vertices.Except(verticesToRemove, _verticesComparer), _verticesComparer);
         }
 
         public UndirectedGraph<TVertex, TEdge> RemoveEdgesAndVertices(params TEdge[] edges)
