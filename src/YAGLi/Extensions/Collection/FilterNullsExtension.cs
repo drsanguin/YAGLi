@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace YAGLi.Extensions
+namespace YAGLi.Extensions.Collection
 {
     public static class FilterNullsExtension
     {

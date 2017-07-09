@@ -1,7 +1,7 @@
 ﻿using NFluent;
 using NUnit.Framework;
 using System.Collections.Generic;
-using YAGLi.Extensions;
+using YAGLi.Extensions.Collection;
 
 namespace YAGLi.Tests
 {

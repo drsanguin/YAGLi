@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace YAGLi.Extensions
+namespace YAGLi.Extensions.Collection
 {
     /// <summary>
     /// Extensions methods for checking if IEnumerable objects are equivalent.

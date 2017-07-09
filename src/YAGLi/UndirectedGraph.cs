@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using YAGLi.EdgeComparers;
 using YAGLi.Extensions;
+using YAGLi.Extensions.Collection;
+using YAGLi.Extensions.EdgeCollection;
 using YAGLi.Interfaces;
 
 namespace YAGLi

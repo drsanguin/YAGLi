@@ -2,7 +2,7 @@
 using NFluent;
 using NUnit.Framework;
 using System.Collections.Generic;
-using YAGLi.Extensions;
+using YAGLi.Extensions.EdgeCollection;
 using YAGLi.Interfaces;
 using YAGLi.Tests.Utils;
 

@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using YAGLi.Extensions.Collection;
 using YAGLi.Interfaces;
 
-namespace YAGLi.Extensions
+namespace YAGLi.Extensions.EdgeCollection
 {
     public static class FilterEdgesWithNullVerticesExtension
     {
