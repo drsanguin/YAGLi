@@ -143,9 +143,7 @@ namespace YAGLi
                 mappedEdge = Edges.First(x => comparer.Equals(x, edge));
             }
 
-            return Edges
-                .Except(mappedEdge.Yield(), _edgesComparer)
-                .Where(x => areEdgesAdjacent(x, mappedEdge));
+            return adjacentEdgesWhenGraphDisallowParallelEdges(mappedEdge);
         }
 
         private IEnumerable<TEdge> adjacentEdgesWhenGraphDisallowParallelEdges(TEdge edge)
@@ -445,7 +443,7 @@ namespace YAGLi
                 }
             }
 
-            return new UndirectedGraph<TVertex, TEdge>(AllowLoops, AllowParallelEdges, Edges.Except(mappedEdges, _edgesComparer), Vertices, _verticesComparer);
+            return removeEdgesWhenGraphDisallowParallelEdges(mappedEdges);
         }
 
         private UndirectedGraph<TVertex, TEdge> removeEdgesWhenGraphDisallowParallelEdges(IEnumerable<TEdge> edges)
