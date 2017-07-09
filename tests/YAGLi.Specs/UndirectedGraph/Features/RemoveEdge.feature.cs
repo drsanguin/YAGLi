@@ -349,10 +349,10 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Remove a parallel edge her vertices from a undirected graph")]
-        public virtual void RemoveAParallelEdgeHerVerticesFromAUndirectedGraph()
+        [NUnit.Framework.DescriptionAttribute("Remove edges from a undirected graph who allow parallel edges")]
+        public virtual void RemoveEdgesFromAUndirectedGraphWhoAllowParallelEdges()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove a parallel edge her vertices from a undirected graph", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove edges from a undirected graph who allow parallel edges", ((string[])(null)));
 #line 109
 this.ScenarioSetup(scenarioInfo);
 #line 110
@@ -402,11 +402,14 @@ this.ScenarioSetup(scenarioInfo);
                         "End1",
                         "End2"});
             table18.AddRow(new string[] {
-                        "v3",
+                        "v0",
+                        "v1"});
+            table18.AddRow(new string[] {
+                        "v1",
                         "v4"});
 #line 127
- testRunner.When("I remove the edge and her vertices", ((string)(null)), table18, "When ");
-#line 130
+ testRunner.When("I remove the edges", ((string)(null)), table18, "When ");
+#line 131
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -421,41 +424,38 @@ this.ScenarioSetup(scenarioInfo);
                         "v3"});
             table19.AddRow(new string[] {
                         "v4"});
-#line 131
+#line 132
  testRunner.And("he contains the vertices", ((string)(null)), table19, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
                         "End1",
                         "End2"});
             table20.AddRow(new string[] {
-                        "v0",
-                        "v1"});
-            table20.AddRow(new string[] {
-                        "v1",
-                        "v4"});
-            table20.AddRow(new string[] {
                         "v4",
                         "v4"});
             table20.AddRow(new string[] {
                         "v4",
                         "v3"});
-#line 138
+            table20.AddRow(new string[] {
+                        "v3",
+                        "v4"});
+#line 139
  testRunner.And("he contains the edges", ((string)(null)), table20, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Remove edges from a undirected graph who allow parallel edges")]
-        public virtual void RemoveEdgesFromAUndirectedGraphWhoAllowParallelEdges()
+        [NUnit.Framework.DescriptionAttribute("Remove edges from a undirected graph who disallow parallel edges")]
+        public virtual void RemoveEdgesFromAUndirectedGraphWhoDisallowParallelEdges()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove edges from a undirected graph who allow parallel edges", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove edges from a undirected graph who disallow parallel edges", ((string[])(null)));
 #line 145
 this.ScenarioSetup(scenarioInfo);
 #line 146
  testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 147
- testRunner.And("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("the property disallow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
@@ -487,12 +487,9 @@ this.ScenarioSetup(scenarioInfo);
             table22.AddRow(new string[] {
                         "v4",
                         "v3"});
-            table22.AddRow(new string[] {
-                        "v3",
-                        "v4"});
 #line 155
  testRunner.And("the edges", ((string)(null)), table22, "And ");
-#line 162
+#line 161
  testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
@@ -504,9 +501,9 @@ this.ScenarioSetup(scenarioInfo);
             table23.AddRow(new string[] {
                         "v1",
                         "v4"});
-#line 163
+#line 162
  testRunner.When("I remove the edges", ((string)(null)), table23, "When ");
-#line 167
+#line 166
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
@@ -521,7 +518,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v3"});
             table24.AddRow(new string[] {
                         "v4"});
-#line 168
+#line 167
  testRunner.And("he contains the vertices", ((string)(null)), table24, "And ");
 #line hidden
             TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
@@ -533,102 +530,8 @@ this.ScenarioSetup(scenarioInfo);
             table25.AddRow(new string[] {
                         "v4",
                         "v3"});
-            table25.AddRow(new string[] {
-                        "v3",
-                        "v4"});
-#line 175
+#line 174
  testRunner.And("he contains the edges", ((string)(null)), table25, "And ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Remove edges from a undirected graph who disallow parallel edges")]
-        public virtual void RemoveEdgesFromAUndirectedGraphWhoDisallowParallelEdges()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove edges from a undirected graph who disallow parallel edges", ((string[])(null)));
-#line 181
-this.ScenarioSetup(scenarioInfo);
-#line 182
- testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 183
- testRunner.And("the property disallow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-            TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name"});
-            table26.AddRow(new string[] {
-                        "v0"});
-            table26.AddRow(new string[] {
-                        "v1"});
-            table26.AddRow(new string[] {
-                        "v2"});
-            table26.AddRow(new string[] {
-                        "v3"});
-            table26.AddRow(new string[] {
-                        "v4"});
-#line 184
- testRunner.And("the vertices", ((string)(null)), table26, "And ");
-#line hidden
-            TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
-                        "End1",
-                        "End2"});
-            table27.AddRow(new string[] {
-                        "v0",
-                        "v1"});
-            table27.AddRow(new string[] {
-                        "v1",
-                        "v4"});
-            table27.AddRow(new string[] {
-                        "v4",
-                        "v4"});
-            table27.AddRow(new string[] {
-                        "v4",
-                        "v3"});
-#line 191
- testRunner.And("the edges", ((string)(null)), table27, "And ");
-#line 197
- testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-            TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
-                        "End1",
-                        "End2"});
-            table28.AddRow(new string[] {
-                        "v0",
-                        "v1"});
-            table28.AddRow(new string[] {
-                        "v1",
-                        "v4"});
-#line 198
- testRunner.When("I remove the edges", ((string)(null)), table28, "When ");
-#line 202
- testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name"});
-            table29.AddRow(new string[] {
-                        "v0"});
-            table29.AddRow(new string[] {
-                        "v1"});
-            table29.AddRow(new string[] {
-                        "v2"});
-            table29.AddRow(new string[] {
-                        "v3"});
-            table29.AddRow(new string[] {
-                        "v4"});
-#line 203
- testRunner.And("he contains the vertices", ((string)(null)), table29, "And ");
-#line hidden
-            TechTalk.SpecFlow.Table table30 = new TechTalk.SpecFlow.Table(new string[] {
-                        "End1",
-                        "End2"});
-            table30.AddRow(new string[] {
-                        "v4",
-                        "v4"});
-            table30.AddRow(new string[] {
-                        "v4",
-                        "v3"});
-#line 210
- testRunner.And("he contains the edges", ((string)(null)), table30, "And ");
 #line hidden
             this.ScenarioCleanup();
         }
