@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // Les informations générales relatives à un assembly dépendent de 
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("YAGL.Tests")]
+[assembly: AssemblyTitle("YAGLi.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("YAGL.Tests")]
+[assembly: AssemblyProduct("YAGLi.Tests")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
