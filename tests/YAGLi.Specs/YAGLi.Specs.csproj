@@ -1,21 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4E422F4F-F67F-4FB6-9C5E-EAB895FDE2ED}</ProjectGuid>
+    <ProjectGuid>{7819CF5C-92B5-42BE-A18F-AD542322D591}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>YAGLi.Specs</RootNamespace>
     <AssemblyName>YAGLi.Specs</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,36 +40,41 @@
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="NFluent, Version=2.0.0.71, Culture=neutral, PublicKeyToken=18828b37b84b1437, processorArchitecture=MSIL">
       <HintPath>..\..\packages\NFluent.2.0.0\lib\net45\NFluent.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\..\packages\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Core" />
     <Reference Include="TechTalk.SpecFlow, Version=2.2.0.0, Culture=neutral, PublicKeyToken=0778194805d6db41, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SpecFlow.2.2.0\lib\net45\TechTalk.SpecFlow.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
-  <Choose>
-    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-      </ItemGroup>
-    </When>
-    <Otherwise>
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
-      </ItemGroup>
-    </Otherwise>
-  </Choose>
   <ItemGroup>
     <Compile Include="Common\Builders\GraphBuilder.cs" />
+    <Compile Include="Common\Steps\AddEdgeSteps.cs" />
+    <Compile Include="Common\Steps\AddVertexSteps.cs" />
+    <Compile Include="Common\Steps\AdjacentEdgesOfSteps.cs" />
+    <Compile Include="Common\Steps\AdjacentVerticesOfStep.cs" />
+    <Compile Include="Common\Steps\AreEdgesAdjacentStep.cs" />
+    <Compile Include="Common\Steps\AreVerticesAdjacentStep.cs" />
+    <Compile Include="Common\Steps\ContainsEdgeSteps.cs" />
+    <Compile Include="Common\Steps\ContainsVerticesSteps.cs" />
+    <Compile Include="Common\Steps\DegreeOfStep.cs" />
+    <Compile Include="Common\Steps\IncidentEdgesOfStep.cs" />
+    <Compile Include="Common\Steps\IncidentVerticesOfStep.cs" />
+    <Compile Include="Common\Steps\RemoveEdgeSteps.cs" />
+    <Compile Include="Common\Steps\RemoveVertexSteps.cs" />
+    <Compile Include="Common\Transforms\EdgeTransforms.cs" />
+    <Compile Include="Common\Transforms\VertexTransforms.cs" />
+    <Compile Include="Common\Validators\BooleanValidator.cs" />
+    <Compile Include="Common\Validators\DegreeValidator.cs" />
+    <Compile Include="Common\Validators\EdgeCollectionValidator.cs" />
+    <Compile Include="Common\Validators\GraphValidator.cs" />
+    <Compile Include="Common\Validators\VertexCollectionValidator.cs" />
     <Compile Include="UndirectedGraph\Features\AddEdge.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -127,6 +135,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IncidentVerticesOf.feature</DependentUpon>
     </Compile>
+    <Compile Include="UndirectedGraph\Features\Instantiation.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Instantiation.feature</DependentUpon>
+    </Compile>
     <Compile Include="UndirectedGraph\Features\RemoveEdge.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -142,41 +155,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RemoveVertex.feature</DependentUpon>
     </Compile>
-    <Compile Include="UndirectedGraph\UndirectedGraphBuilder.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Common\Steps\AddEdgeSteps.cs" />
-    <Compile Include="Common\Steps\AddVertexSteps.cs" />
-    <Compile Include="Common\Steps\AreEdgesAdjacentStep.cs" />
-    <Compile Include="Common\Steps\AreVerticesAdjacentStep.cs" />
-    <Compile Include="Common\Steps\ContainsEdgeSteps.cs" />
-    <Compile Include="Common\Steps\ContainsVerticesSteps.cs" />
-    <Compile Include="Common\Steps\DegreeOfStep.cs" />
-    <Compile Include="Common\Steps\AdjacentEdgesOfSteps.cs" />
-    <Compile Include="Common\Steps\AdjacentVerticesOfStep.cs" />
-    <Compile Include="Common\Steps\IncidentEdgesOfStep.cs" />
-    <Compile Include="Common\Steps\IncidentVerticesOfStep.cs" />
-    <Compile Include="Common\Steps\RemoveEdgeSteps.cs" />
-    <Compile Include="Common\Steps\RemoveVertexSteps.cs" />
-    <Compile Include="Common\Transforms\EdgeTransforms.cs" />
-    <Compile Include="Common\Transforms\VertexTransforms.cs" />
-    <Compile Include="UndirectedGraph\Features\Instantiation.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Instantiation.feature</DependentUpon>
-    </Compile>
     <Compile Include="UndirectedGraph\InstantiateUndirectedGraphStep.cs" />
-    <Compile Include="Common\Validators\BooleanValidator.cs" />
-    <Compile Include="Common\Validators\DegreeValidator.cs" />
-    <Compile Include="Common\Validators\EdgeCollectionValidator.cs" />
-    <Compile Include="Common\Validators\GraphValidator.cs" />
+    <Compile Include="UndirectedGraph\UndirectedGraphBuilder.cs" />
     <Compile Include="UndirectedGraph\UndirectedGraphValidator.cs" />
-    <Compile Include="Common\Validators\VertexCollectionValidator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Default.srprofile" />
     <None Include="packages.config" />
-    <None Include="runtests.cmd" />
     <None Include="UndirectedGraph\Features\AddEdge.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AddEdge.feature.cs</LastGenOutput>
@@ -244,40 +230,14 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\YAGLi\YAGLi.csproj">
-      <Project>{55700075-41D2-415B-9D3E-C9D76394243F}</Project>
+      <Project>{f8db4145-67b1-4d24-86f3-98611860cd0f}</Project>
       <Name>YAGLi</Name>
     </ProjectReference>
     <ProjectReference Include="..\YAGLi.Tests\YAGLi.Tests.csproj">
-      <Project>{38056C7A-9B21-4280-8421-409F1A677B69}</Project>
+      <Project>{5a595601-cd8d-4270-ac50-c4e25bac2e57}</Project>
       <Name>YAGLi.Tests</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
-  <Choose>
-    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <Private>False</Private>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
