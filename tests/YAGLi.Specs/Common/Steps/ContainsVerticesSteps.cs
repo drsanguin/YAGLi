@@ -18,7 +18,7 @@ namespace YAGLi.Specs.Common.Steps
         }
 
         [When(@"I check that the graph contains the vertex ""(.*)""")]
-        public void WhenICheckThatTheGraphContainsTheVertex(string vertex)
+        public void WhenICheckThatTheGraphContainsTheVertex(Vertex vertex)
         {
             _validator.Subject = _builder.Instance.ContainsVertex(vertex);
         }

@@ -1,5 +1,6 @@
 ﻿using TechTalk.SpecFlow;
 using YAGLi.Specs.Common.Validators;
+using YAGLi.Tests.Utils;
 
 namespace YAGLi.Specs.Common.Steps
 {
@@ -16,7 +17,7 @@ namespace YAGLi.Specs.Common.Steps
         }
 
         [When(@"I check if the vertices ""(.*)"" and ""(.*)"" are adjacent")]
-        public void WhenICheckIfTheVerticesAndAreAdjacent(string vertex1, string vertex2)
+        public void WhenICheckIfTheVerticesAndAreAdjacent(Vertex vertex1, Vertex vertex2)
         {
             _validator.Subject = _builder.Instance.AreVerticesAdjacent(vertex1, vertex2);
         }

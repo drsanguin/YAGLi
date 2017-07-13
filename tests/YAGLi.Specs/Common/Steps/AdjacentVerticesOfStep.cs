@@ -1,5 +1,6 @@
 ﻿using TechTalk.SpecFlow;
 using YAGLi.Specs.Common.Validators;
+using YAGLi.Tests.Utils;
 
 namespace YAGLi.Specs.Common.Steps
 {
@@ -16,7 +17,7 @@ namespace YAGLi.Specs.Common.Steps
         }
 
         [When(@"I retrieve the adjacent vertices of the vertex ""(.*)""")]
-        public void WhenIRetrieveTheAdjacentVerticesOfTheVertex(string vertex)
+        public void WhenIRetrieveTheAdjacentVerticesOfTheVertex(Vertex vertex)
         {
             _validator.Subject = _builder.Instance.AdjacentVerticesOf(vertex);
         }
