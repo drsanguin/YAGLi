@@ -54,17 +54,17 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsiderDirectionAndAllowParallelEdgesTests.cs" />
-    <Compile Include="ConsiderDirectionAndDisallowParallelEdgesTests.cs" />
-    <Compile Include="EquivalentExtensionsTests.cs" />
-    <Compile Include="FilterEdgesNotContainedExtensionTests.cs" />
-    <Compile Include="FilterEdgesWhoViolatesAGraphPropertiesExtensionTests.cs" />
-    <Compile Include="FilterEdgesWithNullVerticesExtensionTests.cs" />
-    <Compile Include="FilterNullsExtensionTests.cs" />
-    <Compile Include="IgnoreDirectionAndAllowParallelEdgesTests.cs" />
-    <Compile Include="IgnoreDirectionAndDisallowParallelEdgesTests.cs" />
+    <Compile Include="EdgeComparers\ConsiderDirectionAndAllowParallelEdgesTests.cs" />
+    <Compile Include="EdgeComparers\ConsiderDirectionAndDisallowParallelEdgesTests.cs" />
+    <Compile Include="Extensions\Collection\EquivalentExtensionsTests.cs" />
+    <Compile Include="Extensions\EdgeCollection\FilterEdgesNotContainedExtensionTests.cs" />
+    <Compile Include="Extensions\EdgeCollection\FilterEdgesWhoViolatesAGraphPropertiesExtensionTests.cs" />
+    <Compile Include="Extensions\EdgeCollection\FilterEdgesWithNullVerticesExtensionTests.cs" />
+    <Compile Include="Extensions\Collection\FilterNullsExtensionTests.cs" />
+    <Compile Include="EdgeComparers\IgnoreDirectionAndAllowParallelEdgesTests.cs" />
+    <Compile Include="EdgeComparers\IgnoreDirectionAndDisallowParallelEdgesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReplaceByEmptyIfNullExtensionTests.cs" />
+    <Compile Include="Extensions\Collection\ReplaceByEmptyIfNullExtensionTests.cs" />
     <Compile Include="UndirectedGraph\UndirectedGraphCtorDefensiveCodeTests.cs" />
     <Compile Include="UndirectedGraph\UndirectedGraphDefensiveCodeTests.cs" />
     <Compile Include="UndirectedGraph\UndirectedGraphOptimizationsTests.cs" />
@@ -72,7 +72,7 @@
     <Compile Include="Utils\Edge.cs" />
     <Compile Include="Utils\Vertex.cs" />
     <Compile Include="Utils\VertexEqualityComparer.cs" />
-    <Compile Include="YieldExtensionTests.cs" />
+    <Compile Include="Extensions\YieldExtensionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

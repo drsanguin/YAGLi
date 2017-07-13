@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using YAGLi.Extensions.Collection;
 using YAGLi.Tests.Utils;
 
-namespace YAGLi.Tests
+namespace YAGLi.Tests.Extensions.Collection
 {
     [TestFixture]
     public class EquivalentExtensionsTests

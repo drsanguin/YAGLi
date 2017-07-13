@@ -4,7 +4,7 @@ using System;
 using YAGLi.EdgeComparers;
 using YAGLi.Tests.Utils;
 
-namespace YAGLi.Tests
+namespace YAGLi.Tests.EdgeComparers
 {
     [TestFixture]
     public class IgnoreDirectionAndAllowParallelEdgesTests

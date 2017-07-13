@@ -3,7 +3,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using YAGLi.Extensions.Collection;
 
-namespace YAGLi.Tests
+namespace YAGLi.Tests.Extensions.Collection
 {
     [TestFixture]
     public class FilterNullsExtensionTests

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using YAGLi.Extensions.EdgeCollection;
 using YAGLi.Tests.Utils;
 
-namespace YAGLi.Tests
+namespace YAGLi.Tests.Extensions.EdgeCollection
 {
     [TestFixture]
     public class FilterEdgesWithNullVerticesExtensionTests

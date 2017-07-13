@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using YAGLi.Extensions;
 
-namespace YAGLi.Tests
+namespace YAGLi.Tests.Extensions
 {
     [TestFixture]
     public class YieldExtensionTests
