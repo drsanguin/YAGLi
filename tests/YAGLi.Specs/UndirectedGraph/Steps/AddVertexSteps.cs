@@ -17,13 +17,13 @@ namespace YAGLi.Specs.UndirectedGraph.Steps
             _validator = validator;
         }
 
-        [When(@"I add the vertices")]
+        [When(@"I add the vertices to the undirected graph")]
         public void WhenIAddTheVertices(IEnumerable<Vertex> vertices)
         {
             _validator.Subject = _builder.Instance.AddVertices(vertices);
         }
 
-        [When(@"I add the vertex ""(.*)""")]
+        [When(@"I add the vertex ""(.*)"" to the undirected graph")]
         public void WhenIAddTheVertex(Vertex vertex)
         {
             _validator.Subject = _builder.Instance.AddVertex(vertex);

@@ -17,7 +17,7 @@ Scenario: Add a loop to a undirected graph who disallow loops
 	| v4   | v3   |
 	| v3   | v4   |
 	And the undirected graph created with them
-	When I add the edges
+	When I add the edges to the undirected graph
     | End1 | End2 |
 	| v0   | v0   |
 	Then I get a new undirected graph
@@ -51,7 +51,7 @@ Scenario: Add a parallel edge to a undirected graph who disallow parallel edges
 	| v1   | v4   |
 	| v4   | v3   |
 	And the undirected graph created with them
-	When I add the edges
+	When I add the edges to the undirected graph
     | End1 | End2 |
 	| v3   | v4   |
 	Then I get a new undirected graph
@@ -85,7 +85,7 @@ Scenario: Add a loop to a undirected graph
 	| v4   | v3   |
 	| v3   | v4   |
 	And the undirected graph created with them
-	When I add the edges
+	When I add the edges to the undirected graph
     | End1 | End2 |
 	| v0   | v0   |
 	Then I get a new undirected graph
@@ -120,7 +120,7 @@ Scenario: Add a parallel edge to a undirected graph
 	| v1   | v4   |
 	| v4   | v3   |
 	And the undirected graph created with them
-	When I add the edges
+	When I add the edges to the undirected graph
     | End1 | End2 |
 	| v3   | v4   |
 	Then I get a new undirected graph
@@ -155,7 +155,7 @@ Given the property allow loops
 	| v4   | v3   |
 	| v3   | v4   |
 	And the undirected graph created with them
-	When I add the edge
+	When I add the edge to the undirected graph
     | End1 | End2 |
 	| v0   | v2   |
 	Then I get a new undirected graph
@@ -190,7 +190,7 @@ Given the property allow loops
 	| v1   | v4   |
 	| v4   | v3   |
 	And the undirected graph created with them
-	When I add the edge
+	When I add the edge to the undirected graph
     | End1 | End2 |
 	| v0   | v2   |
 	Then I get a new undirected graph
@@ -225,7 +225,7 @@ Given the property allow loops
 	| v4   | v3   |
 	| v3   | v4   |
 	And the undirected graph created with them
-	When I add the edges
+	When I add the edges to the undirected graph
 	| End1 | End2 |
 	| v0   | v2   |
 	| v1   | v2   |
@@ -262,7 +262,7 @@ Given the property allow loops
 	| v1   | v4   |
 	| v4   | v3   |
 	And the undirected graph created with them
-	When I add the edges
+	When I add the edges to the undirected graph
 	| End1 | End2 |
 	| v0   | v2   |
 	| v1   | v2   |
@@ -299,7 +299,7 @@ Given the property allow loops
 	| v4   | v3   |
 	| v3   | v4   |
 	And the undirected graph created with them
-	When I add the edge
+	When I add the edge to the undirected graph
     | End1 | End2 |
 	| v5   | v6   |
 	Then I get a new undirected graph

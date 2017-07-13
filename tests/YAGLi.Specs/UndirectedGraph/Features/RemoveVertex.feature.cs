@@ -113,7 +113,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 20
  testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 21
- testRunner.When("I remove the vertex \"v4\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I remove the vertex \"v4\" from the undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 22
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -199,7 +199,7 @@ this.ScenarioSetup(scenarioInfo);
             table7.AddRow(new string[] {
                         "v1"});
 #line 51
- testRunner.When("I remove the vertices", ((string)(null)), table7, "When ");
+ testRunner.When("I remove the vertices from the undirected graph", ((string)(null)), table7, "When ");
 #line 55
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden

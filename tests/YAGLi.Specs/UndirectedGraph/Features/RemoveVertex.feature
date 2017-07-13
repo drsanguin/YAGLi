@@ -18,7 +18,7 @@ Scenario: Remove a vertex from a undirected graph
 	| v4   | v3   |
 	| v3   | v4   |
 	And the undirected graph created with them
-	When I remove the vertex "v4"
+	When I remove the vertex "v4" from the undirected graph
 	Then I get a new undirected graph
 	And he contains the vertices
 	| Name |
@@ -48,7 +48,7 @@ Scenario: Remove vertices from a undirected graph
 	| v4   | v3   |
 	| v3   | v4   |
 	And the undirected graph created with them
-	When I remove the vertices
+	When I remove the vertices from the undirected graph
 	| Name |
 	| v0   |
 	| v1   |

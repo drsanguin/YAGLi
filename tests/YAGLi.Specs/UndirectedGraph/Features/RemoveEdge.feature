@@ -18,7 +18,7 @@ Scenario: Remove an edge from a undirected graph who allow parallel edges
 	| v4   | v3   |
 	| v3   | v4   |
 	And the undirected graph created with them
-	When I remove the edge
+	When I remove the edge from the undirected graph
     | End1 | End2 |
 	| v0   | v1   |
 	Then I get a new undirected graph
@@ -53,7 +53,7 @@ Scenario: Remove an edge from a undirected graph who disallow parallel edges
 	| v4   | v4   |
 	| v4   | v3   |
 	And the undirected graph created with them
-	When I remove the edge
+	When I remove the edge from the undirected graph
     | End1 | End2 |
 	| v0   | v1   |
 	Then I get a new undirected graph
@@ -88,7 +88,7 @@ Scenario: Remove a parallel edge from a undirected graph
 	| v4   | v3   |
 	| v3   | v4   |
 	And the undirected graph created with them
-	When I remove the edge
+	When I remove the edge from the undirected graph
     | End1 | End2 |
 	| v3   | v4   |
 	Then I get a new undirected graph
@@ -124,7 +124,7 @@ Scenario: Remove edges from a undirected graph who allow parallel edges
 	| v4   | v3   |
 	| v3   | v4   |
 	And the undirected graph created with them
-	When I remove the edges
+	When I remove the edges from the undirected graph
     | End1 | End2 |
 	| v0   | v1   |
 	| v1   | v4   |
@@ -159,7 +159,7 @@ Scenario: Remove edges from a undirected graph who disallow parallel edges
 	| v4   | v4   |
 	| v4   | v3   |
 	And the undirected graph created with them
-	When I remove the edges
+	When I remove the edges from the undirected graph
     | End1 | End2 |
 	| v0   | v1   |
 	| v1   | v4   |

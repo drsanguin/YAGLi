@@ -17,13 +17,13 @@ namespace YAGLi.Specs.UndirectedGraph.Steps
             _validator = validator;
         }
 
-        [When(@"I remove the vertex ""(.*)""")]
+        [When(@"I remove the vertex ""(.*)"" from the undirected graph")]
         public void WhenIRemoveTheVertex(Vertex vertex)
         {
             _validator.Subject = _builder.Instance.RemoveVertex(vertex);
         }
 
-        [When(@"I remove the vertices")]
+        [When(@"I remove the vertices from the undirected graph")]
         public void WhenIRemoveTheVertices(IEnumerable<Vertex> vertices)
         {
             _validator.Subject = _builder.Instance.RemoveVertices(vertices);

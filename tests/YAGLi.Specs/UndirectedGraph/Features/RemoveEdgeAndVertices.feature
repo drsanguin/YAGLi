@@ -18,7 +18,7 @@ Scenario: Remove an edge and her vertices from a undirected graph who allow para
 	| v4   | v3   |
 	| v3   | v4   |
 	And the undirected graph created with them
-	When I remove the edge and her vertices
+	When I remove the edge and her vertices from the undirected graph
     | End1 | End2 |
 	| v0   | v1   |
 	Then I get a new undirected graph
@@ -50,7 +50,7 @@ Scenario: Remove an edge and her vertices from a undirected graph who disallow p
 	| v4   | v4   |
 	| v4   | v3   |
 	And the undirected graph created with them
-	When I remove the edge and her vertices
+	When I remove the edge and her vertices from the undirected graph
     | End1 | End2 |
 	| v0   | v1   |
 	Then I get a new undirected graph
@@ -82,7 +82,7 @@ Scenario: Remove edges and their vertices from a undirected graph who allow para
 	| v4   | v3   |
 	| v3   | v4   |
 	And the undirected graph created with them
-	When I remove the edges and their vertices
+	When I remove the edges and their vertices from the undirected graph
     | End1 | End2 |
 	| v0   | v1   |
 	| v1   | v4   |
@@ -111,7 +111,7 @@ Scenario: Remove edges and their vertices from a undirected graph who disallow p
 	| v4   | v4   |
 	| v4   | v3   |
 	And the undirected graph created with them
-	When I remove the edges and their vertices
+	When I remove the edges and their vertices from the undirected graph
     | End1 | End2 |
 	| v0   | v1   |
 	| v1   | v4   |
@@ -141,7 +141,7 @@ Scenario: Remove a parallel edge her vertices from a undirected graph
 	| v4   | v3   |
 	| v3   | v4   |
 	And the undirected graph created with them
-	When I remove the edge and her vertices
+	When I remove the edge and her vertices from the undirected graph
     | End1 | End2 |
 	| v3   | v4   |
 	Then I get a new undirected graph

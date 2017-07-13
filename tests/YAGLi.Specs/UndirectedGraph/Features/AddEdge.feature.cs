@@ -117,7 +117,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v0",
                         "v0"});
 #line 20
- testRunner.When("I add the edges", ((string)(null)), table3, "When ");
+ testRunner.When("I add the edges to the undirected graph", ((string)(null)), table3, "When ");
 #line 23
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -208,7 +208,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v3",
                         "v4"});
 #line 54
- testRunner.When("I add the edges", ((string)(null)), table8, "When ");
+ testRunner.When("I add the edges to the undirected graph", ((string)(null)), table8, "When ");
 #line 57
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -299,7 +299,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v0",
                         "v0"});
 #line 88
- testRunner.When("I add the edges", ((string)(null)), table13, "When ");
+ testRunner.When("I add the edges to the undirected graph", ((string)(null)), table13, "When ");
 #line 91
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -393,7 +393,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v3",
                         "v4"});
 #line 123
- testRunner.When("I add the edges", ((string)(null)), table18, "When ");
+ testRunner.When("I add the edges to the undirected graph", ((string)(null)), table18, "When ");
 #line 126
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -487,7 +487,7 @@ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFl
                         "v0",
                         "v2"});
 #line 158
- testRunner.When("I add the edge", ((string)(null)), table23, "When ");
+ testRunner.When("I add the edge to the undirected graph", ((string)(null)), table23, "When ");
 #line 161
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -581,7 +581,7 @@ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFl
                         "v0",
                         "v2"});
 #line 193
- testRunner.When("I add the edge", ((string)(null)), table28, "When ");
+ testRunner.When("I add the edge to the undirected graph", ((string)(null)), table28, "When ");
 #line 196
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -678,7 +678,7 @@ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFl
                         "v1",
                         "v2"});
 #line 228
- testRunner.When("I add the edges", ((string)(null)), table33, "When ");
+ testRunner.When("I add the edges to the undirected graph", ((string)(null)), table33, "When ");
 #line 232
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -778,7 +778,7 @@ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFl
                         "v1",
                         "v2"});
 #line 265
- testRunner.When("I add the edges", ((string)(null)), table38, "When ");
+ testRunner.When("I add the edges to the undirected graph", ((string)(null)), table38, "When ");
 #line 269
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -875,7 +875,7 @@ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFl
                         "v5",
                         "v6"});
 #line 302
- testRunner.When("I add the edge", ((string)(null)), table43, "When ");
+ testRunner.When("I add the edge to the undirected graph", ((string)(null)), table43, "When ");
 #line 305
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden

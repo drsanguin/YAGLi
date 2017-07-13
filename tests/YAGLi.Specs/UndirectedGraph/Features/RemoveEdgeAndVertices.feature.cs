@@ -120,7 +120,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v0",
                         "v1"});
 #line 21
- testRunner.When("I remove the edge and her vertices", ((string)(null)), table3, "When ");
+ testRunner.When("I remove the edge and her vertices from the undirected graph", ((string)(null)), table3, "When ");
 #line 24
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -209,7 +209,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v0",
                         "v1"});
 #line 53
- testRunner.When("I remove the edge and her vertices", ((string)(null)), table8, "When ");
+ testRunner.When("I remove the edge and her vertices from the undirected graph", ((string)(null)), table8, "When ");
 #line 56
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -299,7 +299,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v1",
                         "v4"});
 #line 85
- testRunner.When("I remove the edges and their vertices", ((string)(null)), table13, "When ");
+ testRunner.When("I remove the edges and their vertices from the undirected graph", ((string)(null)), table13, "When ");
 #line 89
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -380,7 +380,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v1",
                         "v4"});
 #line 114
- testRunner.When("I remove the edges and their vertices", ((string)(null)), table18, "When ");
+ testRunner.When("I remove the edges and their vertices from the undirected graph", ((string)(null)), table18, "When ");
 #line 118
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -459,7 +459,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v3",
                         "v4"});
 #line 144
- testRunner.When("I remove the edge and her vertices", ((string)(null)), table23, "When ");
+ testRunner.When("I remove the edge and her vertices from the undirected graph", ((string)(null)), table23, "When ");
 #line 147
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden

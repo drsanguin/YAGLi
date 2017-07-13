@@ -17,7 +17,7 @@ Given the property allow loops
 	| v4   | v3   |
 	| v3   | v4   |
 	And the undirected graph created with them
-	When I add the vertex "v5"
+	When I add the vertex "v5" to the undirected graph
 	Then I get a new undirected graph
 	And he contains the vertices
 	| Name |
@@ -51,7 +51,7 @@ Scenario: Add vertices to a undirected graph
 	| v4   | v3   |
 	| v3   | v4   |
 	And the undirected graph created with them
-	When I add the vertices
+	When I add the vertices to the undirected graph
     | Name |
 	| v5   |
 	| v6   |

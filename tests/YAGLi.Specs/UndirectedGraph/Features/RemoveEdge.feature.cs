@@ -120,7 +120,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v0",
                         "v1"});
 #line 21
- testRunner.When("I remove the edge", ((string)(null)), table3, "When ");
+ testRunner.When("I remove the edge from the undirected graph", ((string)(null)), table3, "When ");
 #line 24
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -214,7 +214,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v0",
                         "v1"});
 #line 56
- testRunner.When("I remove the edge", ((string)(null)), table8, "When ");
+ testRunner.When("I remove the edge from the undirected graph", ((string)(null)), table8, "When ");
 #line 59
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -308,7 +308,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v3",
                         "v4"});
 #line 91
- testRunner.When("I remove the edge", ((string)(null)), table13, "When ");
+ testRunner.When("I remove the edge from the undirected graph", ((string)(null)), table13, "When ");
 #line 94
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -408,7 +408,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v1",
                         "v4"});
 #line 127
- testRunner.When("I remove the edges", ((string)(null)), table18, "When ");
+ testRunner.When("I remove the edges from the undirected graph", ((string)(null)), table18, "When ");
 #line 131
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -502,7 +502,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v1",
                         "v4"});
 #line 162
- testRunner.When("I remove the edges", ((string)(null)), table23, "When ");
+ testRunner.When("I remove the edges from the undirected graph", ((string)(null)), table23, "When ");
 #line 166
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden

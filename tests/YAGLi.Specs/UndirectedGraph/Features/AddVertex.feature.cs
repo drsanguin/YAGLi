@@ -110,7 +110,7 @@ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFl
 #line 19
  testRunner.And("the undirected graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 20
- testRunner.When("I add the vertex \"v5\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I add the vertex \"v5\" to the undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 21
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -206,7 +206,7 @@ this.ScenarioSetup(scenarioInfo);
             table7.AddRow(new string[] {
                         "v6"});
 #line 54
- testRunner.When("I add the vertices", ((string)(null)), table7, "When ");
+ testRunner.When("I add the vertices to the undirected graph", ((string)(null)), table7, "When ");
 #line 58
  testRunner.Then("I get a new undirected graph", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
