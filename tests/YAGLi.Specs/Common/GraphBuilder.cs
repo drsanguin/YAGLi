@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using TechTalk.SpecFlow;
+using YAGLi.Interfaces;
 using YAGLi.Tests.Utils;
 
-namespace YAGLi.Specs.Common.Builders
+namespace YAGLi.Specs.Common
 {
     [Binding]
     public class GraphBuilder
@@ -11,6 +12,7 @@ namespace YAGLi.Specs.Common.Builders
         public bool AllowParallelEdges { get; private set; }
         public IEnumerable<Vertex> Vertices { get; private set; }
         public IEnumerable<Edge<Vertex>> Edges { get; private set; }
+        public IModelAGraph<Vertex, Edge<Vertex>> Instance { get; set; }
 
         [Given(@"the property allow loops")]
         public void GivenThePropertyAllowLoops()

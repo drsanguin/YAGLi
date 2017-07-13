@@ -1,16 +1,15 @@
 ﻿using TechTalk.SpecFlow;
 using YAGLi.Specs.Common.Validators;
-using YAGLi.Specs.UndirectedGraph;
 
 namespace YAGLi.Specs.Common.Steps
 {
     [Binding]
     public class AdjacentVerticesOfStep
     {
-        private readonly UndirectedGraphBuilder _builder;
+        private readonly GraphBuilder _builder;
         private readonly VertexCollectionValidator _validator;
 
-        public AdjacentVerticesOfStep(UndirectedGraphBuilder builder, VertexCollectionValidator validator)
+        public AdjacentVerticesOfStep(GraphBuilder builder, VertexCollectionValidator validator)
         {
             _builder = builder;
             _validator = validator;

@@ -54,9 +54,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Builders\GraphBuilder.cs" />
-    <Compile Include="Common\Steps\AddEdgeSteps.cs" />
-    <Compile Include="Common\Steps\AddVertexSteps.cs" />
+    <Compile Include="Common\GraphBuilder.cs" />
+    <Compile Include="UndirectedGraph\Steps\AddEdgeSteps.cs" />
+    <Compile Include="UndirectedGraph\Steps\AddVertexSteps.cs" />
     <Compile Include="Common\Steps\AdjacentEdgesOfSteps.cs" />
     <Compile Include="Common\Steps\AdjacentVerticesOfStep.cs" />
     <Compile Include="Common\Steps\AreEdgesAdjacentStep.cs" />
@@ -66,8 +66,8 @@
     <Compile Include="Common\Steps\DegreeOfStep.cs" />
     <Compile Include="Common\Steps\IncidentEdgesOfStep.cs" />
     <Compile Include="Common\Steps\IncidentVerticesOfStep.cs" />
-    <Compile Include="Common\Steps\RemoveEdgeSteps.cs" />
-    <Compile Include="Common\Steps\RemoveVertexSteps.cs" />
+    <Compile Include="UndirectedGraph\Steps\RemoveEdgeSteps.cs" />
+    <Compile Include="UndirectedGraph\Steps\RemoveVertexSteps.cs" />
     <Compile Include="Common\Transforms\EdgeTransforms.cs" />
     <Compile Include="Common\Transforms\VertexTransforms.cs" />
     <Compile Include="Common\Validators\BooleanValidator.cs" />
@@ -155,7 +155,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RemoveVertex.feature</DependentUpon>
     </Compile>
-    <Compile Include="UndirectedGraph\InstantiateUndirectedGraphStep.cs" />
+    <Compile Include="UndirectedGraph\Steps\InstantiateUndirectedGraphStep.cs" />
     <Compile Include="UndirectedGraph\UndirectedGraphBuilder.cs" />
     <Compile Include="UndirectedGraph\UndirectedGraphValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

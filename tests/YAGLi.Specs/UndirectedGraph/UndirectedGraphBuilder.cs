@@ -1,5 +1,5 @@
 ﻿using TechTalk.SpecFlow;
-using YAGLi.Specs.Common.Builders;
+using YAGLi.Specs.Common;
 using YAGLi.Tests.Utils;
 
 namespace YAGLi.Specs.UndirectedGraph
@@ -19,7 +19,10 @@ namespace YAGLi.Specs.UndirectedGraph
         [Given(@"the undirected graph created with them")]
         public void GivenTheUndirectedGraphCreatedWithThem()
         {
-            Instance = new UndirectedGraph<Vertex, Edge<Vertex>>(_graphBuilder.AllowLoops, _graphBuilder.AllowParallelEdges, _graphBuilder.Edges, _graphBuilder.Vertices, new VertexEqualityComparer());
+            var instance = new UndirectedGraph<Vertex, Edge<Vertex>>(_graphBuilder.AllowLoops, _graphBuilder.AllowParallelEdges, _graphBuilder.Edges, _graphBuilder.Vertices, new VertexEqualityComparer());
+
+            Instance = instance;
+            _graphBuilder.Instance = instance;
         }
     }
 }

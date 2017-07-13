@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using TechTalk.SpecFlow;
 using YAGLi.Specs.Common.Validators;
-using YAGLi.Specs.UndirectedGraph;
 using YAGLi.Tests.Utils;
 
 namespace YAGLi.Specs.Common.Steps
@@ -9,10 +8,10 @@ namespace YAGLi.Specs.Common.Steps
     [Binding]
     public class ContainsVerticesSteps
     {
-        private readonly UndirectedGraphBuilder _builder;
+        private readonly GraphBuilder _builder;
         private readonly BooleanValidator _validator;
 
-        public ContainsVerticesSteps(UndirectedGraphBuilder builder, BooleanValidator validator)
+        public ContainsVerticesSteps(GraphBuilder builder, BooleanValidator validator)
         {
             _builder = builder;
             _validator = validator;

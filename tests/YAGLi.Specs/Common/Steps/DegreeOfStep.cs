@@ -1,16 +1,15 @@
 ﻿using TechTalk.SpecFlow;
 using YAGLi.Specs.Common.Validators;
-using YAGLi.Specs.UndirectedGraph;
 
 namespace YAGLi.Specs.Common.Steps
 {
     [Binding]
     public class DegreeOfStep
     {
-        private readonly UndirectedGraphBuilder _builder;
+        private readonly GraphBuilder _builder;
         private readonly DegreeValidator _validator;
 
-        DegreeOfStep(UndirectedGraphBuilder builder, DegreeValidator validator)
+        DegreeOfStep(GraphBuilder builder, DegreeValidator validator)
         {
             _builder = builder;
             _validator = validator;

@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using TechTalk.SpecFlow;
 using YAGLi.Specs.Common.Validators;
-using YAGLi.Specs.UndirectedGraph;
 using YAGLi.Tests.Utils;
 
-namespace YAGLi.Specs.Common.Steps
+namespace YAGLi.Specs.UndirectedGraph.Steps
 {
     [Binding]
     public class RemoveVertexSteps
