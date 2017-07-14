@@ -55,6 +55,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\GraphBuilder.cs" />
+    <Compile Include="DirectedGraph\Steps\AddEdgeSteps.cs" />
+    <Compile Include="DirectedGraph\Steps\AddVertexSteps.cs" />
+    <Compile Include="DirectedGraph\Steps\InstantiateDirectedGraphStep.cs" />
+    <Compile Include="DirectedGraph\Steps\RemoveEdgeSteps.cs" />
+    <Compile Include="DirectedGraph\Steps\RemoveVertexSteps.cs" />
+    <Compile Include="DirectedGraph\DirectedGraphBuilder.cs" />
+    <Compile Include="DirectedGraph\DirectedGraphValidator.cs" />
     <Compile Include="UndirectedGraph\Steps\AddEdgeSteps.cs" />
     <Compile Include="UndirectedGraph\Steps\AddVertexSteps.cs" />
     <Compile Include="Common\Steps\AdjacentEdgesOfSteps.cs" />
@@ -239,7 +246,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DirectedGraph\" />
+    <Folder Include="DirectedGraph\Features\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
