@@ -12,9 +12,9 @@ namespace YAGLi.Interfaces
     public interface IModelADirectedGraph<TVertex, TEdge> : IModelAGraph<TVertex, TEdge>, IEquatable<IModelADirectedGraph<TVertex, TEdge>> where TEdge : IModelAnEdge<TVertex>
     {
         #region Methods
-        IEnumerable<TEdge> IncidentVerticesInto(TVertex vertex);
+        IEnumerable<TEdge> IncidentEdgesInto(TVertex vertex);
 
-        IEnumerable<TEdge> IncidentVerticesOutOf(TVertex vertex);
+        IEnumerable<TEdge> IncidentEdgesOutOf(TVertex vertex);
 
         /// <summary>
         /// Get the in-degree of the vertex <paramref name="vertex"/>.

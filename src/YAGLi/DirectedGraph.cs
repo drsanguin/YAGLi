@@ -152,12 +152,12 @@ namespace YAGLi
             throw new NotImplementedException();
         }
 
-        public IEnumerable<TEdge> IncidentVerticesInto(TVertex vertex)
+        public IEnumerable<TEdge> IncidentEdgesInto(TVertex vertex)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<TEdge> IncidentVerticesOutOf(TVertex vertex)
+        public IEnumerable<TEdge> IncidentEdgesOutOf(TVertex vertex)
         {
             throw new NotImplementedException();
         }
