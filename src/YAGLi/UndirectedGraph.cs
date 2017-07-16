@@ -367,7 +367,7 @@ namespace YAGLi
 
         public override IEnumerable<TVertex> NeighborsOf(TVertex vertex)
         {
-            if (!_incidentEdges.ContainsKey(vertex))
+            if (ReferenceEquals(vertex, null) || !_incidentEdges.ContainsKey(vertex))
             {
                 return Enumerable.Empty<TVertex>();
             }
@@ -512,7 +512,7 @@ namespace YAGLi
 
         public override IEnumerable<TEdge> PathsToNeighborsOf(TVertex vertex)
         {
-            if (!_incidentEdges.ContainsKey(vertex))
+            if (ReferenceEquals(vertex, null) || !_incidentEdges.ContainsKey(vertex))
             {
                 return Enumerable.Empty<TEdge>();
             }

@@ -360,5 +360,23 @@ namespace YAGLi.Tests.UndirectedGraph
 
             Check.That(graph.ToString()).IsEqualTo($"{{{newLine}    AllowLoops = True{newLine}    AllowParallelEdges = True{newLine}    Vertices = [v0, v1, v4, v3, v2]{newLine}    Edges = [{newLine}        (v0 - v1),{newLine}        (v1 - v4),{newLine}        (v4 - v4),{newLine}        (v3 - v4),{newLine}        (v3 - v4){newLine}    ]{newLine}}}");
         }
+
+        [Test]
+        public void UndirectedGraph_NeighborsOf_with_a_null_vertex_should_return_an_empty_IEnumerable()
+        {
+            var graph = new UndirectedGraph<Vertex, Edge<Vertex>>(true, true);
+            Vertex vertex = null;
+
+            Check.That(graph.NeighborsOf(vertex)).IsEmpty();
+        }
+
+        [Test]
+        public void UndirectedGraph_PathsToNeighborsOf_with_a_null_vertex_should_return_an_empty_IEnumerable()
+        {
+            var graph = new UndirectedGraph<Vertex, Edge<Vertex>>(true, true);
+            Vertex vertex = null;
+
+            Check.That(graph.PathsToNeighborsOf(vertex)).IsEmpty();
+        }
     }
 }
