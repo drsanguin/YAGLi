@@ -54,6 +54,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DirectedGraph\DirectedGraphTests.cs" />
     <Compile Include="EdgeComparers\ConsiderDirectionAndAllowParallelEdgesTests.cs" />
     <Compile Include="EdgeComparers\ConsiderDirectionAndDisallowParallelEdgesTests.cs" />
     <Compile Include="Extensions\Collection\EquivalentExtensionsTests.cs" />
@@ -83,9 +84,7 @@
       <Name>YAGLi</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DirectedGraph\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
