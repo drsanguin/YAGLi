@@ -43,20 +43,21 @@ namespace YAGLi
 
         public UndirectedGraph(bool allowLoops, bool allowParallelEdges, IEnumerable<TEdge> edges, IEnumerable<TVertex> vertices, IEqualityComparer<TVertex> verticesComparer) : base(allowLoops, allowParallelEdges, verticesComparer)
         {
-            edges = edges.ReplaceByEmptyIfNull();
-            vertices = vertices.ReplaceByEmptyIfNull();
-
             _edgesComparer = AllowParallelEdges ? new IgnoreDirectionAndAllowParallelEdges<TVertex, TEdge>(_verticesComparer) as IEqualityComparer<TEdge> : new IgnoreDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer);
 
-            edges = edges
+            var filteredEdges = edges.ReplaceByEmptyIfNull()
                 .FilterNulls()
-                .FilterEdgesWithNullVertices<TVertex, TEdge>();
-            vertices = vertices.FilterNulls();
+                .FilterEdgesWithNullVertices<TVertex, TEdge>()
+                .Where(edge => !AllowLoops ? !_verticesComparer.Equals(edge.End1, edge.End2) : true)
+                .Distinct(_edgesComparer);
+
+            var filteredVertices = vertices.ReplaceByEmptyIfNull()
+                .FilterNulls()
+                .Distinct(_verticesComparer);
 
             var incidentEdges = new Dictionary<TVertex, IList<TEdge>>(_verticesComparer);
-            var distinctEdges = AllowParallelEdges ? edges : edges.Distinct(_edgesComparer);
 
-            foreach (var edge in (!AllowLoops ? distinctEdges.Where(edge => !_verticesComparer.Equals(edge.End1, edge.End2)) : distinctEdges))
+            foreach (var edge in filteredEdges)
             {
                 var distinctEnds = _verticesComparer.Equals(edge.End1, edge.End2) ? edge.End1.Yield() : new TVertex[] { edge.End1, edge.End2 };
 
@@ -71,7 +72,7 @@ namespace YAGLi
                 }
             }
 
-            foreach (var vertex in vertices.Where(vertex => !incidentEdges.ContainsKey(vertex)))
+            foreach (var vertex in filteredVertices.Where(vertex => !incidentEdges.ContainsKey(vertex)))
             {
                 incidentEdges.Add(vertex, new List<TEdge>(0));
             }
