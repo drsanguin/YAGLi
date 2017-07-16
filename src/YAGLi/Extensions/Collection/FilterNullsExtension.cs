@@ -13,9 +13,8 @@ namespace YAGLi.Extensions.Collection
         /// <returns>A <see cref="IEnumerable{T}"/> who contained all the elements from <paramref name="source"/> in the same order but without the elements for wich <see cref="object.ReferenceEquals(object, null)"/> returns <see cref="true"/>.</returns>
         public static IEnumerable<TSource> FilterNulls<TSource>(this IEnumerable<TSource> source)
         {
-            return source
-                .ReplaceByEmptyIfNull()
-                .Where(element => !ReferenceEquals(element, null));
+            return source.ReplaceByEmptyIfNull()
+                         .Where(element => !ReferenceEquals(element, null));
         }
     }
 }

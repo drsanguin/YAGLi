@@ -16,9 +16,8 @@ namespace YAGLi.Extensions.EdgeCollection
         /// <returns>The filtered collection.</returns>
         public static IEnumerable<TEdge> FilterEdgesWhosVerticesAreNotContainedInThisGraph<TVertex, TEdge>(this IEnumerable<TEdge> edges, IModelAGraph<TVertex, TEdge> graph) where TEdge : IModelAnEdge<TVertex>
         {
-            return edges
-                .FilterNulls()
-                .Where(edge => graph.ContainsVertices(edge.End1, edge.End2));
+            return edges.FilterNulls()
+                        .Where(edge => graph.ContainsVertices(edge.End1, edge.End2));
         }
     }
 }

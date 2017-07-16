@@ -9,10 +9,9 @@ namespace YAGLi.Extensions.EdgeCollection
     {
         public static IEnumerable<TEdge> FilterEdgesWithNullVertices<TVertex, TEdge>(this IEnumerable<TEdge> edges) where TEdge : IModelAnEdge<TVertex>
         {
-            return edges
-                .ReplaceByEmptyIfNull()
-                .FilterNulls()
-                .Where(edge => !ReferenceEquals(edge.End1, null) && !ReferenceEquals(edge.End2, null));
+            return edges.ReplaceByEmptyIfNull()
+                        .FilterNulls()
+                        .Where(edge => !ReferenceEquals(edge.End1, null) && !ReferenceEquals(edge.End2, null));
         }
     }
 }

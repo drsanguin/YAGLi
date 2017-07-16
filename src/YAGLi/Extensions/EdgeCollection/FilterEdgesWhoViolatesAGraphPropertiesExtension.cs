@@ -17,10 +17,9 @@ namespace YAGLi.Extensions.EdgeCollection
         /// <returns></returns>
         public static IEnumerable<TEdge> FilterEdgesWhoViolatesThisInstanceProperties<TVertex, TEdge>(this IEnumerable<TEdge> edges, IModelAGraph<TVertex, TEdge> graph, IEqualityComparer<TVertex> verticesComparer) where TEdge : IModelAnEdge<TVertex>
         {
-            return edges
-                .ReplaceByEmptyIfNull()
-                .Where(edge => graph.AllowLoops ? true : !(verticesComparer ?? EqualityComparer<TVertex>.Default).Equals(edge.End1, edge.End2))
-                .Where(edge => graph.AllowParallelEdges ? true : !graph.ContainsEdge(edge));
+            return edges.ReplaceByEmptyIfNull()
+                        .Where(edge => graph.AllowLoops ? true : !(verticesComparer ?? EqualityComparer<TVertex>.Default).Equals(edge.End1, edge.End2))
+                        .Where(edge => graph.AllowParallelEdges ? true : !graph.ContainsEdge(edge));
         }
     }
 }
