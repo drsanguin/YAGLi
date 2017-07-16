@@ -221,6 +221,11 @@ namespace YAGLi
         {
             throw new NotImplementedException();
         }
+
+        public override IEnumerable<TEdge> PathsToNeighborsOf(TVertex vertex)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }

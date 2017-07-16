@@ -503,6 +503,16 @@ namespace YAGLi
             return RemoveVertices(vertices.AsEnumerable());
         }
 
+        public override IEnumerable<TEdge> PathsToNeighborsOf(TVertex vertex)
+        {
+            if (!_incidentEdges.ContainsKey(vertex))
+            {
+                return Enumerable.Empty<TEdge>();
+            }
+
+            return _incidentEdges[vertex];
+        }
+
         public override string ToString()
         {
             var sb = new StringBuilder();

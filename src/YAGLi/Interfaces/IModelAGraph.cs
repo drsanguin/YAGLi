@@ -144,6 +144,8 @@ namespace YAGLi.Interfaces
         IEnumerable<TVertex> IncidentVerticesOf(TEdge edge);
 
         IEnumerable<TVertex> NeighborsOf(TVertex vertex);
+
+        IEnumerable<TEdge> PathsToNeighborsOf(TVertex vertex);
         #endregion
     }
 }

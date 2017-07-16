@@ -62,5 +62,6 @@ namespace YAGLi
         public abstract TGraph RemoveVertex(TVertex vertex);
         public abstract TGraph RemoveVertices(IEnumerable<TVertex> vertices);
         public abstract TGraph RemoveVertices(params TVertex[] vertices);
+        public abstract IEnumerable<TEdge> PathsToNeighborsOf(TVertex vertex);
     }
 }
