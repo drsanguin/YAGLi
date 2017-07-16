@@ -365,6 +365,11 @@ namespace YAGLi
             return new TVertex[] { edge.End1, edge.End2 };
         }
 
+        public override IEnumerable<TVertex> NeighborsOf(TVertex vertex)
+        {
+            throw new NotImplementedException();
+        }
+
         public override UndirectedGraph<TVertex, TEdge> RemoveEdge(TEdge edge)
         {
             return RemoveEdges(edge.Yield());

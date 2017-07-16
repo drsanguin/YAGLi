@@ -142,6 +142,8 @@ namespace YAGLi.Interfaces
         /// <returns>The vertices incident to this <see cref="TEdge"/> that are contained in the set of vertices of this instance.</returns>
         /// <remarks>The parameter <paramref name="edge"/> is expected to be contained in the set of edges of this instance.</remarks>
         IEnumerable<TVertex> IncidentVerticesOf(TEdge edge);
+
+        IEnumerable<TVertex> NeighborsOf(TVertex vertex);
         #endregion
     }
 }

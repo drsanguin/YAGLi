@@ -52,6 +52,7 @@ namespace YAGLi
         public abstract bool Equals(IModelAGraph<TVertex, TEdge> other);
         public abstract IEnumerable<TEdge> IncidentEdgesOf(TVertex vertex);
         public abstract IEnumerable<TVertex> IncidentVerticesOf(TEdge edge);
+        public abstract IEnumerable<TVertex> NeighborsOf(TVertex vertex);
         public abstract TGraph RemoveEdge(TEdge edge);
         public abstract TGraph RemoveEdgeAndVertices(TEdge edge);
         public abstract TGraph RemoveEdges(IEnumerable<TEdge> edges);

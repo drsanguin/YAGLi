@@ -157,6 +157,11 @@ namespace YAGLi
             throw new NotImplementedException();
         }
 
+        public override IEnumerable<TVertex> NeighborsOf(TVertex vertex)
+        {
+            throw new NotImplementedException();
+        }
+
         public int InDegreeOf(TVertex vertex)
         {
             throw new NotImplementedException();
