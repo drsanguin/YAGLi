@@ -48,7 +48,9 @@ namespace YAGLi
 
             _edgesComparer = AllowParallelEdges ? new IgnoreDirectionAndAllowParallelEdges<TVertex, TEdge>(_verticesComparer) as IEqualityComparer<TEdge> : new IgnoreDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer);
 
-            edges = edges.FilterNulls();
+            edges = edges
+                .FilterNulls()
+                .FilterEdgesWithNullVertices<TVertex, TEdge>();
             vertices = vertices.FilterNulls();
 
             var incidentEdges = new Dictionary<TVertex, IList<TEdge>>(_verticesComparer);

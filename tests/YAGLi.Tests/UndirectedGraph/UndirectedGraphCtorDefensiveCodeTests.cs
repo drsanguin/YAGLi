@@ -75,6 +75,31 @@ namespace YAGLi.Tests.UndirectedGraph
         }
 
         [Test]
+        public void UndirectedGraph_ctor_should_not_throw_if_the_edges_contains_an_edge_with_a_null_vertex()
+        {
+            _ctor = () => new UndirectedGraph<Vertex, Edge<Vertex>>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    null,
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v3"),
+                    new Edge<Vertex>("v4", null)
+                },
+                new Vertex[]
+                {
+                    "v0",
+                    "v1",
+                    "v2",
+                    "v3",
+                    "v4"
+                });
+        }
+
+        [Test]
         public void UndirectedGraph_ctor_should_not_throw_if_the_vertices_contains_a_null()
         {
             _ctor = () => new UndirectedGraph<Vertex, Edge<Vertex>>(
