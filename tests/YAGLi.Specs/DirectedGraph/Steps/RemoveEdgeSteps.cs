@@ -5,17 +5,9 @@ using YAGLi.Tests.Utils;
 
 namespace YAGLi.Specs.DirectedGraph.Steps
 {
-    [Binding]
-    public class RemoveEdgeSteps
+    public sealed class RemoveEdgeSteps : DirectedGraphStepWithGraphValidator
     {
-        private readonly DirectedGraphBuilder _builder;
-        private readonly GraphValidator _validator;
-
-        public RemoveEdgeSteps(DirectedGraphBuilder builder, GraphValidator validator)
-        {
-            _builder = builder;
-            _validator = validator;
-        }
+        public RemoveEdgeSteps(DirectedGraphBuilder builder, GraphValidator validator) : base(builder, validator) { }
 
         [When(@"I remove the edge from the directed graph")]
         public void WhenIRemoveTheEdge(Edge<Vertex> edge)

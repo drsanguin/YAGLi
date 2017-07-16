@@ -54,11 +54,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\AbstractSteps\StepWithBooleanValidator.cs" />
+    <Compile Include="Common\AbstractSteps\StepWithEdgeCollectionValidator.cs" />
+    <Compile Include="Common\AbstractSteps\StepWithVertexCollectionValidator.cs" />
     <Compile Include="Common\GraphBuilder.cs" />
     <Compile Include="Common\Steps\NeighborsOfStep.cs" />
     <Compile Include="Common\Steps\PathsToNeighborsOfStep.cs" />
     <Compile Include="DirectedGraph\Steps\AddEdgeSteps.cs" />
     <Compile Include="DirectedGraph\Steps\AddVertexSteps.cs" />
+    <Compile Include="DirectedGraph\Steps\DirectedGraphStepWithGraphValidator.cs" />
     <Compile Include="DirectedGraph\Steps\InstantiateDirectedGraphStep.cs" />
     <Compile Include="DirectedGraph\Steps\RemoveEdgeSteps.cs" />
     <Compile Include="DirectedGraph\Steps\RemoveVertexSteps.cs" />
@@ -175,6 +179,7 @@
       <DependentUpon>RemoveVertex.feature</DependentUpon>
     </Compile>
     <Compile Include="UndirectedGraph\Steps\InstantiateUndirectedGraphStep.cs" />
+    <Compile Include="UndirectedGraph\Steps\UndirectedGraphStepWithGraphValidator.cs" />
     <Compile Include="UndirectedGraph\UndirectedGraphBuilder.cs" />
     <Compile Include="UndirectedGraph\UndirectedGraphValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

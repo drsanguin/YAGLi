@@ -5,17 +5,9 @@ using YAGLi.Tests.Utils;
 
 namespace YAGLi.Specs.DirectedGraph.Steps
 {
-    [Binding]
-    public class AddEdgeSteps
+    public sealed class AddEdgeSteps : DirectedGraphStepWithGraphValidator
     {
-        private readonly DirectedGraphBuilder _builder;
-        private readonly GraphValidator _validator;
-
-        public AddEdgeSteps(DirectedGraphBuilder builder, GraphValidator validator)
-        {
-            _builder = builder;
-            _validator = validator;
-        }
+        public AddEdgeSteps(DirectedGraphBuilder builder, GraphValidator validator) : base(builder, validator) { }
 
         [When(@"I add the edges to the directed graph")]
         public void WhenIAddTheEdges(IEnumerable<Edge<Vertex>> edges)

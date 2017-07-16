@@ -6,7 +6,7 @@ using YAGLi.Tests.Utils;
 namespace YAGLi.Specs.Common
 {
     [Binding]
-    public class GraphBuilder
+    public sealed class GraphBuilder
     {
         public bool AllowLoops { get; private set; }
         public bool AllowParallelEdges { get; private set; }

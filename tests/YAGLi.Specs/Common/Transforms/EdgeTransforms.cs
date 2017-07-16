@@ -6,7 +6,7 @@ using YAGLi.Tests.Utils;
 namespace YAGLi.Specs.Common.Transforms
 {
     [Binding]
-    public class EdgeTransforms
+    public sealed class EdgeTransforms
     {
         private const string EDGE_END1_PROPERTY_NAME = nameof(Edge<Vertex>.End1);
         private const string EDGE_END2_PROPERTY_NAME = nameof(Edge<Vertex>.End2);

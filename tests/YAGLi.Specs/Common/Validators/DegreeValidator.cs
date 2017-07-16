@@ -4,7 +4,7 @@ using TechTalk.SpecFlow;
 namespace YAGLi.Specs.Common.Validators
 {
     [Binding]
-    public class DegreeValidator
+    public sealed class DegreeValidator
     {
         public int Subject { get; set; }
 

@@ -5,28 +5,20 @@ using YAGLi.Tests.Utils;
 
 namespace YAGLi.Specs.UndirectedGraph.Steps
 {
-    [Binding]
-    public class RemoveVertexSteps
+    public sealed class RemoveVertexSteps : UndirectedGraphStepWithGraphValidator
     {
-        private readonly UndirectedGraphBuilder _builder;
-        private readonly GraphValidator _validator;
-
-        public RemoveVertexSteps(UndirectedGraphBuilder builder, GraphValidator validator)
-        {
-            _builder = builder;
-            _validator = validator;
-        }
+        public RemoveVertexSteps(UndirectedGraphBuilder builder, GraphValidator validator) : base(builder, validator) { }
 
         [When(@"I remove the vertex ""(.*)"" from the undirected graph")]
         public void WhenIRemoveTheVertex(Vertex vertex)
         {
-            _validator.Subject = _builder.Instance.RemoveVertex(vertex);
+            Validator.Subject = Builder.Instance.RemoveVertex(vertex);
         }
 
         [When(@"I remove the vertices from the undirected graph")]
         public void WhenIRemoveTheVertices(IEnumerable<Vertex> vertices)
         {
-            _validator.Subject = _builder.Instance.RemoveVertices(vertices);
+            Validator.Subject = Builder.Instance.RemoveVertices(vertices);
         }
     }
 }

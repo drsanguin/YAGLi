@@ -4,7 +4,7 @@ using TechTalk.SpecFlow;
 namespace YAGLi.Specs.Common.Validators
 {
     [Binding]
-    public class BooleanValidator
+    public sealed class BooleanValidator
     {
         public bool Subject { get; set; }
 

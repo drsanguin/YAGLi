@@ -5,7 +5,7 @@ using YAGLi.Tests.Utils;
 namespace YAGLi.Specs.UndirectedGraph
 {
     [Binding]
-    public class UndirectedGraphBuilder
+    public sealed class UndirectedGraphBuilder
     {
         private readonly GraphBuilder _graphBuilder;
 

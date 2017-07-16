@@ -6,7 +6,7 @@ using YAGLi.Tests.Utils;
 namespace YAGLi.Specs.Common.Transforms
 {
     [Binding]
-    public class VertexTransforms
+    public sealed class VertexTransforms
     {
         private const string VERTEX_NAME_PROPERTY_NAME = nameof(Vertex.Name);
 

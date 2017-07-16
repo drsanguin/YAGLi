@@ -6,7 +6,7 @@ using YAGLi.Tests.Utils;
 namespace YAGLi.Specs.Common.Validators
 {
     [Binding]
-    public class VertexCollectionValidator
+    public sealed class VertexCollectionValidator
     {
         public IEnumerable<Vertex> Subject { get; set; }
 

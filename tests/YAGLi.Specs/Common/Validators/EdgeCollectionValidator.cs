@@ -6,7 +6,7 @@ using YAGLi.Tests.Utils;
 namespace YAGLi.Specs.Common.Validators
 {
     [Binding]
-    public class EdgeCollectionValidator
+    public sealed class EdgeCollectionValidator
     {
         public IEnumerable<Edge<Vertex>> Subject { get; set; }
 

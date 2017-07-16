@@ -6,7 +6,7 @@ using YAGLi.Tests.Utils;
 namespace YAGLi.Specs.DirectedGraph.Steps
 {
     [Binding]
-    public class InstantiateDirectedGraphStep
+    public sealed class InstantiateDirectedGraphStep
     {
         private readonly GraphBuilder _builder;
         private readonly GraphValidator _validator;

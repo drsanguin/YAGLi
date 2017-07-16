@@ -6,16 +6,9 @@ using YAGLi.Tests.Utils;
 namespace YAGLi.Specs.DirectedGraph.Steps
 {
     [Binding]
-    public class RemoveVertexSteps
+    public sealed class RemoveVertexSteps : DirectedGraphStepWithGraphValidator
     {
-        private readonly DirectedGraphBuilder _builder;
-        private readonly GraphValidator _validator;
-
-        public RemoveVertexSteps(DirectedGraphBuilder builder, GraphValidator validator)
-        {
-            _builder = builder;
-            _validator = validator;
-        }
+        public RemoveVertexSteps(DirectedGraphBuilder builder, GraphValidator validator) : base(builder, validator) { }
 
         [When(@"I remove the vertex ""(.*)"" from the directed graph")]
         public void WhenIRemoveTheVertex(Vertex vertex)

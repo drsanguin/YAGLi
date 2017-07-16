@@ -5,28 +5,20 @@ using YAGLi.Tests.Utils;
 
 namespace YAGLi.Specs.UndirectedGraph.Steps
 {
-    [Binding]
-    public class AddVertexSteps
+    public sealed class AddVertexSteps : UndirectedGraphStepWithGraphValidator
     {
-        private readonly UndirectedGraphBuilder _builder;
-        private readonly GraphValidator _validator;
-
-        public AddVertexSteps(UndirectedGraphBuilder builder, GraphValidator validator)
-        {
-            _builder = builder;
-            _validator = validator;
-        }
+        public AddVertexSteps(UndirectedGraphBuilder builder, GraphValidator validator) : base(builder, validator) { }
 
         [When(@"I add the vertices to the undirected graph")]
         public void WhenIAddTheVertices(IEnumerable<Vertex> vertices)
         {
-            _validator.Subject = _builder.Instance.AddVertices(vertices);
+            Validator.Subject = Builder.Instance.AddVertices(vertices);
         }
 
         [When(@"I add the vertex ""(.*)"" to the undirected graph")]
         public void WhenIAddTheVertex(Vertex vertex)
         {
-            _validator.Subject = _builder.Instance.AddVertex(vertex);
+            Validator.Subject = Builder.Instance.AddVertex(vertex);
         }
     }
 }

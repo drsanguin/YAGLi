@@ -6,7 +6,7 @@ using YAGLi.Tests.Utils;
 namespace YAGLi.Specs.DirectedGraph
 {
     [Binding]
-    public class DirectedGraphValidator
+    public sealed class DirectedGraphValidator
     {
         private readonly GraphValidator _graphValidator;
 

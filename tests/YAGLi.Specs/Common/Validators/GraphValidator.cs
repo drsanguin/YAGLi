@@ -7,7 +7,7 @@ using YAGLi.Tests.Utils;
 namespace YAGLi.Specs.Common.Validators
 {
     [Binding]
-    public class GraphValidator
+    public sealed class GraphValidator
     {
         public IModelAGraph<Vertex, Edge<Vertex>> Subject { get; set; }
 

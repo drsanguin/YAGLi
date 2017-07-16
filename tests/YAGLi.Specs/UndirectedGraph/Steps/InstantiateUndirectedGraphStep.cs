@@ -6,7 +6,7 @@ using YAGLi.Tests.Utils;
 namespace YAGLi.Specs.UndirectedGraph.Steps
 {
     [Binding]
-    public class UndirectedGraphCreationSteps
+    public sealed class UndirectedGraphCreationSteps
     {
         private readonly GraphBuilder _builder;
         private readonly GraphValidator _validator;

@@ -5,7 +5,7 @@ using YAGLi.Tests.Utils;
 namespace YAGLi.Specs.Common.Steps
 {
     [Binding]
-    public class DegreeOfStep
+    public sealed class DegreeOfStep
     {
         private readonly GraphBuilder _builder;
         private readonly DegreeValidator _validator;

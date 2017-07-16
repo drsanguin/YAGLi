@@ -1,25 +1,18 @@
 ﻿using TechTalk.SpecFlow;
+using YAGLi.Specs.Common.AbstractSteps;
 using YAGLi.Specs.Common.Validators;
 using YAGLi.Tests.Utils;
 
 namespace YAGLi.Specs.Common.Steps
 {
-    [Binding]
-    public class AdjacentEdgesOfSteps
+    public sealed class AdjacentEdgesOfSteps : StepWithEdgeCollectionValidator
     {
-        private readonly GraphBuilder _builder;
-        private readonly EdgeCollectionValidator _validator;
-
-        public AdjacentEdgesOfSteps(GraphBuilder builder, EdgeCollectionValidator validator)
-        {
-            _builder = builder;
-            _validator = validator;
-        }
+        public AdjacentEdgesOfSteps(GraphBuilder graphBuilder, EdgeCollectionValidator validator) : base(graphBuilder, validator) { }
 
         [When(@"I retrieve the adjacent edges of the edge")]
         public void WhenIRetrieveTheAdjacentEdgesOfTheEdge(Edge<Vertex> edge)
         {
-            _validator.Subject = _builder.Instance.AdjacentEdgesOf(edge);
+            Validator.Subject = Builder.Instance.AdjacentEdgesOf(edge);
         }
     }
 }
