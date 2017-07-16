@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\GraphBuilder.cs" />
+    <Compile Include="Common\Steps\NeighborsOfStep.cs" />
     <Compile Include="Common\Steps\PathsToNeighborsOf.cs" />
     <Compile Include="DirectedGraph\Steps\AddEdgeSteps.cs" />
     <Compile Include="DirectedGraph\Steps\AddVertexSteps.cs" />
@@ -63,6 +64,11 @@
     <Compile Include="DirectedGraph\Steps\RemoveVertexSteps.cs" />
     <Compile Include="DirectedGraph\DirectedGraphBuilder.cs" />
     <Compile Include="DirectedGraph\DirectedGraphValidator.cs" />
+    <Compile Include="UndirectedGraph\Features\NeighborsOf.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NeighborsOf.feature</DependentUpon>
+    </Compile>
     <Compile Include="UndirectedGraph\Features\PathsToNeighborsOf.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -227,6 +233,10 @@
     <None Include="UndirectedGraph\Features\Instantiation.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Instantiation.feature.cs</LastGenOutput>
+    </None>
+    <None Include="UndirectedGraph\Features\NeighborsOf.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>NeighborsOf.feature.cs</LastGenOutput>
     </None>
     <None Include="UndirectedGraph\Features\PathsToNeighborsOf.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

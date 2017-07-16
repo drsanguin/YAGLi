@@ -367,7 +367,14 @@ namespace YAGLi
 
         public override IEnumerable<TVertex> NeighborsOf(TVertex vertex)
         {
-            throw new NotImplementedException();
+            if (!_incidentEdges.ContainsKey(vertex))
+            {
+                return Enumerable.Empty<TVertex>();
+            }
+
+            return _incidentEdges[vertex]
+                .Select(edge => _verticesComparer.Equals(vertex, edge.End1) ? edge.End2 : edge.End1)
+                .Distinct(_verticesComparer);
         }
 
         public override UndirectedGraph<TVertex, TEdge> RemoveEdge(TEdge edge)
