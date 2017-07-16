@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace YAGLi.Interfaces
 {
@@ -11,6 +12,10 @@ namespace YAGLi.Interfaces
     public interface IModelADirectedGraph<TVertex, TEdge> : IModelAGraph<TVertex, TEdge>, IEquatable<IModelADirectedGraph<TVertex, TEdge>> where TEdge : IModelAnEdge<TVertex>
     {
         #region Methods
+        IEnumerable<TEdge> IncidentVerticesInto(TVertex vertex);
+
+        IEnumerable<TEdge> IncidentVerticesOutOf(TVertex vertex);
+
         /// <summary>
         /// Get the in-degree of the vertex <paramref name="vertex"/>.
         /// The in-degree of a vertex is the number of <see cref="Edge{TVertex}"/> going into it.

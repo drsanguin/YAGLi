@@ -152,6 +152,16 @@ namespace YAGLi
             throw new NotImplementedException();
         }
 
+        public IEnumerable<TEdge> IncidentVerticesInto(TVertex vertex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<TEdge> IncidentVerticesOutOf(TVertex vertex)
+        {
+            throw new NotImplementedException();
+        }
+
         public override IEnumerable<TVertex> IncidentVerticesOf(TEdge edge)
         {
             throw new NotImplementedException();
