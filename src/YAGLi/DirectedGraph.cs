@@ -1,12 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using YAGLi.EdgeComparers;
 using YAGLi.Interfaces;
 
 namespace YAGLi
 {
     public class DirectedGraph<TVertex, TEdge> : AbstractGraph<TVertex, TEdge, DirectedGraph<TVertex, TEdge>>, IModelADirectedGraph<TVertex, TEdge> where TEdge : IModelAnEdge<TVertex>
     {
+        #region Instance members
+        private readonly IReadOnlyDictionary<TVertex, IEnumerable<TEdge>> _incidentEdgesIn;
+        private readonly IReadOnlyDictionary<TVertex, IEnumerable<TEdge>> _incidentEdgesOut;
+
+        /// <summary>
+        /// Readonly field who hold the edge comparison logic specific of this instance.
+        /// </summary>
+        private readonly IEqualityComparer<TEdge> _edgesComparer;
+        #endregion
+
         #region Constructors
         public DirectedGraph(bool allowLoops, bool allowParallelEdges) : this(allowLoops, allowParallelEdges, EqualityComparer<TVertex>.Default) { }
 
@@ -16,14 +27,64 @@ namespace YAGLi
 
         public DirectedGraph(bool allowLoops, bool allowParallelEdges, IEnumerable<TEdge> edges, IEnumerable<TVertex> vertices, IEqualityComparer<TVertex> verticesComparer) : base(allowLoops, allowParallelEdges, verticesComparer)
         {
-            throw new NotImplementedException();
+            _edgesComparer = AllowParallelEdges ? new ConsiderDirectionAndAllowParallelEdges<TVertex, TEdge>(_verticesComparer) as IEqualityComparer<TEdge> : new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer);
+
+            var filteredEdges = edges.Where(edge => !AllowLoops ? !_verticesComparer.Equals(edge.End1, edge.End2) : true)
+                                     .Distinct(_edgesComparer);
+
+            var filteredVertices = vertices.Distinct(_verticesComparer);
+
+            var incidentEdgesIn = new Dictionary<TVertex, IList<TEdge>>(_verticesComparer);
+            var incidentEdgesOut = new Dictionary<TVertex, IList<TEdge>>(_verticesComparer);
+
+            foreach (var edge in filteredEdges)
+            {
+                if (!incidentEdgesOut.ContainsKey(edge.End1))
+                {
+                    incidentEdgesOut[edge.End1] = new List<TEdge>();
+                }
+
+                if (!incidentEdgesIn.ContainsKey(edge.End2))
+                {
+                    incidentEdgesIn[edge.End2] = new List<TEdge>();
+                }
+
+                incidentEdgesOut[edge.End1].Add(edge);
+                incidentEdgesIn[edge.End2].Add(edge);
+            }
+
+            foreach (var vertex in filteredVertices.Where(vertex => !incidentEdgesOut.ContainsKey(vertex) && !incidentEdgesIn.ContainsKey(vertex)))
+            {
+                incidentEdgesOut.Add(vertex, new List<TEdge>(0));
+                incidentEdgesIn.Add(vertex, new List<TEdge>(0));
+            }
+
+            _incidentEdgesOut = incidentEdgesOut.ToDictionary(x => x.Key, x => x.Value.AsEnumerable(), _verticesComparer);
+            _incidentEdgesIn = incidentEdgesIn.ToDictionary(x => x.Key, x => x.Value.AsEnumerable(), _verticesComparer);
         }
         #endregion
 
         #region Properties
-        public override IEnumerable<TEdge> Edges => throw new NotImplementedException();
+        public override IEnumerable<TEdge> Edges
+        {
+            get
+            {
+                return _incidentEdgesOut.Values
+                                        .Concat(_incidentEdgesOut.Values)
+                                        .SelectMany(edge => edge)
+                                        .Distinct(_edgesComparer);
+            }
+        }
 
-        public override IEnumerable<TVertex> Vertices => throw new NotImplementedException();
+        public override IEnumerable<TVertex> Vertices
+        {
+            get
+            {
+                return _incidentEdgesIn.Keys
+                                       .Concat(_incidentEdgesOut.Keys)
+                                       .Distinct(_verticesComparer);
+            }
+        }
         #endregion
 
         #region Methods

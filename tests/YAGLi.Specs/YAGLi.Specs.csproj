@@ -60,6 +60,11 @@
     <Compile Include="Common\GraphBuilder.cs" />
     <Compile Include="Common\Steps\NeighborsOfStep.cs" />
     <Compile Include="Common\Steps\PathsToNeighborsOfStep.cs" />
+    <Compile Include="DirectedGraph\Features\Instantiation.feature.cs">
+      <DependentUpon>Instantiation.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="DirectedGraph\Steps\AddEdgeSteps.cs" />
     <Compile Include="DirectedGraph\Steps\AddVertexSteps.cs" />
     <Compile Include="DirectedGraph\Steps\DirectedGraphStepWithGraphValidator.cs" />
@@ -186,6 +191,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="DirectedGraph\Features\Instantiation.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Instantiation.feature.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
     <None Include="UndirectedGraph\Features\AddEdge.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -270,9 +279,7 @@
       <Name>YAGLi.Tests</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DirectedGraph\Features\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
