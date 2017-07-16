@@ -56,7 +56,7 @@
   <ItemGroup>
     <Compile Include="Common\GraphBuilder.cs" />
     <Compile Include="Common\Steps\NeighborsOfStep.cs" />
-    <Compile Include="Common\Steps\PathsToNeighborsOf.cs" />
+    <Compile Include="Common\Steps\PathsToNeighborsOfStep.cs" />
     <Compile Include="DirectedGraph\Steps\AddEdgeSteps.cs" />
     <Compile Include="DirectedGraph\Steps\AddVertexSteps.cs" />
     <Compile Include="DirectedGraph\Steps\InstantiateDirectedGraphStep.cs" />
