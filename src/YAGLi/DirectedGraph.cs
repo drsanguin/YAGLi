@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using YAGLi.EdgeComparers;
+using YAGLi.Extensions.Collection;
+using YAGLi.Extensions.EdgeCollection;
 using YAGLi.Interfaces;
 
 namespace YAGLi
@@ -29,10 +31,15 @@ namespace YAGLi
         {
             _edgesComparer = AllowParallelEdges ? new ConsiderDirectionAndAllowParallelEdges<TVertex, TEdge>(_verticesComparer) as IEqualityComparer<TEdge> : new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer);
 
-            var filteredEdges = edges.Where(edge => !AllowLoops ? !_verticesComparer.Equals(edge.End1, edge.End2) : true)
+            var filteredEdges = edges.ReplaceByEmptyIfNull()
+                                     .FilterNulls()
+                                     .FilterEdgesWithNullVertices<TVertex, TEdge>()
+                                     .Where(edge => !AllowLoops ? !_verticesComparer.Equals(edge.End1, edge.End2) : true)
                                      .Distinct(_edgesComparer);
 
-            var filteredVertices = vertices.Distinct(_verticesComparer);
+            var filteredVertices = vertices.ReplaceByEmptyIfNull()
+                                           .FilterNulls()
+                                           .Distinct(_verticesComparer);
 
             var incidentEdgesIn = new Dictionary<TVertex, IList<TEdge>>(_verticesComparer);
             var incidentEdgesOut = new Dictionary<TVertex, IList<TEdge>>(_verticesComparer);
