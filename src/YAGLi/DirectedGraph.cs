@@ -77,9 +77,9 @@ namespace YAGLi
             get
             {
                 return _incidentEdgesOutOf.Values
-                                        .Concat(_incidentEdgesOutOf.Values)
-                                        .SelectMany(edge => edge)
-                                        .Distinct(_edgesComparer);
+                                          .Concat(_incidentEdgesOutOf.Values)
+                                          .SelectMany(edge => edge)
+                                          .Distinct(_edgesComparer);
             }
         }
 
