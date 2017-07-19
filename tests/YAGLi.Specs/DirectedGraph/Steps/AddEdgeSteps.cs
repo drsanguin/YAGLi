@@ -13,25 +13,25 @@ namespace YAGLi.Specs.DirectedGraph.Steps
         [When(@"I add the edges to the directed graph")]
         public void WhenIAddTheEdges(IEnumerable<Edge<Vertex>> edges)
         {
-            _validator.Subject = _builder.Instance.AddEdges(edges);
+            Validator.Subject = Builder.Instance.AddEdges(edges);
         }
 
         [When(@"I add the edge to the directed graph")]
         public void WhenIAddTheEdge(Edge<Vertex> edge)
         {
-            _validator.Subject = _builder.Instance.AddEdge(edge);
+            Validator.Subject = Builder.Instance.AddEdge(edge);
         }
 
         [When(@"I add the following edge with her vertices to the directed graph")]
         public void WhenIAddTheEdgeWithTheVerticesAnd(Edge<Vertex> edge)
         {
-            _validator.Subject = _builder.Instance.AddEdgeAndVertices(edge);
+            Validator.Subject = Builder.Instance.AddEdgeAndVertices(edge);
         }
 
         [When(@"I add the edges and vertices with their vertices to the directed graph")]
         public void WhenIAddTheEdgesAndVertices(IEnumerable<Edge<Vertex>> edges)
         {
-            _validator.Subject = _builder.Instance.AddEdgesAndVertices(edges);
+            Validator.Subject = Builder.Instance.AddEdgesAndVertices(edges);
         }
     }
 }

@@ -14,13 +14,13 @@ namespace YAGLi.Specs.DirectedGraph.Steps
         [When(@"I remove the vertex ""(.*)"" from the directed graph")]
         public void WhenIRemoveTheVertex(Vertex vertex)
         {
-            _validator.Subject = _builder.Instance.RemoveVertex(vertex);
+            Validator.Subject = Builder.Instance.RemoveVertex(vertex);
         }
 
         [When(@"I remove the vertices from the directed graph")]
         public void WhenIRemoveTheVertices(IEnumerable<Vertex> vertices)
         {
-            _validator.Subject = _builder.Instance.RemoveVertices(vertices);
+            Validator.Subject = Builder.Instance.RemoveVertices(vertices);
         }
     }
 }

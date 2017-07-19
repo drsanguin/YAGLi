@@ -13,13 +13,13 @@ namespace YAGLi.Specs.DirectedGraph.Steps
         [When(@"I add the vertices to the directed graph")]
         public void WhenIAddTheVertices(IEnumerable<Vertex> vertices)
         {
-            _validator.Subject = _builder.Instance.AddVertices(vertices);
+            Validator.Subject = Builder.Instance.AddVertices(vertices);
         }
 
         [When(@"I add the vertex ""(.*)"" to the directed graph")]
         public void WhenIAddTheVertex(Vertex vertex)
         {
-            _validator.Subject = _builder.Instance.AddVertex(vertex);
+            Validator.Subject = Builder.Instance.AddVertex(vertex);
         }
     }
 }

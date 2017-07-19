@@ -6,13 +6,13 @@ namespace YAGLi.Specs.DirectedGraph.AbstractSteps
     [Binding]
     public abstract class DirectedGraphStepWithGraphValidator
     {
-        protected readonly DirectedGraphBuilder _builder;
-        protected readonly GraphValidator _validator;
-
         public DirectedGraphStepWithGraphValidator(DirectedGraphBuilder builder, GraphValidator validator)
         {
-            _builder = builder;
-            _validator = validator;
+            Builder = builder;
+            Validator = validator;
         }
+
+        protected DirectedGraphBuilder Builder { get; }
+        protected GraphValidator Validator { get; }
     }
 }

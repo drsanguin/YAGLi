@@ -12,7 +12,7 @@ namespace YAGLi.Specs.DirectedGraph.Steps
         [When(@"I retrieve the incident edges out of ""(.*)""")]
         public void WhenIRetrieveTheIncidentEdgesInto(Vertex vertex)
         {
-            _validator.Subject = _builder.Instance.IncidentEdgesOutOf(vertex);
+            Validator.Subject = Builder.Instance.IncidentEdgesOutOf(vertex);
         }
     }
 }

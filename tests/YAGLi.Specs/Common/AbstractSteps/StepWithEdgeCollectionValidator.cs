@@ -6,13 +6,13 @@ namespace YAGLi.Specs.Common.AbstractSteps
     [Binding]
     public abstract class StepWithEdgeCollectionValidator
     {
-        protected readonly GraphBuilder Builder;
-        protected readonly EdgeCollectionValidator Validator;
-
         protected StepWithEdgeCollectionValidator(GraphBuilder builder, EdgeCollectionValidator validator)
         {
             Builder = builder;
             Validator = validator;
         }
+
+        protected GraphBuilder Builder { get; }
+        protected EdgeCollectionValidator Validator { get; }
     }
 }

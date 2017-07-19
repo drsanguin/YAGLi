@@ -6,13 +6,13 @@ namespace YAGLi.Specs.DirectedGraph.AbstractSteps
     [Binding]
     public abstract class DirectedGraphStepWithDegreeValidator
     {
-        protected readonly DirectedGraphBuilder _builder;
-        protected readonly DegreeValidator _validator;
-
         protected DirectedGraphStepWithDegreeValidator(DirectedGraphBuilder builder, DegreeValidator validator)
         {
-            _builder = builder;
-            _validator = validator;
+            Builder = builder;
+            Validator = validator;
         }
+
+        protected DirectedGraphBuilder Builder { get; }
+        protected DegreeValidator Validator { get; }
     }
 }
