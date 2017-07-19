@@ -227,7 +227,7 @@ namespace YAGLi
 
         public IEnumerable<TEdge> IncidentEdgesOutOf(TVertex vertex)
         {
-            throw new NotImplementedException();
+            return !Vertices.Contains(vertex, _verticesComparer) ? Enumerable.Empty<TEdge>() : _incidentEdgesOut[vertex];
         }
 
         public override IEnumerable<TVertex> IncidentVerticesOf(TEdge edge)
