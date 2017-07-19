@@ -233,7 +233,13 @@ namespace YAGLi
 
         public override IEnumerable<TVertex> IncidentVerticesOf(TEdge edge)
         {
-            throw new NotImplementedException();
+            if (!Edges.Contains(edge, _edgesComparer)
+                && !Edges.Contains(edge, new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer)))
+            {
+                return Enumerable.Empty<TVertex>();
+            }
+
+            return new TVertex[] { edge.End1, edge.End2 }.Distinct(_verticesComparer);
         }
 
         public override IEnumerable<TVertex> NeighborsOf(TVertex vertex)

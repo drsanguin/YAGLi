@@ -77,6 +77,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IncidentEdgesOutOf.feature</DependentUpon>
     </Compile>
+    <Compile Include="DirectedGraph\Features\IncidentVerticesOf.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IncidentVerticesOf.feature</DependentUpon>
+    </Compile>
     <Compile Include="DirectedGraph\Features\Instantiation.feature.cs">
       <DependentUpon>Instantiation.feature</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -223,6 +228,10 @@
     <None Include="DirectedGraph\Features\IncidentEdgesOutOf.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>IncidentEdgesOutOf.feature.cs</LastGenOutput>
+    </None>
+    <None Include="DirectedGraph\Features\IncidentVerticesOf.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>IncidentVerticesOf.feature.cs</LastGenOutput>
     </None>
     <None Include="DirectedGraph\Features\Instantiation.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
