@@ -62,6 +62,11 @@
     <Compile Include="Common\Steps\PathsToNeighborsOfStep.cs" />
     <Compile Include="DirectedGraph\AbstractSteps\DirectedGraphStepWithDegreeValidator.cs" />
     <Compile Include="DirectedGraph\AbstractSteps\DirectedGraphStepWithEdgeCollectionValidator.cs" />
+    <Compile Include="DirectedGraph\Features\IncidentEdgesInto.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IncidentEdgesInto.feature</DependentUpon>
+    </Compile>
     <Compile Include="DirectedGraph\Features\Instantiation.feature.cs">
       <DependentUpon>Instantiation.feature</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -197,6 +202,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="DirectedGraph\Features\IncidentEdgesInto.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>IncidentEdgesInto.feature.cs</LastGenOutput>
+    </None>
     <None Include="DirectedGraph\Features\Instantiation.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Instantiation.feature.cs</LastGenOutput>
