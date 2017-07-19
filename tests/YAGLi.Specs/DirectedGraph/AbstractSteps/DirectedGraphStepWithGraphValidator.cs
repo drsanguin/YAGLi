@@ -1,7 +1,7 @@
 ﻿using TechTalk.SpecFlow;
 using YAGLi.Specs.Common.Validators;
 
-namespace YAGLi.Specs.DirectedGraph.Steps
+namespace YAGLi.Specs.DirectedGraph.AbstractSteps
 {
     [Binding]
     public abstract class DirectedGraphStepWithGraphValidator
