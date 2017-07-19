@@ -11,13 +11,19 @@ namespace YAGLi.Specs.Common.Transforms
         private const string VERTEX_NAME_PROPERTY_NAME = nameof(Vertex.Name);
 
         [StepArgumentTransformation]
-        public Vertex VertexTransform(string name)
+        public Vertex TransformStringToVertex(string name)
         {
             return name;
         }
 
         [StepArgumentTransformation]
-        public IEnumerable<Vertex> VerticesTransforms(Table table)
+        public Vertex[] TransformTableToVerticesArray(Table table)
+        {
+            return TransformTableToVerticesIEnumerable(table).ToArray();
+        }
+
+        [StepArgumentTransformation]
+        public IEnumerable<Vertex> TransformTableToVerticesIEnumerable(Table table)
         {
             return table.Rows.Select(row => new Vertex(row[VERTEX_NAME_PROPERTY_NAME]));
         }
