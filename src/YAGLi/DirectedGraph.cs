@@ -12,7 +12,7 @@ namespace YAGLi
     {
         #region Instance members
         private readonly IReadOnlyDictionary<TVertex, IEnumerable<TEdge>> _incidentEdgesIn;
-        private readonly IReadOnlyDictionary<TVertex, IEnumerable<TEdge>> _incidentEdgesOut;
+        private readonly IReadOnlyDictionary<TVertex, IEnumerable<TEdge>> _incidentEdgesOutOf;
 
         /// <summary>
         /// Readonly field who hold the edge comparison logic specific of this instance.
@@ -66,7 +66,7 @@ namespace YAGLi
                 incidentEdgesIn.Add(vertex, new List<TEdge>(0));
             }
 
-            _incidentEdgesOut = incidentEdgesOut.ToDictionary(x => x.Key, x => x.Value.AsEnumerable(), _verticesComparer);
+            _incidentEdgesOutOf = incidentEdgesOut.ToDictionary(x => x.Key, x => x.Value.AsEnumerable(), _verticesComparer);
             _incidentEdgesIn = incidentEdgesIn.ToDictionary(x => x.Key, x => x.Value.AsEnumerable(), _verticesComparer);
         }
         #endregion
@@ -76,8 +76,8 @@ namespace YAGLi
         {
             get
             {
-                return _incidentEdgesOut.Values
-                                        .Concat(_incidentEdgesOut.Values)
+                return _incidentEdgesOutOf.Values
+                                        .Concat(_incidentEdgesOutOf.Values)
                                         .SelectMany(edge => edge)
                                         .Distinct(_edgesComparer);
             }
@@ -88,7 +88,7 @@ namespace YAGLi
             get
             {
                 return _incidentEdgesIn.Keys
-                                       .Concat(_incidentEdgesOut.Keys)
+                                       .Concat(_incidentEdgesOutOf.Keys)
                                        .Distinct(_verticesComparer);
             }
         }
@@ -227,7 +227,7 @@ namespace YAGLi
 
         public IEnumerable<TEdge> IncidentEdgesOutOf(TVertex vertex)
         {
-            return !Vertices.Contains(vertex, _verticesComparer) ? Enumerable.Empty<TEdge>() : _incidentEdgesOut[vertex];
+            return !Vertices.Contains(vertex, _verticesComparer) ? Enumerable.Empty<TEdge>() : _incidentEdgesOutOf[vertex];
         }
 
         public override IEnumerable<TVertex> IncidentVerticesOf(TEdge edge)
