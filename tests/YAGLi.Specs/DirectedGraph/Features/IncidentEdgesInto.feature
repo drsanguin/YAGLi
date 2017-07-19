@@ -1,6 +1,6 @@
 ﻿Feature: IncidentEdgesInto
 
-Scenario: Get the incident edges of a vertex not contained in a DirectedGraph
+Scenario: Get the incident edges into a vertex not contained in a DirectedGraph
 	Given the property allow loops
 	And the property allow parallel edges
 	And the vertices
@@ -21,7 +21,7 @@ Scenario: Get the incident edges of a vertex not contained in a DirectedGraph
 	When I retrieve the incident edges into "v5"
 	Then I get an empty list of edges
 
-Scenario: Get the incident edges of a vertex contained in a DirectedGraph
+Scenario: Get the incident edges into a vertex contained in a DirectedGraph
 	Given the property allow loops
 	And the property allow parallel edges
 	And the vertices

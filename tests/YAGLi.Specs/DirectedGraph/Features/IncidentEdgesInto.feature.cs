@@ -64,10 +64,10 @@ namespace YAGLi.Specs.DirectedGraph.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Get the incident edges of a vertex not contained in a DirectedGraph")]
-        public virtual void GetTheIncidentEdgesOfAVertexNotContainedInADirectedGraph()
+        [NUnit.Framework.DescriptionAttribute("Get the incident edges into a vertex not contained in a DirectedGraph")]
+        public virtual void GetTheIncidentEdgesIntoAVertexNotContainedInADirectedGraph()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the incident edges of a vertex not contained in a DirectedGraph", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the incident edges into a vertex not contained in a DirectedGraph", ((string[])(null)));
 #line 3
 this.ScenarioSetup(scenarioInfo);
 #line 4
@@ -121,10 +121,10 @@ this.ScenarioSetup(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Get the incident edges of a vertex contained in a DirectedGraph")]
-        public virtual void GetTheIncidentEdgesOfAVertexContainedInADirectedGraph()
+        [NUnit.Framework.DescriptionAttribute("Get the incident edges into a vertex contained in a DirectedGraph")]
+        public virtual void GetTheIncidentEdgesIntoAVertexContainedInADirectedGraph()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the incident edges of a vertex contained in a DirectedGraph", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get the incident edges into a vertex contained in a DirectedGraph", ((string[])(null)));
 #line 24
 this.ScenarioSetup(scenarioInfo);
 #line 25
