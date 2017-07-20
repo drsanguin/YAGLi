@@ -235,24 +235,23 @@ namespace YAGLi
 
         public override IEnumerable<TEdge> IncidentEdgesOf(TVertex vertex)
         {
-            return !Vertices.Contains(vertex, _verticesComparer) ? Enumerable.Empty<TEdge>() : IncidentEdgesInto(vertex).Concat(IncidentEdgesOutOf(vertex))
+            return !ContainsVertex(vertex) ? Enumerable.Empty<TEdge>() : IncidentEdgesInto(vertex).Concat(IncidentEdgesOutOf(vertex))
                                                                                                                         .Distinct(_edgesComparer);
         }
 
         public IEnumerable<TEdge> IncidentEdgesInto(TVertex vertex)
         {
-            return !Vertices.Contains(vertex, _verticesComparer) ? Enumerable.Empty<TEdge>() : _incidentEdgesIn[vertex];
+            return !ContainsVertex(vertex) ? Enumerable.Empty<TEdge>() : _incidentEdgesIn[vertex];
         }
 
         public IEnumerable<TEdge> IncidentEdgesOutOf(TVertex vertex)
         {
-            return !Vertices.Contains(vertex, _verticesComparer) ? Enumerable.Empty<TEdge>() : _incidentEdgesOutOf[vertex];
+            return !ContainsVertex(vertex) ? Enumerable.Empty<TEdge>() : _incidentEdgesOutOf[vertex];
         }
 
         public override IEnumerable<TVertex> IncidentVerticesOf(TEdge edge)
         {
-            if (!Edges.Contains(edge, _edgesComparer)
-                && !Edges.Contains(edge, new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer)))
+            if (!ContainsEdge(edge))
             {
                 return Enumerable.Empty<TVertex>();
             }
