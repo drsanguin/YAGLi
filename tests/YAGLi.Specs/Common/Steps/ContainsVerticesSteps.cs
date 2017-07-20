@@ -16,8 +16,14 @@ namespace YAGLi.Specs.Common.Steps
             Validator.Subject = Builder.Instance.ContainsVertex(vertex);
         }
 
-        [When(@"I check that the graph contains the vertices")]
-        public void WhenICheckThatTheGraphContainsTheVertices(IEnumerable<Vertex> vertices)
+        [When(@"I check that the graph contains the following IEnumerable of vertices")]
+        public void WhenICheckThatTheGraphContainsTheFollowingIEnumerableOfVertices(IEnumerable<Vertex> vertices)
+        {
+            Validator.Subject = Builder.Instance.ContainsVertices(vertices);
+        }
+
+        [When(@"I check that the graph contains the following array of vertices")]
+        public void WhenICheckThatTheGraphContainsTheFollowingArrayOfVertices(Vertex[] vertices)
         {
             Validator.Subject = Builder.Instance.ContainsVertices(vertices);
         }

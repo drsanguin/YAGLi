@@ -15,8 +15,14 @@ namespace YAGLi.Specs.UndirectedGraph.Steps
             Validator.Subject = Builder.Instance.RemoveVertex(vertex);
         }
 
-        [When(@"I remove the vertices from the undirected graph")]
-        public void WhenIRemoveTheVertices(IEnumerable<Vertex> vertices)
+        [When(@"I remove the following IEnumerable of vertices from the undirected graph")]
+        public void WhenIRemoveTheFollowingIEnumerableOfVerticesFromTheUndirectedGraph(IEnumerable<Vertex> vertices)
+        {
+            Validator.Subject = Builder.Instance.RemoveVertices(vertices);
+        }
+
+        [When(@"I remove the following array of vertices from the undirected graph")]
+        public void WhenIRemoveTheFollowingArrayOfVerticesFromTheUndirectedGraph(Vertex[] vertices)
         {
             Validator.Subject = Builder.Instance.RemoveVertices(vertices);
         }

@@ -9,8 +9,14 @@ namespace YAGLi.Specs.UndirectedGraph.Steps
     {
         public AddVertexSteps(UndirectedGraphBuilder builder, GraphValidator validator) : base(builder, validator) { }
 
-        [When(@"I add the vertices to the undirected graph")]
-        public void WhenIAddTheVertices(IEnumerable<Vertex> vertices)
+        [When(@"I add the following IEnumerable of vertices to the undirected graph")]
+        public void WhenIAddTheFollowingIEnumerableOfVerticesToTheUndirectedGraph(IEnumerable<Vertex> vertices)
+        {
+            Validator.Subject = Builder.Instance.AddVertices(vertices);
+        }
+
+        [When(@"I add the following array of vertices to the undirected graph")]
+        public void WhenIAddTheFollowingArrayOfVerticesToTheUndirectedGraph(Vertex[] vertices)
         {
             Validator.Subject = Builder.Instance.AddVertices(vertices);
         }

@@ -9,8 +9,14 @@ namespace YAGLi.Specs.UndirectedGraph.Steps
     {
         public AddEdgeSteps(UndirectedGraphBuilder builder, GraphValidator validator) : base(builder, validator) { }
 
-        [When(@"I add the edges to the undirected graph")]
-        public void WhenIAddTheEdges(IEnumerable<Edge<Vertex>> edges)
+        [When(@"I add the following IEnumerable of edges to the undirected graph")]
+        public void WhenIAddTheFollowingIEnumerableOfEdgesToTheUndirectedGraph(IEnumerable<Edge<Vertex>> edges)
+        {
+            Validator.Subject = Builder.Instance.AddEdges(edges);
+        }
+
+        [When(@"I add the following array of edges to the undirected graph")]
+        public void WhenIAddTheFollowingArrayOfEdgesToTheUndirectedGraph(Edge<Vertex>[] edges)
         {
             Validator.Subject = Builder.Instance.AddEdges(edges);
         }
@@ -27,8 +33,14 @@ namespace YAGLi.Specs.UndirectedGraph.Steps
             Validator.Subject = Builder.Instance.AddEdgeAndVertices(edge);
         }
 
-        [When(@"I add the edges and vertices with their vertices to the undirected graph")]
-        public void WhenIAddTheEdgesAndVertices(IEnumerable<Edge<Vertex>> edges)
+        [When(@"I add the following IEnumerable of edges with their vertices to the undirected graph")]
+        public void WhenIAddTheFollowingIEnumerableOfEdgesWithTheirVerticesToTheUndirectedGraph(IEnumerable<Edge<Vertex>> edges)
+        {
+            Validator.Subject = Builder.Instance.AddEdgesAndVertices(edges);
+        }
+
+        [When(@"I add the following array of edges with their vertices to the undirected graph")]
+        public void WhenIAddTheFollowingArrayOfEdgesWithTheirVerticesToTheUndirectedGraph(Edge<Vertex>[] edges)
         {
             Validator.Subject = Builder.Instance.AddEdgesAndVertices(edges);
         }

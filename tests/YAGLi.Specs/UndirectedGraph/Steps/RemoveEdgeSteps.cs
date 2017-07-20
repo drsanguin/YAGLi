@@ -21,14 +21,26 @@ namespace YAGLi.Specs.UndirectedGraph.Steps
             Validator.Subject = Builder.Instance.RemoveEdgeAndVertices(edge);
         }
 
-        [When(@"I remove the edges from the undirected graph")]
-        public void WhenIRemoveTheEdges(IEnumerable<Edge<Vertex>> edges)
+        [When(@"I remove the following IEnumerable of edges from the undirected graph")]
+        public void WhenIRemoveTheFollowingIEnumerableOfEdgesFromTheUndirectedGraph(IEnumerable<Edge<Vertex>> edges)
         {
             Validator.Subject = Builder.Instance.RemoveEdges(edges);
         }
 
-        [When(@"I remove the edges and their vertices from the undirected graph")]
-        public void WhenIRemoveTheEdgesAndTheirVertices(IEnumerable<Edge<Vertex>> edges)
+        [When(@"I remove the following array of edges from the undirected graph")]
+        public void WhenIRemoveTheFollowingArrayOfEdgesFromTheUndirectedGraph(Edge<Vertex>[] edges)
+        {
+            Validator.Subject = Builder.Instance.RemoveEdges(edges);
+        }
+
+        [When(@"I remove the following IEnumerable of edges with their vertices from the undirected graph")]
+        public void WhenIRemoveTheFollowingIEnumerableOfEdgesWithTheirVerticesFromTheUndirectedGraph(IEnumerable<Edge<Vertex>> edges)
+        {
+            Validator.Subject = Builder.Instance.RemoveEdgesAndVertices(edges);
+        }
+
+        [When(@"I remove the following array of edges with their vertices from the undirected graph")]
+        public void WhenIRemoveTheFollowingArrayOfEdgesWithTheirVerticesFromTheUndirectedGraph(Edge<Vertex>[] edges)
         {
             Validator.Subject = Builder.Instance.RemoveEdgesAndVertices(edges);
         }
