@@ -162,32 +162,50 @@ namespace YAGLi
 
         public override bool ContainsEdge(TEdge edge)
         {
-            throw new NotImplementedException();
+            return Edges.Contains(edge, _edgesComparer)
+                || Edges.Contains(edge, new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer));
+        }
+
+        private bool containsEdges(IEnumerable<TEdge> edges)
+        {
+            var filteredEdges = edges.ReplaceByEmptyIfNull()
+                                     .FilterNulls()
+                                     .FilterEdgesWithNullVertices<TVertex, TEdge>();
+
+            return filteredEdges.Any() ? filteredEdges.All(ContainsEdge) : false;
         }
 
         public override bool ContainsEdges(IEnumerable<TEdge> edges)
         {
-            throw new NotImplementedException();
+            return containsEdges(edges);
         }
 
         public override bool ContainsEdges(params TEdge[] edges)
         {
-            throw new NotImplementedException();
+            return containsEdges(edges);
         }
 
         public override bool ContainsVertex(TVertex vertex)
         {
-            throw new NotImplementedException();
+            return Vertices.Contains(vertex, _verticesComparer);
+        }
+
+        public bool containsVertices(IEnumerable<TVertex> vertices)
+        {
+            var filteredVertices = vertices.ReplaceByEmptyIfNull()
+                                           .FilterNulls();
+
+            return filteredVertices.Any() ? filteredVertices.All(ContainsVertex) : false;
         }
 
         public override bool ContainsVertices(IEnumerable<TVertex> vertices)
         {
-            throw new NotImplementedException();
+            return containsVertices(vertices);
         }
 
         public override bool ContainsVertices(params TVertex[] vertices)
         {
-            throw new NotImplementedException();
+            return containsVertices(vertices);
         }
 
         public override int DegreeOf(TVertex vertex)
