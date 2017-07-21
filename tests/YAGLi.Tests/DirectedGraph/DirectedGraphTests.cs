@@ -1,5 +1,6 @@
 ﻿using NFluent;
 using NUnit.Framework;
+using System;
 using YAGLi.Tests.Utils;
 
 namespace YAGLi.Tests.DirectedGraph
@@ -21,6 +22,29 @@ namespace YAGLi.Tests.DirectedGraph
             var graph = new DirectedGraph<Vertex, Edge<Vertex>>(true, true);
 
             Check.That(graph.AllowParallelEdges).IsTrue();
+        }
+
+        [Test]
+        public void DirectedGraph_ToString_should_return_the_expected_value()
+        {
+            var graph = new DirectedGraph<Vertex, Edge<Vertex>>(
+                true,
+                true,
+                new Edge<Vertex>[] 
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v4", "v3"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[] { "v0", "v1", "v2", "v3", "v4" },
+                new VertexEqualityComparer()
+            );
+
+            var newLine = Environment.NewLine;
+
+            Check.That(graph.ToString()).IsEqualTo($"{{{newLine}    AllowLoops = True{newLine}    AllowParallelEdges = True{newLine}    Vertices = [v1, v4, v3, v2, v0]{newLine}    Edges = [{newLine}        (v0 -> v1),{newLine}        (v1 -> v4),{newLine}        (v4 -> v4),{newLine}        (v4 -> v3),{newLine}        (v4 -> v3){newLine}    ]{newLine}}}");
         }
     }
 }

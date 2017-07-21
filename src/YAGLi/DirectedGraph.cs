@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using YAGLi.EdgeComparers;
 using YAGLi.Extensions.Collection;
 using YAGLi.Extensions.EdgeCollection;
@@ -321,7 +322,18 @@ namespace YAGLi
 
         public override string ToString()
         {
-            throw new NotImplementedException();
+            var sb = new StringBuilder();
+
+            sb.AppendLine("{");
+            sb.AppendLine($"    {nameof(AllowLoops)} = {AllowLoops}");
+            sb.AppendLine($"    {nameof(AllowParallelEdges)} = {AllowParallelEdges}");
+            sb.AppendLine($"    {nameof(Vertices)} = [{string.Join(", ", Vertices)}]");
+            sb.AppendLine($"    {nameof(Edges)} = [");
+            sb.AppendLine(string.Join($",{Environment.NewLine}", Edges.Select(edge => $"        ({edge.End1} -> {edge.End2})")));
+            sb.AppendLine("    ]");
+            sb.Append("}");
+
+            return sb.ToString();
         }
 
         public override IEnumerable<TEdge> PathsToNeighborsOf(TVertex vertex)
