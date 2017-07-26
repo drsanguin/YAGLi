@@ -174,7 +174,15 @@ namespace YAGLi
 
         public override IEnumerable<TVertex> AdjacentVerticesOf(TVertex vertex)
         {
-            throw new NotImplementedException();
+            if (!ContainsVertex(vertex))
+            {
+                return Enumerable.Empty<TVertex>();
+            }
+
+            var adjacentVertices =  IncidentEdgesOf(vertex).SelectMany(edge => new TVertex[] { edge.End1, edge.End2 })
+                                          .Distinct(_verticesComparer);
+
+            return Edges.Any(edge => _verticesComparer.Equals(edge.End1, vertex) && _verticesComparer.Equals(edge.End2, vertex)) ? adjacentVertices : adjacentVertices.Except(vertex.Yield());
         }
 
         public override bool AreEdgesAdjacent(TEdge edge1, TEdge edge2)
