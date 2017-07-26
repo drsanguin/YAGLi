@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using YAGLi.EdgeComparers;
+using YAGLi.Extensions;
 using YAGLi.Extensions.Collection;
 using YAGLi.Extensions.EdgeCollection;
 using YAGLi.Interfaces;
@@ -143,7 +144,32 @@ namespace YAGLi
 
         public override IEnumerable<TEdge> AdjacentEdgesOf(TEdge edge)
         {
-            throw new NotImplementedException();
+            if (!ContainsEdge(edge))
+            {
+                return Enumerable.Empty<TEdge>();
+            }
+
+            if (!AllowParallelEdges)
+            {
+                return adjacentEdgesOf(edge);
+            }
+
+            if (Edges.Contains(edge, _edgesComparer))
+            {
+                return adjacentEdgesOf(edge);
+            }
+            else
+            {
+                var comparer = new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer);
+
+                return adjacentEdgesOf(Edges.First(x => comparer.Equals(x, edge)));
+            }
+        }
+
+        private IEnumerable<TEdge> adjacentEdgesOf(TEdge edge)
+        {
+            return Edges.Except(edge.Yield(), _edgesComparer)
+                        .Where(x => AreEdgesAdjacentImpl(x, edge));
         }
 
         public override IEnumerable<TVertex> AdjacentVerticesOf(TVertex vertex)

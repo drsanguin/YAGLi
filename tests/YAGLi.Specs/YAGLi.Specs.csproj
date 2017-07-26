@@ -62,6 +62,11 @@
     <Compile Include="Common\Steps\PathsToNeighborsOfStep.cs" />
     <Compile Include="DirectedGraph\AbstractSteps\DirectedGraphStepWithDegreeValidator.cs" />
     <Compile Include="DirectedGraph\AbstractSteps\DirectedGraphStepWithEdgeCollectionValidator.cs" />
+    <Compile Include="DirectedGraph\Features\AdjacentEdgesOf.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdjacentEdgesOf.feature</DependentUpon>
+    </Compile>
     <Compile Include="DirectedGraph\Features\ContainsEdge.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -227,6 +232,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="DirectedGraph\Features\AdjacentEdgesOf.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AdjacentEdgesOf.feature.cs</LastGenOutput>
+    </None>
     <None Include="DirectedGraph\Features\ContainsEdge.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ContainsEdge.feature.cs</LastGenOutput>
