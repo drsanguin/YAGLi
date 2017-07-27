@@ -187,7 +187,12 @@ namespace YAGLi
 
         public override bool AreEdgesAdjacent(TEdge edge1, TEdge edge2)
         {
-            throw new NotImplementedException();
+            if (!ContainsEdges(edge1, edge2))
+            {
+                return false;
+            }
+
+            return AreEdgesAdjacentImpl(edge1, edge2);
         }
 
         public override bool AreVerticesAdjacent(TVertex vertex1, TVertex vertex2)
