@@ -18,7 +18,7 @@ Scenario: Get the degree of a vertex not contained in the graph
 	| v4   | v3   |
 	| v4   | v3   |
 	And the undirected graph created with them
-	When I get the degree of the vertex "v5"
+	When I retrieve the degree of the vertex "v5"
 	Then I get the degree -1
 
 Scenario: Get the degree of a vertex contained in the graph
@@ -39,5 +39,5 @@ Scenario: Get the degree of a vertex contained in the graph
 	| v4   | v3   |
 	| v4   | v3   |
 	And the undirected graph created with them
-	When I get the degree of the vertex "v4"
+	When I retrieve the degree of the vertex "v4"
 	Then I get the degree 5

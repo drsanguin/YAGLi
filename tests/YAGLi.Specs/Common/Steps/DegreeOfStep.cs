@@ -16,7 +16,7 @@ namespace YAGLi.Specs.Common.Steps
             _validator = validator;
         }
 
-        [When(@"I get the degree of the vertex ""(.*)""")]
+        [When(@"I retrieve the degree of the vertex ""(.*)""")]
         public void WhenIGetTheDegreeOfTheVertex(Vertex vertex)
         {
             _validator.Subject = _builder.Instance.DegreeOf(vertex);

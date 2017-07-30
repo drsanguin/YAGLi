@@ -120,7 +120,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v1",
                         "v4"});
 #line 21
- testRunner.When("I get the incident vertices of the edge", ((string)(null)), table3, "When ");
+ testRunner.When("I retrieve the incident vertices of the edge", ((string)(null)), table3, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});
@@ -191,7 +191,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v0",
                         "v4"});
 #line 47
- testRunner.When("I get the incident vertices of the edge", ((string)(null)), table7, "When ");
+ testRunner.When("I retrieve the incident vertices of the edge", ((string)(null)), table7, "When ");
 #line 50
  testRunner.Then("I get an empty list of vertices", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
@@ -255,7 +255,7 @@ this.ScenarioSetup(scenarioInfo);
                         "v4",
                         "v4"});
 #line 70
- testRunner.When("I get the incident vertices of the edge", ((string)(null)), table10, "When ");
+ testRunner.When("I retrieve the incident vertices of the edge", ((string)(null)), table10, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name"});

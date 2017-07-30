@@ -18,7 +18,7 @@ Scenario: Get the incident vertices of a edge contained in a undirected graph
 	| v4   | v3   |
 	| v4   | v3   |
 	And the undirected graph created with them
-	When I get the incident vertices of the edge
+	When I retrieve the incident vertices of the edge
 	| End1 | End2 |
 	| v1   | v4   |
 	Then I get the vertices
@@ -44,7 +44,7 @@ Scenario: Get the incident vertices of a edge not contained in a undirected grap
 	| v4   | v3   |
 	| v4   | v3   |
 	And the undirected graph created with them
-	When I get the incident vertices of the edge
+	When I retrieve the incident vertices of the edge
 	| End1 | End2 |
 	| v0   | v4   |
 	Then I get an empty list of vertices
@@ -67,7 +67,7 @@ Scenario: Get the incident vertices of a loop edge contained in a undirected gra
 	| v4   | v3   |
 	| v4   | v3   |
 	And the undirected graph created with them
-	When I get the incident vertices of the edge
+	When I retrieve the incident vertices of the edge
 	| End1 | End2 |
 	| v4   | v4   |
 	Then I get the vertices

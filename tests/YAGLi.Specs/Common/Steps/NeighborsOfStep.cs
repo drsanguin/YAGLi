@@ -9,7 +9,7 @@ namespace YAGLi.Specs.Common.Steps
     {
         public NeighborsOfStep(GraphBuilder builder, VertexCollectionValidator validator) : base(builder, validator) { }
 
-        [When(@"I get the neighbors of ""(.*)""")]
+        [When(@"I retrieve the neighbors of ""(.*)""")]
         public void WhenIGetTheNeighborsOf(Vertex vertex)
         {
             Validator.Subject = Builder.Instance.NeighborsOf(vertex);

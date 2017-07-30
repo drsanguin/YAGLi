@@ -18,7 +18,7 @@ Scenario: Get the edges that lead to the neighbors of a vertex not contained in 
 	| v4   | v3   |
 	| v3   | v4   |
 	And the undirected graph created with them
-	When I get the paths to the neighbors of "v5"
+	When I retrieve the paths to the neighbors of "v5"
 	Then I get an empty list of edges
 
 Scenario: Get the edges that lead to the neighbors of a vertex contained in a undirected graph
@@ -39,7 +39,7 @@ Scenario: Get the edges that lead to the neighbors of a vertex contained in a un
 	| v4   | v3   |
 	| v3   | v4   |
 	And the undirected graph created with them
-	When I get the paths to the neighbors of "v4"
+	When I retrieve the paths to the neighbors of "v4"
 	Then I get the edges
 	| End1 | End2 |
 	| v1   | v4   |

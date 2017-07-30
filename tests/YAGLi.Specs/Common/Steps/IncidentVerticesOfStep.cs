@@ -9,7 +9,7 @@ namespace YAGLi.Specs.Common.Steps
     {
         public IncidentVerticesOfStep(GraphBuilder builder, VertexCollectionValidator validator) : base(builder, validator) { }
 
-        [When(@"I get the incident vertices of the edge")]
+        [When(@"I retrieve the incident vertices of the edge")]
         public void WhenIGetTheIncidentVerticesOfTheEdge(Edge<Vertex> edge)
         {
             Validator.Subject = Builder.Instance.IncidentVerticesOf(edge);
