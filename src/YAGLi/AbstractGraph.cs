@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using YAGLi.Interfaces;
 
 namespace YAGLi
@@ -34,13 +35,6 @@ namespace YAGLi
         public abstract IEnumerable<TEdge> AdjacentEdgesOf(TEdge edge);
         public abstract IEnumerable<TVertex> AdjacentVerticesOf(TVertex vertex);
         public abstract bool AreEdgesAdjacent(TEdge edge1, TEdge edge2);
-        protected bool AreEdgesAdjacentImpl(TEdge edge1, TEdge edge2)
-        {
-            return _verticesComparer.Equals(edge1.End1, edge2.End1)
-                || _verticesComparer.Equals(edge1.End1, edge2.End2)
-                || _verticesComparer.Equals(edge1.End2, edge2.End1)
-                || _verticesComparer.Equals(edge1.End2, edge2.End2);
-        }
         public abstract bool AreVerticesAdjacent(TVertex vertex1, TVertex vertex2);
         public abstract bool ContainsEdge(TEdge edge);
         public abstract bool ContainsEdges(IEnumerable<TEdge> edges);
@@ -63,5 +57,44 @@ namespace YAGLi
         public abstract TGraph RemoveVertices(IEnumerable<TVertex> vertices);
         public abstract TGraph RemoveVertices(params TVertex[] vertices);
         public abstract IEnumerable<TEdge> PathsToNeighborsOf(TVertex vertex);
+
+        protected bool AreEdgesAdjacentImpl(TEdge edge1, TEdge edge2)
+        {
+            return _verticesComparer.Equals(edge1.End1, edge2.End1)
+                || _verticesComparer.Equals(edge1.End1, edge2.End2)
+                || _verticesComparer.Equals(edge1.End2, edge2.End1)
+                || _verticesComparer.Equals(edge1.End2, edge2.End2);
+        }
+
+        protected IEnumerable<TEdge> MapEdges(IEnumerable<TEdge> edges, IEnumerable<IEqualityComparer<TEdge>> edgeComparers)
+        {
+            var inputEdges = edges.ToList();
+            var referenceEdges = Edges.ToList();
+            var mapedEdges = new List<TEdge>();
+
+            foreach (var comparer in edgeComparers)
+            {
+                for (var i = inputEdges.Count - 1; i >= 0; i--)
+                {
+                    if (!referenceEdges.Contains(inputEdges[i], comparer))
+                    {
+                        continue;
+                    }
+
+                    var firstReferenceToMatch = referenceEdges.First(edge => comparer.Equals(inputEdges[i], edge));
+
+                    mapedEdges.Add(firstReferenceToMatch);
+                    referenceEdges.Remove(firstReferenceToMatch);
+                    inputEdges.RemoveAt(i);
+                }
+
+                if (!inputEdges.Any())
+                {
+                    break;
+                }
+            }
+
+            return mapedEdges;
+        }
     }
 }

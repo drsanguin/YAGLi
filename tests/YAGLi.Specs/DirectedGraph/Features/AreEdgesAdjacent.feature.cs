@@ -196,6 +196,75 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Check if two edges who are equal but with not both contained in a DirectedGraph a" +
+            "re adjacent")]
+        public virtual void CheckIfTwoEdgesWhoAreEqualButWithNotBothContainedInADirectedGraphAreAdjacent()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check if two edges who are equal but with not both contained in a DirectedGraph a" +
+                    "re adjacent", ((string[])(null)));
+#line 51
+this.ScenarioSetup(scenarioInfo);
+#line 52
+ testRunner.Given("the property allow loops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 53
+ testRunner.Given("the property allow parallel edges", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Name"});
+            table7.AddRow(new string[] {
+                        "v0"});
+            table7.AddRow(new string[] {
+                        "v1"});
+            table7.AddRow(new string[] {
+                        "v2"});
+            table7.AddRow(new string[] {
+                        "v3"});
+            table7.AddRow(new string[] {
+                        "v4"});
+#line 54
+ testRunner.Given("the vertices", ((string)(null)), table7, "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                        "End1",
+                        "End2"});
+            table8.AddRow(new string[] {
+                        "v0",
+                        "v1"});
+            table8.AddRow(new string[] {
+                        "v1",
+                        "v4"});
+            table8.AddRow(new string[] {
+                        "v4",
+                        "v4"});
+            table8.AddRow(new string[] {
+                        "v4",
+                        "v3"});
+            table8.AddRow(new string[] {
+                        "v4",
+                        "v3"});
+#line 61
+ testRunner.Given("the edges", ((string)(null)), table8, "Given ");
+#line 68
+ testRunner.And("the directed graph created with them", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                        "End1",
+                        "End2"});
+            table9.AddRow(new string[] {
+                        "v0",
+                        "v1"});
+            table9.AddRow(new string[] {
+                        "v0",
+                        "v1"});
+#line 69
+ testRunner.When("I check if the following edges are adjacent", ((string)(null)), table9, "When ");
+#line 73
+ testRunner.Then("I get the answer false", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

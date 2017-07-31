@@ -399,38 +399,12 @@ namespace YAGLi
 
         private UndirectedGraph<TVertex, TEdge> removeEdgesWhenGraphAllowParallelEdges(IEnumerable<TEdge> edges)
         {
-            var inputEdges = edges.ToList();
-            var referenceEdges = Edges.ToList();
-            var mappedEdges = new List<TEdge>();
-
-            var comparers = new IEqualityComparer<TEdge>[]
+            var mappedEdges = MapEdges(edges, new IEqualityComparer<TEdge>[]
             {
                 _edgesComparer,
                 new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer),
                 new IgnoreDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer)
-            };
-
-            foreach (var comparer in comparers)
-            {
-                for (var i = inputEdges.Count - 1; i >= 0; i--)
-                {
-                    if (!referenceEdges.Contains(inputEdges[i], comparer))
-                    {
-                        continue;
-                    }
-
-                    var firstReferenceToMatch = referenceEdges.First(edge => comparer.Equals(inputEdges[i], edge));
-
-                    mappedEdges.Add(firstReferenceToMatch);
-                    referenceEdges.Remove(firstReferenceToMatch);
-                    inputEdges.RemoveAt(i);
-                }
-
-                if (!inputEdges.Any())
-                {
-                    break;
-                }
-            }
+            });
 
             return removeEdgesWhenGraphDisallowParallelEdges(mappedEdges);
         }
