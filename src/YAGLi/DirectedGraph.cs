@@ -187,11 +187,7 @@ namespace YAGLi
 
         public override bool AreEdgesAdjacent(TEdge edge1, TEdge edge2)
         {
-            var mappedEdges = new TEdge[] { edge1, edge2 }.MapEdgesWithTheEdgesOfAGraph(this, new IEqualityComparer<TEdge>[]
-            {
-                _edgesComparer,
-                new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer)
-            });
+            var mappedEdges = new TEdge[] { edge1, edge2 }.MapEdgesWithTheEdgesOfAGraph(this, _edgesComparer, new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer));
 
             return mappedEdges.Count() == 2 && AreEdgesAdjacentImpl(edge1, edge2);
         }
