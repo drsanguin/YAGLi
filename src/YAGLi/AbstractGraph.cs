@@ -65,36 +65,5 @@ namespace YAGLi
                 || _verticesComparer.Equals(edge1.End2, edge2.End1)
                 || _verticesComparer.Equals(edge1.End2, edge2.End2);
         }
-
-        protected IEnumerable<TEdge> MapEdges(IEnumerable<TEdge> edges, IEnumerable<IEqualityComparer<TEdge>> edgeComparers)
-        {
-            var inputEdges = edges.ToList();
-            var referenceEdges = Edges.ToList();
-            var mapedEdges = new List<TEdge>();
-
-            foreach (var comparer in edgeComparers)
-            {
-                for (var i = inputEdges.Count - 1; i >= 0; i--)
-                {
-                    if (!referenceEdges.Contains(inputEdges[i], comparer))
-                    {
-                        continue;
-                    }
-
-                    var firstReferenceToMatch = referenceEdges.First(edge => comparer.Equals(inputEdges[i], edge));
-
-                    mapedEdges.Add(firstReferenceToMatch);
-                    referenceEdges.Remove(firstReferenceToMatch);
-                    inputEdges.RemoveAt(i);
-                }
-
-                if (!inputEdges.Any())
-                {
-                    break;
-                }
-            }
-
-            return mapedEdges;
-        }
     }
 }
