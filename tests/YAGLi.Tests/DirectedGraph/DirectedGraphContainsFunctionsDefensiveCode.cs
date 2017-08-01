@@ -1,6 +1,5 @@
 ﻿using NFluent;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using YAGLi.Tests.Utils;
 
