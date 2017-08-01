@@ -67,10 +67,7 @@ namespace YAGLi.Tests.DirectedGraph
                 new VertexEqualityComparer()
             );
 
-            Check.That(graph.AdjacentEdgesOf(edges[3])).ContainsExactly(
-                new Edge<Vertex>("v1", "v4"),
-                new Edge<Vertex>("v4", "v4"),
-                new Edge<Vertex>("v4", "v3"));
+            Check.That(graph.AdjacentEdgesOf(edges[3])).ContainsExactly(edges[1], edges[2], edges[4]);
         }
     }
 }

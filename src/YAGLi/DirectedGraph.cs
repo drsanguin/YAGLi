@@ -182,7 +182,7 @@ namespace YAGLi
             var adjacentVertices =  IncidentEdgesOf(vertex).SelectMany(edge => new TVertex[] { edge.End1, edge.End2 })
                                           .Distinct(_verticesComparer);
 
-            return Edges.Any(edge => _verticesComparer.Equals(edge.End1, vertex) && _verticesComparer.Equals(edge.End2, vertex)) ? adjacentVertices : adjacentVertices.Except(vertex.Yield());
+            return Edges.Any(edge => _verticesComparer.Equals(edge.End1, vertex) && _verticesComparer.Equals(edge.End2, vertex)) ? adjacentVertices : adjacentVertices.Except(vertex.Yield(), _verticesComparer);
         }
 
         public override bool AreEdgesAdjacent(TEdge edge1, TEdge edge2)

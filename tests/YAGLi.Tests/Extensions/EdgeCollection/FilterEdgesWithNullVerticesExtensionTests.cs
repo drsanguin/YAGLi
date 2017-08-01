@@ -20,20 +20,20 @@ namespace YAGLi.Tests.Extensions.EdgeCollection
         [Test]
         public void FilterEdgesWithNullVerticesExtensionTests_should_return_the_expected_result()
         {
-            IEnumerable<Edge<Vertex>> edges = new Edge<Vertex>[]
+            var edges = new Edge<Vertex>[]
             {
                 new Edge<Vertex>("v0", "v1"),
                 new Edge<Vertex>("v1", null),
                 new Edge<Vertex>("v1", "v2")
             };
 
-            Check.That(edges.FilterEdgesWithNullVertices<Vertex, Edge<Vertex>>()).ContainsExactly(new Edge<Vertex>("v0", "v1"), new Edge<Vertex>("v1", "v2"));
+            Check.That(edges.FilterEdgesWithNullVertices<Vertex, Edge<Vertex>>()).ContainsExactly(edges[0], edges[2]);
         }
 
         [Test]
         public void FilterEdgesWithNullVerticesExtensionTests_should_filter_null_edges()
         {
-            IEnumerable<Edge<Vertex>> edges = new Edge<Vertex>[] { null };
+            var edges = new Edge<Vertex>[] { null };
 
             Check.That(edges.FilterEdgesWithNullVertices<Vertex, Edge<Vertex>>()).IsEmpty();
         }

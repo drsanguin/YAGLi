@@ -14,20 +14,20 @@ namespace YAGLi.Specs.Common.Validators
         [Then(@"he should contains the vertices")]
         public void ThenHeShouldContainsTheVerticesAnd(IEnumerable<Vertex> vertices)
         {
-            Check.That(Subject.Vertices).ContainsExactly(vertices);
+            Check.That(Subject.Vertices.ExtractNames()).ContainsExactly(vertices.ExtractNames());
         }
 
         [Then(@"he should contains the edges")]
         public void ThenTheEdges(IEnumerable<Edge<Vertex>> edges)
         {
-            Check.That(Subject.Edges).ContainsExactly(edges);
+            Check.That(Subject.Edges.ConvertToTuples()).ContainsExactly(edges.ConvertToTuples());
         }
 
         [Then(@"he contains the vertices")]
         public void ThenThisNewUndirectedGraphShouldContainsTheVertices(IEnumerable<Vertex> vertices)
         {
-            Check.That(Subject.Vertices)
-                .IsOnlyMadeOf(vertices)
+            Check.That(Subject.Vertices.ExtractNames())
+                .IsOnlyMadeOf(vertices.ExtractNames())
                 .And
                 .HasSize(vertices.Count());
         }
@@ -35,8 +35,8 @@ namespace YAGLi.Specs.Common.Validators
         [Then(@"he contains the edges")]
         public void ThenThisNewUndirectedGraphShouldContainsTheEdges(IEnumerable<Edge<Vertex>> edges)
         {
-            Check.That(Subject.Edges)
-                .IsOnlyMadeOf(edges)
+            Check.That(Subject.Edges.ConvertToTuples())
+                .IsOnlyMadeOf(edges.ConvertToTuples())
                 .And
                 .HasSize(edges.Count());
         }

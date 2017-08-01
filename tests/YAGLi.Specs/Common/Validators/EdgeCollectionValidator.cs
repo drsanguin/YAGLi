@@ -13,7 +13,7 @@ namespace YAGLi.Specs.Common.Validators
         [Then(@"I get the edges")]
         public void ThenTheResultShouldBeTheEdges(IEnumerable<Edge<Vertex>> edges)
         {
-            Check.That(Subject).ContainsExactly(edges);
+            Check.That(Subject.ConvertToTuples()).ContainsExactly(edges.ConvertToTuples());
         }
 
         [Then(@"I get an empty list of edges")]

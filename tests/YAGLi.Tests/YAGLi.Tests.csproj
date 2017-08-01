@@ -74,6 +74,7 @@
     <Compile Include="UndirectedGraph\UndirectedGraphOptimizationsTests.cs" />
     <Compile Include="UndirectedGraph\UndirectedGraphTests.cs" />
     <Compile Include="Utils\Edge.cs" />
+    <Compile Include="Utils\Extensions.cs" />
     <Compile Include="Utils\Vertex.cs" />
     <Compile Include="Utils\VertexEqualityComparer.cs" />
     <Compile Include="Extensions\YieldExtensionTests.cs" />

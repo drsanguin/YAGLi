@@ -13,7 +13,7 @@ namespace YAGLi.Specs.Common.Validators
         [Then(@"I get the vertices")]
         public void ThenIGetTheVertices(IEnumerable<Vertex> vertices)
         {
-            Check.That(Subject).ContainsExactly(vertices);
+            Check.That(Subject.ExtractNames()).ContainsExactly(vertices.ExtractNames());
         }
 
         [Then(@"I get an empty list of vertices")]
