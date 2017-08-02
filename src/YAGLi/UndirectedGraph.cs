@@ -232,12 +232,6 @@ namespace YAGLi
             return AreEdgesAdjacentImpl(edge1, edge2);
         }
 
-        public override bool AreVerticesAdjacent(TVertex vertex1, TVertex vertex2)
-        {
-            return Edges.Where(edge => (_verticesComparer.Equals(edge.End1, vertex1) && _verticesComparer.Equals(edge.End2, vertex2)) || (_verticesComparer.Equals(edge.End1, vertex2) && _verticesComparer.Equals(edge.End2, vertex1)))
-                        .Any();
-        }
-
         public override bool ContainsEdge(TEdge edge)
         {
             if (!AllowParallelEdges)

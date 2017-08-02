@@ -35,7 +35,11 @@ namespace YAGLi
         public abstract IEnumerable<TEdge> AdjacentEdgesOf(TEdge edge);
         public abstract IEnumerable<TVertex> AdjacentVerticesOf(TVertex vertex);
         public abstract bool AreEdgesAdjacent(TEdge edge1, TEdge edge2);
-        public abstract bool AreVerticesAdjacent(TVertex vertex1, TVertex vertex2);
+        public bool AreVerticesAdjacent(TVertex vertex1, TVertex vertex2)
+        {
+            return Edges.Where(edge => (_verticesComparer.Equals(edge.End1, vertex1) && _verticesComparer.Equals(edge.End2, vertex2)) || (_verticesComparer.Equals(edge.End1, vertex2) && _verticesComparer.Equals(edge.End2, vertex1)))
+                        .Any();
+        }
         public abstract bool ContainsEdge(TEdge edge);
         public abstract bool ContainsEdges(IEnumerable<TEdge> edges);
         public abstract bool ContainsEdges(params TEdge[] edges);
