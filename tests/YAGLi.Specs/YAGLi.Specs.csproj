@@ -77,6 +77,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AreEdgesAdjacent.feature</DependentUpon>
     </Compile>
+    <Compile Include="DirectedGraph\Features\AreVerticesAdjacent.feature.cs">
+      <DependentUpon>AreVerticesAdjacent.feature</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="DirectedGraph\Features\ContainsEdge.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -253,6 +258,10 @@
     <None Include="DirectedGraph\Features\AreEdgesAdjacent.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AreEdgesAdjacent.feature.cs</LastGenOutput>
+    </None>
+    <None Include="DirectedGraph\Features\AreVerticesAdjacent.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AreVerticesAdjacent.feature.cs</LastGenOutput>
     </None>
     <None Include="DirectedGraph\Features\ContainsEdge.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

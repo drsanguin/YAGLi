@@ -194,7 +194,8 @@ namespace YAGLi
 
         public override bool AreVerticesAdjacent(TVertex vertex1, TVertex vertex2)
         {
-            throw new NotImplementedException();
+            return Edges.Where(edge => (_verticesComparer.Equals(edge.End1, vertex1) && _verticesComparer.Equals(edge.End2, vertex2)) || (_verticesComparer.Equals(edge.End1, vertex2) && _verticesComparer.Equals(edge.End2, vertex1)))
+                        .Any();
         }
 
         public override bool ContainsEdge(TEdge edge)
