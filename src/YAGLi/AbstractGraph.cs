@@ -32,8 +32,7 @@ namespace YAGLi
         #region Methods
         public bool AreVerticesAdjacent(TVertex vertex1, TVertex vertex2)
         {
-            return Edges.Where(edge => (VerticesComparer.Equals(edge.End1, vertex1) && VerticesComparer.Equals(edge.End2, vertex2)) || (VerticesComparer.Equals(edge.End1, vertex2) && VerticesComparer.Equals(edge.End2, vertex1)))
-                        .Any();
+            return Edges.Any(edge => VerticesComparer.Equals(edge.End1, vertex1) && VerticesComparer.Equals(edge.End2, vertex2) || VerticesComparer.Equals(edge.End1, vertex2) && VerticesComparer.Equals(edge.End2, vertex1));
         }
         #endregion
 
