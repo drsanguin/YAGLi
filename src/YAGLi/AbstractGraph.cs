@@ -10,7 +10,7 @@ namespace YAGLi
         /// <summary>
         /// Readonly field who store the object who hold the comparison logic for the vertices.
         /// </summary>
-        protected readonly IEqualityComparer<TVertex> _verticesComparer;
+        protected readonly IEqualityComparer<TVertex> VerticesComparer;
         #endregion
 
         #region Constructors
@@ -18,7 +18,7 @@ namespace YAGLi
         {
             AllowLoops = allowLoops;
             AllowParallelEdges = allowParallelEdges;
-            _verticesComparer = verticesComparer ?? EqualityComparer<TVertex>.Default;
+            VerticesComparer = verticesComparer ?? EqualityComparer<TVertex>.Default;
         }
         #endregion
 
@@ -32,7 +32,7 @@ namespace YAGLi
         #region Methods
         public bool AreVerticesAdjacent(TVertex vertex1, TVertex vertex2)
         {
-            return Edges.Where(edge => (_verticesComparer.Equals(edge.End1, vertex1) && _verticesComparer.Equals(edge.End2, vertex2)) || (_verticesComparer.Equals(edge.End1, vertex2) && _verticesComparer.Equals(edge.End2, vertex1)))
+            return Edges.Where(edge => (VerticesComparer.Equals(edge.End1, vertex1) && VerticesComparer.Equals(edge.End2, vertex2)) || (VerticesComparer.Equals(edge.End1, vertex2) && VerticesComparer.Equals(edge.End2, vertex1)))
                         .Any();
         }
         #endregion
@@ -76,10 +76,10 @@ namespace YAGLi
         #region Protected methods
         protected bool AreEdgesAdjacentImpl(TEdge edge1, TEdge edge2)
         {
-            return _verticesComparer.Equals(edge1.End1, edge2.End1)
-                || _verticesComparer.Equals(edge1.End1, edge2.End2)
-                || _verticesComparer.Equals(edge1.End2, edge2.End1)
-                || _verticesComparer.Equals(edge1.End2, edge2.End2);
+            return VerticesComparer.Equals(edge1.End1, edge2.End1)
+                || VerticesComparer.Equals(edge1.End1, edge2.End2)
+                || VerticesComparer.Equals(edge1.End2, edge2.End1)
+                || VerticesComparer.Equals(edge1.End2, edge2.End2);
         } 
         #endregion
     }

@@ -31,20 +31,20 @@ namespace YAGLi
 
         public DirectedGraph(bool allowLoops, bool allowParallelEdges, IEnumerable<TEdge> edges, IEnumerable<TVertex> vertices, IEqualityComparer<TVertex> verticesComparer) : base(allowLoops, allowParallelEdges, verticesComparer)
         {
-            _edgesComparer = AllowParallelEdges ? new ConsiderDirectionAndAllowParallelEdges<TVertex, TEdge>(_verticesComparer) as IEqualityComparer<TEdge> : new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer);
+            _edgesComparer = AllowParallelEdges ? new ConsiderDirectionAndAllowParallelEdges<TVertex, TEdge>(VerticesComparer) as IEqualityComparer<TEdge> : new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(VerticesComparer);
 
             var filteredEdges = edges.ReplaceByEmptyIfNull()
                                      .FilterNulls()
                                      .FilterEdgesWithNullVertices<TVertex, TEdge>()
-                                     .Where(edge => !AllowLoops ? !_verticesComparer.Equals(edge.End1, edge.End2) : true)
+                                     .Where(edge => !AllowLoops ? !VerticesComparer.Equals(edge.End1, edge.End2) : true)
                                      .Distinct(_edgesComparer);
 
             var filteredVertices = vertices.ReplaceByEmptyIfNull()
                                            .FilterNulls()
-                                           .Distinct(_verticesComparer);
+                                           .Distinct(VerticesComparer);
 
-            var incidentEdgesIn = new Dictionary<TVertex, IList<TEdge>>(_verticesComparer);
-            var incidentEdgesOut = new Dictionary<TVertex, IList<TEdge>>(_verticesComparer);
+            var incidentEdgesIn = new Dictionary<TVertex, IList<TEdge>>(VerticesComparer);
+            var incidentEdgesOut = new Dictionary<TVertex, IList<TEdge>>(VerticesComparer);
 
             foreach (var edge in filteredEdges)
             {
@@ -68,8 +68,8 @@ namespace YAGLi
                 incidentEdgesIn.Add(vertex, new List<TEdge>(0));
             }
 
-            _incidentEdgesOutOf = incidentEdgesOut.ToDictionary(x => x.Key, x => x.Value.AsEnumerable(), _verticesComparer);
-            _incidentEdgesIn = incidentEdgesIn.ToDictionary(x => x.Key, x => x.Value.AsEnumerable(), _verticesComparer);
+            _incidentEdgesOutOf = incidentEdgesOut.ToDictionary(x => x.Key, x => x.Value.AsEnumerable(), VerticesComparer);
+            _incidentEdgesIn = incidentEdgesIn.ToDictionary(x => x.Key, x => x.Value.AsEnumerable(), VerticesComparer);
         }
         #endregion
 
@@ -91,7 +91,7 @@ namespace YAGLi
             {
                 return _incidentEdgesIn.Keys
                                        .Concat(_incidentEdgesOutOf.Keys)
-                                       .Distinct(_verticesComparer);
+                                       .Distinct(VerticesComparer);
             }
         }
         #endregion
@@ -160,7 +160,7 @@ namespace YAGLi
             }
             else
             {
-                var comparer = new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer);
+                var comparer = new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(VerticesComparer);
 
                 return adjacentEdgesOf(Edges.First(x => comparer.Equals(x, edge)));
             }
@@ -180,14 +180,14 @@ namespace YAGLi
             }
 
             var adjacentVertices =  IncidentEdgesOf(vertex).SelectMany(edge => new TVertex[] { edge.End1, edge.End2 })
-                                          .Distinct(_verticesComparer);
+                                          .Distinct(VerticesComparer);
 
-            return Edges.Any(edge => _verticesComparer.Equals(edge.End1, vertex) && _verticesComparer.Equals(edge.End2, vertex)) ? adjacentVertices : adjacentVertices.Except(vertex.Yield(), _verticesComparer);
+            return Edges.Any(edge => VerticesComparer.Equals(edge.End1, vertex) && VerticesComparer.Equals(edge.End2, vertex)) ? adjacentVertices : adjacentVertices.Except(vertex.Yield(), VerticesComparer);
         }
 
         public override bool AreEdgesAdjacent(TEdge edge1, TEdge edge2)
         {
-            var mappedEdges = new TEdge[] { edge1, edge2 }.MapEdgesWithTheEdgesOfAGraph(this, _edgesComparer, new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer));
+            var mappedEdges = new TEdge[] { edge1, edge2 }.MapEdgesWithTheEdgesOfAGraph(this, _edgesComparer, new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(VerticesComparer));
 
             return mappedEdges.Count() == 2 && AreEdgesAdjacentImpl(edge1, edge2);
         }
@@ -195,7 +195,7 @@ namespace YAGLi
         public override bool ContainsEdge(TEdge edge)
         {
             return Edges.Contains(edge, _edgesComparer)
-                || Edges.Contains(edge, new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer));
+                || Edges.Contains(edge, new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(VerticesComparer));
         }
 
         private bool containsEdges(IEnumerable<TEdge> edges)
@@ -219,7 +219,7 @@ namespace YAGLi
 
         public override bool ContainsVertex(TVertex vertex)
         {
-            return Vertices.Contains(vertex, _verticesComparer);
+            return Vertices.Contains(vertex, VerticesComparer);
         }
 
         public bool containsVertices(IEnumerable<TVertex> vertices)
@@ -288,7 +288,7 @@ namespace YAGLi
                 return Enumerable.Empty<TVertex>();
             }
 
-            return new TVertex[] { edge.End1, edge.End2 }.Distinct(_verticesComparer);
+            return new TVertex[] { edge.End1, edge.End2 }.Distinct(VerticesComparer);
         }
 
         public override IEnumerable<TVertex> NeighborsOf(TVertex vertex)

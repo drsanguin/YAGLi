@@ -43,23 +43,23 @@ namespace YAGLi
 
         public UndirectedGraph(bool allowLoops, bool allowParallelEdges, IEnumerable<TEdge> edges, IEnumerable<TVertex> vertices, IEqualityComparer<TVertex> verticesComparer) : base(allowLoops, allowParallelEdges, verticesComparer)
         {
-            _edgesComparer = AllowParallelEdges ? new IgnoreDirectionAndAllowParallelEdges<TVertex, TEdge>(_verticesComparer) as IEqualityComparer<TEdge> : new IgnoreDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer);
+            _edgesComparer = AllowParallelEdges ? new IgnoreDirectionAndAllowParallelEdges<TVertex, TEdge>(VerticesComparer) as IEqualityComparer<TEdge> : new IgnoreDirectionAndDisallowParallelEdges<TVertex, TEdge>(VerticesComparer);
 
             var filteredEdges = edges.ReplaceByEmptyIfNull()
                                      .FilterNulls()
                                      .FilterEdgesWithNullVertices<TVertex, TEdge>()
-                                     .Where(edge => !AllowLoops ? !_verticesComparer.Equals(edge.End1, edge.End2) : true)
+                                     .Where(edge => !AllowLoops ? !VerticesComparer.Equals(edge.End1, edge.End2) : true)
                                      .Distinct(_edgesComparer);
 
             var filteredVertices = vertices.ReplaceByEmptyIfNull()
                                            .FilterNulls()
-                                           .Distinct(_verticesComparer);
+                                           .Distinct(VerticesComparer);
 
-            var incidentEdges = new Dictionary<TVertex, IList<TEdge>>(_verticesComparer);
+            var incidentEdges = new Dictionary<TVertex, IList<TEdge>>(VerticesComparer);
 
             foreach (var edge in filteredEdges)
             {
-                var distinctEnds = _verticesComparer.Equals(edge.End1, edge.End2) ? edge.End1.Yield() : new TVertex[] { edge.End1, edge.End2 };
+                var distinctEnds = VerticesComparer.Equals(edge.End1, edge.End2) ? edge.End1.Yield() : new TVertex[] { edge.End1, edge.End2 };
 
                 foreach (var end in distinctEnds)
                 {
@@ -77,7 +77,7 @@ namespace YAGLi
                 incidentEdges.Add(vertex, new List<TEdge>(0));
             }
 
-            _incidentEdges = incidentEdges.ToDictionary(x => x.Key, x => x.Value.AsEnumerable(), _verticesComparer);
+            _incidentEdges = incidentEdges.ToDictionary(x => x.Key, x => x.Value.AsEnumerable(), VerticesComparer);
         }
         #endregion
 
@@ -118,8 +118,8 @@ namespace YAGLi
             var comparers = new IEqualityComparer<TEdge>[]
             {
                 _edgesComparer,
-                new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer),
-                new IgnoreDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer)
+                new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(VerticesComparer),
+                new IgnoreDirectionAndDisallowParallelEdges<TVertex, TEdge>(VerticesComparer)
             };
 
             TEdge mappedEdge = edge;
@@ -151,7 +151,7 @@ namespace YAGLi
             }
 
             return _incidentEdges[vertex].SelectMany(edge => new TVertex[] { edge.End1, edge.End2 })
-                                         .Except(vertex.Yield(), _verticesComparer);
+                                         .Except(vertex.Yield(), VerticesComparer);
         }
 
         public override UndirectedGraph<TVertex, TEdge> AddEdge(TEdge edge)
@@ -167,14 +167,14 @@ namespace YAGLi
         private UndirectedGraph<TVertex, TEdge> addEdges(IEnumerable<TEdge> edges)
         {
             var filteredEdges = edges.FilterNulls()
-                                     .FilterEdgesWhoViolatesThisInstanceProperties(this, _verticesComparer);
+                                     .FilterEdgesWhoViolatesThisInstanceProperties(this, VerticesComparer);
 
             if (!filteredEdges.Any())
             {
                 return this;
             }
 
-            return new UndirectedGraph<TVertex, TEdge>(AllowLoops, AllowParallelEdges, Edges.Concat(filteredEdges), Vertices, _verticesComparer);
+            return new UndirectedGraph<TVertex, TEdge>(AllowLoops, AllowParallelEdges, Edges.Concat(filteredEdges), Vertices, VerticesComparer);
         }
 
         public override UndirectedGraph<TVertex, TEdge> AddEdges(IEnumerable<TEdge> edges)
@@ -213,7 +213,7 @@ namespace YAGLi
                 return this;
             }
 
-            return new UndirectedGraph<TVertex, TEdge>(AllowLoops, AllowParallelEdges, Edges, Vertices.Concat(filteredVertices), _verticesComparer);
+            return new UndirectedGraph<TVertex, TEdge>(AllowLoops, AllowParallelEdges, Edges, Vertices.Concat(filteredVertices), VerticesComparer);
         }
 
         public override UndirectedGraph<TVertex, TEdge> AddVertices(params TVertex[] vertices)
@@ -240,7 +240,7 @@ namespace YAGLi
             }
 
             return Edges.Contains(edge, _edgesComparer)
-                || Edges.Contains(edge, new IgnoreDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer));
+                || Edges.Contains(edge, new IgnoreDirectionAndDisallowParallelEdges<TVertex, TEdge>(VerticesComparer));
         }
 
         public override bool ContainsEdges(params TEdge[] edges)
@@ -275,7 +275,7 @@ namespace YAGLi
                 return -1;
             }
 
-            return _incidentEdges[vertex].Sum(edge => _verticesComparer.Equals(edge.End1, edge.End2) ? 2 : 1);
+            return _incidentEdges[vertex].Sum(edge => VerticesComparer.Equals(edge.End1, edge.End2) ? 2 : 1);
         }
 
         public bool Equals(IModelAUndirectedGraph<TVertex, TEdge> other)
@@ -292,8 +292,8 @@ namespace YAGLi
 
             if (AllowLoops != other.AllowLoops
                 || AllowParallelEdges != other.AllowParallelEdges
-                || !Edges.IsEquivalent(other.Edges, new IgnoreDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer))
-                || !Vertices.IsEquivalent(other.Vertices, _verticesComparer))
+                || !Edges.IsEquivalent(other.Edges, new IgnoreDirectionAndDisallowParallelEdges<TVertex, TEdge>(VerticesComparer))
+                || !Vertices.IsEquivalent(other.Vertices, VerticesComparer))
             {
                 return false;
             }
@@ -322,7 +322,7 @@ namespace YAGLi
                 .OrderBy(edgeHashCode => edgeHashCode)
                 .Aggregate(hash, (x, y) => x * UNDIRECTED_GRAPHS_HASH_FACTOR + y);
             hash = Vertices
-                .Select(_verticesComparer.GetHashCode)
+                .Select(VerticesComparer.GetHashCode)
                 .OrderBy(vertexHashCode => vertexHashCode)
                 .Aggregate(hash, (x, y) => x * UNDIRECTED_GRAPHS_HASH_FACTOR + y);
 
@@ -346,7 +346,7 @@ namespace YAGLi
                 return Enumerable.Empty<TVertex>();
             }
 
-            if (_verticesComparer.Equals(edge.End1, edge.End2))
+            if (VerticesComparer.Equals(edge.End1, edge.End2))
             {
                 return edge.End1.Yield();
             }
@@ -361,8 +361,8 @@ namespace YAGLi
                 return Enumerable.Empty<TVertex>();
             }
 
-            return _incidentEdges[vertex].Select(edge => _verticesComparer.Equals(vertex, edge.End1) ? edge.End2 : edge.End1)
-                                         .Distinct(_verticesComparer);
+            return _incidentEdges[vertex].Select(edge => VerticesComparer.Equals(vertex, edge.End1) ? edge.End2 : edge.End1)
+                                         .Distinct(VerticesComparer);
         }
 
         public override UndirectedGraph<TVertex, TEdge> RemoveEdge(TEdge edge)
@@ -393,14 +393,14 @@ namespace YAGLi
 
         private UndirectedGraph<TVertex, TEdge> removeEdgesWhenGraphAllowParallelEdges(IEnumerable<TEdge> edges)
         {
-            var mappedEdges = edges.MapEdgesWithTheEdgesOfAGraph(this, _edgesComparer, new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer), new IgnoreDirectionAndDisallowParallelEdges<TVertex, TEdge>(_verticesComparer));
+            var mappedEdges = edges.MapEdgesWithTheEdgesOfAGraph(this, _edgesComparer, new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(VerticesComparer), new IgnoreDirectionAndDisallowParallelEdges<TVertex, TEdge>(VerticesComparer));
 
             return removeEdgesWhenGraphDisallowParallelEdges(mappedEdges);
         }
 
         private UndirectedGraph<TVertex, TEdge> removeEdgesWhenGraphDisallowParallelEdges(IEnumerable<TEdge> edges)
         {
-            return new UndirectedGraph<TVertex, TEdge>(AllowLoops, AllowParallelEdges, Edges.Except(edges, _edgesComparer), Vertices, _verticesComparer);
+            return new UndirectedGraph<TVertex, TEdge>(AllowLoops, AllowParallelEdges, Edges.Except(edges, _edgesComparer), Vertices, VerticesComparer);
         }
 
         public override UndirectedGraph<TVertex, TEdge> RemoveEdges(params TEdge[] edges)
@@ -422,9 +422,9 @@ namespace YAGLi
 
             var verticesToRemove = edgesToRemove.Select(edge => new[] { edge.End1, edge.End2 })
                                                 .SelectMany(vertexArray => vertexArray)
-                                                .Distinct(_verticesComparer);
+                                                .Distinct(VerticesComparer);
 
-            return new UndirectedGraph<TVertex, TEdge>(AllowLoops, AllowParallelEdges, Edges.Where(edge => !verticesToRemove.Contains(edge.End1, _verticesComparer) && !verticesToRemove.Contains(edge.End2, _verticesComparer)), Vertices.Except(verticesToRemove, _verticesComparer), _verticesComparer);
+            return new UndirectedGraph<TVertex, TEdge>(AllowLoops, AllowParallelEdges, Edges.Where(edge => !verticesToRemove.Contains(edge.End1, VerticesComparer) && !verticesToRemove.Contains(edge.End2, VerticesComparer)), Vertices.Except(verticesToRemove, VerticesComparer), VerticesComparer);
         }
 
         public override UndirectedGraph<TVertex, TEdge> RemoveEdgesAndVertices(params TEdge[] edges)
@@ -452,10 +452,10 @@ namespace YAGLi
                 return this;
             }
 
-            var verticesToKeep = Vertices.Except(verticesToRemove, _verticesComparer);
-            var edgesToKeep = Edges.Where(edge => verticesToKeep.Contains(edge.End1, _verticesComparer) && verticesToKeep.Contains(edge.End2, _verticesComparer));
+            var verticesToKeep = Vertices.Except(verticesToRemove, VerticesComparer);
+            var edgesToKeep = Edges.Where(edge => verticesToKeep.Contains(edge.End1, VerticesComparer) && verticesToKeep.Contains(edge.End2, VerticesComparer));
 
-            return new UndirectedGraph<TVertex, TEdge>(AllowLoops, AllowParallelEdges, edgesToKeep, verticesToKeep, _verticesComparer);
+            return new UndirectedGraph<TVertex, TEdge>(AllowLoops, AllowParallelEdges, edgesToKeep, verticesToKeep, VerticesComparer);
         }
 
         public override UndirectedGraph<TVertex, TEdge> RemoveVertices(params TVertex[] vertices)
