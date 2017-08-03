@@ -22,7 +22,7 @@ namespace YAGLi
         private const int UNDIRECTED_GRAPHS_HASH_FACTOR = 107;
         #endregion
 
-        #region Instance members
+        #region Fields
         /// <summary>
         /// Readonly field who store the incident edges of each vertex contained in this instance.
         /// </summary>

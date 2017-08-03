@@ -6,23 +6,38 @@ namespace YAGLi
 {
     public abstract class AbstractGraph<TVertex, TEdge, TGraph> : IModelAGraph<TVertex, TEdge> where TEdge : IModelAnEdge<TVertex> where TGraph : IModelAGraph<TVertex, TEdge>
     {
+        #region Fields 
         /// <summary>
         /// Readonly field who store the object who hold the comparison logic for the vertices.
         /// </summary>
         protected readonly IEqualityComparer<TVertex> _verticesComparer;
+        #endregion
 
+        #region Constructors
         protected AbstractGraph(bool allowLoops, bool allowParallelEdges, IEqualityComparer<TVertex> verticesComparer)
         {
             AllowLoops = allowLoops;
             AllowParallelEdges = allowParallelEdges;
             _verticesComparer = verticesComparer ?? EqualityComparer<TVertex>.Default;
         }
+        #endregion
 
+        #region Properties
         public bool AllowParallelEdges { get; }
         public bool AllowLoops { get; }
         public abstract IEnumerable<TEdge> Edges { get; }
         public abstract IEnumerable<TVertex> Vertices { get; }
+        #endregion
 
+        #region Methods
+        public bool AreVerticesAdjacent(TVertex vertex1, TVertex vertex2)
+        {
+            return Edges.Where(edge => (_verticesComparer.Equals(edge.End1, vertex1) && _verticesComparer.Equals(edge.End2, vertex2)) || (_verticesComparer.Equals(edge.End1, vertex2) && _verticesComparer.Equals(edge.End2, vertex1)))
+                        .Any();
+        }
+        #endregion
+
+        #region Abstract methods
         public abstract TGraph AddEdge(TEdge edge);
         public abstract TGraph AddEdgeAndVertices(TEdge edge);
         public abstract TGraph AddEdges(IEnumerable<TEdge> edges);
@@ -35,11 +50,6 @@ namespace YAGLi
         public abstract IEnumerable<TEdge> AdjacentEdgesOf(TEdge edge);
         public abstract IEnumerable<TVertex> AdjacentVerticesOf(TVertex vertex);
         public abstract bool AreEdgesAdjacent(TEdge edge1, TEdge edge2);
-        public bool AreVerticesAdjacent(TVertex vertex1, TVertex vertex2)
-        {
-            return Edges.Where(edge => (_verticesComparer.Equals(edge.End1, vertex1) && _verticesComparer.Equals(edge.End2, vertex2)) || (_verticesComparer.Equals(edge.End1, vertex2) && _verticesComparer.Equals(edge.End2, vertex1)))
-                        .Any();
-        }
         public abstract bool ContainsEdge(TEdge edge);
         public abstract bool ContainsEdges(IEnumerable<TEdge> edges);
         public abstract bool ContainsEdges(params TEdge[] edges);
@@ -61,13 +71,16 @@ namespace YAGLi
         public abstract TGraph RemoveVertices(IEnumerable<TVertex> vertices);
         public abstract TGraph RemoveVertices(params TVertex[] vertices);
         public abstract IEnumerable<TEdge> PathsToNeighborsOf(TVertex vertex);
+        #endregion
 
+        #region Protected methods
         protected bool AreEdgesAdjacentImpl(TEdge edge1, TEdge edge2)
         {
             return _verticesComparer.Equals(edge1.End1, edge2.End1)
                 || _verticesComparer.Equals(edge1.End1, edge2.End2)
                 || _verticesComparer.Equals(edge1.End2, edge2.End1)
                 || _verticesComparer.Equals(edge1.End2, edge2.End2);
-        }
+        } 
+        #endregion
     }
 }
