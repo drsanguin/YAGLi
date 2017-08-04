@@ -1,7 +1,7 @@
 ﻿Feature: Adding vertex/vertices to a undirected graph
 
 Scenario: Add a vertex to a undirected graph
-Given the property allow loops
+	Given the property allow loops
 	And the property allow parallel edges
 	And the vertices
 	| Name |

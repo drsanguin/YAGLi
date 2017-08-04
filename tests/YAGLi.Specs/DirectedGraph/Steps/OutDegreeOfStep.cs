@@ -10,7 +10,7 @@ namespace YAGLi.Specs.DirectedGraph.Steps
     {
         public OutDegreeOfStep(DirectedGraphBuilder builder, DegreeValidator validator) : base(builder, validator) { }
 
-        [When(@"I get the out degree of the vertex ""(.*)""")]
+        [When(@"I retrive the out degree of the vertex ""(.*)""")]
         public void WhenIGetTheInDegreeOfTheVertex(Vertex vertex)
         {
             Validator.Subject = Builder.Instance.OutDegreeOf(vertex);

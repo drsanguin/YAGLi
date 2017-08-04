@@ -19,7 +19,7 @@ Scenario: Get the degree of a vertex not contained in the graph
 	| v4   | v3   |
 	And the undirected graph created with them
 	When I retrieve the degree of the vertex "v5"
-	Then I get the degree -1
+	Then I get a degree of -1
 
 Scenario: Get the degree of a vertex contained in the graph
 	Given the property allow loops
@@ -40,4 +40,4 @@ Scenario: Get the degree of a vertex contained in the graph
 	| v4   | v3   |
 	And the undirected graph created with them
 	When I retrieve the degree of the vertex "v4"
-	Then I get the degree 5
+	Then I get a degree of 5

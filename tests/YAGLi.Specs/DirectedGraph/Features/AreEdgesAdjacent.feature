@@ -2,15 +2,15 @@
 
 Scenario: Check if two edges not contained in a DirectedGraph are adjacent
 	Given the property allow loops
-	Given the property allow parallel edges
-	Given the vertices
+	And the property allow parallel edges
+	And the vertices
 	| Name |
 	| v0   |
 	| v1   |
 	| v2   |
 	| v3   |
 	| v4   |
-	Given the edges
+	And the edges
 	| End1 | End2 |
 	| v0   | v1   |
 	| v1   | v4   |
@@ -26,15 +26,15 @@ Scenario: Check if two edges not contained in a DirectedGraph are adjacent
 
 Scenario: Check if two edges contained in a DirectedGraph are adjacent
 	Given the property allow loops
-	Given the property allow parallel edges
-	Given the vertices
+	And the property allow parallel edges
+	And the vertices
 	| Name |
 	| v0   |
 	| v1   |
 	| v2   |
 	| v3   |
 	| v4   |
-	Given the edges
+	And the edges
 	| End1 | End2 |
 	| v0   | v1   |
 	| v1   | v4   |
@@ -50,15 +50,15 @@ Scenario: Check if two edges contained in a DirectedGraph are adjacent
 
 Scenario: Check if two edges who are equal but with not both contained in a DirectedGraph are adjacent
 	Given the property allow loops
-	Given the property allow parallel edges
-	Given the vertices
+	And the property allow parallel edges
+	And the vertices
 	| Name |
 	| v0   |
 	| v1   |
 	| v2   |
 	| v3   |
 	| v4   |
-	Given the edges
+	And the edges
 	| End1 | End2 |
 	| v0   | v1   |
 	| v1   | v4   |

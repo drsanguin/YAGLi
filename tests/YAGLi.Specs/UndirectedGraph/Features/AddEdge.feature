@@ -312,7 +312,7 @@ Scenario: Add a array of Edges containing a parallel edge to a undirected graph
 	| v3   | v4   |
 
 Scenario: Add an edge to a undirected graph who allow parallel edges
-Given the property allow loops
+	Given the property allow loops
 	And the property allow parallel edges
 	And the vertices
 	| Name |
@@ -348,7 +348,7 @@ Given the property allow loops
 	| v0   | v2   |
 
 Scenario: Add an edge to a undirected graph who disallow parallel edges
-Given the property allow loops
+	Given the property allow loops
 	And the property disallow parallel edges
 	And the vertices
 	| Name |
@@ -382,7 +382,7 @@ Given the property allow loops
 	| v0   | v2   |
 
 Scenario: Add a IEnumerable of Edges to a undirected graph who allow parallel edges
-Given the property allow loops
+	Given the property allow loops
 	And the property allow parallel edges
 	And the vertices
 	| Name |
@@ -420,7 +420,7 @@ Given the property allow loops
 	| v1   | v2   |
 
 Scenario: Add a array of Edges to a undirected graph who allow parallel edges
-Given the property allow loops
+	Given the property allow loops
 	And the property allow parallel edges
 	And the vertices
 	| Name |
@@ -458,7 +458,7 @@ Given the property allow loops
 	| v1   | v2   |
 
 Scenario: Add a IEnumerable of Edges to a undirected graph who disallow parallel edges
-Given the property allow loops
+	Given the property allow loops
 	And the property disallow parallel edges
 	And the vertices
 	| Name |
@@ -494,7 +494,7 @@ Given the property allow loops
 	| v1   | v2   |
 
 Scenario: Add a array of Edges to a undirected graph who disallow parallel edges
-Given the property allow loops
+	Given the property allow loops
 	And the property disallow parallel edges
 	And the vertices
 	| Name |
@@ -530,7 +530,7 @@ Given the property allow loops
 	| v1   | v2   |
 
 Scenario: Add an edge whose vertices who are not already contained in a undirected graph
-Given the property allow loops
+	Given the property allow loops
 	And the property allow parallel edges
 	And the vertices
 	| Name |

@@ -8,7 +8,7 @@ namespace YAGLi.Specs.Common.Validators
     {
         public int Subject { get; set; }
 
-        [Then(@"I get the degree (.*)")]
+        [Then(@"I get a degree of (.*)")]
         public void ThenIGetTheDegree(int expectedDegree)
         {
             Check.That(Subject).IsEqualTo(expectedDegree);

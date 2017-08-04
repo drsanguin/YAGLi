@@ -18,8 +18,8 @@ Scenario: Retrive the in degree of a vertex not contained in a DirectedGraph
 	| v4   | v3   |
 	| v4   | v3   |
 	And the directed graph created with them
-	When I get the in degree of the vertex "v5"
-	Then I get the degree -1
+	When I retrive the in degree of the vertex "v5"
+	Then I get a degree of -1
 
 Scenario: Retrive the in degree of a vertex contained in a DirectedGraph
 	Given the property allow loops
@@ -39,5 +39,5 @@ Scenario: Retrive the in degree of a vertex contained in a DirectedGraph
 	| v4   | v3   |
 	| v4   | v3   |
 	And the directed graph created with them
-	When I get the in degree of the vertex "v3"
-	Then I get the degree 2
+	When I retrive the in degree of the vertex "v3"
+	Then I get a degree of 2

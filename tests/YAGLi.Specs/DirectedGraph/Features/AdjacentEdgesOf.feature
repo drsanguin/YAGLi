@@ -2,15 +2,15 @@
 
 Scenario: Retrieve the adjacent edges of an edge not contained in a DirectedGraph
 	Given the property allow loops
-	Given the property allow parallel edges
-	Given the vertices
+	And the property allow parallel edges
+	And the vertices
 	| Name |
 	| v0   |
 	| v1   |
 	| v2   |
 	| v3   |
 	| v4   |
-	Given the edges
+	And the edges
 	| End1 | End2 |
 	| v0   | v1   |
 	| v1   | v4   |
@@ -25,15 +25,15 @@ Scenario: Retrieve the adjacent edges of an edge not contained in a DirectedGrap
 
 Scenario: Retrieve the adjacent edges of an edge contained in a DirectedGraph who disallow parallel edges
 	Given the property allow loops
-	Given the property disallow parallel edges
-	Given the vertices
+	And the property disallow parallel edges
+	And the vertices
 	| Name |
 	| v0   |
 	| v1   |
 	| v2   |
 	| v3   |
 	| v4   |
-	Given the edges
+	And the edges
 	| End1 | End2 |
 	| v0   | v1   |
 	| v1   | v4   |
@@ -50,15 +50,15 @@ Scenario: Retrieve the adjacent edges of an edge contained in a DirectedGraph wh
 
 Scenario: Retrieve the adjacent edges of an edge contained in a DirectedGraph who allow parallel edges
 	Given the property allow loops
-	Given the property allow parallel edges
-	Given the vertices
+	And the property allow parallel edges
+	And the vertices
 	| Name |
 	| v0   |
 	| v1   |
 	| v2   |
 	| v3   |
 	| v4   |
-	Given the edges
+	And the edges
 	| End1 | End2 |
 	| v0   | v1   |
 	| v1   | v4   |
