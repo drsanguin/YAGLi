@@ -92,6 +92,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ContainsVertex.feature</DependentUpon>
     </Compile>
+    <Compile Include="DirectedGraph\Features\DegreeOf.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DegreeOf.feature</DependentUpon>
+    </Compile>
     <Compile Include="DirectedGraph\Features\IncidentEdgesInto.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -112,10 +117,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IncidentVerticesOf.feature</DependentUpon>
     </Compile>
+    <Compile Include="DirectedGraph\Features\InDegreeOf.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InDegreeOf.feature</DependentUpon>
+    </Compile>
     <Compile Include="DirectedGraph\Features\Instantiation.feature.cs">
       <DependentUpon>Instantiation.feature</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="DirectedGraph\Features\OutDegreeOf.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OutDegreeOf.feature</DependentUpon>
     </Compile>
     <Compile Include="DirectedGraph\Steps\AddEdgeSteps.cs" />
     <Compile Include="DirectedGraph\Steps\AddVertexSteps.cs" />
@@ -271,6 +286,10 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ContainsVertex.feature.cs</LastGenOutput>
     </None>
+    <None Include="DirectedGraph\Features\DegreeOf.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DegreeOf.feature.cs</LastGenOutput>
+    </None>
     <None Include="DirectedGraph\Features\IncidentEdgesInto.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>IncidentEdgesInto.feature.cs</LastGenOutput>
@@ -287,9 +306,17 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>IncidentVerticesOf.feature.cs</LastGenOutput>
     </None>
+    <None Include="DirectedGraph\Features\InDegreeOf.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>InDegreeOf.feature.cs</LastGenOutput>
+    </None>
     <None Include="DirectedGraph\Features\Instantiation.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Instantiation.feature.cs</LastGenOutput>
+    </None>
+    <None Include="DirectedGraph\Features\OutDegreeOf.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>OutDegreeOf.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="UndirectedGraph\Features\AddEdge.feature">
