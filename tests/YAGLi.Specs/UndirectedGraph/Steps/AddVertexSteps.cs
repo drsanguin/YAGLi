@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using TechTalk.SpecFlow;
 using YAGLi.Specs.Common.Validators;
+using YAGLi.Specs.UndirectedGraph.Builders;
 using YAGLi.Tests.Utils;
 
 namespace YAGLi.Specs.UndirectedGraph.Steps

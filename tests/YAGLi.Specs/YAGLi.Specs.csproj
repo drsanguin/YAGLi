@@ -57,7 +57,7 @@
     <Compile Include="Common\AbstractSteps\StepWithBooleanValidator.cs" />
     <Compile Include="Common\AbstractSteps\StepWithEdgeCollectionValidator.cs" />
     <Compile Include="Common\AbstractSteps\StepWithVertexCollectionValidator.cs" />
-    <Compile Include="Common\GraphBuilder.cs" />
+    <Compile Include="Common\Builders\GraphBuilder.cs" />
     <Compile Include="Common\Steps\NeighborsOfStep.cs" />
     <Compile Include="Common\Steps\PathsToNeighborsOfStep.cs" />
     <Compile Include="DirectedGraph\AbstractSteps\DirectedGraphStepWithDegreeValidator.cs" />
@@ -142,8 +142,8 @@
     <Compile Include="DirectedGraph\Steps\OutDegreeOfStep.cs" />
     <Compile Include="DirectedGraph\Steps\RemoveEdgeSteps.cs" />
     <Compile Include="DirectedGraph\Steps\RemoveVertexSteps.cs" />
-    <Compile Include="DirectedGraph\DirectedGraphBuilder.cs" />
-    <Compile Include="DirectedGraph\DirectedGraphValidator.cs" />
+    <Compile Include="DirectedGraph\Builders\DirectedGraphBuilder.cs" />
+    <Compile Include="DirectedGraph\Validators\DirectedGraphValidator.cs" />
     <Compile Include="UndirectedGraph\Features\NeighborsOf.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -256,8 +256,8 @@
     </Compile>
     <Compile Include="UndirectedGraph\Steps\InstantiateUndirectedGraphStep.cs" />
     <Compile Include="UndirectedGraph\Steps\UndirectedGraphStepWithGraphValidator.cs" />
-    <Compile Include="UndirectedGraph\UndirectedGraphBuilder.cs" />
-    <Compile Include="UndirectedGraph\UndirectedGraphValidator.cs" />
+    <Compile Include="UndirectedGraph\Builders\UndirectedGraphBuilder.cs" />
+    <Compile Include="UndirectedGraph\Validators\UndirectedGraphValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

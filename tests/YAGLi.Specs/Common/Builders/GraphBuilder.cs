@@ -3,7 +3,7 @@ using TechTalk.SpecFlow;
 using YAGLi.Interfaces;
 using YAGLi.Tests.Utils;
 
-namespace YAGLi.Specs.Common
+namespace YAGLi.Specs.Common.Builders
 {
     [Binding]
     public sealed class GraphBuilder

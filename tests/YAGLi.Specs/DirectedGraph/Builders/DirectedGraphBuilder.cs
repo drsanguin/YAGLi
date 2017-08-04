@@ -1,8 +1,8 @@
 ﻿using TechTalk.SpecFlow;
-using YAGLi.Specs.Common;
+using YAGLi.Specs.Common.Builders;
 using YAGLi.Tests.Utils;
 
-namespace YAGLi.Specs.DirectedGraph
+namespace YAGLi.Specs.DirectedGraph.Builders
 {
     [Binding]
     public sealed class DirectedGraphBuilder

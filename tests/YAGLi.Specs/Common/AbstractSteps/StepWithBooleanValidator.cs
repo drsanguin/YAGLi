@@ -1,4 +1,5 @@
 ﻿using TechTalk.SpecFlow;
+using YAGLi.Specs.Common.Builders;
 using YAGLi.Specs.Common.Validators;
 
 namespace YAGLi.Specs.Common.AbstractSteps

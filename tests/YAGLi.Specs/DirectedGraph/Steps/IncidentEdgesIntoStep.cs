@@ -1,6 +1,7 @@
 ﻿using TechTalk.SpecFlow;
 using YAGLi.Specs.Common.Validators;
 using YAGLi.Specs.DirectedGraph.AbstractSteps;
+using YAGLi.Specs.DirectedGraph.Builders;
 using YAGLi.Tests.Utils;
 
 namespace YAGLi.Specs.DirectedGraph.Steps

@@ -3,7 +3,7 @@ using TechTalk.SpecFlow;
 using YAGLi.Specs.Common.Validators;
 using YAGLi.Tests.Utils;
 
-namespace YAGLi.Specs.UndirectedGraph
+namespace YAGLi.Specs.UndirectedGraph.Validators
 {
     [Binding]
     public sealed class UndirectedGraphValidator

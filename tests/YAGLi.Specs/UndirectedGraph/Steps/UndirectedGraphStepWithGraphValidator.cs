@@ -1,5 +1,6 @@
 ﻿using TechTalk.SpecFlow;
 using YAGLi.Specs.Common.Validators;
+using YAGLi.Specs.UndirectedGraph.Builders;
 
 namespace YAGLi.Specs.UndirectedGraph.Steps
 {

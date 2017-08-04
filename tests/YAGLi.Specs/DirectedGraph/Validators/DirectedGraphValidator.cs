@@ -3,7 +3,7 @@ using TechTalk.SpecFlow;
 using YAGLi.Specs.Common.Validators;
 using YAGLi.Tests.Utils;
 
-namespace YAGLi.Specs.DirectedGraph
+namespace YAGLi.Specs.DirectedGraph.Validators
 {
     [Binding]
     public sealed class DirectedGraphValidator
