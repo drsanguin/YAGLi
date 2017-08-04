@@ -1,5 +1,5 @@
-﻿using Moq;
-using NFluent;
+﻿using NFluent;
+using NSubstitute;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +17,9 @@ namespace YAGLi.Tests.Extensions.EdgeCollection
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            Mock<IModelAGraph<int, Edge<int>>> mockedGraph = new Mock<IModelAGraph<int, Edge<int>>>();
-            mockedGraph.Setup(x => x.ContainsVertices(It.IsAny<int[]>())).Returns<int[]>(vertices => vertices.All(vertex => vertex % 2 == 0));
-
-            _graph = mockedGraph.Object;
+            _graph = Substitute.For<IModelAGraph<int, Edge<int>>>();
+            _graph.ContainsVertices(Arg.Any<int[]>())
+                  .Returns(args => args.Arg<IEnumerable<int>>().All(vertex => vertex % 2 == 0));
         }
 
         [Test]
@@ -49,7 +48,7 @@ namespace YAGLi.Tests.Extensions.EdgeCollection
             };
 
             Check.That(edges.FilterEdgesWhosVerticesAreNotContainedInThisGraph(_graph))
-                .ContainsExactly(edges[0], edges[2], edges[4], edges[6], edges[8]);
+                 .ContainsExactly(edges[0], edges[2], edges[4], edges[6], edges[8]);
         }
     }
 }
