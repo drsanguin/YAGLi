@@ -12,7 +12,7 @@ environment:
     secure: 3cbofsGHnBMS8iG+QvluRYYGK0cPr941ITq+Jxy8ZoGCXFWCQU3Xr73nMNwj4ccx
 
 after_test:
-  - cmd: packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[YAGLi]* -[YAGLi.Tests]* -[YAGLi.Specs]*" -target:"packages\NUnit.ConsoleRunner.3.6.1\tools\nunit3-console.exe" -targetargs:"/domain:single /out:TestResult.txt tests/YAGLi.Tests/bin/debug/YAGLi.Tests.dll tests/YAGLi.Specs/bin/debug/YAGLi.Specs.dll" -output:coverage.xml
+  - cmd: packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -filter:"+[YAGLi]* -[YAGLi.Tests]* -[YAGLi.Specs]*" -target:"packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" -targetargs:"/domain:single /out:TestResult.txt tests/YAGLi.Tests/bin/debug/YAGLi.Tests.dll tests/YAGLi.Specs/bin/debug/YAGLi.Specs.dll" -output:coverage.xml
   - cmd: packages\coveralls.io.1.3.4\tools\coveralls.net.exe --opencover coverage.xml -r %COVERALLS_REPO_TOKEN%
 
 hosts:
