@@ -1,15 +1,13 @@
 ﻿using NFluent;
 using System.Collections.Generic;
 using TechTalk.SpecFlow;
+using YAGLi.Specs.Common.AbstractValidators;
 using YAGLi.Tests.Utils;
 
 namespace YAGLi.Specs.Common.Validators
 {
-    [Binding]
-    public sealed class VertexCollectionValidator
+    public sealed class VertexCollectionValidator : BaseValidator<IEnumerable<Vertex>>
     {
-        public IEnumerable<Vertex> Subject { get; set; }
-
         [Then(@"I get the vertices")]
         public void ThenIGetTheVertices(IEnumerable<Vertex> vertices)
         {

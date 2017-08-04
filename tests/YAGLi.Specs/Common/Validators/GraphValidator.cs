@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using TechTalk.SpecFlow;
 using YAGLi.Interfaces;
+using YAGLi.Specs.Common.AbstractValidators;
 using YAGLi.Tests.Utils;
 
 namespace YAGLi.Specs.Common.Validators
 {
-    [Binding]
-    public sealed class GraphValidator
+    public sealed class GraphValidator : BaseValidator<IModelAGraph<Vertex, Edge<Vertex>>>
     {
-        public IModelAGraph<Vertex, Edge<Vertex>> Subject { get; set; }
-
         [Then(@"he should contains the vertices")]
         public void ThenHeShouldContainsTheVerticesAnd(IEnumerable<Vertex> vertices)
         {

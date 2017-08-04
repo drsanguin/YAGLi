@@ -57,6 +57,8 @@
     <Compile Include="Common\AbstractSteps\StepWithBooleanValidator.cs" />
     <Compile Include="Common\AbstractSteps\StepWithEdgeCollectionValidator.cs" />
     <Compile Include="Common\AbstractSteps\StepWithVertexCollectionValidator.cs" />
+    <Compile Include="Common\AbstractValidators\BaseValidator.cs" />
+    <Compile Include="Common\AbstractValidators\ValidatorUsingGraphValidator.cs" />
     <Compile Include="Common\Builders\GraphBuilder.cs" />
     <Compile Include="Common\Steps\NeighborsOfStep.cs" />
     <Compile Include="Common\Steps\PathsToNeighborsOfStep.cs" />

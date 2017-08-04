@@ -1,13 +1,11 @@
 ﻿using NFluent;
 using TechTalk.SpecFlow;
+using YAGLi.Specs.Common.AbstractValidators;
 
 namespace YAGLi.Specs.Common.Validators
 {
-    [Binding]
-    public sealed class DegreeValidator
+    public sealed class DegreeValidator : BaseValidator<int>
     {
-        public int Subject { get; set; }
-
         [Then(@"I get a degree of (.*)")]
         public void ThenIGetTheDegree(int expectedDegree)
         {

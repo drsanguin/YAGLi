@@ -1,13 +1,11 @@
 ﻿using NFluent;
 using TechTalk.SpecFlow;
+using YAGLi.Specs.Common.AbstractValidators;
 
 namespace YAGLi.Specs.Common.Validators
 {
-    [Binding]
-    public sealed class BooleanValidator
+    public sealed class BooleanValidator : BaseValidator<bool>
     {
-        public bool Subject { get; set; }
-
         [Then(@"I get the answer true")]
         public void ThenIGetTheAnswerTrue()
         {
