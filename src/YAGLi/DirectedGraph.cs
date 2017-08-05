@@ -267,18 +267,7 @@ namespace YAGLi
 
         public override int GetHashCode()
         {
-            var hash = DIRECTED_GRAPHS_HASH_BASE;
-
-            hash = hash * DIRECTED_GRAPHS_HASH_FACTOR + AllowLoops.GetHashCode();
-            hash = hash * DIRECTED_GRAPHS_HASH_FACTOR + AllowParallelEdges.GetHashCode();
-            hash = Edges.Select(_edgesComparer.GetHashCode)
-                        .OrderBy(edgeHashCode => edgeHashCode)
-                        .Aggregate(hash, (x, y) => x * DIRECTED_GRAPHS_HASH_FACTOR + y);
-            hash = Vertices.Select(VerticesComparer.GetHashCode)
-                           .OrderBy(vertexHashCode => vertexHashCode)
-                           .Aggregate(hash, (x, y) => x * DIRECTED_GRAPHS_HASH_FACTOR + y);
-
-            return hash;
+            return GetHashCode(DIRECTED_GRAPHS_HASH_BASE, DIRECTED_GRAPHS_HASH_FACTOR, _edgesComparer);
         }
 
         public override IEnumerable<TEdge> IncidentEdgesOf(TVertex vertex)

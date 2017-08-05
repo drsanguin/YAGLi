@@ -104,6 +104,22 @@ namespace YAGLi
 
             return true;
         }
+
+        protected int GetHashCode(int hashBase, int hashFactor, IEqualityComparer<TEdge> edgesComparer)
+        {
+            var hash = hashBase;
+
+            hash = hash * hashFactor + AllowLoops.GetHashCode();
+            hash = hash * hashFactor + AllowParallelEdges.GetHashCode();
+            hash = Edges.Select(edgesComparer.GetHashCode)
+                        .OrderBy(edgeHashCode => edgeHashCode)
+                        .Aggregate(hash, (x, y) => x * hashFactor + y);
+            hash = Vertices.Select(VerticesComparer.GetHashCode)
+                           .OrderBy(vertexHashCode => vertexHashCode)
+                           .Aggregate(hash, (x, y) => x * hashFactor + y);
+
+            return hash;
+        }
         #endregion
     }
 }
