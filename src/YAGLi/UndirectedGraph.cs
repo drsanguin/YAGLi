@@ -299,14 +299,13 @@ namespace YAGLi
 
             hash = hash * UNDIRECTED_GRAPHS_HASH_FACTOR + AllowLoops.GetHashCode();
             hash = hash * UNDIRECTED_GRAPHS_HASH_FACTOR + AllowParallelEdges.GetHashCode();
-            hash = Edges
-                .Select(_edgesComparer.GetHashCode)
-                .OrderBy(edgeHashCode => edgeHashCode)
-                .Aggregate(hash, (x, y) => x * UNDIRECTED_GRAPHS_HASH_FACTOR + y);
-            hash = Vertices
-                .Select(VerticesComparer.GetHashCode)
-                .OrderBy(vertexHashCode => vertexHashCode)
-                .Aggregate(hash, (x, y) => x * UNDIRECTED_GRAPHS_HASH_FACTOR + y);
+            hash = Edges.Select(_edgesComparer.GetHashCode)
+                        .OrderBy(edgeHashCode => edgeHashCode)
+                        .Aggregate(hash, (x, y) => x * UNDIRECTED_GRAPHS_HASH_FACTOR + y);
+            hash = Vertices.Select(VerticesComparer.GetHashCode)
+                           .OrderBy(vertexHashCode => vertexHashCode)
+                           .Aggregate(hash, (x, y) => x * UNDIRECTED_GRAPHS_HASH_FACTOR + y);
+                
 
             return hash;
         }
