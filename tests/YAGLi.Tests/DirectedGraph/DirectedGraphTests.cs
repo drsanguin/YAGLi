@@ -357,5 +357,69 @@ namespace YAGLi.Tests.DirectedGraph
 
             Check.That(graph1.Equals(graph2)).IsFalse();
         }
+
+        [Test]
+        public void DirectedGraph_GetHashCode_should_return_the_same_result_for_two_DirectedGraph_who_are_equal()
+        {
+            var graph1 = new DirectedGraph<Vertex, Edge<Vertex>>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v3", "v4")
+                },
+                new Vertex[] { "v0", "v1", "v3", "v4" }, new VertexEqualityComparer());
+
+            var graph2 = new DirectedGraph<Vertex, Edge<Vertex>>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v0", "v1")
+                },
+                new Vertex[] { "v4", "v3", "v1", "v0" }, new VertexEqualityComparer());
+
+            Check.That(graph1.GetHashCode()).IsEqualTo(graph2.GetHashCode());
+        }
+
+        [Test]
+        public void DirectedGraph_GetHashCode_should_return_a_different_result_for_two_DirectedGraph_who_are_not_equal()
+        {
+            var graph1 = new DirectedGraph<Vertex, Edge<Vertex>>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v0", "v1"),
+                    new Edge<Vertex>("v1", "v4"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v3", "v4"),
+                    new Edge<Vertex>("v3", "v4")
+                },
+                new Vertex[] { "v0", "v1", "v3", "v4" }, new VertexEqualityComparer());
+
+            var graph2 = new DirectedGraph<Vertex, Edge<Vertex>>(
+                true,
+                true,
+                new Edge<Vertex>[]
+                {
+                    new Edge<Vertex>("v1", "v0"),
+                    new Edge<Vertex>("v4", "v1"),
+                    new Edge<Vertex>("v4", "v4"),
+                    new Edge<Vertex>("v4", "v3"),
+                    new Edge<Vertex>("v4", "v3")
+                },
+                new Vertex[] { "v0", "v1", "v3", "v4" }, new VertexEqualityComparer());
+
+            Check.That(graph1.GetHashCode()).IsNotEqualTo(graph2.GetHashCode());
+        }
     }
 }

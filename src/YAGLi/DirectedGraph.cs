@@ -12,6 +12,11 @@ namespace YAGLi
 {
     public class DirectedGraph<TVertex, TEdge> : AbstractGraph<TVertex, TEdge, DirectedGraph<TVertex, TEdge>>, IModelADirectedGraph<TVertex, TEdge> where TEdge : IModelAnEdge<TVertex>
     {
+        #region Constants
+        private const int DIRECTED_GRAPHS_HASH_BASE = 109;
+        private const int DIRECTED_GRAPHS_HASH_FACTOR = 127;
+        #endregion
+
         #region Fields
         private readonly IReadOnlyDictionary<TVertex, IEnumerable<TEdge>> _incidentEdgesIn;
         private readonly IReadOnlyDictionary<TVertex, IEnumerable<TEdge>> _incidentEdgesOutOf;
@@ -262,7 +267,18 @@ namespace YAGLi
 
         public override int GetHashCode()
         {
-            throw new NotImplementedException();
+            var hash = DIRECTED_GRAPHS_HASH_BASE;
+
+            hash = hash * DIRECTED_GRAPHS_HASH_FACTOR + AllowLoops.GetHashCode();
+            hash = hash * DIRECTED_GRAPHS_HASH_FACTOR + AllowParallelEdges.GetHashCode();
+            hash = Edges.Select(_edgesComparer.GetHashCode)
+                        .OrderBy(edgeHashCode => edgeHashCode)
+                        .Aggregate(hash, (x, y) => x * DIRECTED_GRAPHS_HASH_FACTOR + y);
+            hash = Vertices.Select(VerticesComparer.GetHashCode)
+                           .OrderBy(vertexHashCode => vertexHashCode)
+                           .Aggregate(hash, (x, y) => x * DIRECTED_GRAPHS_HASH_FACTOR + y);
+
+            return hash;
         }
 
         public override IEnumerable<TEdge> IncidentEdgesOf(TVertex vertex)
