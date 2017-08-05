@@ -280,25 +280,7 @@ namespace YAGLi
 
         public bool Equals(IModelAUndirectedGraph<TVertex, TEdge> other)
         {
-            if (ReferenceEquals(other, null))
-            {
-                return false;
-            }
-
-            if (ReferenceEquals(other, this))
-            {
-                return true;
-            }
-
-            if (AllowLoops != other.AllowLoops
-                || AllowParallelEdges != other.AllowParallelEdges
-                || !Edges.IsEquivalent(other.Edges, new IgnoreDirectionAndDisallowParallelEdges<TVertex, TEdge>(VerticesComparer))
-                || !Vertices.IsEquivalent(other.Vertices, VerticesComparer))
-            {
-                return false;
-            }
-
-            return true;
+            return Equals(other, new IgnoreDirectionAndDisallowParallelEdges<TVertex, TEdge>(VerticesComparer));
         }
 
         public override bool Equals(IModelAGraph<TVertex, TEdge> other)

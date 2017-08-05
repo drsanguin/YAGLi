@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using YAGLi.Extensions.Collection;
 using YAGLi.Interfaces;
 
 namespace YAGLi
@@ -79,7 +80,30 @@ namespace YAGLi
                 || VerticesComparer.Equals(edge1.End1, edge2.End2)
                 || VerticesComparer.Equals(edge1.End2, edge2.End1)
                 || VerticesComparer.Equals(edge1.End2, edge2.End2);
-        } 
+        }
+
+        protected bool Equals<TOtherGraph>(TOtherGraph otherGraph, IEqualityComparer<TEdge> edgesComparer) where TOtherGraph : IModelAGraph<TVertex, TEdge>
+        {
+            if (ReferenceEquals(otherGraph, null))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(otherGraph, this))
+            {
+                return true;
+            }
+
+            if (AllowLoops != otherGraph.AllowLoops
+                || AllowParallelEdges != otherGraph.AllowParallelEdges
+                || !Edges.IsEquivalent(otherGraph.Edges, edgesComparer)
+                || !Vertices.IsEquivalent(otherGraph.Vertices, VerticesComparer))
+            {
+                return false;
+            }
+
+            return true;
+        }
         #endregion
     }
 }
