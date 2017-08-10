@@ -57,6 +57,7 @@
     <Compile Include="EdgeComparers\ConsiderDirectionAndAllowParallelEdgesTests.cs" />
     <Compile Include="EdgeComparers\ConsiderDirectionAndDisallowParallelEdgesTests.cs" />
     <Compile Include="Extensions\Collection\EquivalentExtensionsTests.cs" />
+    <Compile Include="Extensions\Collection\ForEachExtensionTests.cs" />
     <Compile Include="Extensions\EdgeCollection\FilterEdgesNotContainedExtensionTests.cs" />
     <Compile Include="Extensions\EdgeCollection\FilterEdgesWhoViolatesAGraphPropertiesExtensionTests.cs" />
     <Compile Include="Extensions\EdgeCollection\FilterEdgesWithNullVerticesExtensionTests.cs" />
