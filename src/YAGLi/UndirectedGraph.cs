@@ -45,37 +45,31 @@ namespace YAGLi
         {
             _edgesComparer = AllowParallelEdges ? new IgnoreDirectionAndAllowParallelEdges<TVertex, TEdge>(VerticesComparer) as IEqualityComparer<TEdge> : new IgnoreDirectionAndDisallowParallelEdges<TVertex, TEdge>(VerticesComparer);
 
-            var filteredEdges = edges.ReplaceByEmptyIfNull()
-                                     .FilterNulls()
-                                     .FilterEdgesWithNullVertices<TVertex, TEdge>()
-                                     .Where(edge => !AllowLoops ? !VerticesComparer.Equals(edge.End1, edge.End2) : true)
-                                     .Distinct(_edgesComparer);
-
-            var filteredVertices = vertices.ReplaceByEmptyIfNull()
-                                           .FilterNulls()
-                                           .Distinct(VerticesComparer);
-
             var incidentEdges = new Dictionary<TVertex, IList<TEdge>>(VerticesComparer);
 
-            foreach (var edge in filteredEdges)
-            {
-                var distinctEnds = VerticesComparer.Equals(edge.End1, edge.End2) ? edge.End1.Yield() : new TVertex[] { edge.End1, edge.End2 };
+            edges.ReplaceByEmptyIfNull()
+                 .FilterNulls()
+                 .FilterEdgesWithNullVertices<TVertex, TEdge>()
+                 .Where(edge => !AllowLoops ? !VerticesComparer.Equals(edge.End1, edge.End2) : true)
+                 .Distinct(_edgesComparer)
+                 .ForEach(edge =>
+                 {
+                     foreach (var end in new TVertex[] { edge.End1, edge.End2 }.Distinct(VerticesComparer))
+                     {
+                         if (!incidentEdges.ContainsKey(end))
+                         {
+                             incidentEdges[end] = new List<TEdge>();
+                         }
 
-                foreach (var end in distinctEnds)
-                {
-                    if (!incidentEdges.ContainsKey(end))
-                    {
-                        incidentEdges[end] = new List<TEdge>();
-                    }
+                         incidentEdges[end].Add(edge);
+                     }
+                 });
 
-                    incidentEdges[end].Add(edge);
-                }
-            }
-
-            foreach (var vertex in filteredVertices.Where(vertex => !incidentEdges.ContainsKey(vertex)))
-            {
-                incidentEdges.Add(vertex, new List<TEdge>(0));
-            }
+            vertices.ReplaceByEmptyIfNull()
+                    .FilterNulls()
+                    .Distinct(VerticesComparer)
+                    .Where(vertex => !incidentEdges.ContainsKey(vertex))
+                    .ForEach(vertex => incidentEdges.Add(vertex, new List<TEdge>(0)));
 
             _incidentEdges = incidentEdges.ToDictionary(x => x.Key, x => x.Value.AsEnumerable(), VerticesComparer);
         }

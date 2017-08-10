@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using YAGLi.Extensions.Collection;
 using YAGLi.Interfaces;
 
 namespace YAGLi.Extensions.EdgeCollection
@@ -12,27 +13,24 @@ namespace YAGLi.Extensions.EdgeCollection
             var referenceEdges = graph.Edges.ToList();
             var mapedEdges = new List<TEdge>();
 
-            foreach (var comparer in edgeComparers)
+            edgeComparers.ForEach(comparer =>
             {
-                for (var i = inputEdges.Count - 1; i >= 0; i--)
-                {
-                    if (!referenceEdges.Contains(inputEdges[i], comparer))
-                    {
-                        continue;
-                    }
+                Enumerable.Range(0, inputEdges.Count)
+                          .Reverse()
+                          .ForEach(i =>
+                          {
+                              if (!referenceEdges.Contains(inputEdges[i], comparer))
+                              {
+                                  return;
+                              }
 
-                    var firstReferenceToMatch = referenceEdges.First(edge => comparer.Equals(inputEdges[i], edge));
+                              var firstReferenceToMatch = referenceEdges.First(edge => comparer.Equals(inputEdges[i], edge));
 
-                    mapedEdges.Add(firstReferenceToMatch);
-                    referenceEdges.Remove(firstReferenceToMatch);
-                    inputEdges.RemoveAt(i);
-                }
-
-                if (!inputEdges.Any())
-                {
-                    break;
-                }
-            }
+                              mapedEdges.Add(firstReferenceToMatch);
+                              referenceEdges.Remove(firstReferenceToMatch);
+                              inputEdges.RemoveAt(i);
+                          });
+            });
 
             return mapedEdges;
         }
