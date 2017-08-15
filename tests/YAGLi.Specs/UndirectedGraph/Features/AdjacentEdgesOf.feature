@@ -24,8 +24,8 @@ Scenario: Get the adjacent edges of an edge located into a undirected graph who 
 	Then I get the edges
 	| End1 | End2 |
 	| v1   | v4   |
-	| v4   | v4   |
 	| v3   | v4   |
+	| v4   | v4   |
 
 Scenario: Get the adjacent edges of an edge not located into a undirected graph who allow loops and parallel edges
 	Given the property allow loops

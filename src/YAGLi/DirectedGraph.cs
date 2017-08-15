@@ -41,36 +41,26 @@ namespace YAGLi
             var incidentEdgesIn = new Dictionary<TVertex, IList<TEdge>>(VerticesComparer);
             var incidentEdgesOut = new Dictionary<TVertex, IList<TEdge>>(VerticesComparer);
 
-            edges.ReplaceByEmptyIfNull()
-                 .FilterNulls()
-                 .FilterEdgesWithNullVertices<TVertex, TEdge>()
-                 .Where(edge => !AllowLoops ? !VerticesComparer.Equals(edge.End1, edge.End2) : true)
-                 .Distinct(_edgesComparer)
-                 .ForEach(edge =>
-                 {
-                     if (!incidentEdgesOut.ContainsKey(edge.End1))
-                     {
-                         incidentEdgesOut[edge.End1] = new List<TEdge>();
-                     }
-
-                     if (!incidentEdgesIn.ContainsKey(edge.End2))
-                     {
-                         incidentEdgesIn[edge.End2] = new List<TEdge>();
-                     }
-
-                     incidentEdgesOut[edge.End1].Add(edge);
-                     incidentEdgesIn[edge.End2].Add(edge);
-                 });
-
             vertices.ReplaceByEmptyIfNull()
                     .FilterNulls()
                     .Distinct(VerticesComparer)
-                    .Where(vertex => !incidentEdgesOut.ContainsKey(vertex) && !incidentEdgesIn.ContainsKey(vertex))
                     .ForEach(vertex =>
                     {
                         incidentEdgesOut.Add(vertex, new List<TEdge>(0));
                         incidentEdgesIn.Add(vertex, new List<TEdge>(0));
                     });
+
+            edges.ReplaceByEmptyIfNull()
+                 .FilterNulls()
+                 .FilterEdgesWithNullVertices<TVertex, TEdge>()
+                 .Where(edge => !AllowLoops ? !VerticesComparer.Equals(edge.End1, edge.End2) : true)
+                 .Where(edge => incidentEdgesIn.ContainsKey(edge.End1) && incidentEdgesIn.ContainsKey(edge.End2) && incidentEdgesOut.ContainsKey(edge.End1) && incidentEdgesOut.ContainsKey(edge.End2))
+                 .Distinct(_edgesComparer)
+                 .ForEach(edge =>
+                 {
+                     incidentEdgesOut[edge.End1].Add(edge);
+                     incidentEdgesIn[edge.End2].Add(edge);
+                 });
 
             _incidentEdgesOutOf = incidentEdgesOut.ToDictionary(x => x.Key, x => x.Value.AsEnumerable(), VerticesComparer);
             _incidentEdgesIn = incidentEdgesIn.ToDictionary(x => x.Key, x => x.Value.AsEnumerable(), VerticesComparer);

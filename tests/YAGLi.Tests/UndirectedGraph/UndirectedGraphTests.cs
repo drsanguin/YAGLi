@@ -358,7 +358,7 @@ namespace YAGLi.Tests.UndirectedGraph
                 new Vertex[] { "v0", "v1", "v2", "v3", "v4" }, new VertexEqualityComparer());
             var newLine = Environment.NewLine;
 
-            Check.That(graph.ToString()).IsEqualTo($"{{{newLine}    AllowLoops = True{newLine}    AllowParallelEdges = True{newLine}    Vertices = [v0, v1, v4, v3, v2]{newLine}    Edges = [{newLine}        (v0 - v1),{newLine}        (v1 - v4),{newLine}        (v4 - v4),{newLine}        (v3 - v4),{newLine}        (v3 - v4){newLine}    ]{newLine}}}");
+            Check.That(graph.ToString()).IsEqualTo($"{{{newLine}    AllowLoops = True{newLine}    AllowParallelEdges = True{newLine}    Vertices = [v0, v1, v2, v3, v4]{newLine}    Edges = [{newLine}        (v0 - v1),{newLine}        (v1 - v4),{newLine}        (v3 - v4),{newLine}        (v3 - v4),{newLine}        (v4 - v4){newLine}    ]{newLine}}}");
         }
 
         [Test]

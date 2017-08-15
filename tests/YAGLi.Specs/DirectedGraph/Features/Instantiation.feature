@@ -16,9 +16,9 @@ Scenario: Create a directed graph who disallow loops and parallel edges
 	When I create a new directed graph with them
 	Then he should contains the vertices
 	| Name |
+	| v0   |
 	| v1   |
 	| v2   |
-	| v0   |
 	And he should contains the edges
 	| End1 | End2 |
 	| v0   | v1   |
@@ -39,9 +39,9 @@ Scenario: Create a directed graph who disallow loops and allow parallel edges
 	When I create a new directed graph with them
 	Then he should contains the vertices
 	| Name |
+	| v0   |
 	| v1   |
 	| v2   |
-	| v0   |
 	And he should contains the edges
 	| End1 | End2 |
 	| v0   | v1   |
@@ -63,9 +63,9 @@ Scenario: Create a directed graph who allow loops and disallow parallel edges
 	When I create a new directed graph with them
 	Then he should contains the vertices
 	| Name |
+	| v0   |
 	| v1   |
 	| v2   |
-	| v0   |
 	And he should contains the edges
 	| End1 | End2 |
 	| v0   | v1   |
@@ -87,11 +87,45 @@ Scenario: Create a directed graph who allow loops and parallel edges
 	When I create a new directed graph with them
 	Then he should contains the vertices
 	| Name |
+	| v0   |
 	| v1   |
 	| v2   |
-	| v0   |
 	And he should contains the edges
 	| End1 | End2 |
 	| v0   | v1   |
 	| v0   | v1   |
 	| v1   | v1   |
+
+Scenario: Create a DirectedGraph by passing to the constructor edges who contains vertices who are not passed in the constructor
+	Given the property allow loops
+	And the property allow parallel edges
+	And the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And the edges
+	| End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v4   | v4   |
+	| v4   | v3   |
+	| v3   | v4   |
+	| v5   | v6   |
+	When I create a new directed graph with them
+	Then he should contains the vertices
+	| Name |
+	| v0   |
+	| v1   |
+	| v2   |
+	| v3   |
+	| v4   |
+	And he should contains the edges
+	| End1 | End2 |
+	| v0   | v1   |
+	| v1   | v4   |
+	| v3   | v4   |
+	| v4   | v4   |
+	| v4   | v3   |

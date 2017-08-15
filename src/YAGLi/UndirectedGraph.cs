@@ -47,29 +47,25 @@ namespace YAGLi
 
             var incidentEdges = new Dictionary<TVertex, IList<TEdge>>(VerticesComparer);
 
+            vertices.ReplaceByEmptyIfNull()
+                    .FilterNulls()
+                    .Distinct(VerticesComparer)
+                    .ForEach(vertex => incidentEdges.Add(vertex, new List<TEdge>(0)));
+
             edges.ReplaceByEmptyIfNull()
                  .FilterNulls()
                  .FilterEdgesWithNullVertices<TVertex, TEdge>()
                  .Where(edge => !AllowLoops ? !VerticesComparer.Equals(edge.End1, edge.End2) : true)
+                 .Where(edge => incidentEdges.ContainsKey(edge.End1) && incidentEdges.ContainsKey(edge.End2))
                  .Distinct(_edgesComparer)
                  .ForEach(edge =>
                  {
-                     foreach (var end in new TVertex[] { edge.End1, edge.End2 }.Distinct(VerticesComparer))
-                     {
-                         if (!incidentEdges.ContainsKey(end))
-                         {
-                             incidentEdges[end] = new List<TEdge>();
-                         }
-
-                         incidentEdges[end].Add(edge);
-                     }
+                     new TVertex[] { edge.End1, edge.End2 }.Distinct(VerticesComparer)
+                                                           .ForEach(end =>
+                                                           {
+                                                               incidentEdges[end].Add(edge);
+                                                           });
                  });
-
-            vertices.ReplaceByEmptyIfNull()
-                    .FilterNulls()
-                    .Distinct(VerticesComparer)
-                    .Where(vertex => !incidentEdges.ContainsKey(vertex))
-                    .ForEach(vertex => incidentEdges.Add(vertex, new List<TEdge>(0)));
 
             _incidentEdges = incidentEdges.ToDictionary(x => x.Key, x => x.Value.AsEnumerable(), VerticesComparer);
         }
@@ -168,7 +164,7 @@ namespace YAGLi
                 return this;
             }
 
-            return new UndirectedGraph<TVertex, TEdge>(AllowLoops, AllowParallelEdges, Edges.Concat(filteredEdges), Vertices, VerticesComparer);
+            return new UndirectedGraph<TVertex, TEdge>(AllowLoops, AllowParallelEdges, Edges.Concat(filteredEdges), Vertices.Concat(filteredEdges.SelectMany(edge => new TVertex[] { edge.End1, edge.End2 })), VerticesComparer);
         }
 
         public override UndirectedGraph<TVertex, TEdge> AddEdges(IEnumerable<TEdge> edges)
