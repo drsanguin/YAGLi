@@ -67,7 +67,7 @@ namespace YAGLi
                                                            });
                  });
 
-            _incidentEdges = incidentEdges.ToDictionary(x => x.Key, x => x.Value.AsEnumerable(), VerticesComparer);
+            _incidentEdges = incidentEdges.ToDictionary(keyValuePair => keyValuePair.Key, keyValuePair => keyValuePair.Value.AsEnumerable(), VerticesComparer);
         }
         #endregion
 

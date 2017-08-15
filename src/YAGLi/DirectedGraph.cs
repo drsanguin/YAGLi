@@ -18,7 +18,7 @@ namespace YAGLi
         #endregion
 
         #region Fields
-        private readonly IReadOnlyDictionary<TVertex, IEnumerable<TEdge>> _incidentEdgesIn;
+        private readonly IReadOnlyDictionary<TVertex, IEnumerable<TEdge>> _incidentEdgesInto;
         private readonly IReadOnlyDictionary<TVertex, IEnumerable<TEdge>> _incidentEdgesOutOf;
 
         /// <summary>
@@ -38,32 +38,32 @@ namespace YAGLi
         {
             _edgesComparer = AllowParallelEdges ? new ConsiderDirectionAndAllowParallelEdges<TVertex, TEdge>(VerticesComparer) as IEqualityComparer<TEdge> : new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(VerticesComparer);
 
-            var incidentEdgesIn = new Dictionary<TVertex, IList<TEdge>>(VerticesComparer);
-            var incidentEdgesOut = new Dictionary<TVertex, IList<TEdge>>(VerticesComparer);
+            var incidentEdgesInto = new Dictionary<TVertex, IList<TEdge>>(VerticesComparer);
+            var incidentEdgesOutOf = new Dictionary<TVertex, IList<TEdge>>(VerticesComparer);
 
             vertices.ReplaceByEmptyIfNull()
                     .FilterNulls()
                     .Distinct(VerticesComparer)
                     .ForEach(vertex =>
                     {
-                        incidentEdgesOut.Add(vertex, new List<TEdge>(0));
-                        incidentEdgesIn.Add(vertex, new List<TEdge>(0));
+                        incidentEdgesOutOf.Add(vertex, new List<TEdge>(0));
+                        incidentEdgesInto.Add(vertex, new List<TEdge>(0));
                     });
 
             edges.ReplaceByEmptyIfNull()
                  .FilterNulls()
                  .FilterEdgesWithNullVertices<TVertex, TEdge>()
                  .Where(edge => !AllowLoops ? !VerticesComparer.Equals(edge.End1, edge.End2) : true)
-                 .Where(edge => incidentEdgesIn.ContainsKey(edge.End1) && incidentEdgesIn.ContainsKey(edge.End2) && incidentEdgesOut.ContainsKey(edge.End1) && incidentEdgesOut.ContainsKey(edge.End2))
+                 .Where(edge => incidentEdgesInto.ContainsKey(edge.End1) && incidentEdgesInto.ContainsKey(edge.End2) && incidentEdgesOutOf.ContainsKey(edge.End1) && incidentEdgesOutOf.ContainsKey(edge.End2))
                  .Distinct(_edgesComparer)
                  .ForEach(edge =>
                  {
-                     incidentEdgesOut[edge.End1].Add(edge);
-                     incidentEdgesIn[edge.End2].Add(edge);
+                     incidentEdgesOutOf[edge.End1].Add(edge);
+                     incidentEdgesInto[edge.End2].Add(edge);
                  });
 
-            _incidentEdgesOutOf = incidentEdgesOut.ToDictionary(x => x.Key, x => x.Value.AsEnumerable(), VerticesComparer);
-            _incidentEdgesIn = incidentEdgesIn.ToDictionary(x => x.Key, x => x.Value.AsEnumerable(), VerticesComparer);
+            _incidentEdgesOutOf = incidentEdgesOutOf.ToDictionary(keyValuePair => keyValuePair.Key, keyValuePair => keyValuePair.Value.AsEnumerable(), VerticesComparer);
+            _incidentEdgesInto = incidentEdgesInto.ToDictionary(keyValuePair => keyValuePair.Key, keyValuePair => keyValuePair.Value.AsEnumerable(), VerticesComparer);
         }
         #endregion
 
@@ -83,7 +83,7 @@ namespace YAGLi
         {
             get
             {
-                return _incidentEdgesIn.Keys
+                return _incidentEdgesInto.Keys
                                        .Concat(_incidentEdgesOutOf.Keys)
                                        .Distinct(VerticesComparer);
             }
@@ -236,7 +236,7 @@ namespace YAGLi
 
         public override int DegreeOf(TVertex vertex)
         {
-            return !ContainsVertex(vertex) ? - 1 : _incidentEdgesIn[vertex].Count() + _incidentEdgesOutOf[vertex].Count();
+            return !ContainsVertex(vertex) ? - 1 : _incidentEdgesInto[vertex].Count() + _incidentEdgesOutOf[vertex].Count();
         }
 
         public bool Equals(IModelADirectedGraph<TVertex, TEdge> other)
@@ -267,7 +267,7 @@ namespace YAGLi
 
         public IEnumerable<TEdge> IncidentEdgesInto(TVertex vertex)
         {
-            return !ContainsVertex(vertex) ? Enumerable.Empty<TEdge>() : _incidentEdgesIn[vertex];
+            return !ContainsVertex(vertex) ? Enumerable.Empty<TEdge>() : _incidentEdgesInto[vertex];
         }
 
         public IEnumerable<TEdge> IncidentEdgesOutOf(TVertex vertex)
@@ -292,7 +292,7 @@ namespace YAGLi
 
         public int InDegreeOf(TVertex vertex)
         {
-            return !ContainsVertex(vertex) ? -1 : _incidentEdgesIn[vertex].Count();
+            return !ContainsVertex(vertex) ? -1 : _incidentEdgesInto[vertex].Count();
         }
 
         public int OutDegreeOf(TVertex vertex)
