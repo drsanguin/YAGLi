@@ -65,6 +65,7 @@
     <Compile Include="EdgeComparers\IgnoreDirectionAndAllowParallelEdgesTests.cs" />
     <Compile Include="EdgeComparers\IgnoreDirectionAndDisallowParallelEdgesTests.cs" />
     <Compile Include="Extensions\EdgeCollection\MapEdgesWithTheEdgesOfAGraphExtensionTests.cs" />
+    <Compile Include="Extensions\Edges\EndsExtensionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions\Collection\ReplaceByEmptyIfNullExtensionTests.cs" />
     <Compile Include="UndirectedGraph\UndirectedGraphCtorDefensiveCodeTests.cs" />
