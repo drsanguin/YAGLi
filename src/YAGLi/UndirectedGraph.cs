@@ -6,6 +6,7 @@ using YAGLi.EdgeComparers;
 using YAGLi.Extensions;
 using YAGLi.Extensions.Collection;
 using YAGLi.Extensions.EdgeCollection;
+using YAGLi.Extensions.Ends;
 using YAGLi.Interfaces;
 
 namespace YAGLi
@@ -60,11 +61,12 @@ namespace YAGLi
                  .Distinct(_edgesComparer)
                  .ForEach(edge =>
                  {
-                     new TVertex[] { edge.End1, edge.End2 }.Distinct(VerticesComparer)
-                                                           .ForEach(end =>
-                                                           {
-                                                               incidentEdges[end].Add(edge);
-                                                           });
+                    edge.Ends()
+                        .Distinct(VerticesComparer)
+                        .ForEach(end =>
+                        {
+                            incidentEdges[end].Add(edge);
+                        });
                  });
 
             _incidentEdges = incidentEdges.ToDictionary(keyValuePair => keyValuePair.Key, keyValuePair => keyValuePair.Value.AsEnumerable(), VerticesComparer);
@@ -140,7 +142,7 @@ namespace YAGLi
                 return Enumerable.Empty<TVertex>();
             }
 
-            return _incidentEdges[vertex].SelectMany(edge => new TVertex[] { edge.End1, edge.End2 })
+            return _incidentEdges[vertex].SelectMany(edge => edge.Ends())
                                          .Except(vertex.Yield(), VerticesComparer);
         }
 
@@ -164,7 +166,7 @@ namespace YAGLi
                 return this;
             }
 
-            return new UndirectedGraph<TVertex, TEdge>(AllowLoops, AllowParallelEdges, Edges.Concat(filteredEdges), Vertices.Concat(filteredEdges.SelectMany(edge => new TVertex[] { edge.End1, edge.End2 })), VerticesComparer);
+            return new UndirectedGraph<TVertex, TEdge>(AllowLoops, AllowParallelEdges, Edges.Concat(filteredEdges), Vertices.Concat(filteredEdges.SelectMany(edge => edge.Ends())), VerticesComparer);
         }
 
         public override UndirectedGraph<TVertex, TEdge> AddEdges(IEnumerable<TEdge> edges)
@@ -310,7 +312,7 @@ namespace YAGLi
                 return edge.End1.Yield();
             }
 
-            return new TVertex[] { edge.End1, edge.End2 };
+            return edge.Ends();
         }
 
         public override IEnumerable<TVertex> NeighborsOf(TVertex vertex)

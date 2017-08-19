@@ -6,6 +6,7 @@ using YAGLi.EdgeComparers;
 using YAGLi.Extensions;
 using YAGLi.Extensions.Collection;
 using YAGLi.Extensions.EdgeCollection;
+using YAGLi.Extensions.Ends;
 using YAGLi.Interfaces;
 
 namespace YAGLi
@@ -173,7 +174,7 @@ namespace YAGLi
                 return Enumerable.Empty<TVertex>();
             }
 
-            var adjacentVertices =  IncidentEdgesOf(vertex).SelectMany(edge => new TVertex[] { edge.End1, edge.End2 })
+            var adjacentVertices =  IncidentEdgesOf(vertex).SelectMany(edge => edge.Ends())
                                           .Distinct(VerticesComparer);
 
             return Edges.Any(edge => VerticesComparer.Equals(edge.End1, vertex) && VerticesComparer.Equals(edge.End2, vertex)) ? adjacentVertices : adjacentVertices.Except(vertex.Yield(), VerticesComparer);
@@ -282,7 +283,8 @@ namespace YAGLi
                 return Enumerable.Empty<TVertex>();
             }
 
-            return new TVertex[] { edge.End1, edge.End2 }.Distinct(VerticesComparer);
+            return edge.Ends()
+                       .Distinct(VerticesComparer);
         }
 
         public override IEnumerable<TVertex> NeighborsOf(TVertex vertex)
