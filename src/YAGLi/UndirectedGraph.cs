@@ -59,15 +59,9 @@ namespace YAGLi
                  .Where(edge => !AllowLoops ? !VerticesComparer.Equals(edge.End1, edge.End2) : true)
                  .Where(edge => incidentEdges.ContainsKey(edge.End1) && incidentEdges.ContainsKey(edge.End2))
                  .Distinct(_edgesComparer)
-                 .ForEach(edge =>
-                 {
-                    edge.Ends()
-                        .Distinct(VerticesComparer)
-                        .ForEach(end =>
-                        {
-                            incidentEdges[end].Add(edge);
-                        });
-                 });
+                 .ForEach(edge => edge.Ends()
+                                      .Distinct(VerticesComparer)
+                                      .ForEach(end => incidentEdges[end].Add(edge)));
 
             _incidentEdges = incidentEdges.ToDictionary(keyValuePair => keyValuePair.Key, keyValuePair => keyValuePair.Value.AsEnumerable(), VerticesComparer);
         }
