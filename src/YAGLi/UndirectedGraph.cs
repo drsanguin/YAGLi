@@ -46,12 +46,14 @@ namespace YAGLi
         {
             _edgesComparer = AllowParallelEdges ? new IgnoreDirectionAndAllowParallelEdges<TVertex, TEdge>(VerticesComparer) as IEqualityComparer<TEdge> : new IgnoreDirectionAndDisallowParallelEdges<TVertex, TEdge>(VerticesComparer);
 
-            var incidentEdges = new Dictionary<TVertex, IList<TEdge>>(VerticesComparer);
-
-            vertices.ReplaceByEmptyIfNull()
-                    .FilterNulls()
-                    .Distinct(VerticesComparer)
-                    .ForEach(vertex => incidentEdges.Add(vertex, new List<TEdge>(0)));
+            var incidentEdges = vertices.ReplaceByEmptyIfNull()
+                                        .FilterNulls()
+                                        .Distinct(VerticesComparer)
+                                        .ToDictionary(
+                                            vertex => vertex,
+                                            vertex => Enumerable.Empty<TEdge>(),
+                                            VerticesComparer
+                                        );
 
             edges.ReplaceByEmptyIfNull()
                  .FilterNulls()
@@ -61,9 +63,9 @@ namespace YAGLi
                  .Distinct(_edgesComparer)
                  .ForEach(edge => edge.Ends()
                                       .Distinct(VerticesComparer)
-                                      .ForEach(end => incidentEdges[end].Add(edge)));
+                                      .ForEach(end => incidentEdges[end] = incidentEdges[end].Concat(edge.Yield())));
 
-            _incidentEdges = incidentEdges.ToDictionary(keyValuePair => keyValuePair.Key, keyValuePair => keyValuePair.Value.AsEnumerable(), VerticesComparer);
+            _incidentEdges = incidentEdges;
         }
         #endregion
 

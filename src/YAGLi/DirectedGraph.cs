@@ -39,17 +39,15 @@ namespace YAGLi
         {
             _edgesComparer = AllowParallelEdges ? new ConsiderDirectionAndAllowParallelEdges<TVertex, TEdge>(VerticesComparer) as IEqualityComparer<TEdge> : new ConsiderDirectionAndDisallowParallelEdges<TVertex, TEdge>(VerticesComparer);
 
-            var incidentEdgesInto = new Dictionary<TVertex, IList<TEdge>>(VerticesComparer);
-            var incidentEdgesOutOf = new Dictionary<TVertex, IList<TEdge>>(VerticesComparer);
-
-            vertices.ReplaceByEmptyIfNull()
-                    .FilterNulls()
-                    .Distinct(VerticesComparer)
-                    .ForEach(vertex =>
-                    {
-                        incidentEdgesOutOf.Add(vertex, new List<TEdge>(0));
-                        incidentEdgesInto.Add(vertex, new List<TEdge>(0));
-                    });
+            var incidentEdgesInto = vertices.ReplaceByEmptyIfNull()
+                                            .FilterNulls()
+                                            .Distinct(VerticesComparer)
+                                            .ToDictionary(
+                                                vertex => vertex,
+                                                vertex => Enumerable.Empty<TEdge>(),
+                                                VerticesComparer
+                                            );
+            var incidentEdgesOutOf = new Dictionary<TVertex, IEnumerable<TEdge>>(incidentEdgesInto, incidentEdgesInto.Comparer);
 
             edges.ReplaceByEmptyIfNull()
                  .FilterNulls()
@@ -59,12 +57,12 @@ namespace YAGLi
                  .Distinct(_edgesComparer)
                  .ForEach(edge =>
                  {
-                     incidentEdgesOutOf[edge.End1].Add(edge);
-                     incidentEdgesInto[edge.End2].Add(edge);
+                     incidentEdgesOutOf[edge.End1] = incidentEdgesOutOf[edge.End1].Concat(edge.Yield());
+                     incidentEdgesInto[edge.End2] = incidentEdgesInto[edge.End2].Concat(edge.Yield());
                  });
 
-            _incidentEdgesOutOf = incidentEdgesOutOf.ToDictionary(keyValuePair => keyValuePair.Key, keyValuePair => keyValuePair.Value.AsEnumerable(), VerticesComparer);
-            _incidentEdgesInto = incidentEdgesInto.ToDictionary(keyValuePair => keyValuePair.Key, keyValuePair => keyValuePair.Value.AsEnumerable(), VerticesComparer);
+            _incidentEdgesOutOf = incidentEdgesOutOf;
+            _incidentEdgesInto = incidentEdgesInto;
         }
         #endregion
 
