@@ -64,10 +64,7 @@ namespace YAGLi
 
         public override int GetHashCode()
         {
-            var hash = HASH_BASE;
-            hash = hash * HASH_FACTOR + _value.GetHashCode();
-
-            return hash;
+            return HASH_BASE * HASH_FACTOR + _value.GetHashCode();
         }
 
         public override string ToString()
