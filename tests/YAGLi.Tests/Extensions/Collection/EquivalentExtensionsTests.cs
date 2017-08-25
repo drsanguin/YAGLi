@@ -6,11 +6,11 @@ using YAGLi.Tests.Utils;
 
 namespace YAGLi.Tests.Extensions.Collection
 {
-    [TestFixture]
+    [TestFixture(TestOf = typeof(EquivalentExtensions))]
     public class EquivalentExtensionsTests
     {
         [Test]
-        public void EquivalentExtensions_IsEquivalent_should_return_false_if_the_two_IEnumerable_have_different_sizes()
+        public void IsEquivalent_should_return_false_if_the_two_IEnumerable_have_different_sizes()
         {
             var vertices1 = new Vertex[] { "42" };
             var vertices2 = new Vertex[] { "Hello, ", "World!" };
@@ -19,7 +19,7 @@ namespace YAGLi.Tests.Extensions.Collection
         }
 
         [Test]
-        public void EquivalentExtensions_IsEquivalent_should_return_false_if_the_two_IEnumerable_does_not_contains_the_same_elements()
+        public void IsEquivalent_should_return_false_if_the_two_IEnumerable_does_not_contains_the_same_elements()
         {
             var vertices1 = new Vertex[] { "Hello", ", World!" };
             var vertices2 = new Vertex[] { "Hello, ", "World!" };
@@ -28,7 +28,7 @@ namespace YAGLi.Tests.Extensions.Collection
         }
 
         [Test]
-        public void EquivalentExtensions_IsEquivalent_should_return_true_if_the_two_IEnumerable_contains_the_same_elements()
+        public void IsEquivalent_should_return_true_if_the_two_IEnumerable_contains_the_same_elements()
         {
             var vertices1 = new Vertex[] { "Hello", ", World!" };
             var vertices2 = new Vertex[] { ", World!", "Hello" };
@@ -37,7 +37,7 @@ namespace YAGLi.Tests.Extensions.Collection
         }
 
         [Test]
-        public void EquivalentExtensions_IsEquivalent_should_return_true_if_the_two_IEnumerable_are_the_same_references()
+        public void IsEquivalent_should_return_true_if_the_two_IEnumerable_are_the_same_references()
         {
             var vertices1 = new Vertex[] { "Hello", ", World!" };
 
@@ -45,7 +45,7 @@ namespace YAGLi.Tests.Extensions.Collection
         }
 
         [Test]
-        public void EquivalentExtensions_IsEquivalent_should_return_true_if_the_two_IEnumerable_are_sequence_equal()
+        public void IsEquivalent_should_return_true_if_the_two_IEnumerable_are_sequence_equal()
         {
             var vertices1 = new Vertex[] { "Hello", ", World!" };
             var vertices2 = new Vertex[] { "Hello", ", World!" };
@@ -54,7 +54,7 @@ namespace YAGLi.Tests.Extensions.Collection
         }
 
         [Test]
-        public void EquivalentExtensions_IsEquivalent_should_return_true_if_both_parameters_are_null()
+        public void IsEquivalent_should_return_true_if_both_parameters_are_null()
         {
             IEnumerable<Vertex> vertices1 = null;
             IEnumerable<Vertex> vertices2 = null;
@@ -63,7 +63,7 @@ namespace YAGLi.Tests.Extensions.Collection
         }
 
         [Test]
-        public void EquivalentExtensions_IsEquivalent_should_return_false_if_parameter_first_is_null_but_paramter_second_is_not()
+        public void IsEquivalent_should_return_false_if_parameter_first_is_null_but_paramter_second_is_not()
         {
             IEnumerable<Vertex> vertices1 = null;
             IEnumerable<Vertex> vertices2 = new Vertex[] { "Hello", ", World!" };
@@ -72,7 +72,7 @@ namespace YAGLi.Tests.Extensions.Collection
         }
 
         [Test]
-        public void EquivalentExtensions_IsEquivalent_should_return_false_if_parameter_second_is_null_but_paramter_first_is_not()
+        public void IsEquivalent_should_return_false_if_parameter_second_is_null_but_paramter_first_is_not()
         {
             IEnumerable<Vertex> vertices1 = new Vertex[] { "Hello", ", World!" };
             IEnumerable<Vertex> vertices2 = null;
@@ -81,7 +81,7 @@ namespace YAGLi.Tests.Extensions.Collection
         }
 
         [Test]
-        public void EquivalentExtensions_IsEquivalent_with_default_IEqualityComparer_should_return_false_if_the_two_IEnumerable_have_different_sizes()
+        public void IsEquivalent_with_default_IEqualityComparer_should_return_false_if_the_two_IEnumerable_have_different_sizes()
         {
             var vertices1 = new string[] { "42" };
             var vertices2 = new string[] { "Hello, ", "World!" };
@@ -90,7 +90,7 @@ namespace YAGLi.Tests.Extensions.Collection
         }
 
         [Test]
-        public void EquivalentExtensions_IsEquivalent_with_default_IEqualityComparer_should_return_false_if_the_two_IEnumerable_does_not_contains_the_same_elements()
+        public void IsEquivalent_with_default_IEqualityComparer_should_return_false_if_the_two_IEnumerable_does_not_contains_the_same_elements()
         {
             var vertices1 = new string[] { "Hello", ", World!" };
             var vertices2 = new string[] { "Hello, ", "World!" };
@@ -99,7 +99,7 @@ namespace YAGLi.Tests.Extensions.Collection
         }
 
         [Test]
-        public void EquivalentExtensions_IsEquivalent_with_default_IEqualityComparer_should_return_true_if_the_two_IEnumerable_contains_the_same_elements()
+        public void IsEquivalent_with_default_IEqualityComparer_should_return_true_if_the_two_IEnumerable_contains_the_same_elements()
         {
             var vertices1 = new string[] { "Hello", ", World!" };
             var vertices2 = new string[] { ", World!", "Hello" };
@@ -108,7 +108,7 @@ namespace YAGLi.Tests.Extensions.Collection
         }
 
         [Test]
-        public void EquivalentExtensions_IsEquivalent_with_default_IEqualityComparer_should_return_true_if_the_two_IEnumerable_are_the_same_references()
+        public void IsEquivalent_with_default_IEqualityComparer_should_return_true_if_the_two_IEnumerable_are_the_same_references()
         {
             var vertices1 = new string[] { "Hello", ", World!" };
 
@@ -116,7 +116,7 @@ namespace YAGLi.Tests.Extensions.Collection
         }
 
         [Test]
-        public void EquivalentExtensions_IsEquivalent_with_default_IEqualityComparer_should_return_true_if_the_two_IEnumerable_are_sequence_equal()
+        public void IsEquivalent_with_default_IEqualityComparer_should_return_true_if_the_two_IEnumerable_are_sequence_equal()
         {
             var vertices1 = new string[] { "Hello", ", World!" };
             var vertices2 = new string[] { "Hello", ", World!" };
@@ -125,7 +125,7 @@ namespace YAGLi.Tests.Extensions.Collection
         }
 
         [Test]
-        public void EquivalentExtensions_IsEquivalent_with_default_IEqualityComparer_should_return_true_if_both_parameters_are_null()
+        public void IsEquivalent_with_default_IEqualityComparer_should_return_true_if_both_parameters_are_null()
         {
             IEnumerable<string> vertices1 = null;
             IEnumerable<string> vertices2 = null;
@@ -134,7 +134,7 @@ namespace YAGLi.Tests.Extensions.Collection
         }
 
         [Test]
-        public void EquivalentExtensions_IsEquivalent_with_default_IEqualityComparer_should_return_false_if_parameter_first_is_null_but_paramter_second_is_not()
+        public void IsEquivalent_with_default_IEqualityComparer_should_return_false_if_parameter_first_is_null_but_paramter_second_is_not()
         {
             IEnumerable<string> vertices1 = null;
             IEnumerable<string> vertices2 = new string[] { "Hello", ", World!" };
@@ -143,7 +143,7 @@ namespace YAGLi.Tests.Extensions.Collection
         }
 
         [Test]
-        public void EquivalentExtensions_IsEquivalent_with_default_IEqualityComparer_should_return_false_if_parameter_second_is_null_but_paramter_first_is_not()
+        public void IsEquivalent_with_default_IEqualityComparer_should_return_false_if_parameter_second_is_null_but_paramter_first_is_not()
         {
             IEnumerable<string> vertices1 = new string[] { "Hello", ", World!" };
             IEnumerable<string> vertices2 = null;

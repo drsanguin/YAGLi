@@ -6,7 +6,7 @@ using YAGLi.Tests.Utils;
 
 namespace YAGLi.Tests.EdgeComparers
 {
-    [TestFixture]
+    [TestFixture(TestOf = typeof(ConsiderDirectionAndDisallowParallelEdges<Vertex, Edge<Vertex>>))]
     public class ConsiderDirectionAndDisallowParallelEdgesTests
     {
         private VertexEqualityComparer _vertexComparer;
@@ -18,13 +18,13 @@ namespace YAGLi.Tests.EdgeComparers
         }
 
         [Test]
-        public void ConsiderDirectionAndDisallowParallelEdges_constructor_should_throw_a_ArgumentnullExeception_if_the_parameter_vertexComparer_is_null()
+        public void constructor_should_throw_a_ArgumentnullExeception_if_the_parameter_vertexComparer_is_null()
         {
             Check.ThatCode(() => new ConsiderDirectionAndDisallowParallelEdges<Vertex, Edge<Vertex>>(null)).Throws<ArgumentNullException>();
         }
 
         [Test]
-        public void ConsiderDirectionAndDisallowParallelEdges_GetHashCode_when_the_instance_has_been_created_with_a_IEqualityComparer_should_return_the_same_value_for_two_Edge_who_have_the_same_ends()
+        public void GetHashCode_when_the_instance_has_been_created_with_a_IEqualityComparer_should_return_the_same_value_for_two_Edge_who_have_the_same_ends()
         {
             var edge1 = new Edge<Vertex>("Hello, ", "World!");
             var edge2 = new Edge<Vertex>("Hello, ", "World!");
@@ -35,7 +35,7 @@ namespace YAGLi.Tests.EdgeComparers
         }
 
         [Test]
-        public void ConsiderDirectionAndDisallowParallelEdges_GetHashCode_when_the_instance_has_been_created_with_a_IEqualityComparer_should_not_return_the_same_value_for_two_Edge_who_have_the_same_ends_in_different_order()
+        public void GetHashCode_when_the_instance_has_been_created_with_a_IEqualityComparer_should_not_return_the_same_value_for_two_Edge_who_have_the_same_ends_in_different_order()
         {
             var edge1 = new Edge<Vertex>("Hello, ", "World!");
             var edge2 = new Edge<Vertex>("World!", "Hello, ");
@@ -46,7 +46,7 @@ namespace YAGLi.Tests.EdgeComparers
         }
 
         [Test]
-        public void ConsiderDirectionAndDisallowParallelEdges_GetHashCode_when_the_instance_has_been_created_with_a_IEqualityComparer_should_not_return_the_same_value_for_two_Edge_who_have_not_the_same_ends()
+        public void GetHashCode_when_the_instance_has_been_created_with_a_IEqualityComparer_should_not_return_the_same_value_for_two_Edge_who_have_not_the_same_ends()
         {
             var edge1 = new Edge<Vertex>("Hello, ", "World!");
             var edge2 = new Edge<Vertex>("Hello", ", World!");
@@ -57,7 +57,7 @@ namespace YAGLi.Tests.EdgeComparers
         }
 
         [Test]
-        public void ConsiderDirectionAndDisallowParallelEdges_Equals_when_the_instance_has_been_created_with_a_IEqualityComparer_should_return_true_if_the_edges_are_the_same_references()
+        public void Equals_when_the_instance_has_been_created_with_a_IEqualityComparer_should_return_true_if_the_edges_are_the_same_references()
         {
             var edge1 = new Edge<Vertex>("Hello, ", "World!");
 
@@ -67,7 +67,7 @@ namespace YAGLi.Tests.EdgeComparers
         }
 
         [Test]
-        public void ConsiderDirectionAndDisallowParallelEdges_Equals_when_the_instance_has_been_created_with_a_IEqualityComparer_should_return_true_if_the_edges_ends_are_equal()
+        public void Equals_when_the_instance_has_been_created_with_a_IEqualityComparer_should_return_true_if_the_edges_ends_are_equal()
         {
             var edge1 = new Edge<Vertex>("Hello, ", "World!");
             var edge2 = new Edge<Vertex>("Hello, ", "World!");
@@ -78,7 +78,7 @@ namespace YAGLi.Tests.EdgeComparers
         }
 
         [Test]
-        public void ConsiderDirectionAndDisallowParallelEdges_Equals_when_the_instance_has_been_created_with_a_IEqualityComparer_should_return_false_if_the_edges_ends_are_not_equal()
+        public void Equals_when_the_instance_has_been_created_with_a_IEqualityComparer_should_return_false_if_the_edges_ends_are_not_equal()
         {
             var edge1 = new Edge<Vertex>("Hello, ", "World!");
             var edge2 = new Edge<Vertex>("Hello", ", World!");
@@ -89,7 +89,7 @@ namespace YAGLi.Tests.EdgeComparers
         }
 
         [Test]
-        public void ConsiderDirectionAndDisallowParallelEdges_GetHashCode_when_the_instance_has_been_created_with_a_default_IEqualityComparer_should_return_the_same_value_for_two_Edge_who_have_the_same_ends()
+        public void GetHashCode_when_the_instance_has_been_created_with_a_default_IEqualityComparer_should_return_the_same_value_for_two_Edge_who_have_the_same_ends()
         {
             var edge1 = new Edge<string>("Hello, ", "World!");
             var edge2 = new Edge<string>("Hello, ", "World!");
@@ -100,7 +100,7 @@ namespace YAGLi.Tests.EdgeComparers
         }
 
         [Test]
-        public void ConsiderDirectionAndDisallowParallelEdges_GetHashCode_when_the_instance_has_been_created_with_a_default_IEqualityComparer_should_not_return_the_same_value_for_two_Edge_who_have_not_the_same_ends()
+        public void GetHashCode_when_the_instance_has_been_created_with_a_default_IEqualityComparer_should_not_return_the_same_value_for_two_Edge_who_have_not_the_same_ends()
         {
             var edge1 = new Edge<string>("Hello, ", "World!");
             var edge2 = new Edge<string>("Hello", ", World!");
@@ -111,7 +111,7 @@ namespace YAGLi.Tests.EdgeComparers
         }
 
         [Test]
-        public void ConsiderDirectionAndDisallowParallelEdges_GetHashCode_when_the_instance_has_been_created_with_a_default_IEqualityComparer_should_not_return_the_same_value_for_two_Edge_who_have_the_same_ends_in_different_order()
+        public void GetHashCode_when_the_instance_has_been_created_with_a_default_IEqualityComparer_should_not_return_the_same_value_for_two_Edge_who_have_the_same_ends_in_different_order()
         {
             var edge1 = new Edge<string>("Hello, ", "World!");
             var edge2 = new Edge<string>("World!", "Hello, ");
@@ -122,7 +122,7 @@ namespace YAGLi.Tests.EdgeComparers
         }
 
         [Test]
-        public void ConsiderDirectionAndDisallowParallelEdges_Equals_when_the_instance_has_been_created_with_a_default_IEqualityComparer_should_return_true_if_the_edges_are_the_same_references()
+        public void Equals_when_the_instance_has_been_created_with_a_default_IEqualityComparer_should_return_true_if_the_edges_are_the_same_references()
         {
             var edge1 = new Edge<string>("Hello, ", "World!");
 
@@ -132,7 +132,7 @@ namespace YAGLi.Tests.EdgeComparers
         }
 
         [Test]
-        public void ConsiderDirectionAndDisallowParallelEdges_Equals_when_the_instance_has_been_created_with_a_default_IEqualityComparer_should_return_true_if_the_edges_ends_are_equal()
+        public void Equals_when_the_instance_has_been_created_with_a_default_IEqualityComparer_should_return_true_if_the_edges_ends_are_equal()
         {
             var edge1 = new Edge<string>("Hello, ", "World!");
             var edge2 = new Edge<string>("Hello, ", "World!");
@@ -143,7 +143,7 @@ namespace YAGLi.Tests.EdgeComparers
         }
 
         [Test]
-        public void ConsiderDirectionAndDisallowParallelEdges_Equals_when_the_instance_has_been_created_with_a_default_IEqualityComparer_should_return_false_if_the_edges_ends_are_not_equal()
+        public void Equals_when_the_instance_has_been_created_with_a_default_IEqualityComparer_should_return_false_if_the_edges_ends_are_not_equal()
         {
             var edge1 = new Edge<string>("Hello, ", "World!");
             var edge2 = new Edge<string>("Hello", ", World!");

@@ -6,11 +6,11 @@ using YAGLi.Tests.Utils;
 
 namespace YAGLi.Tests.Extensions.EdgeCollection
 {
-    [TestFixture]
+    [TestFixture(TestOf = typeof(FilterEdgesWithNullVerticesExtension))]
     public class FilterEdgesWithNullVerticesExtensionTests
     {
         [Test]
-        public void FilterEdgesWithNullVerticesExtensionTests_with_null_IEnumerable_should_return_a_empty_IEnumerable()
+        public void FilterEdgesWithNullVertices_with_null_IEnumerable_should_return_a_empty_IEnumerable()
         {
             IEnumerable<Edge<Vertex>> edges = null;
 
@@ -18,7 +18,7 @@ namespace YAGLi.Tests.Extensions.EdgeCollection
         }
 
         [Test]
-        public void FilterEdgesWithNullVerticesExtensionTests_should_return_the_expected_result()
+        public void FilterEdgesWithNullVertices_should_return_the_expected_result()
         {
             var edges = new Edge<Vertex>[]
             {
@@ -31,7 +31,7 @@ namespace YAGLi.Tests.Extensions.EdgeCollection
         }
 
         [Test]
-        public void FilterEdgesWithNullVerticesExtensionTests_should_filter_null_edges()
+        public void FilterEdgesWithNullVertices_should_filter_null_edges()
         {
             var edges = new Edge<Vertex>[] { null };
 

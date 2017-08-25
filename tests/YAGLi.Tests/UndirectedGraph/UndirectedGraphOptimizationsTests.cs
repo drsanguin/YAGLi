@@ -4,7 +4,7 @@ using YAGLi.Tests.Utils;
 
 namespace YAGLi.Tests.UndirectedGraph
 {
-    [TestFixture]
+    [TestFixture(TestOf = typeof(UndirectedGraph<Vertex, Edge<Vertex>>))]
     public class UndirectedGraphOptimizationsTests
     {
         private UndirectedGraph<Vertex, Edge<Vertex>> _originalGraph;
@@ -17,7 +17,7 @@ namespace YAGLi.Tests.UndirectedGraph
         }
 
         [Test]
-        public void UndirectedGraph_AddEdge_with_a_loop_on_a_graph_who_disallow_loops_should_return_the_same_instance()
+        public void AddEdge_with_a_loop_on_a_graph_who_disallow_loops_should_return_the_same_instance()
         {
             _originalGraph = new UndirectedGraph<Vertex, Edge<Vertex>>(
                 false,
@@ -35,7 +35,7 @@ namespace YAGLi.Tests.UndirectedGraph
         }
 
         [Test]
-        public void UndirectedGraph_AddEdge_with_a_parallel_edge_on_a_graph_who_disallow_parallel_edges_should_return_the_same_instance()
+        public void AddEdge_with_a_parallel_edge_on_a_graph_who_disallow_parallel_edges_should_return_the_same_instance()
         {
             _originalGraph = new UndirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -52,7 +52,7 @@ namespace YAGLi.Tests.UndirectedGraph
         }
 
         [Test]
-        public void UndirectedGraph_AddEdges_with_loops_on_a_graph_who_disallow_loops_should_return_the_same_instance()
+        public void AddEdges_with_loops_on_a_graph_who_disallow_loops_should_return_the_same_instance()
         {
             _originalGraph = new UndirectedGraph<Vertex, Edge<Vertex>>(
                 false,
@@ -70,7 +70,7 @@ namespace YAGLi.Tests.UndirectedGraph
         }
 
         [Test]
-        public void UndirectedGraph_AddEdges_with_parallel_edges_on_a_graph_who_disallow_parallel_edges_should_return_the_same_instance()
+        public void AddEdges_with_parallel_edges_on_a_graph_who_disallow_parallel_edges_should_return_the_same_instance()
         {
             _originalGraph = new UndirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -87,7 +87,7 @@ namespace YAGLi.Tests.UndirectedGraph
         }
 
         [Test]
-        public void UndirectedGraph_AndVertices_with_a_loop_on_a_graph_who_disallow_loops_should_return_the_same_instance()
+        public void AndVertices_with_a_loop_on_a_graph_who_disallow_loops_should_return_the_same_instance()
         {
             _originalGraph = new UndirectedGraph<Vertex, Edge<Vertex>>(
                 false,
@@ -105,7 +105,7 @@ namespace YAGLi.Tests.UndirectedGraph
         }
 
         [Test]
-        public void UndirectedGraph_AddEdgeAndVertices_with_a_parallel_edge_on_a_graph_who_disallow_parallel_edges_should_return_the_same_instance()
+        public void AddEdgeAndVertices_with_a_parallel_edge_on_a_graph_who_disallow_parallel_edges_should_return_the_same_instance()
         {
             _originalGraph = new UndirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -122,7 +122,7 @@ namespace YAGLi.Tests.UndirectedGraph
         }
 
         [Test]
-        public void UndirectedGraph_AddEdgesAndVertices_with_loops_on_a_graph_who_disallow_loops_should_return_the_same_instance()
+        public void AddEdgesAndVertices_with_loops_on_a_graph_who_disallow_loops_should_return_the_same_instance()
         {
             _originalGraph = new UndirectedGraph<Vertex, Edge<Vertex>>(
                 false,
@@ -140,7 +140,7 @@ namespace YAGLi.Tests.UndirectedGraph
         }
 
         [Test]
-        public void UndirectedGraph_AddEdgesAndVertices_with_parallel_edges_on_a_graph_who_disallow_parallel_edges_should_return_the_same_instance()
+        public void AddEdgesAndVertices_with_parallel_edges_on_a_graph_who_disallow_parallel_edges_should_return_the_same_instance()
         {
             _originalGraph = new UndirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -157,7 +157,7 @@ namespace YAGLi.Tests.UndirectedGraph
         }
 
         [Test]
-        public void UndirectedGraph_RemoveEdge_with_a_Edge_not_contained_in_the_graph_should_return_the_same_instance()
+        public void RemoveEdge_with_a_Edge_not_contained_in_the_graph_should_return_the_same_instance()
         {
             _originalGraph = new UndirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -184,7 +184,7 @@ namespace YAGLi.Tests.UndirectedGraph
         }
 
         [Test]
-        public void UndirectedGraph_RemoveEdgeAndVertices_with_a_Edge_not_contained_in_the_graph_should_return_the_same_instance()
+        public void RemoveEdgeAndVertices_with_a_Edge_not_contained_in_the_graph_should_return_the_same_instance()
         {
             _originalGraph = new UndirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -211,7 +211,7 @@ namespace YAGLi.Tests.UndirectedGraph
         }
 
         [Test]
-        public void UndirectedGraph_RemoveEdges_with_edges_who_are_not_contained_in_the_graph_should_return_the_same_instance()
+        public void RemoveEdges_with_edges_who_are_not_contained_in_the_graph_should_return_the_same_instance()
         {
             _originalGraph = new UndirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -238,7 +238,7 @@ namespace YAGLi.Tests.UndirectedGraph
         }
 
         [Test]
-        public void UndirectedGraph_RemoveEdgesAndVertices_with_edges_who_are_not_contained_in_the_graph_should_return_the_same_instance()
+        public void RemoveEdgesAndVertices_with_edges_who_are_not_contained_in_the_graph_should_return_the_same_instance()
         {
             _originalGraph = new UndirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -265,7 +265,7 @@ namespace YAGLi.Tests.UndirectedGraph
         }
 
         [Test]
-        public void UndirectedGraph_RemoveVertex_with_a_vertex_not_contained_in_the_graph_should_return_the_same_instance()
+        public void RemoveVertex_with_a_vertex_not_contained_in_the_graph_should_return_the_same_instance()
         {
             _originalGraph = new UndirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -292,7 +292,7 @@ namespace YAGLi.Tests.UndirectedGraph
         }
 
         [Test]
-        public void UndirectedGraph_RemoveVertices_with_vertices_who_are_not_contained_in_the_graph_should_return_the_same_instance()
+        public void RemoveVertices_with_vertices_who_are_not_contained_in_the_graph_should_return_the_same_instance()
         {
             _originalGraph = new UndirectedGraph<Vertex, Edge<Vertex>>(
                 true,

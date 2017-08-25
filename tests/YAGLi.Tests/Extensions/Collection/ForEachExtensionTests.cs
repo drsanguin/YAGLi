@@ -7,11 +7,11 @@ using YAGLi.Extensions.Collection;
 
 namespace YAGLi.Tests.Extensions.Collection
 {
-    [TestFixture]
+    [TestFixture(TestOf = typeof(ForEachExtension))]
     public class ForEachExtensionTests
     {
         [Test]
-        public void ForEachExtension_should_call_the_action_for_each_element_of_the_collection()
+        public void ForEach_should_call_the_action_for_each_element_of_the_collection()
         {
             var collection = Enumerable.Range(0, 10);
             var collection2 = new List<int>(collection.Count());
@@ -23,7 +23,7 @@ namespace YAGLi.Tests.Extensions.Collection
         }
 
         [Test]
-        public void ForEachExtension_should_not_throw_with_a_null_collection()
+        public void ForEach_should_not_throw_with_a_null_collection()
         {
             IEnumerable<int> collection = null;
             Action<int> action = x => { };

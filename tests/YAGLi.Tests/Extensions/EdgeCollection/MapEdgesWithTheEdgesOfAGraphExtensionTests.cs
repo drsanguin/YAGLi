@@ -7,11 +7,11 @@ using YAGLi.Tests.Utils;
 
 namespace YAGLi.Tests.Extensions.EdgeCollection
 {
-    [TestFixture]
+    [TestFixture(TestOf = typeof(MapEdgesWithTheEdgesOfAGraphExtension))]
     public class MapEdgesWithTheEdgesOfAGraphExtensionTests
     {
         [Test]
-        public void MapEdgesWithTheEdgesOfAGraphExtension_should_return_the_expected_result()
+        public void MapEdgesWithTheEdgesOfAGraph_should_return_the_expected_result()
         {
             var vertexComparer = new VertexEqualityComparer();
             var graphEdges = new Edge<Vertex>[]

@@ -8,11 +8,11 @@ using YAGLi.Tests.Utils;
 
 namespace YAGLi.Tests.Extensions.EdgeCollection
 {
-    [TestFixture]
+    [TestFixture(TestOf = typeof(FilterEdgesWhoViolatesAGraphPropertiesExtension))]
     public class FilterEdgesWhoViolatesAGraphPropertiesExtensionTests
     {
         [Test]
-        public void FilterEdgesWhoViolatesAGraphPropertiesExtension_with_a_null_collection_of_edges_should_return_a_empty_IEnumerable()
+        public void FilterEdgesWhoViolatesThisInstanceProperties_with_a_null_collection_of_edges_should_return_a_empty_IEnumerable()
         {
             IEnumerable<Edge<int>> edges = null;
             var graph = Substitute.For<IModelAGraph<int, Edge<int>>>();
@@ -21,7 +21,7 @@ namespace YAGLi.Tests.Extensions.EdgeCollection
         }
 
         [Test]
-        public void FilterEdgesWhoViolatesAGraphPropertiesExtension_with_a_graph_who_disallow_loops_should_return_the_expected_result()
+        public void FilterEdgesWhoViolatesThisInstanceProperties_with_a_graph_who_disallow_loops_should_return_the_expected_result()
         {
             Edge<int>[] edges = new Edge<int>[]
             {
@@ -43,7 +43,7 @@ namespace YAGLi.Tests.Extensions.EdgeCollection
         }
 
         [Test]
-        public void FilterEdgesWhoViolatesAGraphPropertiesExtension_with_a_graph_who_disallow_parallel_edges_should_return_the_expected_result()
+        public void FilterEdgesWhoViolatesThisInstanceProperties_with_a_graph_who_disallow_parallel_edges_should_return_the_expected_result()
         {
             Edge<int>[] edges = new Edge<int>[]
             {
@@ -69,7 +69,7 @@ namespace YAGLi.Tests.Extensions.EdgeCollection
         }
 
         [Test]
-        public void FilterEdgesWhoViolatesAGraphPropertiesExtension_with_null_IEqualityComparer_should_return_the_expected_result()
+        public void FilterEdgesWhoViolatesThisInstanceProperties_with_null_IEqualityComparer_should_return_the_expected_result()
         {
             Edge<int>[] edges = new Edge<int>[]
             {

@@ -6,11 +6,11 @@ using YAGLi.Tests.Utils;
 
 namespace YAGLi.Tests.DirectedGraph
 {
-    [TestFixture]
+    [TestFixture(TestOf = typeof(DirectedGraph<Vertex, Edge<Vertex>>))]
     public class DirectedGraphTests
     {
         [Test]
-        public void DirectedGraph_AllowLoops_should_return_the_value_passed_in_the_constructor()
+        public void AllowLoops_should_return_the_value_passed_in_the_constructor()
         {
             var graph = new DirectedGraph<Vertex, Edge<Vertex>>(true, true);
 
@@ -18,7 +18,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_AllowParallelEdges_should_return_the_value_passed_in_the_constructor()
+        public void AllowParallelEdges_should_return_the_value_passed_in_the_constructor()
         {
             var graph = new DirectedGraph<Vertex, Edge<Vertex>>(true, true);
 
@@ -26,7 +26,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_ToString_should_return_the_expected_value()
+        public void ToString_should_return_the_expected_value()
         {
             var graph = new DirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -49,7 +49,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_AdjacentEdgesOf_with_an_edge_contained_in_the_graph_should_returned_the_expected_colelction_of_edge()
+        public void AdjacentEdgesOf_with_an_edge_contained_in_the_graph_should_returned_the_expected_colelction_of_edge()
         {
             var edges = new Edge<Vertex>[]
             {
@@ -72,7 +72,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_Equals_with_null_should_return_false()
+        public void Equals_with_null_should_return_false()
         {
             var graph = new DirectedGraph<Vertex, Edge<Vertex>>(true, true);
 
@@ -80,7 +80,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_Equals_with_another_object_who_is_not_a_DirectedGraph_should_return_false()
+        public void Equals_with_another_object_who_is_not_a_DirectedGraph_should_return_false()
         {
             var graph = new DirectedGraph<Vertex, Edge<Vertex>>(true, true);
 
@@ -88,7 +88,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_Equals_with_the_same_reference_should_return_true()
+        public void Equals_with_the_same_reference_should_return_true()
         {
             var graph = new DirectedGraph<Vertex, Edge<Vertex>>(true, true);
 
@@ -96,7 +96,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_Equals_with_another_DirectedGraph_who_has_a_different_value_for_property_AllowLoops_should_return_false()
+        public void Equals_with_another_DirectedGraph_who_has_a_different_value_for_property_AllowLoops_should_return_false()
         {
             var graph1 = new DirectedGraph<Vertex, Edge<Vertex>>(true, true);
             var graph2 = new DirectedGraph<Vertex, Edge<Vertex>>(false, true);
@@ -105,7 +105,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_Equals_with_another_DirectedGraph_who_has_a_different_value_for_property_AllowParallelEdges_should_return_false()
+        public void Equals_with_another_DirectedGraph_who_has_a_different_value_for_property_AllowParallelEdges_should_return_false()
         {
             var graph1 = new DirectedGraph<Vertex, Edge<Vertex>>(true, true);
             var graph2 = new DirectedGraph<Vertex, Edge<Vertex>>(true, false);
@@ -114,7 +114,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_Equals_with_another_DirectedGraph_who_has_a_different_number_of_edges_should_return_false()
+        public void Equals_with_another_DirectedGraph_who_has_a_different_number_of_edges_should_return_false()
         {
             var graph1 = new DirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -143,7 +143,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_Equals_with_another_DirectedGraph_who_has_different_edges_should_return_false()
+        public void Equals_with_another_DirectedGraph_who_has_different_edges_should_return_false()
         {
             var graph1 = new DirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -173,7 +173,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_Equals_with_another_DirectedGraph_who_has_a_different_number_of_vertices_should_return_false()
+        public void Equals_with_another_DirectedGraph_who_has_a_different_number_of_vertices_should_return_false()
         {
             var graph1 = new DirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -203,7 +203,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_Equals_with_another_DirectedGraph_who_has_different_vertices_should_return_false()
+        public void Equals_with_another_DirectedGraph_who_has_different_vertices_should_return_false()
         {
             var graph1 = new DirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -233,7 +233,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_Equals_with_another_DirectedGraph_equal_to_the_first_should_return_true()
+        public void Equals_with_another_DirectedGraph_equal_to_the_first_should_return_true()
         {
             var graph1 = new DirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -263,7 +263,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_Equals_with_another_DirectedGraph_equal_to_the_first_with_the_two_who_allow_parallel_edges_should_return_true()
+        public void Equals_with_another_DirectedGraph_equal_to_the_first_with_the_two_who_allow_parallel_edges_should_return_true()
         {
             var graph1 = new DirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -295,7 +295,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_Equals_with_a_IModelAGraph_object_should_work()
+        public void Equals_with_a_IModelAGraph_object_should_work()
         {
             var graph1 = new DirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -327,7 +327,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_Equals_with_another_graph_with_the_same_edges_in_opposite_direction_should_return_false()
+        public void Equals_with_another_graph_with_the_same_edges_in_opposite_direction_should_return_false()
         {
             var graph1 = new DirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -359,7 +359,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_GetHashCode_should_return_the_same_result_for_two_DirectedGraph_who_are_equal()
+        public void GetHashCode_should_return_the_same_result_for_two_DirectedGraph_who_are_equal()
         {
             var graph1 = new DirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -391,7 +391,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_GetHashCode_should_return_a_different_result_for_two_DirectedGraph_who_are_not_equal()
+        public void GetHashCode_should_return_a_different_result_for_two_DirectedGraph_who_are_not_equal()
         {
             var graph1 = new DirectedGraph<Vertex, Edge<Vertex>>(
                 true,

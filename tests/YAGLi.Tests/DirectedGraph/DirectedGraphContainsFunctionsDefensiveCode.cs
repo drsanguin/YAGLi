@@ -5,7 +5,7 @@ using YAGLi.Tests.Utils;
 
 namespace YAGLi.Tests.DirectedGraph
 {
-    [TestFixture]
+    [TestFixture(TestOf = typeof(DirectedGraph<Vertex, Edge<Vertex>>))]
     public class DirectedGraphContainsFunctionsDefensiveCode
     {
         private readonly Vertex NULL_VERTEX = null;
@@ -37,73 +37,73 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_ContainsEdge_with_a_null_edge_should_return_false()
+        public void ContainsEdge_with_a_null_edge_should_return_false()
         {
             _result =  _graph.ContainsEdge(NULL_EDGE);
         }
 
         [Test]
-        public void DirectedGraph_ContainsEdges_with_a_null_IEnumerable_of_Edges_should_return_false()
+        public void ContainsEdges_with_a_null_IEnumerable_of_Edges_should_return_false()
         {
             _result =  _graph.ContainsEdges(NULL_EDGE_IENUMERABLE);
         }
 
         [Test]
-        public void DirectedGraph_ContainsEdges_with_a_IEnumerable_of_Edges_that_contains_a_null_vertex_should_return_false()
+        public void ContainsEdges_with_a_IEnumerable_of_Edges_that_contains_a_null_vertex_should_return_false()
         {
             _result =  _graph.ContainsEdges(EDGE_IENUMERABLE_WHO_CONTAINS_NULL);
         }
 
         [Test]
-        public void DirectedGraph_ContainsEdges_with_a_IEnumerable_of_Edges_that_contains_a_vertex_with_a_null_edge_should_return_false()
+        public void ContainsEdges_with_a_IEnumerable_of_Edges_that_contains_a_vertex_with_a_null_edge_should_return_false()
         {
             _result =  _graph.ContainsEdges(EDGE_IENUMERABLE_WITH_EDGE_WITH_NULL_VERTEX);
         }
 
         [Test]
-        public void DirectedGraph_ContainsEdges_with_a_null_array_of_Edges_should_return_false()
+        public void ContainsEdges_with_a_null_array_of_Edges_should_return_false()
         {
             _result =  _graph.ContainsEdges(NULL_EDGE_ARRAY);
         }
 
         [Test]
-        public void DirectedGraph_ContainsEdges_with_a_array_of_Edges_that_contains_a_null_vertex_should_return_false()
+        public void ContainsEdges_with_a_array_of_Edges_that_contains_a_null_vertex_should_return_false()
         {
             _result =  _graph.ContainsEdges(EDGE_ARRAY_WHO_CONTAINS_NULL);
         }
 
         [Test]
-        public void DirectedGraph_ContainsEdges_with_a_array_of_Edges_that_contains_a_vertex_with_a_null_edge_should_return_false()
+        public void ContainsEdges_with_a_array_of_Edges_that_contains_a_vertex_with_a_null_edge_should_return_false()
         {
             _result =  _graph.ContainsEdges(EDGE_ARRAY_WITH_EDGE_WITH_NULL_VERTEX);
         }
 
         [Test]
-        public void DirectedGraph_ContainsVertex_with_a_null_vertex_should_return_false()
+        public void ContainsVertex_with_a_null_vertex_should_return_false()
         {
             _result =  _graph.ContainsVertex(NULL_VERTEX);
         }
 
         [Test]
-        public void DirectedGraph_ContainsVertices_with_a_null_IEnumerable_of_Vertices_should_return_false()
+        public void ContainsVertices_with_a_null_IEnumerable_of_Vertices_should_return_false()
         {
             _result =  _graph.ContainsVertices(NULL_VERTEX_COLLECTION);
         }
 
         [Test]
-        public void DirectedGraph_ContainsVertices_with_a_IEnumerable_of_Vertices_that_contains_a_null_vertex_should_return_false()
+        public void ContainsVertices_with_a_IEnumerable_of_Vertices_that_contains_a_null_vertex_should_return_false()
         {
             _result =  _graph.ContainsVertices(VERTEX_COLLECTION_WHO_CONTAINS_NULL);
         }
 
         [Test]
-        public void DirectedGraph_ContainsVertices_with_a_null_array_of_Vertices_should_return_false()
+        public void ContainsVertices_with_a_null_array_of_Vertices_should_return_false()
         {
             _result =  _graph.ContainsVertices(NULL_VERTEX_ARRAY);
         }
 
         [Test]
-        public void DirectedGraph_ContainsVertices_with_a_array_of_Vertices_that_contains_a_null_vertex_should_return_false()
+        public void ContainsVertices_with_a_array_of_Vertices_that_contains_a_null_vertex_should_return_false()
         {
             _result =  _graph.ContainsVertices(VERTEX_ARRAY_WHO_CONTAINS_NULL);
         }

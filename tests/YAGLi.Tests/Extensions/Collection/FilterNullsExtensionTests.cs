@@ -5,11 +5,11 @@ using YAGLi.Extensions.Collection;
 
 namespace YAGLi.Tests.Extensions.Collection
 {
-    [TestFixture]
+    [TestFixture(TestOf = typeof(FilterNullsExtension))]
     public class FilterNullsExtensionTests
     {
         [Test]
-        public void FilterNullsExtension_FilterNulls_should_return_a_empty_IEnumerable_if_the_source_is_null()
+        public void FilterNulls_should_return_a_empty_IEnumerable_if_the_source_is_null()
         {
             IEnumerable<string> source = null;
 
@@ -17,7 +17,7 @@ namespace YAGLi.Tests.Extensions.Collection
         }
 
         [Test]
-        public void FilterNullsExtension_FilterNulls_should_filter_nulls()
+        public void FilterNulls_should_filter_nulls()
         {
             var source = new string[]
             {

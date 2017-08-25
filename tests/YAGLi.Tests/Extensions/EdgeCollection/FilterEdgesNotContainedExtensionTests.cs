@@ -9,7 +9,7 @@ using YAGLi.Tests.Utils;
 
 namespace YAGLi.Tests.Extensions.EdgeCollection
 {
-    [TestFixture]
+    [TestFixture(TestOf = typeof(FilterEdgesNotContainedExtension))]
     public class FilterEdgesNotContainedExtensionTests
     {
         private IModelAGraph<int, Edge<int>> _graph;
@@ -23,7 +23,7 @@ namespace YAGLi.Tests.Extensions.EdgeCollection
         }
 
         [Test]
-        public void FilterNullsExtension_with_a_null_collection_of_edges_should_return_a_empty_IEnumerable()
+        public void FilterEdgesWhosVerticesAreNotContainedInThisGraph_with_a_null_collection_of_edges_should_return_a_empty_IEnumerable()
         {
             IEnumerable<Edge<int>> edges = null;
 
@@ -31,7 +31,7 @@ namespace YAGLi.Tests.Extensions.EdgeCollection
         }
 
         [Test]
-        public void FilterNullsExtension_should_return_the_expected_result()
+        public void FilterEdgesWhosVerticesAreNotContainedInThisGraph_should_return_the_expected_result()
         {
             Edge<int>[] edges = new Edge<int>[]
             {

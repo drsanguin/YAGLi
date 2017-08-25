@@ -5,11 +5,11 @@ using YAGLi.Tests.Utils;
 
 namespace YAGLi.Tests.Extensions.Edges
 {
-    [TestFixture]
+    [TestFixture(TestOf = typeof(EndsExtension))]
     public class EndsExtensionTests
     {
         [Test]
-        public void Ends_Extensions_should_return_the_expected_result()
+        public void Ends_should_return_the_expected_result()
         {
             var end1 = new Vertex("v0");
             var end2 = new Vertex("v1");
@@ -19,7 +19,7 @@ namespace YAGLi.Tests.Extensions.Edges
         }
 
         [Test]
-        public void Ends_Extensions_with_a_null_edge_should_return_the_expected_result()
+        public void Ends_with_a_null_edge_should_return_the_expected_result()
         {
             Edge<Vertex> edge = null;
 
@@ -27,7 +27,7 @@ namespace YAGLi.Tests.Extensions.Edges
         }
 
         [Test]
-        public void Ends_Extensions_with_an_edge_with_null_ends_should_return_an_empty_IEnumerable()
+        public void Ends_with_an_edge_with_null_ends_should_return_an_empty_IEnumerable()
         {
             Edge<Vertex> edge = new Edge<Vertex>(null, null);
 

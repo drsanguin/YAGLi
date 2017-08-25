@@ -5,7 +5,7 @@ using YAGLi.Tests.Utils;
 
 namespace YAGLi.Tests.DirectedGraph
 {
-    [TestFixture]
+    [TestFixture(TestOf = typeof(DirectedGraph<Vertex, Edge<Vertex>>))]
     public class DirectedGraphCtorDefensiveCodeTests
     {
         private Action _ctor;
@@ -17,7 +17,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_ctor_should_not_throw_if_the_edges_are_null()
+        public void ctor_should_not_throw_if_the_edges_are_null()
         {
             _ctor = () => new DirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -34,7 +34,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_ctor_should_not_throw_if_the_vertices_are_null()
+        public void ctor_should_not_throw_if_the_vertices_are_null()
         {
             _ctor = () => new DirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -51,7 +51,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_ctor_should_not_throw_if_the_edges_contains_a_null()
+        public void ctor_should_not_throw_if_the_edges_contains_a_null()
         {
             _ctor = () => new DirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -75,7 +75,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_ctor_should_not_throw_if_the_edges_contains_an_edge_with_a_null_vertex()
+        public void ctor_should_not_throw_if_the_edges_contains_an_edge_with_a_null_vertex()
         {
             _ctor = () => new DirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -100,7 +100,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_ctor_should_not_throw_if_the_vertices_contains_a_null()
+        public void ctor_should_not_throw_if_the_vertices_contains_a_null()
         {
             _ctor = () => new DirectedGraph<Vertex, Edge<Vertex>>(
                 true,
@@ -124,7 +124,7 @@ namespace YAGLi.Tests.DirectedGraph
         }
 
         [Test]
-        public void DirectedGraph_ctor_should_not_throw_if_the_vertex_comparer_is_null()
+        public void ctor_should_not_throw_if_the_vertex_comparer_is_null()
         {
             _ctor = () => new DirectedGraph<Vertex, Edge<Vertex>>(
                 true,
