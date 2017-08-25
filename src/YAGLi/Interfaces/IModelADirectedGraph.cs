@@ -23,7 +23,7 @@ namespace YAGLi.Interfaces
         /// <param name="vertex">The vertex for which to compute the in-degree.</param>
         /// <returns>The in-degree of the vertex.</returns>
         /// <remarks>The parameter <paramref name="vertex"/> is expected to be contained in the set of vertices of this instance.</remarks>
-        int InDegreeOf(TVertex vertex);
+        Degree InDegreeOf(TVertex vertex);
 
         /// <summary>
         /// Get the out-degree of the vertex <paramref name="vertex"/>.
@@ -32,7 +32,7 @@ namespace YAGLi.Interfaces
         /// <param name="vertex">The vertex for which to compute the out-degree.</param>
         /// <returns>The out-degree of the vertex.</returns>
         /// <remarks>The parameter <paramref name="vertex"/> is expected to be contained in the set of vertices of this instance.</remarks>
-        int OutDegreeOf(TVertex vertex);
+        Degree OutDegreeOf(TVertex vertex);
         #endregion
     }
 }

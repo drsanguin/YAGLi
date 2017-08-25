@@ -233,7 +233,7 @@ namespace YAGLi
             return containsVertices(vertices);
         }
 
-        public override int DegreeOf(TVertex vertex)
+        public override Degree DegreeOf(TVertex vertex)
         {
             return !ContainsVertex(vertex) ? - 1 : _incidentEdgesInto[vertex].Count() + _incidentEdgesOutOf[vertex].Count();
         }
@@ -290,12 +290,12 @@ namespace YAGLi
             throw new NotImplementedException();
         }
 
-        public int InDegreeOf(TVertex vertex)
+        public Degree InDegreeOf(TVertex vertex)
         {
             return !ContainsVertex(vertex) ? -1 : _incidentEdgesInto[vertex].Count();
         }
 
-        public int OutDegreeOf(TVertex vertex)
+        public Degree OutDegreeOf(TVertex vertex)
         {
             return !ContainsVertex(vertex) ? -1 : _incidentEdgesOutOf[vertex].Count();
         }

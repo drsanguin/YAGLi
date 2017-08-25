@@ -123,7 +123,7 @@ namespace YAGLi.Interfaces
         /// The parameter <paramref name="vertex"/> is expected to be contained in this instance.
         /// By convention the loops count twice.
         /// </remarks>
-        int DegreeOf(TVertex vertex);
+        Degree DegreeOf(TVertex vertex);
 
         /// <summary>
         /// Get the incident <see cref="TEdge"/> of the given vertex.

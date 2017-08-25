@@ -19,7 +19,7 @@ Scenario: Retrive the degree of a vertex not contained in a DirectedGraph
 	| v4   | v3   |
 	And the directed graph created with them
 	When I retrieve the degree of the vertex "v5"
-	Then I get a degree of -1
+	Then I get a impossible degree
 
 Scenario: Retrive the degree of a vertex contained in a DirectedGraph
 	Given the property allow loops

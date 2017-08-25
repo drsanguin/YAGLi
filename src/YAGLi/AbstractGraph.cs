@@ -56,7 +56,7 @@ namespace YAGLi
         public abstract bool ContainsVertex(TVertex vertex);
         public abstract bool ContainsVertices(IEnumerable<TVertex> vertices);
         public abstract bool ContainsVertices(params TVertex[] vertices);
-        public abstract int DegreeOf(TVertex vertex);
+        public abstract Degree DegreeOf(TVertex vertex);
         public abstract bool Equals(IModelAGraph<TVertex, TEdge> other);
         public abstract IEnumerable<TEdge> IncidentEdgesOf(TVertex vertex);
         public abstract IEnumerable<TVertex> IncidentVerticesOf(TEdge edge);

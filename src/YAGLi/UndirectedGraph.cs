@@ -256,7 +256,7 @@ namespace YAGLi
             return vertices.All(ContainsVertex);
         }
 
-        public override int DegreeOf(TVertex vertex)
+        public override Degree DegreeOf(TVertex vertex)
         {
             if (!ContainsVertex(vertex))
             {
