@@ -235,7 +235,7 @@ namespace YAGLi
 
         public override Degree DegreeOf(TVertex vertex)
         {
-            return !ContainsVertex(vertex) ? Degree.Impossible : new Degree(_incidentEdgesInto[vertex].Count() + _incidentEdgesOutOf[vertex].Count());
+            return !ContainsVertex(vertex) ? Degree.Impossible : InDegreeOf(vertex) + OutDegreeOf(vertex);
         }
 
         public bool Equals(IModelADirectedGraph<TVertex, TEdge> other)
