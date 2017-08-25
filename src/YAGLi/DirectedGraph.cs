@@ -235,7 +235,7 @@ namespace YAGLi
 
         public override Degree DegreeOf(TVertex vertex)
         {
-            return !ContainsVertex(vertex) ? - 1 : _incidentEdgesInto[vertex].Count() + _incidentEdgesOutOf[vertex].Count();
+            return !ContainsVertex(vertex) ? Degree.Impossible : new Degree(_incidentEdgesInto[vertex].Count() + _incidentEdgesOutOf[vertex].Count());
         }
 
         public bool Equals(IModelADirectedGraph<TVertex, TEdge> other)
@@ -292,12 +292,12 @@ namespace YAGLi
 
         public Degree InDegreeOf(TVertex vertex)
         {
-            return !ContainsVertex(vertex) ? -1 : _incidentEdgesInto[vertex].Count();
+            return !ContainsVertex(vertex) ? Degree.Impossible : new Degree(_incidentEdgesInto[vertex].Count());
         }
 
         public Degree OutDegreeOf(TVertex vertex)
         {
-            return !ContainsVertex(vertex) ? -1 : _incidentEdgesOutOf[vertex].Count();
+            return !ContainsVertex(vertex) ? Degree.Impossible : new Degree(_incidentEdgesOutOf[vertex].Count());
         }
 
         public override DirectedGraph<TVertex, TEdge> RemoveEdge(TEdge edge)

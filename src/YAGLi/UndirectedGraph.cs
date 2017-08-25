@@ -260,7 +260,7 @@ namespace YAGLi
         {
             if (!ContainsVertex(vertex))
             {
-                return -1;
+                return Degree.Impossible;
             }
 
             return _incidentEdges[vertex].Sum(edge => VerticesComparer.Equals(edge.End1, edge.End2) ? 2 : 1);
