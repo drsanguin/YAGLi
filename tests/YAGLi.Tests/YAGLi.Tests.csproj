@@ -51,6 +51,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DegreeTests.cs" />
     <Compile Include="DirectedGraph\DirectedGraphContainsFunctionsDefensiveCode.cs" />
     <Compile Include="DirectedGraph\DirectedGraphCtorDefensiveCodeTests.cs" />
     <Compile Include="DirectedGraph\DirectedGraphTests.cs" />
