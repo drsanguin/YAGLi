@@ -11,7 +11,7 @@ namespace YAGLi.Specs.Common.Validators
         [Then(@"I get the edges")]
         public void ThenTheResultShouldBeTheEdges(IEnumerable<Edge<Vertex>> edges)
         {
-            Check.That(Subject.ConvertToTuples()).ContainsExactly(edges.ConvertToTuples());
+            Check.That(Subject.ToEquatable()).ContainsExactly(edges.ToEquatable());
         }
 
         [Then(@"I get an empty list of edges")]

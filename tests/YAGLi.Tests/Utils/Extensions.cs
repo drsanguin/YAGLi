@@ -1,19 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace YAGLi.Tests.Utils
 {
     public static class Extensions
     {
-        public static IEnumerable<string> ExtractNames(this IEnumerable<Vertex> vertices)
+        public static IEnumerable<EquatableVertex> ToEquatable(this IEnumerable<Vertex> vertices)
         {
-            return vertices.Select(vertex => vertex.Name);
+            return vertices.Select(vertex => new EquatableVertex(vertex));
         }
 
-        public static IEnumerable<Tuple<string, string>> ConvertToTuples(this IEnumerable<Edge<Vertex>> edges)
+        public static IEnumerable<EquatableEdge<EquatableVertex>> ToEquatable(this IEnumerable<Edge<Vertex>> edges)
         {
-            return edges.Select(edge => Tuple.Create(edge.End1.Name, edge.End2.Name));
+            return edges.Select(edge => new EquatableEdge<EquatableVertex>(new EquatableVertex(edge.End1), new EquatableVertex(edge.End2)));
         }
     }
 }
