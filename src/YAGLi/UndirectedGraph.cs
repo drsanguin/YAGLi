@@ -313,7 +313,7 @@ namespace YAGLi
 
         public override IEnumerable<TVertex> NeighborsOf(TVertex vertex)
         {
-            if (ReferenceEquals(vertex, null) || !_incidentEdges.ContainsKey(vertex))
+            if (ReferenceEquals(vertex, null) || !ContainsVertex(vertex))
             {
                 return Enumerable.Empty<TVertex>();
             }
