@@ -18,17 +18,7 @@ namespace YAGLi
 
         public int CompareTo(Degree other)
         {
-            if (_value > other._value)
-            {
-                return 1;
-            }
-
-            if (_value < other._value)
-            {
-                return -1;
-            }
-
-            return 0;
+            return _value.CompareTo(other._value);
         }
 
         public int CompareTo(object obj)
@@ -53,8 +43,7 @@ namespace YAGLi
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(obj, null)
-                || !(obj is Degree))
+            if (ReferenceEquals(obj, null) || !(obj is Degree))
             {
                 return false;
             }
@@ -74,22 +63,17 @@ namespace YAGLi
 
         public static Degree operator +(Degree degree1, Degree degree2)
         {
-            if (degree1.Equals(Impossible) || degree2.Equals(Impossible))
-            {
-                return Impossible;
-            }
-
-            return new Degree(degree1._value + degree2._value);
+            return combine(degree1, degree2, (d1, d2) => d1._value + d2._value);
         }
 
         public static Degree operator -(Degree degree1, Degree degree2)
         {
-            if (degree1.Equals(Impossible) || degree2.Equals(Impossible))
-            {
-                return Impossible;
-            }
+            return combine(degree1, degree2, (d1, d2) => d1._value - d2._value);
+        }
 
-            return new Degree(degree1._value - degree2._value);
+        private static Degree combine(Degree degree1, Degree degree2, Func<Degree, Degree, Degree> combineOperation)
+        {
+            return degree1 == Impossible || degree2 == Impossible ? Impossible : combineOperation(degree1, degree2);
         }
 
         public static bool operator ==(Degree degree1, Degree degree2)
@@ -99,7 +83,7 @@ namespace YAGLi
 
         public static bool operator !=(Degree degree1, Degree degree2)
         {
-            return !degree1.Equals(degree2);
+            return degree1._value != degree2._value;
         }
 
         public static bool operator <(Degree degree1, Degree degree2)
@@ -114,12 +98,12 @@ namespace YAGLi
 
         public static bool operator <=(Degree degree1, Degree degree2)
         {
-            return degree1 < degree2 || degree1 == degree2;
+            return degree1._value <= degree2._value;
         }
 
         public static bool operator >=(Degree degree1, Degree degree2)
         {
-            return degree1 > degree2 || degree1 == degree2;
+            return degree1._value >= degree2._value;
         }
 
         public static implicit operator Degree(int value)
