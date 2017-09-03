@@ -52,7 +52,7 @@ namespace YAGLi
             edges.ReplaceByEmptyIfNull()
                  .FilterNulls()
                  .FilterEdgesWithNullVertices<TVertex, TEdge>()
-                 .Where(edge => !AllowLoops ? !VerticesComparer.Equals(edge.End1, edge.End2) : true)
+                 .Where(edge => AllowLoops ? true : !VerticesComparer.Equals(edge.End1, edge.End2))
                  .Where(edge => incidentEdgesInto.ContainsKey(edge.End1) && incidentEdgesInto.ContainsKey(edge.End2) && incidentEdgesOutOf.ContainsKey(edge.End1) && incidentEdgesOutOf.ContainsKey(edge.End2))
                  .Distinct(_edgesComparer)
                  .ForEach(edge =>
