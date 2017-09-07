@@ -62,6 +62,7 @@
     <Compile Include="Common\Builders\GraphBuilder.cs" />
     <Compile Include="Common\Steps\NeighborsOfStep.cs" />
     <Compile Include="Common\Steps\PathsToNeighborsOfStep.cs" />
+    <Compile Include="Common\Transforms\DegreeTransforms.cs" />
     <Compile Include="DirectedGraph\AbstractSteps\DirectedGraphStepWithDegreeValidator.cs" />
     <Compile Include="DirectedGraph\AbstractSteps\DirectedGraphStepWithEdgeCollectionValidator.cs" />
     <Compile Include="DirectedGraph\Features\AdjacentEdgesOf.feature.cs">

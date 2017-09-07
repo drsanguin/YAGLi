@@ -6,10 +6,10 @@ namespace YAGLi.Specs.Common.Validators
 {
     public sealed class DegreeValidator : BaseValidator<Degree>
     {
-        [Then(@"I get a degree of (.*)")]
-        public void ThenIGetTheDegree(int expectedDegree)
+        [Then(@"I get a degree of (\d+)")]
+        public void ThenIGetTheDegree(Degree expectedDegree)
         {
-            Check.That(Subject).IsEqualTo(new Degree(expectedDegree));
+            Check.That(Subject).IsEqualTo(expectedDegree);
         }
 
         [Then(@"I get a impossible degree")]
