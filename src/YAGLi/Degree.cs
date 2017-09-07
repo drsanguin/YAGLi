@@ -4,18 +4,28 @@ namespace YAGLi
 {
     public struct Degree : IComparable, IComparable<Degree>, IEquatable<Degree>
     {
+        #region Constants
         private const int HASH_BASE = 163;
         private const int HASH_FACTOR = 167;
+        #endregion
+
+        #region Static fields
         public static readonly Degree Impossible = new Degree(-1);
         public static readonly Degree Zero = new Degree(0);
+        #endregion
 
+        #region Constructors
         public Degree(int value)
         {
             _value = value < 0 ? -1 : value;
         }
+        #endregion
 
+        #region Member fields
         private int _value { get; set; }
+        #endregion
 
+        #region Methods
         public int CompareTo(Degree other)
         {
             return _value.CompareTo(other._value);
@@ -60,7 +70,9 @@ namespace YAGLi
         {
             return Equals(Impossible) ? nameof(Impossible) : _value.ToString();
         }
+        #endregion
 
+        #region Operators
         public static Degree operator +(Degree degree1, Degree degree2)
         {
             return combine(degree1, degree2, (d1, d2) => d1._value + d2._value);
@@ -105,7 +117,9 @@ namespace YAGLi
         {
             return degree1._value >= degree2._value;
         }
+        #endregion
 
+        #region Implicit operators
         public static implicit operator Degree(int value)
         {
             return new Degree(value);
@@ -115,5 +129,6 @@ namespace YAGLi
         {
             return degree._value;
         }
+        #endregion
     }
 }
