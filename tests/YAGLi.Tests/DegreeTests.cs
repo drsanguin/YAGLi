@@ -179,13 +179,13 @@ namespace YAGLi.Tests
         }
 
         [Test]
-        public void ctor_with_any_int_strictly_inferior_to_0_should_return_a_Degree_object_equal_to_Degree_Impossible()
+        public void Constructor_with_any_int_strictly_inferior_to_0_should_return_a_Degree_object_equal_to_Degree_Impossible()
         {
             Check.That(new Degree(-42)).IsEqualTo(Degree.Impossible);
         }
 
         [Test]
-        public void operator_plus_with_at_least_one_Degree_object_equal_to_Degree_Impossible_should_return_a_Degree_object_equal_to_Degree_Impossible()
+        public void Operator_plus_with_at_least_one_Degree_object_equal_to_Degree_Impossible_should_return_a_Degree_object_equal_to_Degree_Impossible()
         {
             var degree1 = new Degree(42);
             var degree2 = new Degree(-42);
@@ -194,7 +194,7 @@ namespace YAGLi.Tests
         }
 
         [Test]
-        public void operator_plus_with_two_Degree_objects_not_equal_to_Degree_Impossible_should_return_the_expected_result()
+        public void Operator_plus_with_two_Degree_objects_not_equal_to_Degree_Impossible_should_return_the_expected_result()
         {
             var degree1 = new Degree(21);
             var degree2 = new Degree(21);
@@ -203,7 +203,7 @@ namespace YAGLi.Tests
         }
 
         [Test]
-        public void operator_minus_with_at_least_one_Degree_object_equal_to_Degree_Impossible_should_return_a_Degree_object_equal_to_Degree_Impossible()
+        public void Operator_minus_with_at_least_one_Degree_object_equal_to_Degree_Impossible_should_return_a_Degree_object_equal_to_Degree_Impossible()
         {
             var degree1 = new Degree(42);
             var degree2 = new Degree(-42);
@@ -212,7 +212,7 @@ namespace YAGLi.Tests
         }
 
         [Test]
-        public void operator_minus_with_two_Degree_objects_not_equal_to_Degree_Impossible_should_return_the_expected_result()
+        public void Operator_minus_with_two_Degree_objects_not_equal_to_Degree_Impossible_should_return_the_expected_result()
         {
             var degree1 = new Degree(42);
             var degree2 = new Degree(42);
@@ -221,7 +221,7 @@ namespace YAGLi.Tests
         }
 
         [Test]
-        public void operator_equal_equal_should_return_false_when_the_values_of_the_degrees_are_not_equal()
+        public void Operator_equal_equal_should_return_false_when_the_values_of_the_degrees_are_not_equal()
         {
             var degree1 = new Degree(42);
             var degree2 = new Degree(0);
@@ -230,7 +230,7 @@ namespace YAGLi.Tests
         }
 
         [Test]
-        public void operator_equal_equal_should_return_true_when_the_values_of_the_degrees_are_equal()
+        public void Operator_equal_equal_should_return_true_when_the_values_of_the_degrees_are_equal()
         {
             var degree1 = new Degree(42);
             var degree2 = new Degree(42);
@@ -239,7 +239,7 @@ namespace YAGLi.Tests
         }
 
         [Test]
-        public void operator_not_equal_should_return_true_when_the_values_of_the_degrees_are_not_equal()
+        public void Operator_not_equal_should_return_true_when_the_values_of_the_degrees_are_not_equal()
         {
             var degree1 = new Degree(42);
             var degree2 = new Degree(0);
@@ -248,7 +248,7 @@ namespace YAGLi.Tests
         }
 
         [Test]
-        public void operator_not_equal_should_return_false_when_the_values_of_the_degrees_are_equal()
+        public void Operator_not_equal_should_return_false_when_the_values_of_the_degrees_are_equal()
         {
             var degree1 = new Degree(42);
             var degree2 = new Degree(42);
@@ -257,7 +257,7 @@ namespace YAGLi.Tests
         }
 
         [Test]
-        public void operator_inferior_should_return_true_when_the_first_Degree_object_has_a_value_field_strictly_inferior_to_the_value_field_of_the_second_Degree_object()
+        public void Operator_inferior_should_return_true_when_the_first_Degree_object_has_a_value_field_strictly_inferior_to_the_value_field_of_the_second_Degree_object()
         {
             var degree1 = new Degree(0);
             var degree2 = new Degree(42);
@@ -266,7 +266,7 @@ namespace YAGLi.Tests
         }
 
         [Test]
-        public void operator_inferior_should_return_false_when_the_first_Degree_object_has_not_a_value_field_strictly_inferior_to_the_value_field_of_the_second_Degree_object()
+        public void Operator_inferior_should_return_false_when_the_first_Degree_object_has_not_a_value_field_strictly_inferior_to_the_value_field_of_the_second_Degree_object()
         {
             var degree1 = new Degree(42);
             var degree2 = new Degree(0);
@@ -275,7 +275,7 @@ namespace YAGLi.Tests
         }
 
         [Test]
-        public void operator_superior_should_return_true_when_the_first_Degree_object_has_a_value_field_strictly_superior_to_the_value_field_of_the_second_Degree_object()
+        public void Operator_superior_should_return_true_when_the_first_Degree_object_has_a_value_field_strictly_superior_to_the_value_field_of_the_second_Degree_object()
         {
             var degree1 = new Degree(42);
             var degree2 = new Degree(0);
@@ -284,7 +284,7 @@ namespace YAGLi.Tests
         }
 
         [Test]
-        public void operator_superior_should_return_false_when_the_first_Degree_object_has_not_a_value_field_strictly_superior_to_the_value_field_of_the_second_Degree_object()
+        public void Operator_superior_should_return_false_when_the_first_Degree_object_has_not_a_value_field_strictly_superior_to_the_value_field_of_the_second_Degree_object()
         {
             var degree1 = new Degree(0);
             var degree2 = new Degree(42);
@@ -293,7 +293,7 @@ namespace YAGLi.Tests
         }
 
         [Test]
-        public void operator_inferior_or_equal_should_return_true_when_the_first_Degree_object_has_a_value_field_strictly_inferior_to_the_value_field_of_the_second_Degree_object()
+        public void Operator_inferior_or_equal_should_return_true_when_the_first_Degree_object_has_a_value_field_strictly_inferior_to_the_value_field_of_the_second_Degree_object()
         {
             var degree1 = new Degree(0);
             var degree2 = new Degree(42);
@@ -302,7 +302,7 @@ namespace YAGLi.Tests
         }
 
         [Test]
-        public void operator_inferior_or_equal_should_return_false_when_the_first_Degree_object_has_not_a_value_field_strictly_inferior_to_the_value_field_of_the_second_Degree_object()
+        public void Operator_inferior_or_equal_should_return_false_when_the_first_Degree_object_has_not_a_value_field_strictly_inferior_to_the_value_field_of_the_second_Degree_object()
         {
             var degree1 = new Degree(42);
             var degree2 = new Degree(0);
@@ -311,7 +311,7 @@ namespace YAGLi.Tests
         }
 
         [Test]
-        public void operator_inferior_or_equal_should_return_true_when_the_first_Degree_object_has_a_value_field_equal_to_the_value_field_of_the_second_Degree_object()
+        public void Operator_inferior_or_equal_should_return_true_when_the_first_Degree_object_has_a_value_field_equal_to_the_value_field_of_the_second_Degree_object()
         {
             var degree1 = new Degree(42);
             var degree2 = new Degree(42);
@@ -320,7 +320,7 @@ namespace YAGLi.Tests
         }
 
         [Test]
-        public void operator_superior_or_equal_should_return_true_when_the_first_Degree_object_has_a_value_field_strictly_superior_to_the_value_field_of_the_second_Degree_object()
+        public void Operator_superior_or_equal_should_return_true_when_the_first_Degree_object_has_a_value_field_strictly_superior_to_the_value_field_of_the_second_Degree_object()
         {
             var degree1 = new Degree(42);
             var degree2 = new Degree(0);
@@ -329,7 +329,7 @@ namespace YAGLi.Tests
         }
 
         [Test]
-        public void operator_superior_or_equal_should_return_false_when_the_first_Degree_object_has_not_a_value_field_strictly_superior_to_the_value_field_of_the_second_Degree_object()
+        public void Operator_superior_or_equal_should_return_false_when_the_first_Degree_object_has_not_a_value_field_strictly_superior_to_the_value_field_of_the_second_Degree_object()
         {
             var degree1 = new Degree(0);
             var degree2 = new Degree(42);
@@ -338,7 +338,7 @@ namespace YAGLi.Tests
         }
 
         [Test]
-        public void operator_superior_or_equal_should_return_true_when_the_first_Degree_object_has_a_value_field_equal_to_the_value_field_of_the_second_Degree_object()
+        public void Operator_superior_or_equal_should_return_true_when_the_first_Degree_object_has_a_value_field_equal_to_the_value_field_of_the_second_Degree_object()
         {
             var degree1 = new Degree(42);
             var degree2 = new Degree(42);
@@ -347,7 +347,7 @@ namespace YAGLi.Tests
         }
 
         [Test]
-        public void implicit_operator_int_to_Degree_should_return_the_expected_Degree_object()
+        public void Implicit_operator_int_to_Degree_should_return_the_expected_Degree_object()
         {
             Degree degree = 42;
 
@@ -355,7 +355,7 @@ namespace YAGLi.Tests
         }
 
         [Test]
-        public void implicit_operator_Degree_to_int_should_return_the_expected_int()
+        public void Implicit_operator_Degree_to_int_should_return_the_expected_int()
         {
             int degree = new Degree(42);
 
