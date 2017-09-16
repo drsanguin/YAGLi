@@ -4,6 +4,7 @@ using TechTalk.SpecFlow;
 using YAGLi.Interfaces;
 using YAGLi.Specs.Common.AbstractValidators;
 using YAGLi.Tests.Utils;
+using YAGLi.Tests.Utils.Extensions;
 
 namespace YAGLi.Specs.Common.Validators
 {

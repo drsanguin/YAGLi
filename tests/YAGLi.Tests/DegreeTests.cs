@@ -1,5 +1,6 @@
 ﻿using NFluent;
 using NUnit.Framework;
+using YAGLi.Tests.Utils.Extensions.Assertions;
 
 namespace YAGLi.Tests
 {
@@ -360,6 +361,13 @@ namespace YAGLi.Tests
             int degree = new Degree(42);
 
             Check.That(degree).IsEqualTo(42);
+        }
+
+        [Test]
+        public void X()
+        {
+            Check.That(new Degree(-1)).IsImpossible();
+            //Check.That(new Degree(42)).IsImpossible();
         }
     }
 }

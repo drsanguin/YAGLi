@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace YAGLi.Tests.Utils
+namespace YAGLi.Tests.Utils.Extensions
 {
-    public static class Extensions
+    public static class EquatableExtensions
     {
         public static IEnumerable<EquatableVertex> ToEquatable(this IEnumerable<Vertex> vertices)
         {

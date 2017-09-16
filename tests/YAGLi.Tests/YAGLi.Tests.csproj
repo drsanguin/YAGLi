@@ -76,7 +76,8 @@
     <Compile Include="Utils\Edge.cs" />
     <Compile Include="Utils\EquatableEdge.cs" />
     <Compile Include="Utils\EquatableVertex.cs" />
-    <Compile Include="Utils\Extensions.cs" />
+    <Compile Include="Utils\Extensions\Assertions\DegreeAssertionsExtensions.cs" />
+    <Compile Include="Utils\Extensions\EquatableExtensions.cs" />
     <Compile Include="Utils\Vertex.cs" />
     <Compile Include="Utils\VertexEqualityComparer.cs" />
     <Compile Include="Extensions\YieldExtensionTests.cs" />
