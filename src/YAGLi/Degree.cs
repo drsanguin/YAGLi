@@ -22,7 +22,7 @@ namespace YAGLi
         #endregion
 
         #region Member fields
-        private int _value { get; set; }
+        private readonly int _value;
         #endregion
 
         #region Methods

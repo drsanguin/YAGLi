@@ -67,26 +67,12 @@ namespace YAGLi
         #endregion
 
         #region Properties
-        public override IEnumerable<TEdge> Edges
-        {
-            get
-            {
-                return _incidentEdgesOutOf.Values
-                                          .Concat(_incidentEdgesOutOf.Values)
-                                          .SelectMany(edge => edge)
-                                          .Distinct(_edgesComparer);
-            }
-        }
+        public override IEnumerable<TEdge> Edges => _incidentEdgesOutOf.Values.Concat(_incidentEdgesOutOf.Values)
+                                                                              .SelectMany(edge => edge)
+                                                                              .Distinct(_edgesComparer);
 
-        public override IEnumerable<TVertex> Vertices
-        {
-            get
-            {
-                return _incidentEdgesInto.Keys
-                                       .Concat(_incidentEdgesOutOf.Keys)
-                                       .Distinct(VerticesComparer);
-            }
-        }
+        public override IEnumerable<TVertex> Vertices => _incidentEdgesInto.Keys.Concat(_incidentEdgesOutOf.Keys)
+                                                                                .Distinct(VerticesComparer);
         #endregion
 
         #region Methods

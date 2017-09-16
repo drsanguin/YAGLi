@@ -71,23 +71,10 @@ namespace YAGLi
 
         #region Properties
 
-        public override IEnumerable<TEdge> Edges
-        {
-            get
-            {
-                return _incidentEdges.Values
-                                     .SelectMany(edge => edge)
-                                     .Distinct(_edgesComparer);
-            }
-        }
+        public override IEnumerable<TEdge> Edges => _incidentEdges.Values.SelectMany(edge => edge)
+                                                                         .Distinct(_edgesComparer);
 
-        public override IEnumerable<TVertex> Vertices
-        {
-            get
-            {
-                return _incidentEdges.Keys;
-            }
-        }
+        public override IEnumerable<TVertex> Vertices => _incidentEdges.Keys;
         #endregion
 
         #region Methods
