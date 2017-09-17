@@ -362,12 +362,5 @@ namespace YAGLi.Tests
 
             Check.That(degree).IsEqualTo(42);
         }
-
-        [Test]
-        public void X()
-        {
-            Check.That(new Degree(-1)).IsImpossible();
-            //Check.That(new Degree(42)).IsImpossible();
-        }
     }
 }
