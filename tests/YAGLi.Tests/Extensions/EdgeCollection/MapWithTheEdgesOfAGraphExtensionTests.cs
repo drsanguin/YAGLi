@@ -7,8 +7,8 @@ using YAGLi.Tests.Utils;
 
 namespace YAGLi.Tests.Extensions.EdgeCollection
 {
-    [TestFixture(TestOf = typeof(MapEdgesWithTheEdgesOfAGraphExtension))]
-    public class MapEdgesWithTheEdgesOfAGraphExtensionTests
+    [TestFixture(TestOf = typeof(MapWithTheEdgesOfAGraphExtension))]
+    public class MapWithTheEdgesOfAGraphExtensionTests
     {
         [Test]
         public void MapEdgesWithTheEdgesOfAGraph_should_return_the_expected_result()
@@ -46,7 +46,7 @@ namespace YAGLi.Tests.Extensions.EdgeCollection
                 new IgnoreDirectionAndDisallowParallelEdges<Vertex, Edge<Vertex>>(vertexComparer)
             };
 
-            Check.That(edges.MapEdgesWithTheEdgesOfAGraph(graph, comparers)).ContainsExactly(graphEdges[0], graphEdges[3], graphEdges[2], graphEdges[1]);
+            Check.That(edges.MapWithTheEdgesOfAGraph(graph, comparers)).ContainsExactly(graphEdges[0], graphEdges[3], graphEdges[2], graphEdges[1]);
         }
     }
 }

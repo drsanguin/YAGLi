@@ -5,9 +5,9 @@ using YAGLi.Interfaces;
 
 namespace YAGLi.Extensions.EdgeCollection
 {
-    public static class MapEdgesWithTheEdgesOfAGraphExtension
+    public static class MapWithTheEdgesOfAGraphExtension
     {
-        public static IEnumerable<TEdge> MapEdgesWithTheEdgesOfAGraph<TVertex, TEdge>(this IEnumerable<TEdge> edges, IModelAGraph<TVertex, TEdge> graph, params IEqualityComparer<TEdge>[] edgeComparers) where TEdge : IModelAnEdge<TVertex>
+        public static IEnumerable<TEdge> MapWithTheEdgesOfAGraph<TVertex, TEdge>(this IEnumerable<TEdge> edges, IModelAGraph<TVertex, TEdge> graph, params IEqualityComparer<TEdge>[] edgeComparers) where TEdge : IModelAnEdge<TVertex>
         {
             var inputEdges = edges.ToList();
             var referenceEdges = graph.Edges.ToList();
