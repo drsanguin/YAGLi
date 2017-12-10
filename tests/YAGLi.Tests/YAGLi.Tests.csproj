@@ -60,8 +60,8 @@
       <HintPath>..\..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="NFluent, Version=2.0.0.71, Culture=neutral, PublicKeyToken=18828b37b84b1437, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NFluent.2.0.0\lib\net45\NFluent.dll</HintPath>
+    <Reference Include="NFluent, Version=2.1.0.99, Culture=neutral, PublicKeyToken=18828b37b84b1437, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NFluent.2.1.0\lib\net45\NFluent.dll</HintPath>
     </Reference>
     <Reference Include="NSubstitute, Version=3.1.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
       <HintPath>..\..\packages\NSubstitute.3.1.0\lib\net45\NSubstitute.dll</HintPath>
